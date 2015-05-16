@@ -9,6 +9,9 @@
     <AssemblyName>Grobid.NET</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Grobid.Java">
+      <HintPath>..\..\lib\java\Grobid.Java.dll</HintPath>
+    </Reference>
     <Reference Include="IKVM.AWT.WinForms, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <HintPath>..\..\packages\IKVM.8.0.5449.1\lib\IKVM.AWT.WinForms.dll</HintPath>
       <Private>True</Private>
@@ -138,6 +141,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\lib\native\x64\libwapiti.dll">
+      <Link>libwapiti.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\native\x64\libwapiti_swig.dll">
+      <Link>libwapiti_swig.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
