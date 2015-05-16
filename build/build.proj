@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Go" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildProjectDirectory)\build.tasks" />
+
+  <PropertyGroup>
+    <GrobidRoot>$(MSBuildProjectDirectory)\..</GrobidRoot>
+    <GrobidBuildRoot>$(GrobidRoot)\build</GrobidBuildRoot>
+    <GrobidTestRoot>$(GrobidRoot)\test</GrobidTestRoot>
+    <GrobidSrcRoot>$(GrobidRoot)\src</GrobidSrcRoot>
+    <SolutionName Condition="'$(SolutionName)' == ''">grobid.sln</SolutionName>
+    <SolutionDir Condition="'$(SolutionDir)' == '' Or '$(SolutionDir)' == '*Undefined*'">$(GrobidRoot)</SolutionDir>
+    <NuGetExePath Condition="'$(NuGetExePath)' == ''">$(SolutionDir)\.nuget\nuget.exe</NuGetExePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageSource Include="https://nuget.org/api/v2/" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <MajorVersion>0</MajorVersion>
+    <MinorVersion>1</MinorVersion>
+    <Patch>0</Patch>
+
+    <!-- Ensure that we come up with a new version every 65535 years -->
+    <VersionStartYear>2000</VersionStartYear>
+
+    <!-- Build number is of the format (CurrentYear - VersionStartYear + 1)(2 digit month)(2 digit day) -->
+    <Build>$([MSBuild]::Add(1, $([MSBuild]::Subtract($([System.DateTime]::Now.Year), $(VersionStartYear)))))$([System.DateTime]::Now.ToString("MMdd"))</Build>
+    <Revision>$(BUILD_NUMBER)</Revision>
+    <Version>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</Version>
+    <PackageVersion>$(MajorVersion).$(MinorVersion).$(Patch)</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <RegexTransform Include="$(GrobidBuildRoot)\GlobalAssemblyInfo.cs">
+      <Find>AssemblyVersion\("\d+\.\d+\.\d+\.\d+"\)</Find>
+      <ReplaceWith>AssemblyVersion("$(Version)")</ReplaceWith>
+    </RegexTransform>
+    <RegexTransform Include="$(GrobidBuildRoot)\GlobalAssemblyInfo.cs">
+      <Find>AssemblyInformationalVersion\("\d+\.\d+\.\d+"\)</Find>
+      <ReplaceWith>AssemblyInformationalVersion("$(PackageVersion)")</ReplaceWith>
+    </RegexTransform>
+    <RegexTransform Include="$(GrobidSrcRoot)\**\*.nuspec">
+      <Find><![CDATA[<version>\d+\.\d+\.\d+\.\d+</version>]]></Find>
+      <ReplaceWith><![CDATA[<version>$(PackageVersion)</version>]]></ReplaceWith>
+    </RegexTransform>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TestProjects Include="$(GrobidTestRoot)\**\*.csproj" />
+  </ItemGroup>
+
+  <Target Name="Go"
+          DependsOnTargets="CheckFxCop; Build; Test">
+  </Target>
+
+  <Target Name="CheckFxCop">
+    <Error
+        Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\CodeAnalysis\fxcoptask.dll') And !Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v14.0\CodeAnalysis\fxcoptask.dll')"
+        Text="FxCop not found at $(MSBuildExtensionsPath)\Microsoft\VisualStudio\[v10.0|v11.0|v12.0|v14.0]\CodeAnalysis\fxcoptask.dll. Cannot proceed." />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="PackageRestore">
+    <PropertyGroup>
+      <EnableCodeAnalysis Condition="'$(EnableCodeAnalysis)' == ''" >true</EnableCodeAnalysis>
+    </PropertyGroup>
+    <MSBuild 
+        Projects="$(SolutionDir)\$(SolutionName)" 
+        Targets="Build" 
+        Properties="EnableCodeAnalysis=$(EnableCodeAnalysis)" />
+  </Target>
+
+  <Target Name="PackageRestore" DependsOnTargets="_DownloadNuGet">
+    <Message Text="Restoring packages ..." Importance="High" />
+    <Exec Command="&quot;$(NuGetExePath)&quot; install xunit.runner.msbuild -Source @(PackageSource) -SolutionDir &quot;$(SolutionDir)&quot; -Verbosity quiet -ExcludeVersion" 
+          Condition="!Exists('$(SolutionDir)\packages\xunit.runner.msbuild\')" />
+    <Exec Command="&quot;$(NuGetExePath)&quot; restore &quot;$(SolutionDir)\$(SolutionName)&quot; -NonInteractive -Source @(PackageSource) -Verbosity quiet" />
+  </Target>
+
+  <ItemGroup>
+    <TestAssemblies Include="..\test\**\bin\**\*.test.dll" />
+  </ItemGroup>
+
+  <Target Name="Test" DependsOnTargets="Build">
+    <xunit Assemblies="@(TestAssemblies)" />
+  </Target>
+
+  <Target Name="_DownloadNuGet">
+    <MakeDir Directories="$(SolutionDir)\.nuget" />
+    <DownloadNuGet OutputFilename="$(NuGetExePath)" Condition="!Exists('$(NuGetExePath)')" />
+  </Target>
+</Project>

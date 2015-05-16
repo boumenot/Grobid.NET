@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid", "src\Grobid\Grobid.csproj", "{ABB35F54-6F91-4972-B289-D15E3BE1999F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.Test", "test\Grobid.Test\Grobid.Test.csproj", "{B3704634-4D8C-4E18-9826-8FED25FF1FB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A9311046-905A-43EE-BD89-B202E110B2FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Debug|x64.ActiveCfg = Debug|x64
+		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Debug|x64.Build.0 = Debug|x64
+		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Release|x64.ActiveCfg = Release|x64
+		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Release|x64.Build.0 = Release|x64
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Debug|x64.ActiveCfg = Debug|x64
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Debug|x64.Build.0 = Debug|x64
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|x64.ActiveCfg = Release|x64
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5} = {A9311046-905A-43EE-BD89-B202E110B2FB}
+	EndGlobalSection
+EndGlobal
