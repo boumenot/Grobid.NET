@@ -156,7 +156,12 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="EmptyLexicon.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FeatureTesterTest.cs" />
     <Compile Include="GrobidTest.cs" />
+    <Compile Include="LexiconFactoryTest.cs" />
+    <Compile Include="LexiconTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Grobid\Grobid.csproj">

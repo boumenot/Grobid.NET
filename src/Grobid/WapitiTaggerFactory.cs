@@ -23,7 +23,7 @@ namespace Grobid.NET
 
         public GenericTagger create(org.grobid.core.GrobidModels gm)
         {
-            var fullname = String.Format("{0}/model.wapiti", gm.toString());
+            var fullname = String.Format("models/{0}/model.wapiti", gm.toString());
             var entry = this.archive.Entries.FirstOrDefault(x => x.FullName == fullname);
 
             if (entry == null)

@@ -138,11 +138,16 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AggregateLexicon.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="FeatureTesterImpl.cs" />
     <Compile Include="GrobidEngine.cs" />
     <Compile Include="IGrobid.cs" />
     <Compile Include="GrobidClassLoader.cs" />
     <Compile Include="GrobidFactory.cs" />
+    <Compile Include="ILexicon.cs" />
+    <Compile Include="Lexicon.cs" />
+    <Compile Include="LexiconFactory.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
