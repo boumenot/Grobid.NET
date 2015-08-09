@@ -12,6 +12,7 @@ namespace Grobid.NET
         private Lexicon englishLexicon;
         private Lexicon germanLexicon;
         private org.grobid.core.lexicon.FastMatcher cityNameFastMatcher;
+        private CountryCodes countryCodes;
 
         public AggregateLexicon(ILexicon lexicon, params ILexicon[] lexicons)
         {
@@ -26,13 +27,15 @@ namespace Grobid.NET
         public AggregateLexicon(
             Lexicon englishLexicon, 
             Lexicon germanLexicon, 
-            org.grobid.core.lexicon.FastMatcher cityNameFastMatcher)
+            org.grobid.core.lexicon.FastMatcher cityNameFastMatcher,
+            CountryCodes countryCodes)
         {
             this.englishLexicon = englishLexicon;
             this.germanLexicon = germanLexicon;
             this.lexicons = new[] { this.englishLexicon, this.germanLexicon };
 
             this.cityNameFastMatcher = cityNameFastMatcher;
+            this.countryCodes = countryCodes;
         }
 
         public bool IsFirstName(string name)
@@ -65,10 +68,9 @@ namespace Grobid.NET
             return this.cityNameFastMatcher.matcher(text);
         }
 
-        public string getcountryCode(string str)
+        public string getcountryCode(string country)
         {
-            // FIXME:
-            return "CT";
+            return this.countryCodes.GetCode(country);
         }
     }
 }

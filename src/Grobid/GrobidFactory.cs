@@ -264,7 +264,10 @@ namespace Grobid.NET
             var cityNameFastMatcher = new FastMatcher(
                 this.ReadAllLines(archive.Entries.First(x => x.FullName == "lexicon/places/cities15000.txt").Open()));
 
-            var lexicon = new AggregateLexicon(englishLexicon, germanLexicon, cityNameFastMatcher);
+            var countryCodes = CountryCodes.FromTei(
+                archive.Entries.First(x => x.FullName == "lexicon/countries/CountryCodes.xml").Open());
+
+            var lexicon = new AggregateLexicon(englishLexicon, germanLexicon, cityNameFastMatcher, countryCodes);
             return lexicon;
         }
 

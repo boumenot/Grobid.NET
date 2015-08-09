@@ -140,6 +140,8 @@
     </Compile>
     <Compile Include="AggregateLexicon.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="CountryCodes.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FeatureTesterImpl.cs" />
     <Compile Include="GrobidEngine.cs" />
     <Compile Include="IGrobid.cs" />
