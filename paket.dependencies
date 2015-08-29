@@ -3,3 +3,5 @@ source https://nuget.org/api/v2
 nuget FAKE
 nuget FluentAssertions
 nuget xunit
+nuget xunit.runner.console
+nuget xunit.runners
