@@ -41,6 +41,11 @@ Target "UnitTests" (fun _ ->
                                           })
 )
 
+Target "Zip" (fun _ ->
+              !! "content/lexicon/**/*" ++ "content/models/**/*"
+              |> Zip "content" "grobid.zip"
+)
+
 Target "Default" DoNothing
 
 "Clean"
@@ -48,5 +53,8 @@ Target "Default" DoNothing
 
 "UnitTests"
   ==> "Default"
+
+"Zip"
+  ==> "BuildApp"
 
 RunTargetOrDefault "Default"
