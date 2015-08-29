@@ -10,7 +10,7 @@ let project = "Grobid.Models"
 let summary = "You are a summary."
 let description = "You are a description."
 
-let projectName = "Grobid.NET"
+let projectName = "Grobid.x64"
 let projectDescription = "GROBID for .NET"
 let projectSummary = projectDescription
 
@@ -60,6 +60,25 @@ Target "Zip" (fun _ ->
 // NuGet
 
 // == grobid.X.Y.Z.nupkg
+Target "NuGet" (fun _ ->
+                    NuGet (fun x ->
+                        { x with
+                            Authors = authors
+                            Project = projectName
+                            Summary = projectSummary
+                            Description = projectDescription
+                            Version = release.NugetVersion
+                            ReleaseNotes = String.Join(Environment.NewLine, release.Notes)
+                            Tags = tags
+                            OutputPath = "publish"
+                            AccessKey = getBuildParamOrDefault "nugetkey" ""
+                            Publish = hasBuildParam "nugetkey"
+                            Files = [ (@"..\lib\native\x64\libwapiti.dll",                    Some @"lib\net45\NativeBinaries\amd64", None)
+                                      (@"..\lib\native\x64\libwapiti_swig.dll",               Some @"lib\net45\NativeBinaries\amd64", None)
+                                      (@"..\lib\java\Grobid.Java.dll",                        Some @"lib\net45",                      None)
+                                      (@"..\src\Grobid\bin" @@ buildMode @@ "Grobid.Net.dll", Some @"lib\net45",                      None) ] })
+                        ("nuget/" + projectName + ".nuspec")
+)
 
 // == grobid.models.X.Y.Z.nupkg
 
