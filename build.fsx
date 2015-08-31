@@ -73,10 +73,11 @@ Target "NuGet" (fun _ ->
                             OutputPath = "publish"
                             AccessKey = getBuildParamOrDefault "nugetkey" ""
                             Publish = hasBuildParam "nugetkey"
-                            Files = [ (@"..\lib\native\x64\libwapiti.dll",                    Some @"lib\net45\NativeBinaries\amd64", None)
-                                      (@"..\lib\native\x64\libwapiti_swig.dll",               Some @"lib\net45\NativeBinaries\amd64", None)
-                                      (@"..\lib\java\Grobid.Java.dll",                        Some @"lib\net45",                      None)
-                                      (@"..\src\Grobid\bin" @@ buildMode @@ "Grobid.Net.dll", Some @"lib\net45",                      None) ] })
+                            Files = [ (@"..\nuget\build\grobid.x64.props",                    Some @"build\grobid.x64.props", None)
+                                      (@"..\lib\native\x64\libwapiti.dll",                    Some @"native\x64\",            None)
+                                      (@"..\lib\native\x64\libwapiti_swig.dll",               Some @"native\x64",             None)
+                                      (@"..\lib\java\Grobid.Java.dll",                        Some @"lib\net45",              None)
+                                      (@"..\src\Grobid\bin" @@ buildMode @@ "Grobid.Net.dll", Some @"lib\net45",              None) ] })
                         ("nuget/" + projectName + ".nuspec")
 )
 
