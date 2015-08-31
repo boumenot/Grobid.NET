@@ -59,6 +59,10 @@ Target "Zip" (fun _ ->
 // ==================================================
 // NuGet
 
+let referenceDependencies dependencies =
+    let packagesDir = __SOURCE_DIRECTORY__  @@ "packages"
+    [ for dependency in dependencies -> dependency, GetPackageVersion packagesDir dependency ]
+
 // == grobid.X.Y.Z.nupkg
 Target "NuGet" (fun _ ->
                     NuGet (fun x ->
@@ -73,6 +77,7 @@ Target "NuGet" (fun _ ->
                             OutputPath = "publish"
                             AccessKey = getBuildParamOrDefault "nugetkey" ""
                             Publish = hasBuildParam "nugetkey"
+                            Dependencies = referenceDependencies [ "IKVM" ] @ [ "Grobid.Models", "1.0.0" ]
                             Files = [ (@"..\nuget\build\grobid.x64.props",                    Some @"build\grobid.x64.props", None)
                                       (@"..\lib\native\x64\libwapiti.dll",                    Some @"native\x64\",            None)
                                       (@"..\lib\native\x64\libwapiti_swig.dll",               Some @"native\x64",             None)
