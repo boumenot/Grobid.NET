@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props" Condition="Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" />
   <Import Project="..\..\build\grobid.src.settings" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,10 +8,124 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Grobid.NET</RootNamespace>
     <AssemblyName>Grobid.NET</AssemblyName>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Grobid.Java">
       <HintPath>..\..\lib\java\Grobid.Java.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.AWT.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.8.1.5721.0\lib\IKVM.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=8.1.5721.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IKVM.NativeBinaries.8.1.5721.0\lib\IKVM.Runtime.JNI.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -50,5 +165,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props'))" />
+  </Target>
 </Project>
