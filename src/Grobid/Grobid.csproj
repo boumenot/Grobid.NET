@@ -156,16 +156,6 @@
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\lib\native\x64\libwapiti.dll">
-      <Link>libwapiti.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\lib\native\x64\libwapiti_swig.dll">
-      <Link>libwapiti_swig.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -174,5 +164,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props'))" />
+  </Target>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="..\..\lib\native\x64\libwapiti.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="..\..\lib\native\x64\libwapiti_swig.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
   </Target>
 </Project>

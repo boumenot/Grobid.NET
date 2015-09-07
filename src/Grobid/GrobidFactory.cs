@@ -32,17 +32,14 @@ namespace Grobid.NET
         {
             GrobidFactory.SetPathForNativeDllResolution();
 
+            var libwapiti_dll = GrobidFactory.GetFullNativeWapitiName("libwapiti.dll");
+            LibraryLoader.explicitLoad(libwapiti_dll);
+
+            var libwapiti_swig_dll = GrobidFactory.GetFullNativeWapitiName("libwapiti_swig.dll");
+            LibraryLoader.explicitLoad(libwapiti_swig_dll);
+
             //BasicConfigurator.configure();
             //org.apache.log4j.Logger.getRootLogger().setLevel(Level.DEBUG);
-
-        //    var assemblyPath = Assembly.GetExecutingAssembly().Location;
-        //    var assemblyDirectory = Path.GetDirectoryName(assemblyPath);
-
-        //    var libwapiti_dll = Path.Combine(assemblyDirectory, Constants.Native.libwapiti_dll);
-        //    LibraryLoader.explicitLoad(libwapiti_dll);
-
-        //    var libwapiti_swig_dll = Path.Combine(assemblyDirectory, Constants.Native.libwapiti_swig_dll);
-        //    LibraryLoader.explicitLoad(libwapiti_swig_dll);
         }
 
         public GrobidFactory(
@@ -56,14 +53,6 @@ namespace Grobid.NET
 
             var assemblyPath = Assembly.GetExecutingAssembly().Location;
             var assemblyDirectory = Path.GetDirectoryName(assemblyPath);
-
-            //var libwapiti_dll = Path.Combine(assemblyDirectory, Constants.Native.libwapiti_dll);
-            var libwapiti_dll = @"C:\dev\Grobid.NET\lib\native\x64\libwapiti.dll";
-            LibraryLoader.explicitLoad(libwapiti_dll);
-
-            //var libwapiti_swig_dll = Path.Combine(assemblyDirectory, Constants.Native.libwapiti_swig_dll);
-            var libwapiti_swig_dll = @"C:\dev\Grobid.NET\lib\native\x64\libwapiti_swig.dll";
-            LibraryLoader.explicitLoad(libwapiti_swig_dll);
 
             this.pathToModelsZip = pathToModelsZip;
             this.pathToPdf2XmlExe = pathToPdf2XmlExe;
@@ -99,6 +88,22 @@ namespace Grobid.NET
             return new GrobidEngine(engine, lexicon, taggerFactory);
         }
 
+        private static string GetExecutingAssemblyPath()
+        {
+            var assemblyFullName = new Uri(Assembly.GetExecutingAssembly().EscapedCodeBase).LocalPath;
+            var assemblyPath = Path.GetDirectoryName(assemblyFullName);
+
+            return assemblyPath;
+        }
+
+        private static string GetFullNativeWapitiName(string file)
+        {
+            var assemblyPath = GrobidFactory.GetExecutingAssemblyPath();
+            var path = Path.Combine(assemblyPath, "native", "x64", file);
+
+            return path;
+        }
+
         private static void SetPathForNativeDllResolution()
         {
             if (IntPtr.Size != 8)
@@ -107,8 +112,7 @@ namespace Grobid.NET
                 throw new ArgumentOutOfRangeException(message);
             }
 
-            var assemblyFullName = new Uri(Assembly.GetExecutingAssembly().EscapedCodeBase).LocalPath;
-            var assemblyPath = Path.GetDirectoryName(assemblyFullName);
+            var assemblyPath = GrobidFactory.GetExecutingAssemblyPath();
             var nativeDllPath = Path.Combine(assemblyPath, "NativeBinaries", "x64", "lib");
 
             const string PATH = "PATH";

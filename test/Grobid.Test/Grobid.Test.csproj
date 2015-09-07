@@ -10,8 +10,7 @@
     <ProjectGuid>{B3704634-4D8C-4E18-9826-8FED25FF1FB5}</ProjectGuid>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
@@ -184,5 +183,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props'))" />
     <Error Condition="!Exists('..\..\packages\xunit.runner.visualstudio.2.0.1\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.runner.visualstudio.2.0.1\build\net20\xunit.runner.visualstudio.props'))" />
+  </Target>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="..\..\lib\native\x64\libwapiti.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="..\..\lib\native\x64\libwapiti_swig.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
   </Target>
 </Project>
