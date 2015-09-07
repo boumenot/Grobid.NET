@@ -24,7 +24,7 @@ namespace Grobid.Test
         public void ExtractTest()
         {
             var factory = new GrobidFactory(
-                @"c:\dev\grobid.net\content\grobid.zip",
+                @"c:\dev\grobid.net\grobid.zip",
                 @"c:\dev\grobid.net\bin\pdf2xml.exe",
                 @"c:\temp");
 
