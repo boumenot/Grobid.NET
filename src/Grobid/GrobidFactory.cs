@@ -179,6 +179,8 @@ namespace Grobid.NET
 
         static GrobidFactory()
         {
+            GrobidFactory.SetPathForNativeDllResolution();
+
             //BasicConfigurator.configure();
             //org.apache.log4j.Logger.getRootLogger().setLevel(Level.DEBUG);
 
@@ -249,6 +251,27 @@ namespace Grobid.NET
                 lexicon);
 
             return new GrobidEngine(engine, lexicon, taggerFactory);
+        }
+
+        private static void SetPathForNativeDllResolution()
+        {
+            if (IntPtr.Size != 8)
+            {
+                const string message = "Grobid.NET only support 64-bit processes!";
+                throw new ArgumentOutOfRangeException(message);
+            }
+
+            var assemblyFullName = new Uri(Assembly.GetExecutingAssembly().EscapedCodeBase).LocalPath;
+            var assemblyPath = Path.GetDirectoryName(assemblyFullName);
+            var nativeDllPath = Path.Combine(assemblyPath, "NativeBinaries", "x64", "lib");
+
+            const string PATH = "PATH";
+
+            var newPath = string.Format("{0};{1}",
+                nativeDllPath,
+                Environment.GetEnvironmentVariable(PATH));
+
+            Environment.SetEnvironmentVariable(PATH, newPath);
         }
 
         private ILexicon CreateLexicons(ZipArchive archive)
