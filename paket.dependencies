@@ -4,4 +4,5 @@ nuget FAKE
 nuget FluentAssertions
 nuget xunit
 nuget xunit.runner.console
+nuget xunit.runner.visualstudio
 nuget xunit.runners
