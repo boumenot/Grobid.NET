@@ -26,7 +26,6 @@ namespace Grobid.NET
         private readonly string pathToPdf2XmlExe;
         private readonly string pathToTemp;
 
-        //private static GrobidProperties grobidProperties;
         private static LexiconFactory lexiconFactory = new LexiconFactory();
 
         static GrobidFactory()
@@ -51,15 +50,10 @@ namespace Grobid.NET
             string pathToPdf2XmlExe,
             string pathToTemp)
         {
-            //GrobidProperties.set_GROBID_HOME_PATH("c:\\temp\\grobid\\home");
-            //GrobidProperties.setGrobidPropertiesPath("c:\\temp\\grobid\\props");
-
             GrobidProperties.setContext(new InitialContext());
             GrobidProperties.set_GROBID_HOME_PATH("c:\\");
             GrobidProperties.setGrobidPropertiesPath("c:\\");
 
-            //grobidProperties = GrobidProperties.getInstance();
-            
             var assemblyPath = Assembly.GetExecutingAssembly().Location;
             var assemblyDirectory = Path.GetDirectoryName(assemblyPath);
 
