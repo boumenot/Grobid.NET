@@ -9,7 +9,7 @@ namespace Grobid.Test.PDF
         [Fact]
         public void Test()
         {
-            var testInfoFactory = new PageInfoFactory(1);
+            var testInfoFactory = new PageBackFactory(1);
             var pageBlocks = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
             pageBlocks.Should().HaveCount(1);

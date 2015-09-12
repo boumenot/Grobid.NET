@@ -9,7 +9,7 @@ namespace Grobid.Test
         [Fact]
         public void Test()
         {
-            var pageBlockFactory = new PageInfoFactory();
+            var pageBlockFactory = new PageBackFactory();
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
             var testSubject = new TextBlockFactory();

@@ -8,13 +8,13 @@ using iTextSharp.text.pdf.parser;
 
 namespace Grobid.NET
 {
-    public class PageInfoFactory
+    public class PageBackFactory
     {
         private readonly int maxPagesToRead;
 
-        public PageInfoFactory() : this(int.MaxValue) {}
+        public PageBackFactory() : this(int.MaxValue) {}
 
-        public PageInfoFactory(int maxPagesToRead)
+        public PageBackFactory(int maxPagesToRead)
         {
             this.maxPagesToRead = maxPagesToRead;
         }

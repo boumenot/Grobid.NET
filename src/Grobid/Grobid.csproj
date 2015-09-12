@@ -162,7 +162,7 @@
     <Compile Include="PDF\TextBlock.cs" />
     <Compile Include="PDF\TextBlockFactory.cs" />
     <Compile Include="PDF\TextInfo.cs" />
-    <Compile Include="PDF\PageInfoFactory.cs" />
+    <Compile Include="PDF\PageBackFactory.cs" />
     <Compile Include="PDF\XmlTextExtractionStrategy.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
