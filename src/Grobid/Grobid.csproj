@@ -158,6 +158,8 @@
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
     <Compile Include="PDF\ITextSharpExtensions.cs" />
+    <Compile Include="PDF\TextBlock.cs" />
+    <Compile Include="PDF\TextBlockFactory.cs" />
     <Compile Include="PDF\TextInfo.cs" />
     <Compile Include="PDF\XmlTextExtractionStrategy.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
