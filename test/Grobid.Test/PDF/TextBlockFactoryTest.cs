@@ -13,7 +13,7 @@ namespace Grobid.Test
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
             var testSubject = new TextBlockFactory();
-            var textBlocks = testSubject.Create(pageBlocks[0].TextInfos, pageBlocks[0].Height);
+            var textBlocks = testSubject.Create(pageBlocks[0]);
             textBlocks.Should().HaveCount(118);
         }
     }

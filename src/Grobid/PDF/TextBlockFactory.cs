@@ -5,19 +5,19 @@ namespace Grobid.NET
 {
     public class TextBlockFactory
     {
-        public IEnumerable<TextBlock> Create(IReadOnlyList<TextInfo> textInfos, float pageHeight)
+        public IEnumerable<TextBlock> Create(PageBlock pageBlock)
         {
             var i = 0;
-            while (i < textInfos.Count)
+            while (i < pageBlock.TextInfos.Count)
             {
-                var y = textInfos[i].BoundingRectangle.Bottom;
+                var y = pageBlock.TextInfos[i].BoundingRectangle.Bottom;
 
-                var textBlocks = textInfos
+                var textBlocks = pageBlock.TextInfos
                     .Skip(i)
                     .TakeWhile(x => x.IsEmpty || x.BoundingRectangle.Bottom == y);
 
                 var xs = textBlocks.ToArray();
-                yield return new TextBlock(xs, pageHeight);
+                yield return new TextBlock(xs, pageBlock.Height);
 
                 i += xs.Length;
             }
