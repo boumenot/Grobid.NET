@@ -21,6 +21,7 @@ namespace Grobid.Test
         }
 
         [Fact]
+        [Trait("Test", "EndToEnd")]
         public void ExtractTest()
         {
             var factory = new GrobidFactory(
