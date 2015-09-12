@@ -1,12 +1,10 @@
-﻿using System.Linq;
-
-using FluentAssertions;
+﻿using FluentAssertions;
 using Grobid.NET;
 using Xunit;
 
 namespace Grobid.Test.PDF
 {
-    public class TextBlockFactoryTest
+    public class PageBlockFactoryTest
     {
         [Fact]
         public void Test()
