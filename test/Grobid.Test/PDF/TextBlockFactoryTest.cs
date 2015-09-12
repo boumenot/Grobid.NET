@@ -11,13 +11,13 @@ namespace Grobid.Test.PDF
         [Fact]
         public void Test()
         {
-            var testInfoFactory = new TextInfoFactory(1);
-            var textInfoPages = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq());
+            var testInfoFactory = new PageInfoFactory(1);
+            var pageBlocks = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
-            textInfoPages.Should().HaveCount(1);
+            pageBlocks.Should().HaveCount(1);
 
-            var textInfos = textInfoPages.First();
-            textInfos.Count.Should().Be(1835);
+            var textInfos = pageBlocks[0].TextInfos;
+            textInfos.Should().HaveCount(1835);
         }
     }
 }
