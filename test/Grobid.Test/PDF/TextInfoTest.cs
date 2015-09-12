@@ -24,6 +24,13 @@ namespace Grobid.Test.PDF
         }
 
         [Fact]
+        public void CreateEmptyTextInfoIsEmpty()
+        {
+            var testSubject = TextInfo.CreateEmpty();
+            testSubject.IsEmpty.Should().BeTrue();
+        }
+
+        [Fact]
         public void CreateEmptyTextInfoTextShouldBeNull()
         {
             var testSubject = TextInfo.CreateEmpty();
@@ -58,6 +65,13 @@ namespace Grobid.Test.PDF
             testSubject.BoundingRectangle.GetBottom(0).Should().Be(2.0f);
             testSubject.BoundingRectangle.GetRight(0).Should().Be(3.0f);
             testSubject.BoundingRectangle.GetTop(0).Should().Be(4.0f);
+        }
+
+        [Fact]
+        public void CreateTextInfoIsEmptyShouldBeFalse()
+        {
+            var testSubject = TextInfo.Create(null, null, new Vector(0, 0, 0), new Vector(0, 0, 0));
+            testSubject.IsEmpty.Should().BeFalse();
         }
 
         [Fact]

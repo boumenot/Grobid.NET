@@ -11,6 +11,8 @@ namespace Grobid.NET
 
         public string Text { get; set; }
 
+        public bool IsEmpty { get { return this.BoundingRectangle == null; } }
+
         public Vector StartPoint
         {
             get { return this.Baseline.GetStartPoint(); }
