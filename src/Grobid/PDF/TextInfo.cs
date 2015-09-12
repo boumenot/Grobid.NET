@@ -18,7 +18,7 @@ namespace Grobid.NET
 
         public Vector EndPoint
         {
-            get { return this.Baseline.GetStartPoint(); }
+            get { return this.Baseline.GetEndPoint(); }
         }
 
         public Rectangle BoundingRectangle { get; set; }
