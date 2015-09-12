@@ -47,6 +47,7 @@
  */
 
 using System.Collections.Generic;
+using System.Linq;
 
 using iTextSharp.text.pdf.parser;
 
@@ -54,6 +55,8 @@ namespace Grobid.NET
 {
     public class XmlTextExtractionStrategy : ITextExtractionStrategy
     {
+        private Vector lastStart;
+        private Vector lastEnd;
         private readonly List<TextInfo> textInfos;
 
         public XmlTextExtractionStrategy(List<TextInfo> textInfos)
@@ -63,7 +66,56 @@ namespace Grobid.NET
 
         public void BeginTextBlock() {}
 
-        public void RenderText(TextRenderInfo renderInfo) {}
+        public void RenderText(TextRenderInfo renderInfo)
+        {
+            bool firstRender = this.textInfos.Count == 0;
+            bool hardReturn = false;
+
+            LineSegment segment = renderInfo.GetBaseline();
+            Vector start = segment.GetStartPoint();
+            Vector end = segment.GetEndPoint();
+
+            Vector x1 = lastStart;
+
+            if (!firstRender)
+            {
+                Vector x0 = start;
+                Vector x2 = lastEnd;
+
+                // see http://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html
+                float dist = (x2.Subtract(x1)).Cross((x1.Subtract(x0))).LengthSquared / x2.Subtract(x1).LengthSquared;
+
+                float sameLineThreshold = 1f; // we should probably base this on the current font metrics, but 1 pt seems to be sufficient for the time being
+                if (dist > sameLineThreshold)
+                    hardReturn = true;
+
+                // Note:  Technically, we should check both the start and end positions, in case the angle of the text changed without any displacement
+                // but this sort of thing probably doesn't happen much in reality, so we'll leave it alone for now
+            }
+
+            if (hardReturn)
+            {
+                this.textInfos.Last().Text += '\n';
+            }
+            else if (!firstRender)
+            {
+                if (!textInfos.Last().Text.EndsWith(" ") && renderInfo.GetText().Length > 0 && renderInfo.GetText()[0] != ' ')
+                {
+                    // we only insert a blank space if the trailing character of the previous string wasn't a space, and the leading character of the current string isn't a space
+                    float spacing = lastEnd.Subtract(start).Length;
+                    if (spacing > renderInfo.GetSingleSpaceWidth() / 2f)
+                    {
+                        this.AppendChunk();
+                    }
+                }
+            }
+
+            this.AppendChunk(renderInfo.GetText(), segment, renderInfo.GetDescentLine().GetStartPoint(), renderInfo.GetAscentLine().GetEndPoint());
+
+            lastStart = start;
+            lastEnd = end;
+
+        }
 
         public void EndTextBlock() {}
 
@@ -72,6 +124,16 @@ namespace Grobid.NET
         public string GetResultantText()
         {
             return string.Empty;
+        }
+
+        private void AppendChunk(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
+        {
+            textInfos.Add(TextInfo.Create(text, lineSegment, bottomLeft, topRight));
+        }
+
+        private void AppendChunk()
+        {
+            this.textInfos.Add(TextInfo.CreateEmpty());
         }
     }
 }
