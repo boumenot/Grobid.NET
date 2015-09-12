@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-using FluentAssertions;
+﻿using FluentAssertions;
 using Grobid.NET;
 using Xunit;
 
@@ -18,7 +16,8 @@ namespace Grobid.Test
             var textBlocks = testSubject.Create(pageBlocks[0]);
             textBlocks.Should().HaveCount(118);
 
-            textBlocks.First().Text.Should().Be("The essence of language-integrated query\n");
+            textBlocks[0].Text.Should().Be("The essence of language-integrated query\n");
+            textBlocks[1].Text.Should().Be("James Cheney\n");
         }
     }
 }

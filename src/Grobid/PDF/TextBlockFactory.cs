@@ -5,7 +5,12 @@ namespace Grobid.NET
 {
     public class TextBlockFactory
     {
-        public IEnumerable<TextBlock> Create(PageBlock pageBlock)
+        public TextBlock[] Create(PageBlock pageBlock)
+        {
+            return this.GetTextBlocks(pageBlock).ToArray();
+        }
+
+        private IEnumerable<TextBlock> GetTextBlocks(PageBlock pageBlock)
         {
             var i = 0;
             while (i < pageBlock.TextInfos.Count)
