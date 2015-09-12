@@ -169,6 +169,7 @@
     <Compile Include="GrobidTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
     <Compile Include="LexiconTest.cs" />
+    <Compile Include="PDF\EssenseLinqTest.cs" />
     <Compile Include="PDF\PdfToXmlFactoryTest.cs" />
     <Compile Include="PDF\TextBlockFactoryTest.cs" />
     <Compile Include="PDF\TextBlockTest.cs" />
