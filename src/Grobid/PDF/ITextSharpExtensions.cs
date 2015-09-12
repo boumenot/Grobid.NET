@@ -1,4 +1,5 @@
-﻿using iTextSharp.text.pdf.parser;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
 
 namespace Grobid.NET
 {

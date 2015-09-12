@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 using FluentAssertions;
 using Grobid.NET;
-using iTextSharp.text.pdf.parser;
 using Xunit;
 
 namespace Grobid.Test.PDF
@@ -13,16 +11,13 @@ namespace Grobid.Test.PDF
         [Fact]
         public void Test()
         {
-            var reader = Sample.Pdf.Create(Sample.Pdf.EssenseLinq);
+            var testInfoFactory = new TextInfoFactory(1);
+            var textInfoPages = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
-            var textInfos = new List<TextInfo>();
-            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(textInfos);
+            textInfoPages.Should().HaveCount(1);
 
-            PdfTextExtractor.GetTextFromPage(reader, 1, xmlTextExtractionStrategy);
-
-            var testSubject = new TextBlockFactory();
-            var textBlocks = testSubject.Create(textInfos, reader.GetPageSize(1).Height).ToArray();
-            textBlocks.Length.Should().Be(118);
+            var textInfos = textInfoPages.First();
+            textInfos.Count.Should().Be(1835);
         }
     }
 }
