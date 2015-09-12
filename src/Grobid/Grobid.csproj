@@ -127,6 +127,10 @@
       <HintPath>..\..\packages\IKVM.NativeBinaries.8.1.5721.0\lib\IKVM.Runtime.JNI.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iTextSharp\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -153,11 +157,15 @@
     <Compile Include="ILexicon.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
+    <Compile Include="PDF\ITextSharpExtensions.cs" />
+    <Compile Include="PDF\TextInfo.cs" />
+    <Compile Include="PDF\XmlTextExtractionStrategy.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

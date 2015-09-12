@@ -10,7 +10,8 @@
     <ProjectGuid>{B3704634-4D8C-4E18-9826-8FED25FF1FB5}</ProjectGuid>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
@@ -136,6 +137,10 @@
       <HintPath>..\..\packages\IKVM.NativeBinaries.8.1.5721.0\lib\IKVM.Runtime.JNI.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iTextSharp\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Xml" />
@@ -164,6 +169,9 @@
     <Compile Include="GrobidTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
     <Compile Include="LexiconTest.cs" />
+    <Compile Include="PDF\PdfToXmlFactoryTest.cs" />
+    <Compile Include="PDF\TextInfoTest.cs" />
+    <Compile Include="PDF\XmlTextExtractionStrategyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Grobid\Grobid.csproj">
@@ -172,6 +180,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\content\essence-linq.pdf">
+      <Link>essence-linq.pdf</Link>
+    </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

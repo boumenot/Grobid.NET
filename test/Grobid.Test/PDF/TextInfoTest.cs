@@ -1,11 +1,8 @@
 ﻿using System;
 
 using FluentAssertions;
-
 using Grobid.NET;
-
 using iTextSharp.text.pdf.parser;
-
 using Xunit;
 
 namespace Grobid.Test.PDF
