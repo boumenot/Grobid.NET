@@ -44,7 +44,7 @@ namespace Grobid.NET
             }
         }
 
-        private PageBlock CreatePageBlock(float width, float height, List<TextInfo> textInfos)
+        private PageBlock CreatePageBlock(float width, float height, List<TokenBlock> textInfos)
         {
             var pageBlock = new PageBlock
             {
@@ -55,9 +55,9 @@ namespace Grobid.NET
             return pageBlock;
         }
 
-        private List<TextInfo> GetTextInfos(PdfReader reader, int pageNumber)
+        private List<TokenBlock> GetTextInfos(PdfReader reader, int pageNumber)
         {
-            var textInfos = new List<TextInfo>();
+            var textInfos = new List<TokenBlock>();
             var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(textInfos);
 
             PdfTextExtractor.GetTextFromPage(reader, pageNumber, xmlTextExtractionStrategy);

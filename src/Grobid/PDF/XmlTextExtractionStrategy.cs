@@ -57,9 +57,9 @@ namespace Grobid.NET
     {
         private Vector lastStart;
         private Vector lastEnd;
-        private readonly List<TextInfo> textInfos;
+        private readonly List<TokenBlock> textInfos;
 
-        public XmlTextExtractionStrategy(List<TextInfo> textInfos)
+        public XmlTextExtractionStrategy(List<TokenBlock> textInfos)
         {
             this.textInfos = textInfos;
         }
@@ -128,12 +128,12 @@ namespace Grobid.NET
 
         private void AppendChunk(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
         {
-            textInfos.Add(TextInfo.Create(text, lineSegment, bottomLeft, topRight));
+            textInfos.Add(TokenBlock.Create(text, lineSegment, bottomLeft, topRight));
         }
 
         private void AppendChunk()
         {
-            this.textInfos.Add(TextInfo.CreateEmpty());
+            this.textInfos.Add(TokenBlock.CreateEmpty());
         }
     }
 }

@@ -6,22 +6,22 @@ namespace Grobid.NET
     public class TextBlock
     {
         private readonly float pageHeight;
-        private readonly TextInfo[] textInfos;
+        private readonly TokenBlock[] tokenBlocks;
 
-        public TextBlock(TextInfo[] textInfos, float pageHeight)
+        public TextBlock(TokenBlock[] tokenBlocks, float pageHeight)
         {
-            this.textInfos = textInfos;
+            this.tokenBlocks = tokenBlocks;
             this.pageHeight = pageHeight;
         }
 
-        private TextInfo First
+        private TokenBlock First
         {
-            get { return this.textInfos[0]; }
+            get { return this.tokenBlocks[0]; }
         }
 
-        private TextInfo Last
+        private TokenBlock Last
         {
-            get { return this.textInfos[this.textInfos.Length - 1]; }
+            get { return this.tokenBlocks[this.tokenBlocks.Length - 1]; }
         }
 
         public int X
@@ -52,7 +52,7 @@ namespace Grobid.NET
         public string GetText()
         {
             var sb = new StringBuilder();
-            foreach (var textInfo in this.textInfos)
+            foreach (var textInfo in this.tokenBlocks)
             {
                 var s = textInfo.IsEmpty
                             ? " "

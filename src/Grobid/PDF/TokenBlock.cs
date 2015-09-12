@@ -1,11 +1,9 @@
-﻿using System;
-
-using iTextSharp.text;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf.parser;
 
 namespace Grobid.NET
 {
-    public class TextInfo
+    public class TokenBlock
     {
         private LineSegment Baseline { get; set; }
 
@@ -36,9 +34,9 @@ namespace Grobid.NET
             this.BoundingRectangle = rectangle;
         }
 
-        public static TextInfo Create(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
+        public static TokenBlock Create(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
         {
-            var textInfo = new TextInfo()
+            var textInfo = new TokenBlock()
             {
                 Text = text,
                 Baseline = lineSegment,
@@ -48,9 +46,9 @@ namespace Grobid.NET
             return textInfo;
         }
 
-        public static TextInfo CreateEmpty()
+        public static TokenBlock CreateEmpty()
         {
-            return new TextInfo();
+            return new TokenBlock();
         }
     }
 }

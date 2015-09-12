@@ -21,9 +21,9 @@ namespace Grobid.Test
                 Height = 100,
                 TextInfos = new[]
                 {
-                    TextInfo.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-                    TextInfo.CreateEmpty(),
-                    TextInfo.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
+                    TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
+                    TokenBlock.CreateEmpty(),
+                    TokenBlock.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
                 },
             };
 
@@ -41,10 +41,10 @@ namespace Grobid.Test
                 Height = 100,
                 TextInfos = new[]
                 {
-                    TextInfo.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-                    TextInfo.CreateEmpty(),
-                    TextInfo.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
-                    TextInfo.CreateEmpty(),
+                    TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
+                    TokenBlock.CreateEmpty(),
+                    TokenBlock.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
+                    TokenBlock.CreateEmpty(),
                 },
             };
 
@@ -62,12 +62,12 @@ namespace Grobid.Test
                 Height = 100,
                 TextInfos = new[]
                 {
-                    TextInfo.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-                    TextInfo.CreateEmpty(),
-                    TextInfo.Create("Start", this.baseline, this.bottomLeft1, this.topRight1),
-                    TextInfo.Create("The", this.baseline, this.bottomLeft2, this.topRight2),
-                    TextInfo.CreateEmpty(),
-                    TextInfo.Create("Finish", this.baseline, this.bottomLeft2, this.topRight2),
+                    TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
+                    TokenBlock.CreateEmpty(),
+                    TokenBlock.Create("Start", this.baseline, this.bottomLeft1, this.topRight1),
+                    TokenBlock.Create("The", this.baseline, this.bottomLeft2, this.topRight2),
+                    TokenBlock.CreateEmpty(),
+                    TokenBlock.Create("Finish", this.baseline, this.bottomLeft2, this.topRight2),
                 },
             };
 
