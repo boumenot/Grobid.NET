@@ -33,35 +33,35 @@ namespace Grobid.NET
 
             for (int i = 1; i <= pagesToRead; i++)
             {
-                var textInfos = this.GetTextInfos(reader, i);
+                var tokenBlocks = this.GetTokenBlocks(reader, i);
 
                 var pageBlock = this.CreatePageBlock(
                     reader.GetPageSize(i).Width,
                     reader.GetPageSize(i).Height,
-                    textInfos);
+                    tokenBlocks);
 
                 yield return pageBlock;
             }
         }
 
-        private PageBlock CreatePageBlock(float width, float height, List<TokenBlock> textInfos)
+        private PageBlock CreatePageBlock(float width, float height, List<TokenBlock> tokenBlocks)
         {
             var pageBlock = new PageBlock
             {
                 Width = width,
                 Height = height,
-                TextInfos = textInfos,
+                TokenBlocks = tokenBlocks,
             };
             return pageBlock;
         }
 
-        private List<TokenBlock> GetTextInfos(PdfReader reader, int pageNumber)
+        private List<TokenBlock> GetTokenBlocks(PdfReader reader, int pageNumber)
         {
-            var textInfos = new List<TokenBlock>();
-            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(textInfos);
+            var tokenBlocks = new List<TokenBlock>();
+            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks);
 
             PdfTextExtractor.GetTextFromPage(reader, pageNumber, xmlTextExtractionStrategy);
-            return textInfos;
+            return tokenBlocks;
         }
     }
 }

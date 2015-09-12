@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Grobid.Test.PDF
 {
-    public class TextInfoTest
+    public class TokenBlockTest
     {
         [Fact]
         public void CreateEmptyShouldReturnInstance()
@@ -17,28 +17,28 @@ namespace Grobid.Test.PDF
         }
 
         [Fact]
-        public void CreateEmptyTextInfoBoundingRectangleShouldBeNull()
+        public void CreateEmptyTextBlockBoundingRectangleShouldBeNull()
         {
             var testSubject = TokenBlock.CreateEmpty();
             testSubject.BoundingRectangle.Should().BeNull();
         }
 
         [Fact]
-        public void CreateEmptyTextInfoIsEmpty()
+        public void CreateEmptyTextBlockIsEmpty()
         {
             var testSubject = TokenBlock.CreateEmpty();
             testSubject.IsEmpty.Should().BeTrue();
         }
 
         [Fact]
-        public void CreateEmptyTextInfoTextShouldBeNull()
+        public void CreateEmptyTextBlockTextShouldBeNull()
         {
             var testSubject = TokenBlock.CreateEmpty();
             testSubject.Text.Should().BeNull();
         }
 
         [Fact]
-        public void CreateEmptyTextInfoStartPointShouldThrow()
+        public void CreateEmptyTextBlockStartPointShouldThrow()
         {
             var testSubject = TokenBlock.CreateEmpty();
             Action test = () => { var x = testSubject.StartPoint; };
@@ -46,7 +46,7 @@ namespace Grobid.Test.PDF
         }
 
         [Fact]
-        public void CreateEmptyTextInfoEndPointShouldThrow()
+        public void CreateEmptyTextBlockEndPointShouldThrow()
         {
             var testSubject = TokenBlock.CreateEmpty();
             Action test = () => { var x = testSubject.EndPoint; };
@@ -54,7 +54,7 @@ namespace Grobid.Test.PDF
         }
 
         [Fact]
-        public void CreateTextInfoBoundingRectangle()
+        public void CreateTextBlockBoundingRectangle()
         {
             var bottomLeft = new Vector(1.0f, 2.0f, 0.0f);
             var topRight = new Vector(3.0f, 4.0f, 0.0f);
@@ -68,21 +68,21 @@ namespace Grobid.Test.PDF
         }
 
         [Fact]
-        public void CreateTextInfoIsEmptyShouldBeFalse()
+        public void CreateTextBlockIsEmptyShouldBeFalse()
         {
             var testSubject = TokenBlock.Create(null, null, new Vector(0, 0, 0), new Vector(0, 0, 0));
             testSubject.IsEmpty.Should().BeFalse();
         }
 
         [Fact]
-        public void CreateTextInfoText()
+        public void CreateTextBlockText()
         {
             var testSubject = TokenBlock.Create("text", null, new Vector(0, 0, 0), new Vector(0, 0, 0));
             testSubject.Text.Should().Be("text");
         }
 
         [Fact]
-        public void CreateTextInfoLineSegment()
+        public void CreateTextBlockLineSegment()
         {
             var lineSegment = new LineSegment(
                 new Vector(0, 1, 0),

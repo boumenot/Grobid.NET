@@ -6,6 +6,6 @@ namespace Grobid.NET
     {
         public float Height { get; set; }
         public float Width { get; set; }
-        public IReadOnlyList<TokenBlock> TextInfos { get; set; }
+        public IReadOnlyList<TokenBlock> TokenBlocks { get; set; }
     }
 }

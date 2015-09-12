@@ -57,18 +57,18 @@ namespace Grobid.NET
     {
         private Vector lastStart;
         private Vector lastEnd;
-        private readonly List<TokenBlock> textInfos;
+        private readonly List<TokenBlock> tokenBlocks;
 
-        public XmlTextExtractionStrategy(List<TokenBlock> textInfos)
+        public XmlTextExtractionStrategy(List<TokenBlock> tokenBlocks)
         {
-            this.textInfos = textInfos;
+            this.tokenBlocks = tokenBlocks;
         }
 
         public void BeginTextBlock() {}
 
         public void RenderText(TextRenderInfo renderInfo)
         {
-            bool firstRender = this.textInfos.Count == 0;
+            bool firstRender = this.tokenBlocks.Count == 0;
             bool hardReturn = false;
 
             LineSegment segment = renderInfo.GetBaseline();
@@ -95,11 +95,11 @@ namespace Grobid.NET
 
             if (hardReturn)
             {
-                this.textInfos.Last().Text += '\n';
+                this.tokenBlocks.Last().Text += '\n';
             }
             else if (!firstRender)
             {
-                if (!textInfos.Last().Text.EndsWith(" ") && renderInfo.GetText().Length > 0 && renderInfo.GetText()[0] != ' ')
+                if (!this.tokenBlocks.Last().Text.EndsWith(" ") && renderInfo.GetText().Length > 0 && renderInfo.GetText()[0] != ' ')
                 {
                     // we only insert a blank space if the trailing character of the previous string wasn't a space, and the leading character of the current string isn't a space
                     float spacing = lastEnd.Subtract(start).Length;
@@ -128,12 +128,12 @@ namespace Grobid.NET
 
         private void AppendChunk(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
         {
-            textInfos.Add(TokenBlock.Create(text, lineSegment, bottomLeft, topRight));
+            this.tokenBlocks.Add(TokenBlock.Create(text, lineSegment, bottomLeft, topRight));
         }
 
         private void AppendChunk()
         {
-            this.textInfos.Add(TokenBlock.CreateEmpty());
+            this.tokenBlocks.Add(TokenBlock.CreateEmpty());
         }
     }
 }

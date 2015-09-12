@@ -36,14 +36,14 @@ namespace Grobid.NET
 
         public static TokenBlock Create(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
         {
-            var textInfo = new TokenBlock()
+            var tokenBlock = new TokenBlock()
             {
                 Text = text,
                 Baseline = lineSegment,
             };
 
-            textInfo.SetBoundingRectangle(bottomLeft, topRight);
-            return textInfo;
+            tokenBlock.SetBoundingRectangle(bottomLeft, topRight);
+            return tokenBlock;
         }
 
         public static TokenBlock CreateEmpty()

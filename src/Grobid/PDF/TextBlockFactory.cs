@@ -13,11 +13,11 @@ namespace Grobid.NET
         private IEnumerable<TextBlock> GetTextBlocks(PageBlock pageBlock)
         {
             var i = 0;
-            while (i < pageBlock.TextInfos.Count)
+            while (i < pageBlock.TokenBlocks.Count)
             {
-                var y = pageBlock.TextInfos[i].BoundingRectangle.Bottom;
+                var y = pageBlock.TokenBlocks[i].BoundingRectangle.Bottom;
 
-                var textBlocks = pageBlock.TextInfos
+                var textBlocks = pageBlock.TokenBlocks
                     .Skip(i)
                     .TakeWhile(x => x.IsEmpty || x.BoundingRectangle.Bottom == y);
 

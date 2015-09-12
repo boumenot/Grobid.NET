@@ -19,7 +19,7 @@ namespace Grobid.Test
             var pageBlock = new PageBlock()
             {
                 Height = 100,
-                TextInfos = new[]
+                TokenBlocks = new[]
                 {
                     TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
                     TokenBlock.CreateEmpty(),
@@ -39,7 +39,7 @@ namespace Grobid.Test
             var pageBlock = new PageBlock()
             {
                 Height = 100,
-                TextInfos = new[]
+                TokenBlocks = new[]
                 {
                     TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
                     TokenBlock.CreateEmpty(),
@@ -55,12 +55,12 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void TextInfosOnDistinctYAxisAreDistinctBlocks()
+        public void TokenBlocksOnDistinctYAxisAreDistinctBlocks()
         {
             var pageBlock = new PageBlock()
             {
                 Height = 100,
-                TextInfos = new[]
+                TokenBlocks = new[]
                 {
                     TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
                     TokenBlock.CreateEmpty(),

@@ -52,11 +52,11 @@ namespace Grobid.NET
         public string GetText()
         {
             var sb = new StringBuilder();
-            foreach (var textInfo in this.tokenBlocks)
+            foreach (var tokenBlock in this.tokenBlocks)
             {
-                var s = textInfo.IsEmpty
+                var s = tokenBlock.IsEmpty
                             ? " "
-                            : textInfo.Text;
+                            : tokenBlock.Text;
 
                 sb.Append(s);
             }

@@ -14,8 +14,8 @@ namespace Grobid.Test.PDF
 
             pageBlocks.Should().HaveCount(1);
 
-            var textInfos = pageBlocks[0].TextInfos;
-            textInfos.Should().HaveCount(1835);
+            var tokenBlocks = pageBlocks[0].TokenBlocks;
+            tokenBlocks.Should().HaveCount(1835);
         }
     }
 }
