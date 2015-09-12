@@ -2,6 +2,7 @@ source https://nuget.org/api/v2
 
 nuget FAKE
 nuget FluentAssertions
+nuget iTextSharp
 nuget xunit
 nuget xunit.runner.console
 nuget xunit.runner.visualstudio
