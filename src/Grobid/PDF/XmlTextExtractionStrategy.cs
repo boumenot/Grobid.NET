@@ -114,7 +114,6 @@ namespace Grobid.NET
 
             lastStart = start;
             lastEnd = end;
-
         }
 
         public void EndTextBlock() {}
