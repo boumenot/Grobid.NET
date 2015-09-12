@@ -23,6 +23,20 @@ namespace Grobid.NET
 
         public Rectangle BoundingRectangle { get; set; }
 
+        public string FontName { get; set; }
+        public bool IsSymbolic { get; set; }
+        public bool IsBold { get; set; }
+        public bool IsItalic { get; set; }
+        public int FontSize { get; set; }
+        public string FontColor { get; set; }
+        public int Rotation { get; set; }
+        public int Angle { get; set; }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
+
         private void SetBoundingRectangle(Vector bottomLeft, Vector topRight)
         {
             var rectangle = new Rectangle(
