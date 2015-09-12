@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-
-using FluentAssertions;
-using iTextSharp.text.pdf;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace Grobid.Test.PDF
@@ -11,8 +8,7 @@ namespace Grobid.Test.PDF
         [Fact]
         public void BasicPropertiesOfPdf()
         {
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Sample.Pdf.EssenseLinq);
-            var reader = new PdfReader(stream);
+            var reader = Sample.Pdf.Create(Sample.Pdf.EssenseLinq);
 
             reader.FileLength.Should().Be(299258);
             reader.NumberOfPages.Should().Be(13);

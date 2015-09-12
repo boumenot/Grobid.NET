@@ -1,14 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 using FluentAssertions;
-
 using Grobid.NET;
-
-using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-
 using Xunit;
 
 namespace Grobid.Test.PDF
@@ -18,8 +13,7 @@ namespace Grobid.Test.PDF
         [Fact]
         public void Test()
         {
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Sample.Pdf.EssenseLinq);
-            var reader = new PdfReader(stream);
+            var reader = Sample.Pdf.Create(Sample.Pdf.EssenseLinq);
 
             var textInfos = new List<TextInfo>();
             var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(textInfos);
