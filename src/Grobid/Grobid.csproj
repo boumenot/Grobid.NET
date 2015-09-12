@@ -166,7 +166,7 @@
     <Error Condition="!Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props'))" />
   </Target>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="..\..\lib\native\x64\libwapiti.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="..\..\lib\native\x64\libwapiti_swig.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(ProjectDir)\..\..\lib\native\x64\libwapiti.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(ProjectDir)\..\..\lib\native\x64\libwapiti_swig.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
   </Target>
 </Project>
