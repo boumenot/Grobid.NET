@@ -8,8 +8,10 @@ namespace Grobid.Test
     public class TextBlockFactoryTest
     {
         public readonly LineSegment baseline = new LineSegment(new Vector(0, 0, 0), new Vector(0, 0, 0));
-        public readonly Vector bottomLeft = new Vector(0, 0, 0);
-        public readonly Vector topRight = new Vector(0, 0, 0);
+        public readonly Vector bottomLeft1 = new Vector(0, 0, 0);
+        public readonly Vector topRight1 = new Vector(0, 0, 0);
+        public readonly Vector bottomLeft2 = new Vector(1, 1, 0);
+        public readonly Vector topRight2 = new Vector(1, 1, 0);
 
         [Fact]
         public void TestBlockShouldConcatenateBlocksOnSameLine()
@@ -19,9 +21,9 @@ namespace Grobid.Test
                 Height = 100,
                 TextInfos = new[]
                 {
-                    TextInfo.Create("The", this.baseline, this.bottomLeft, this.topRight),
+                    TextInfo.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
                     TextInfo.CreateEmpty(),
-                    TextInfo.Create("End", this.baseline, this.bottomLeft, this.topRight),
+                    TextInfo.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
                 },
             };
 
@@ -31,6 +33,51 @@ namespace Grobid.Test
             textBlocks[0].Text.Should().Be("The End");
         }
 
+        [Fact]
+        public void TrailingEmptyBlocksAreNotTrimmed()
+        {
+            var pageBlock = new PageBlock()
+            {
+                Height = 100,
+                TextInfos = new[]
+                {
+                    TextInfo.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
+                    TextInfo.CreateEmpty(),
+                    TextInfo.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
+                    TextInfo.CreateEmpty(),
+                },
+            };
+
+            var testSubject = new TextBlockFactory();
+
+            var textBlocks = testSubject.Create(pageBlock);
+            textBlocks[0].Text.Should().Be("The End ");
+        }
+
+        [Fact]
+        public void TextInfosOnDistinctYAxisAreDistinctBlocks()
+        {
+            var pageBlock = new PageBlock()
+            {
+                Height = 100,
+                TextInfos = new[]
+                {
+                    TextInfo.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
+                    TextInfo.CreateEmpty(),
+                    TextInfo.Create("Start", this.baseline, this.bottomLeft1, this.topRight1),
+                    TextInfo.Create("The", this.baseline, this.bottomLeft2, this.topRight2),
+                    TextInfo.CreateEmpty(),
+                    TextInfo.Create("Finish", this.baseline, this.bottomLeft2, this.topRight2),
+                },
+            };
+
+            var testSubject = new TextBlockFactory();
+
+            var textBlocks = testSubject.Create(pageBlock);
+            textBlocks.Should().HaveCount(2);
+            textBlocks[0].Text.Should().Be("The Start");
+            textBlocks[1].Text.Should().Be("The Finish");
+        }
 
         [Fact]
         public void ParsePdfText()
