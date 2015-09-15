@@ -113,7 +113,7 @@ namespace Grobid.Test
             //tokenBlock.Height.Should().Be(1);
             //tokenBlock.IsBold.Should().BeFalse();
             //tokenBlock.IsItalic.Should().BeFalse();
-            //tokenBlock.IsSymbolic.Should().BeFalse();
+            tokenBlock.IsSymbolic.Should().BeTrue();
             //tokenBlock.Rotation.Should().Be(0);
             //tokenBlock.Width.Should().Be(0);
             //tokenBlock.X.Should().Be(0);

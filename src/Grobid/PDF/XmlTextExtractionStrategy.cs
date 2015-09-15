@@ -51,6 +51,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using iTextSharp.text;
+using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
 namespace Grobid.NET
@@ -137,8 +138,15 @@ namespace Grobid.NET
 
             tokenBlock.FontName = renderInfo.GetFont().PostscriptFontName;
             tokenBlock.FontColor = renderInfo.GetStrokeColor() == null ? "#000000" : this.GetFontColor(renderInfo.GetStrokeColor());
+            tokenBlock.Flags = this.GetFlags(renderInfo.GetFont());
 
             this.tokenBlocks.Add(tokenBlock);
+        }
+
+        private FontFlags GetFlags(DocumentFont font)
+        {
+            var flags = font.FontDictionary?.GetAsDict(PdfName.FONTDESCRIPTOR)?.GetAsNumber(PdfName.FLAGS)?.IntValue;
+            return (FontFlags)(flags ?? 0);
         }
 
         private string GetFontColor(BaseColor getStrokeColor)
