@@ -133,6 +133,8 @@ namespace Grobid.NET
                 renderInfo.GetDescentLine().GetStartPoint(),
                 renderInfo.GetAscentLine().GetEndPoint());
 
+            tokenBlock.FontName = renderInfo.GetFont().PostscriptFontName;
+
             this.tokenBlocks.Add(tokenBlock);
         }
 

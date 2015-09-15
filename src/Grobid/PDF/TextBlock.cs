@@ -14,6 +14,8 @@ namespace Grobid.NET
             this.pageHeight = pageHeight;
         }
 
+        public TokenBlock[] TokenBlocks { get { return this.tokenBlocks; } }
+
         private TokenBlock First
         {
             get { return this.tokenBlocks[0]; }

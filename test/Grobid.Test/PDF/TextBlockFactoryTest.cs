@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+
+using FluentAssertions;
 using Grobid.NET;
 using iTextSharp.text.pdf.parser;
 using Xunit;
@@ -91,6 +93,20 @@ namespace Grobid.Test
 
             textBlocks[0].Text.Should().Be("The essence of language-integrated query\n");
             textBlocks[1].Text.Should().Be("James Cheney\n");
+        }
+
+        [Fact]
+        public void TokenBlockProperties()
+        {
+            var pageBlockFactory = new PageBackFactory();
+            var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
+
+            var textBlockFactory = new TextBlockFactory();
+            var textBlock = textBlockFactory.Create(pageBlocks[0]).First();
+            var tokenBlock = textBlock.TokenBlocks[0];
+
+            tokenBlock.Text.Should().Be("The");
+            tokenBlock.FontName.Should().Be("CHUFSU+NimbusRomNo9L-Medi");
         }
     }
 }
