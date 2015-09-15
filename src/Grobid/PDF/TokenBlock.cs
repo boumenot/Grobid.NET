@@ -5,16 +5,6 @@ using iTextSharp.text.pdf.parser;
 
 namespace Grobid.NET
 {
-    [Flags]
-    public enum FontFlags : int
-    {
-        FixedWidth = 0x00000001,
-        Serif      = 0x00000002,
-        Symbolic   = 0x00000004,
-        Italic     = 0x00000040,
-        Bold       = 0x00040000,
-    }
-
     public class TokenBlock
     {
         private LineSegment Baseline { get; set; }
@@ -37,7 +27,16 @@ namespace Grobid.NET
 
         public string FontName { get; set; }
         public bool IsSymbolic { get { return this.Flags.HasFlag(FontFlags.Symbolic); } }
-        public bool IsBold { get; set; }
+
+        public bool IsBold
+        {
+            get
+            {
+                return this.FontName.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       this.Flags.HasFlag(FontFlags.Bold);
+            }
+        }
+
         public bool IsItalic { get; set; }
         public int FontSize { get; set; }
         public string FontColor { get; set; }
