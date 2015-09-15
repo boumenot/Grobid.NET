@@ -110,7 +110,7 @@ namespace Grobid.NET
                 }
             }
 
-            this.AppendChunk(renderInfo.GetText(), segment, renderInfo.GetDescentLine().GetStartPoint(), renderInfo.GetAscentLine().GetEndPoint());
+            this.AppendChunk(renderInfo, segment);
 
             lastStart = start;
             lastEnd = end;
@@ -125,9 +125,15 @@ namespace Grobid.NET
             return string.Empty;
         }
 
-        private void AppendChunk(string text, LineSegment lineSegment, Vector bottomLeft, Vector topRight)
+        private void AppendChunk(TextRenderInfo renderInfo, LineSegment lineSegment)
         {
-            this.tokenBlocks.Add(TokenBlock.Create(text, lineSegment, bottomLeft, topRight));
+            var tokenBlock = TokenBlock.Create(
+                renderInfo.GetText(),
+                lineSegment,
+                renderInfo.GetDescentLine().GetStartPoint(),
+                renderInfo.GetAscentLine().GetEndPoint());
+
+            this.tokenBlocks.Add(tokenBlock);
         }
 
         private void AppendChunk()
