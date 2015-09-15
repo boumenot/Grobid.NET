@@ -46,9 +46,11 @@
  * address: sales @itextpdf.com
  */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using iTextSharp.text;
 using iTextSharp.text.pdf.parser;
 
 namespace Grobid.NET
@@ -134,8 +136,18 @@ namespace Grobid.NET
                 renderInfo.GetAscentLine().GetEndPoint());
 
             tokenBlock.FontName = renderInfo.GetFont().PostscriptFontName;
+            tokenBlock.FontColor = renderInfo.GetStrokeColor() == null ? "#000000" : this.GetFontColor(renderInfo.GetStrokeColor());
 
             this.tokenBlocks.Add(tokenBlock);
+        }
+
+        private string GetFontColor(BaseColor getStrokeColor)
+        {
+            return String.Format(
+                "#{0:x2}{1:x2}{2:x2}",
+                getStrokeColor.R,
+                getStrokeColor.B,
+                getStrokeColor.G);
         }
 
         private void AppendChunk()
