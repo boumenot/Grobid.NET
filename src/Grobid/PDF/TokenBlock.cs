@@ -37,7 +37,16 @@ namespace Grobid.NET
             }
         }
 
-        public bool IsItalic { get; set; }
+        public bool IsItalic
+        {
+            get
+            {
+                return this.FontName.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       this.FontName.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0||
+                       this.Flags.HasFlag(FontFlags.Italic);
+            }
+        }
+
         public int FontSize { get; set; }
         public string FontColor { get; set; }
         public int Rotation { get; set; }

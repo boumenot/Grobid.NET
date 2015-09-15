@@ -157,6 +157,7 @@
     <Compile Include="ILexicon.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
+    <Compile Include="PDF\FontFlags.cs" />
     <Compile Include="PDF\ITextSharpExtensions.cs" />
     <Compile Include="PDF\PageBlock.cs" />
     <Compile Include="PDF\TextBlock.cs" />

@@ -112,7 +112,7 @@ namespace Grobid.Test
             //tokenBlock.FontSize.Should().Be(1);
             //tokenBlock.Height.Should().Be(1);
             tokenBlock.IsBold.Should().BeFalse();
-            //tokenBlock.IsItalic.Should().BeFalse();
+            tokenBlock.IsItalic.Should().BeFalse();
             tokenBlock.IsSymbolic.Should().BeTrue();
             //tokenBlock.Rotation.Should().Be(0);
             //tokenBlock.Width.Should().Be(0);
