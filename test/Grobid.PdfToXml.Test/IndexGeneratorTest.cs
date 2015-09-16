@@ -26,6 +26,18 @@ namespace Grobid.PdfToXml.Test
             testSubject.TextIndex.Should().Be("p1_t2");
             testSubject.TextIndex.Should().Be("p1_t3");
         }
+
+        [Fact]
+        public void TextIndexShouldRollOnPageChange()
+        {
+            var testSubject = new IndexGenerator();
+            testSubject.PageIndex.Should().Be("p1");
+            testSubject.TextIndex.Should().Be("p1_t1");
+            testSubject.TextIndex.Should().Be("p1_t2");
+            testSubject.PageIndex.Should().Be("p2");
+            testSubject.TextIndex.Should().Be("p2_t1");
+            testSubject.TextIndex.Should().Be("p2_t2");
+        }
     }
 
     public class IndexGenerator
@@ -38,6 +50,7 @@ namespace Grobid.PdfToXml.Test
             get
             {
                 this.pageIndex++;
+                this.textIndex = 0;
                 return String.Format("p{0}", this.pageIndex);
             }
         }
