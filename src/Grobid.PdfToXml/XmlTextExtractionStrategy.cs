@@ -54,7 +54,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     public class XmlTextExtractionStrategy : ITextExtractionStrategy
     {
@@ -82,12 +82,12 @@ namespace Grobid.NET
             Vector start = segment.GetStartPoint();
             Vector end = segment.GetEndPoint();
 
-            Vector x1 = lastStart;
+            Vector x1 = this.lastStart;
 
             if (!firstRender)
             {
                 Vector x0 = start;
-                Vector x2 = lastEnd;
+                Vector x2 = this.lastEnd;
 
                 // see http://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html
                 float dist = (x2.Subtract(x1)).Cross((x1.Subtract(x0))).LengthSquared / x2.Subtract(x1).LengthSquared;
@@ -109,7 +109,7 @@ namespace Grobid.NET
                 if (!this.tokenBlocks.Last().Text.EndsWith(" ") && renderInfo.GetText().Length > 0 && renderInfo.GetText()[0] != ' ')
                 {
                     // we only insert a blank space if the trailing character of the previous string wasn't a space, and the leading character of the current string isn't a space
-                    float spacing = lastEnd.Subtract(start).Length;
+                    float spacing = this.lastEnd.Subtract(start).Length;
                     if (spacing > renderInfo.GetSingleSpaceWidth() / 2f)
                     {
                         this.AppendChunk();
@@ -119,8 +119,8 @@ namespace Grobid.NET
 
             this.AppendChunk(renderInfo, segment);
 
-            lastStart = start;
-            lastEnd = end;
+            this.lastStart = start;
+            this.lastEnd = end;
         }
 
         public void EndTextBlock() {}

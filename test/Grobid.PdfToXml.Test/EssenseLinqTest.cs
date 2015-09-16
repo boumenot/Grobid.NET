@@ -1,8 +1,10 @@
-﻿using FluentAssertions;
+using FluentAssertions;
+
 using iTextSharp.text.pdf;
+
 using Xunit;
 
-namespace Grobid.Test.PDF
+namespace Grobid.PdfToXml.Test
 {
     public class EssenseLinqTest
     {

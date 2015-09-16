@@ -3,7 +3,7 @@
 using iTextSharp.text;
 using iTextSharp.text.pdf.parser;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     public class TokenBlock
     {

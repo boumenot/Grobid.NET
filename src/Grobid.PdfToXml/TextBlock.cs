@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     public class TextBlock
     {
@@ -60,7 +59,7 @@ namespace Grobid.NET
                             ? " "
                             : tokenBlock.Text;
 
-                sb.Append(s);
+                sb.Append((string)s);
             }
 
             return sb.ToString();

@@ -1,13 +1,13 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace Grobid.Test
+namespace Grobid.PdfToXml.Test
 {
     public static class Sample
     {
         public static class Pdf
         {
-            public static string EssenseLinq = "Grobid.Test.essence-linq.pdf";
+            public static string EssenseLinq = "Grobid.PdfToXml.Test.essence-linq.pdf";
 
             public static Stream OpenEssenseLinq()
             {

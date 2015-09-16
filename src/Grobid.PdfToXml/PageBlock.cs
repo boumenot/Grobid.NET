@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     public class PageBlock
     {

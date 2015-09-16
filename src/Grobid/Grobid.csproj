@@ -127,10 +127,6 @@
       <HintPath>..\..\packages\IKVM.NativeBinaries.8.1.5721.0\lib\IKVM.Runtime.JNI.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\iTextSharp\lib\itextsharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -157,15 +153,6 @@
     <Compile Include="ILexicon.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
-    <Compile Include="PDF\FontName.cs" />
-    <Compile Include="PDF\FontFlags.cs" />
-    <Compile Include="PDF\ITextSharpExtensions.cs" />
-    <Compile Include="PDF\PageBlock.cs" />
-    <Compile Include="PDF\TextBlock.cs" />
-    <Compile Include="PDF\TextBlockFactory.cs" />
-    <Compile Include="PDF\TokenBlock.cs" />
-    <Compile Include="PDF\PageBackFactory.cs" />
-    <Compile Include="PDF\XmlTextExtractionStrategy.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>

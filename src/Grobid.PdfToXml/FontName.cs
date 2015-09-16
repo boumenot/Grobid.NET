@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     public class FontName
     {

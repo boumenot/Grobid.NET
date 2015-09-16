@@ -1,6 +1,6 @@
 using System;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     [Flags]
     public enum FontFlags

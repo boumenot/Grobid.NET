@@ -137,10 +137,6 @@
       <HintPath>..\..\packages\IKVM.NativeBinaries.8.1.5721.0\lib\IKVM.Runtime.JNI.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\iTextSharp\lib\itextsharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Xml" />
@@ -169,15 +165,6 @@
     <Compile Include="GrobidTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
     <Compile Include="LexiconTest.cs" />
-    <Compile Include="PDF\EssenseLinqTest.cs" />
-    <Compile Include="PDF\FontNameTest.cs" />
-    <Compile Include="PDF\PdfToXmlFactoryTest.cs" />
-    <Compile Include="PDF\PageBlockFactoryTest.cs" />
-    <Compile Include="PDF\TextBlockFactoryTest.cs" />
-    <Compile Include="PDF\TextBlockTest.cs" />
-    <Compile Include="PDF\TokenBlockTest.cs" />
-    <Compile Include="PDF\XmlTextExtractionStrategyTest.cs" />
-    <Compile Include="Sample.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Grobid\Grobid.csproj">
@@ -186,9 +173,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\content\essence-linq.pdf">
-      <Link>essence-linq.pdf</Link>
-    </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

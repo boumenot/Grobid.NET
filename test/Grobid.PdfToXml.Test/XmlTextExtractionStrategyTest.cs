@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 using FluentAssertions;
-using Grobid.NET;
-
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using Xunit;
 
-namespace Grobid.Test.PDF
+namespace Grobid.PdfToXml.Test
 {
     public class XmlTextExtractionStrategyTest
     {

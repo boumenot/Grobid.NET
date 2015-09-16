@@ -1,8 +1,7 @@
-﻿using FluentAssertions;
-using Grobid.NET;
+using FluentAssertions;
 using Xunit;
 
-namespace Grobid.Test.PDF
+namespace Grobid.PdfToXml.Test
 {
     public class PageBlockFactoryTest
     {

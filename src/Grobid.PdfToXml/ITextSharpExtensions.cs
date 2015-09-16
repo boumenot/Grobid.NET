@@ -1,7 +1,6 @@
-﻿using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
-namespace Grobid.NET
+namespace Grobid.PdfToXml
 {
     public static class ITextSharpExtensions
     {
