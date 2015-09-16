@@ -8,7 +8,7 @@ namespace Grobid.PdfToXml.Test
         [Fact]
         public void Test()
         {
-            var testInfoFactory = new PageBackFactory();
+            var testInfoFactory = new PageBlockFactory();
             var pageBlocks = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
 
             pageBlocks.Should().HaveCount(1);

@@ -13,7 +13,7 @@ namespace Grobid.PdfToXml.Test
         {
             var testSubject = new Converter();
 
-            var pageBackFactory = new PageBackFactory();
+            var pageBackFactory = new PageBlockFactory();
             var pageBlocks = pageBackFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
 
             var doc = testSubject.ToXml(pageBlocks);

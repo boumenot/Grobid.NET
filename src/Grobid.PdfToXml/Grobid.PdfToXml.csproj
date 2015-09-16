@@ -33,7 +33,7 @@
     <Compile Include="FontName.cs" />
     <Compile Include="IndexGenerator.cs" />
     <Compile Include="ITextSharpExtensions.cs" />
-    <Compile Include="PageBackFactory.cs" />
+    <Compile Include="PageBlockFactory.cs" />
     <Compile Include="PageBlock.cs" />
     <Compile Include="TextBlock.cs" />
     <Compile Include="TextBlockFactory.cs" />

@@ -83,7 +83,7 @@ namespace Grobid.PdfToXml.Test
         [Fact]
         public void ParsePdfText()
         {
-            var pageBlockFactory = new PageBackFactory();
+            var pageBlockFactory = new PageBlockFactory();
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
             var testSubject = new TextBlockFactory();
@@ -97,7 +97,7 @@ namespace Grobid.PdfToXml.Test
         [Fact]
         public void TokenBlockProperties()
         {
-            var pageBlockFactory = new PageBackFactory();
+            var pageBlockFactory = new PageBlockFactory();
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
             var textBlockFactory = new TextBlockFactory();

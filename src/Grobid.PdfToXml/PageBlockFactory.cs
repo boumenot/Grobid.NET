@@ -7,7 +7,7 @@ using iTextSharp.text.pdf.parser;
 
 namespace Grobid.PdfToXml
 {
-    public class PageBackFactory
+    public class PageBlockFactory
     {
         public PageBlock[] Create(Stream stream)
         {
