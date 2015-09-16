@@ -140,7 +140,7 @@ namespace Grobid.NET
                 renderInfo.GetDescentLine().GetStartPoint(),
                 renderInfo.GetAscentLine().GetEndPoint());
 
-            tokenBlock.FontName = renderInfo.GetFont().PostscriptFontName;
+            tokenBlock.FontName = FontName.Parse(renderInfo.GetFont().PostscriptFontName);
             tokenBlock.FontColor = renderInfo.GetStrokeColor() == null ? "#000000" : this.GetFontColor(renderInfo.GetStrokeColor());
             tokenBlock.Flags = this.GetFlags(renderInfo.GetFont());
             tokenBlock.Base = this.pageHeight - lineSegment.GetBoundingRectange().Y;

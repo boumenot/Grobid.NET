@@ -14,5 +14,14 @@ namespace Grobid.Test.PDF
             testSubject.Name.Should().Be("NimbusRomNo9L");
             testSubject.Weight.Should().Be("Medi");
         }
+
+        [Fact]
+        public void ParseShouldHandleMissingFontWeight()
+        {
+            var testSubject = FontName.Parse("CHUFSU+NimbusRomNo9L");
+            testSubject.Tag.Should().Be("CHUFSU");
+            testSubject.Name.Should().Be("NimbusRomNo9L");
+            testSubject.Weight.Should().BeEmpty();
+        }
     }
 }

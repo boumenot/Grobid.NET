@@ -1,4 +1,6 @@
-﻿namespace Grobid.NET
+﻿using System;
+
+namespace Grobid.NET
 {
     public class FontName
     {
@@ -16,8 +18,17 @@
             int indexOfMinusSign = name.IndexOf('-');
 
             fontName.Tag = name.Substring(0, indexOfPlusSign);
-            fontName.Name = name.Substring(indexOfPlusSign + 1, indexOfMinusSign - indexOfPlusSign - 1);
-            fontName.Weight = name.Substring(indexOfMinusSign + 1, name.Length - indexOfMinusSign - 1);
+
+            if (indexOfMinusSign == -1)
+            {
+                fontName.Name = name.Substring(indexOfPlusSign + 1);
+                fontName.Weight = String.Empty;
+            }
+            else
+            {
+                fontName.Name = name.Substring(indexOfPlusSign + 1, indexOfMinusSign - indexOfPlusSign - 1);
+                fontName.Weight = name.Substring(indexOfMinusSign + 1, name.Length - indexOfMinusSign - 1);
+            }
 
             return fontName;
         }

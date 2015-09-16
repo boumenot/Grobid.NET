@@ -25,14 +25,14 @@ namespace Grobid.NET
 
         public Rectangle BoundingRectangle { get; set; }
 
-        public string FontName { get; set; }
+        public FontName FontName { get; set; }
         public bool IsSymbolic { get { return this.Flags.HasFlag(FontFlags.Symbolic); } }
 
         public bool IsBold
         {
             get
             {
-                return this.FontName.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                return this.FontName.Weight.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0 ||
                        this.Flags.HasFlag(FontFlags.Bold);
             }
         }
@@ -41,8 +41,8 @@ namespace Grobid.NET
         {
             get
             {
-                return this.FontName.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       this.FontName.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0||
+                return this.FontName.Weight.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       this.FontName.Weight.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0||
                        this.Flags.HasFlag(FontFlags.Italic);
             }
         }

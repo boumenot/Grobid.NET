@@ -107,7 +107,7 @@ namespace Grobid.Test
 
             tokenBlock.Text.Should().Be("The");
             //tokenBlock.Angle.Should().Be(0);
-            tokenBlock.FontName.Should().Be("CHUFSU+NimbusRomNo9L-Medi");
+            tokenBlock.FontName.Name.Should().Be("NimbusRomNo9L");
             tokenBlock.FontColor.Should().Be("#000000");
             tokenBlock.FontSize.Should().BeInRange(17.92f, 17.94f);
             tokenBlock.Height.Should().BeInRange(16.11f, 16.13f);
