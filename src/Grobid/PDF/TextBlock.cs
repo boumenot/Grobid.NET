@@ -26,24 +26,24 @@ namespace Grobid.NET
             get { return this.tokenBlocks[this.tokenBlocks.Length - 1]; }
         }
 
-        public int X
+        public float X
         {
-            get { return (int)Math.Round(this.First.StartPoint.X()); }
+            get { return this.First.StartPoint.X(); }
         }
 
-        public int Y
+        public float Y
         {
-            get { return (int)Math.Round(this.pageHeight - this.First.BoundingRectangle.Top); }
+            get { return this.pageHeight - this.First.BoundingRectangle.Top; }
         }
 
-        public int Width
+        public float Width
         {
-            get { return (int)Math.Round(this.Last.EndPoint.X() - this.First.StartPoint.X()); }
+            get { return this.Last.EndPoint.X() - this.First.StartPoint.X(); }
         }
 
-        public int Height
+        public float Height
         {
-            get { return (int)Math.Round(this.First.BoundingRectangle.Height); }
+            get { return this.First.BoundingRectangle.Height; }
         }
 
         public string Text
