@@ -5,24 +5,24 @@ namespace Grobid.PdfToXml
 {
     public class TextBlockFactory
     {
-        public TextBlock[] Create(PageBlock pageBlock)
+        public TextBlock[] Create(TokenBlock[] tokenBlocks, float pageHeight)
         {
-            return this.GetTextBlocks(pageBlock).ToArray();
+            return this.GetTextBlocks(tokenBlocks, pageHeight).ToArray();
         }
 
-        private IEnumerable<TextBlock> GetTextBlocks(PageBlock pageBlock)
+        private IEnumerable<TextBlock> GetTextBlocks(TokenBlock[] tokenBlocks, float pageHeight)
         {
             var i = 0;
-            while (i < pageBlock.TokenBlocks.Count)
+            while (i < tokenBlocks.Length)
             {
-                var y = pageBlock.TokenBlocks[i].BoundingRectangle.Bottom;
+                var y = tokenBlocks[i].BoundingRectangle.Bottom;
 
-                var textBlocks = pageBlock.TokenBlocks
+                var textBlocks = tokenBlocks
                     .Skip(i)
                     .TakeWhile(x => x.IsEmpty || x.BoundingRectangle.Bottom == y);
 
                 var xs = textBlocks.ToArray();
-                yield return new TextBlock(xs, pageBlock.Height);
+                yield return new TextBlock(xs, pageHeight);
 
                 i += xs.Length;
             }

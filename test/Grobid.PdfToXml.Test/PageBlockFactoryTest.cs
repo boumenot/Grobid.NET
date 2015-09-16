@@ -14,8 +14,8 @@ namespace Grobid.PdfToXml.Test
             pageBlocks.Should().HaveCount(1);
             pageBlocks[0].Offset.Should().Be(1);
 
-            var tokenBlocks = pageBlocks[0].TokenBlocks;
-            tokenBlocks.Should().HaveCount(1835);
+            var tokenBlocks = pageBlocks[0].TextBlocks;
+            tokenBlocks.Should().HaveCount(118);
         }
     }
 }

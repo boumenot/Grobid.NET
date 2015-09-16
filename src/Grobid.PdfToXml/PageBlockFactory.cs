@@ -9,6 +9,13 @@ namespace Grobid.PdfToXml
 {
     public class PageBlockFactory
     {
+        private readonly TextBlockFactory textBlockFactory;
+
+        public PageBlockFactory()
+        {
+            this.textBlockFactory = new TextBlockFactory();
+        }
+
         public PageBlock[] Create(Stream stream)
         {
             return this.Create(stream, int.MaxValue);
@@ -27,30 +34,32 @@ namespace Grobid.PdfToXml
             for (int i = 1; i <= reader.NumberOfPages; i++)
             {
                 var tokenBlocks = this.GetTokenBlocks(reader, i);
+                var textBlocks = this.textBlockFactory.Create(tokenBlocks, reader.GetPageSize(i).Height);
 
                 var pageBlock = this.CreatePageBlock(
                     reader.GetPageSize(i).Width,
                     reader.GetPageSize(i).Height,
                     i,
-                    tokenBlocks);
+                    textBlocks);
 
                 yield return pageBlock;
             }
         }
 
-        private PageBlock CreatePageBlock(float width, float height, int offset, List<TokenBlock> tokenBlocks)
+        private PageBlock CreatePageBlock(float width, float height, int offset, TextBlock[] textBlocks)
         {
             var pageBlock = new PageBlock
             {
                 Width = width,
                 Height = height,
                 Offset = offset,
-                TokenBlocks = tokenBlocks,
+                TextBlocks = textBlocks,
             };
+
             return pageBlock;
         }
 
-        private List<TokenBlock> GetTokenBlocks(PdfReader reader, int pageNumber)
+        private TokenBlock[] GetTokenBlocks(PdfReader reader, int pageNumber)
         {
             var tokenBlocks = new List<TokenBlock>();
             var pageSize = reader.GetPageSize(pageNumber);
@@ -58,7 +67,7 @@ namespace Grobid.PdfToXml
             var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, pageSize.Width, pageSize.Height);
 
             PdfTextExtractor.GetTextFromPage(reader, pageNumber, xmlTextExtractionStrategy);
-            return tokenBlocks;
+            return tokenBlocks.ToArray();
         }
     }
 }
