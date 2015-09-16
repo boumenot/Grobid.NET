@@ -31,18 +31,20 @@ namespace Grobid.PdfToXml
                 var pageBlock = this.CreatePageBlock(
                     reader.GetPageSize(i).Width,
                     reader.GetPageSize(i).Height,
+                    i,
                     tokenBlocks);
 
                 yield return pageBlock;
             }
         }
 
-        private PageBlock CreatePageBlock(float width, float height, List<TokenBlock> tokenBlocks)
+        private PageBlock CreatePageBlock(float width, float height, int offset, List<TokenBlock> tokenBlocks)
         {
             var pageBlock = new PageBlock
             {
                 Width = width,
                 Height = height,
+                Offset = offset,
                 TokenBlocks = tokenBlocks,
             };
             return pageBlock;
