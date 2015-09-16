@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid", "src\Grobid\Grobid.csproj", "{ABB35F54-6F91-4972-B289-D15E3BE1999F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.Test", "test\Grobid.Test\Grobid.Test.csproj", "{B3704634-4D8C-4E18-9826-8FED25FF1FB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A9311046-905A-43EE-BD89-B202E110B2FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.PdfToXml", "src\Grobid.PdfToXml\Grobid.PdfToXml.csproj", "{6DACE7CD-2466-4806-9D47-F8DF50233377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.PdfToXml.Test", "test\Grobid.PdfToXml.Test\Grobid.PdfToXml.Test.csproj", "{313A2156-E422-4EA4-8E51-F4238640F539}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,11 +27,20 @@ Global
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Debug|x64.Build.0 = Debug|x64
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|x64.ActiveCfg = Release|x64
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|x64.Build.0 = Release|x64
+		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Debug|x64.ActiveCfg = Debug|x64
+		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Debug|x64.Build.0 = Debug|x64
+		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Release|x64.ActiveCfg = Release|x64
+		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Release|x64.Build.0 = Release|x64
+		{313A2156-E422-4EA4-8E51-F4238640F539}.Debug|x64.ActiveCfg = Debug|x64
+		{313A2156-E422-4EA4-8E51-F4238640F539}.Debug|x64.Build.0 = Debug|x64
+		{313A2156-E422-4EA4-8E51-F4238640F539}.Release|x64.ActiveCfg = Release|x64
+		{313A2156-E422-4EA4-8E51-F4238640F539}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5} = {A9311046-905A-43EE-BD89-B202E110B2FB}
+		{313A2156-E422-4EA4-8E51-F4238640F539} = {A9311046-905A-43EE-BD89-B202E110B2FB}
 	EndGlobalSection
 EndGlobal

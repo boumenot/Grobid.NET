@@ -170,6 +170,7 @@
     <Compile Include="LexiconFactoryTest.cs" />
     <Compile Include="LexiconTest.cs" />
     <Compile Include="PDF\EssenseLinqTest.cs" />
+    <Compile Include="PDF\FontNameTest.cs" />
     <Compile Include="PDF\PdfToXmlFactoryTest.cs" />
     <Compile Include="PDF\PageBlockFactoryTest.cs" />
     <Compile Include="PDF\TextBlockFactoryTest.cs" />
