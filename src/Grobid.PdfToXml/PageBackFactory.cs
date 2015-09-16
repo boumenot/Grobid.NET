@@ -10,28 +10,22 @@ namespace Grobid.PdfToXml
 {
     public class PageBackFactory
     {
-        private readonly int maxPagesToRead;
-
-        public PageBackFactory() : this(int.MaxValue) {}
-
-        public PageBackFactory(int maxPagesToRead)
+        public PageBlock[] Create(Stream stream)
         {
-            this.maxPagesToRead = maxPagesToRead;
+            return this.Create(stream, int.MaxValue);
         }
 
-        public PageBlock[] Create(Stream stream)
+        public PageBlock[] Create(Stream stream, int maxPagesToRead)
         {
             using (var reader = new PdfReader(stream))
             {
-                return this.ReadPages(reader).ToArray();
+                return this.ReadPages(reader).Take(maxPagesToRead).ToArray();
             }
         }
 
         private IEnumerable<PageBlock> ReadPages(PdfReader reader)
         {
-            int pagesToRead = Math.Min(reader.NumberOfPages, this.maxPagesToRead);
-
-            for (int i = 1; i <= pagesToRead; i++)
+            for (int i = 1; i <= reader.NumberOfPages; i++)
             {
                 var tokenBlocks = this.GetTokenBlocks(reader, i);
 
