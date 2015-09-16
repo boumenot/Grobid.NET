@@ -7,5 +7,6 @@ namespace Grobid.PdfToXml
         public float Height { get; set; }
         public float Width { get; set; }
         public IReadOnlyList<TokenBlock> TokenBlocks { get; set; }
+        public int Offset { get; set; }
     }
 }

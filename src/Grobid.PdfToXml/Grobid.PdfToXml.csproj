@@ -31,6 +31,7 @@
     </Compile>
     <Compile Include="FontFlags.cs" />
     <Compile Include="FontName.cs" />
+    <Compile Include="IndexGenerator.cs" />
     <Compile Include="ITextSharpExtensions.cs" />
     <Compile Include="PageBackFactory.cs" />
     <Compile Include="PageBlock.cs" />

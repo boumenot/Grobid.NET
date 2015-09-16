@@ -46,8 +46,10 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ConverterTest.cs" />
     <Compile Include="EssenseLinqTest.cs" />
     <Compile Include="FontNameTest.cs" />
+    <Compile Include="IndexGeneratorTest.cs" />
     <Compile Include="PageBlockFactoryTest.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="TextBlockFactoryTest.cs" />
