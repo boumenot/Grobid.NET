@@ -58,6 +58,19 @@ namespace Grobid.PdfToXml.Test
             testSubject.TokenIndex.Should().Be("p2_w1");
             testSubject.TokenIndex.Should().Be("p2_w2");
         }
+
+        [Fact]
+        public void TokenIndexDoesNotRollOnTextChange()
+        {
+            var testSubject = new IndexGenerator();
+            testSubject.PageIndex.Should().Be("p1");
+            testSubject.TextIndex.Should().Be("p1_t1");
+            testSubject.TokenIndex.Should().Be("p1_w1");
+            testSubject.TokenIndex.Should().Be("p1_w2");
+            testSubject.TextIndex.Should().Be("p1_t2");
+            testSubject.TokenIndex.Should().Be("p1_w3");
+            testSubject.TokenIndex.Should().Be("p1_w4");
+        }
     }
 
     public class IndexGenerator
