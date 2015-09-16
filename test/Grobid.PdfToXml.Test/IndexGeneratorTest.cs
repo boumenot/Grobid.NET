@@ -71,10 +71,28 @@ namespace Grobid.PdfToXml.Test
             testSubject.TokenIndex.Should().Be("p1_w3");
             testSubject.TokenIndex.Should().Be("p1_w4");
         }
+
+        [Fact]
+        public void SidIncrementOnEveryChange()
+        {
+            var testSubject = new IndexGenerator();
+            testSubject.PageIndex.Should().Be("p1");
+            testSubject.TextIndex.Should().Be("p1_t1");
+
+            testSubject.SidIndex.Should().Be("p1_s3");
+            testSubject.SidIndex.Should().Be("p1_s4");
+
+            testSubject.PageIndex.Should().Be("p2");
+            testSubject.TextIndex.Should().Be("p2_t1");
+
+            testSubject.SidIndex.Should().Be("p2_s7");
+            testSubject.SidIndex.Should().Be("p2_s8");
+        }
     }
 
     public class IndexGenerator
     {
+        private int index;
         private int pageIndex;
         private int textIndex;
         private int tokenIndex;
@@ -83,6 +101,7 @@ namespace Grobid.PdfToXml.Test
         {
             get
             {
+                this.index++;
                 this.pageIndex++;
                 this.textIndex = 0;
                 this.tokenIndex = 0;
@@ -94,6 +113,7 @@ namespace Grobid.PdfToXml.Test
         {
             get
             {
+                this.index++;
                 this.textIndex++;
                 return String.Format("p{0}_t{1}", this.pageIndex, this.textIndex);
             }
@@ -105,6 +125,15 @@ namespace Grobid.PdfToXml.Test
             {
                 this.tokenIndex++;
                 return String.Format("p{0}_w{1}", this.pageIndex, this.tokenIndex);
+            }
+        }
+
+        public string SidIndex
+        {
+            get
+            {
+                this.index++;
+                return String.Format("p{0}_s{1}", this.pageIndex, this.index);
             }
         }
     }
