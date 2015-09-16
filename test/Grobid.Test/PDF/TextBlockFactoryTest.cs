@@ -111,14 +111,14 @@ namespace Grobid.Test
             tokenBlock.FontColor.Should().Be("#000000");
             tokenBlock.FontSize.Should().BeInRange(17.92f, 17.94f);
             //tokenBlock.FontSize.Should().Be(1);
-            tokenBlock.Height.Should().BeInRange(17.92f, 17.94f);
+            tokenBlock.Height.Should().BeInRange(16.11f, 16.13f);
             tokenBlock.IsBold.Should().BeFalse();
             tokenBlock.IsItalic.Should().BeFalse();
             tokenBlock.IsSymbolic.Should().BeTrue();
             //tokenBlock.Rotation.Should().Be(0);
             tokenBlock.Width.Should().BeInRange(29.89f, 29.9f);
             tokenBlock.X.Should().BeInRange(143.07f, 143.09f);
-            //tokenBlock.Y.Should().Be(79);
+            tokenBlock.Y.Should().BeInRange(78.95f, 79.10f);
             tokenBlock.Base.Should().BeInRange(91.32f, 91.34f);
         }
     }

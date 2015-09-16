@@ -145,6 +145,16 @@ namespace Grobid.NET
             tokenBlock.Flags = this.GetFlags(renderInfo.GetFont());
             tokenBlock.Base = this.pageHeight - lineSegment.GetBoundingRectange().Y;
 
+            var fontDescriptor = renderInfo.GetFont().FontDictionary.GetAsDict(PdfName.FONTDESCRIPTOR);
+            var ascent = (fontDescriptor.GetAsNumber(PdfName.ASCENT).FloatValue / 1000) * tokenBlock.FontSize;
+            var descent = (fontDescriptor.GetAsNumber(PdfName.DESCENT).FloatValue / 1000) * tokenBlock.FontSize;
+
+            var yMin = tokenBlock.Base - ascent;
+            var yMax = tokenBlock.Base - descent;
+
+            tokenBlock.Height = yMax - yMin;
+            tokenBlock.Y = yMin;
+
             this.tokenBlocks.Add(tokenBlock);
         }
 

@@ -57,22 +57,13 @@ namespace Grobid.NET
             get { return this.StartPoint.X(); }
         }
 
-        public int PageHeight { get; set; }
-
-        public float Y
-        {
-            get { return this.BoundingRectangle.Top; }
-        }
-
-        public float Height
-        {
-            get { return this.BoundingRectangle.Height; }
-        }
-
         public float Width
         {
             get { return this.EndPoint.X() - this.StartPoint.X(); }
         }
+
+        public float Y { get; set; }
+        public float Height { get; set; }
 
         public FontFlags Flags { get; set; }
         public float Base { get; set; }
