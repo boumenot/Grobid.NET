@@ -52,10 +52,28 @@ namespace Grobid.NET
         public int Rotation { get; set; }
         public int Angle { get; set; }
 
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public int X
+        {
+            get { return (int)Math.Round(this.StartPoint.X()); }
+        }
+
+        public int PageHeight { get; set; }
+
+        public int Y
+        {
+            get { return (int)(Math.Round(this.BoundingRectangle.Top)); }
+        }
+
+        public int Height
+        {
+            get { return (int)(Math.Round(this.BoundingRectangle.Height)); }
+        }
+
+        public int Width
+        {
+            get { return (int)Math.Round(this.EndPoint.X() - this.StartPoint.X()); }
+        }
+
         public FontFlags Flags { get; set; }
 
         private void SetBoundingRectangle(Vector bottomLeft, Vector topRight)

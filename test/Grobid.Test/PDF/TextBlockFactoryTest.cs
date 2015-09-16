@@ -110,14 +110,14 @@ namespace Grobid.Test
             tokenBlock.FontName.Should().Be("CHUFSU+NimbusRomNo9L-Medi");
             tokenBlock.FontColor.Should().Be("#000000");
             //tokenBlock.FontSize.Should().Be(1);
-            //tokenBlock.Height.Should().Be(1);
+            tokenBlock.Height.Should().Be(18);
             tokenBlock.IsBold.Should().BeFalse();
             tokenBlock.IsItalic.Should().BeFalse();
             tokenBlock.IsSymbolic.Should().BeTrue();
             //tokenBlock.Rotation.Should().Be(0);
-            //tokenBlock.Width.Should().Be(0);
-            //tokenBlock.X.Should().Be(0);
-            //tokenBlock.Y.Should().Be(0);
+            tokenBlock.Width.Should().Be(30);
+            tokenBlock.X.Should().Be(143);
+            //tokenBlock.Y.Should().Be(79);
         }
     }
 }
