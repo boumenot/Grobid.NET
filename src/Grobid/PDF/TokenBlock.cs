@@ -47,7 +47,7 @@ namespace Grobid.NET
             }
         }
 
-        public int FontSize { get; set; }
+        public float FontSize { get { return this.BoundingRectangle.Height; } }
         public string FontColor { get; set; }
         public int Rotation { get; set; }
         public int Angle { get; set; }
