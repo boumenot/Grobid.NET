@@ -17,7 +17,8 @@ namespace Grobid.Test.PDF
             var reader = new PdfReader(Sample.Pdf.OpenEssenseLinq());
 
             var tokenBlocks = new List<TokenBlock>();
-            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks);
+            var pageSize = reader.GetPageSize(1);
+            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, pageSize.Width, pageSize.Height);
 
             PdfTextExtractor.GetTextFromPage(reader, 1, xmlTextExtractionStrategy);
             tokenBlocks.Should().NotBeEmpty();

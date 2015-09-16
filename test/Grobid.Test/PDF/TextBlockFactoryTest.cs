@@ -119,6 +119,7 @@ namespace Grobid.Test
             tokenBlock.Width.Should().BeInRange(29.89f, 29.9f);
             tokenBlock.X.Should().BeInRange(143.07f, 143.09f);
             //tokenBlock.Y.Should().Be(79);
+            tokenBlock.Base.Should().BeInRange(91.32f, 91.34f);
         }
     }
 }

@@ -58,7 +58,9 @@ namespace Grobid.NET
         private List<TokenBlock> GetTokenBlocks(PdfReader reader, int pageNumber)
         {
             var tokenBlocks = new List<TokenBlock>();
-            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks);
+            var pageSize = reader.GetPageSize(pageNumber);
+
+            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, pageSize.Width, pageSize.Height);
 
             PdfTextExtractor.GetTextFromPage(reader, pageNumber, xmlTextExtractionStrategy);
             return tokenBlocks;

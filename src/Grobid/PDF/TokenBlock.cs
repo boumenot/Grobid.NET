@@ -75,6 +75,7 @@ namespace Grobid.NET
         }
 
         public FontFlags Flags { get; set; }
+        public float Base { get; set; }
 
         private void SetBoundingRectangle(Vector bottomLeft, Vector topRight)
         {
