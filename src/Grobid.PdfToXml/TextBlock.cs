@@ -1,6 +1,5 @@
-﻿using System;
+﻿﻿using System;
 using System.Linq;
-using System.Text;
 
 namespace Grobid.PdfToXml
 {
@@ -19,7 +18,7 @@ namespace Grobid.PdfToXml
 
         private TokenBlock First
         {
-            get { return this.tokenBlocks[0]; }
+            get { return this.TokenBlocks[0]; }
         }
 
         private TokenBlock Last
@@ -44,7 +43,7 @@ namespace Grobid.PdfToXml
 
         public float Height
         {
-            get { return this.First.BoundingRectangle.Height; }
+            get { return this.First.Height; }
         }
 
         public string Text
