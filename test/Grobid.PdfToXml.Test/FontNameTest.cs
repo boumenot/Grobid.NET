@@ -29,6 +29,13 @@ namespace Grobid.PdfToXml.Test
         }
 
         [Fact]
+        public void IsBoldShouldOnlyLookAtFontWeight()
+        {
+            var testSubject = FontName.Parse("BOLD00+NimbusRomNo9L-Medi");
+            testSubject.IsBold.Should().BeFalse();
+        }
+
+        [Fact]
         public void IsItalicForObliqueShouldBeTrue()
         {
             var testSubject = FontName.Parse("CHUFSU+NimbusRomNo9L-Oblique");
@@ -40,6 +47,13 @@ namespace Grobid.PdfToXml.Test
         {
             var testSubject = FontName.Parse("CHUFSU+NimbusRomNo9L-Italic");
             testSubject.IsItalic.Should().BeTrue();
+        }
+
+        [Fact]
+        public void IsItalicShouldOnlyLookAtFontWeight()
+        {
+            var testSubject = FontName.Parse("ITALIC+NimbusRomNo9L-Medi");
+            testSubject.IsItalic.Should().BeFalse();
         }
 
         [Fact]

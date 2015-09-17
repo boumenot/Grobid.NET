@@ -16,14 +16,14 @@ namespace Grobid.PdfToXml
         {
             get
             {
-                return this.FullName.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       this.FullName.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0;
+                return this.Weight.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       this.Weight.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0;
             }
         }
 
         public bool IsBold
         {
-            get { return this.FullName.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0; }
+            get { return this.Weight.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0; }
         }
 
         public static FontName Parse(string name)
