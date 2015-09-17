@@ -29,6 +29,7 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Converter.cs" />
     <Compile Include="FontFlags.cs" />
     <Compile Include="FontName.cs" />
     <Compile Include="IndexGenerator.cs" />

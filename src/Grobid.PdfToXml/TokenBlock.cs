@@ -31,21 +31,12 @@ namespace Grobid.PdfToXml
 
         public bool IsBold
         {
-            get
-            {
-                return this.FontName.FullName.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       this.Flags.HasFlag(FontFlags.Bold);
-            }
+            get { return this.FontName.IsBold || this.Flags.HasFlag(FontFlags.Bold); }
         }
 
         public bool IsItalic
         {
-            get
-            {
-                return this.FontName.FullName.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       this.FontName.FullName.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       this.Flags.HasFlag(FontFlags.Italic);
-            }
+            get { return this.FontName.IsItalic || this.Flags.HasFlag(FontFlags.Italic); }
         }
 
         public float FontSize { get { return this.BoundingRectangle.Height; } }

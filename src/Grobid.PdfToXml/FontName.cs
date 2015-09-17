@@ -12,6 +12,20 @@ namespace Grobid.PdfToXml
         public string Name { get; private set; }
         public string Weight { get; private set; }
 
+        public bool IsItalic
+        {
+            get
+            {
+                return this.FullName.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       this.FullName.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0;
+            }
+        }
+
+        public bool IsBold
+        {
+            get { return this.FullName.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0; }
+        }
+
         public static FontName Parse(string name)
         {
             var fontName = new FontName()
