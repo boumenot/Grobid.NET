@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using iTextSharp.text;
@@ -51,8 +50,8 @@ namespace Grobid.PdfToXml
 
         public float FontSize { get { return this.BoundingRectangle.Height; } }
         public string FontColor { get; set; }
-        public int Rotation { get; set; }
-        public int Angle { get; set; }
+        public int Rotation { get { return 0; } }
+        public int Angle { get { return 0; } }
 
         public float X
         {
