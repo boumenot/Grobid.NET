@@ -33,7 +33,7 @@ namespace Grobid.PdfToXml
 
         public float Y
         {
-            get { return this.pageHeight - this.First.BoundingRectangle.Top; }
+            get { return this.First.Y; }
         }
 
         public float Width

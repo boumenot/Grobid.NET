@@ -97,15 +97,25 @@ namespace Grobid.PdfToXml.Test
         }
 
         [Fact]
-        public void TokenBlockProperties()
+        public void BlockProperties()
         {
             var pageBlockFactory = new PageBlockFactory();
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
 
-            var tokenBlock = pageBlocks[0].TextBlocks[0].TokenBlocks[0];
+            var pageBlock = pageBlocks[0];
+            pageBlock.Height.Should().Be(792);
+            pageBlock.Width.Should().Be(612);
+            pageBlock.Offset.Should().Be(1);
 
+            var textBlock = pageBlocks[0].TextBlocks[0];
+            textBlock.Height.Should().BeInRange(16.12f, 16.13f);
+            textBlock.Width.Should().BeInRange(323.95f, 323.96f);
+            textBlock.X.Should().BeInRange(143.08f, 143.09f);
+            textBlock.Y.Should().BeInRange(78.95f, 78.96f);
+
+            var tokenBlock = textBlock.TokenBlocks[0];
             tokenBlock.Text.Should().Be("The");
-            //tokenBlock.Angle.Should().Be(0);
+            tokenBlock.Angle.Should().Be(0);
             tokenBlock.FontName.Name.Should().Be("NimbusRomNo9L");
             tokenBlock.FontColor.Should().Be("#000000");
             tokenBlock.FontSize.Should().BeInRange(17.92f, 17.94f);
@@ -113,7 +123,7 @@ namespace Grobid.PdfToXml.Test
             tokenBlock.IsBold.Should().BeFalse();
             tokenBlock.IsItalic.Should().BeFalse();
             tokenBlock.IsSymbolic.Should().BeTrue();
-            //tokenBlock.Rotation.Should().Be(0);
+            tokenBlock.Rotation.Should().Be(0);
             tokenBlock.Width.Should().BeInRange(29.89f, 29.9f);
             tokenBlock.X.Should().BeInRange(143.07f, 143.09f);
             tokenBlock.Y.Should().BeInRange(78.95f, 79.10f);
