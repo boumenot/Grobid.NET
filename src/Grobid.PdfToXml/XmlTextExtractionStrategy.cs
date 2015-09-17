@@ -112,12 +112,12 @@ namespace Grobid.PdfToXml
                     float spacing = this.lastEnd.Subtract(start).Length;
                     if (spacing > renderInfo.GetSingleSpaceWidth() / 2f)
                     {
-                        this.AppendChunk();
+                        this.AppendEmptyTokenBlock();
                     }
                 }
             }
 
-            this.AppendChunk(renderInfo, segment);
+            this.AppendTokenBlock(renderInfo, segment);
 
             this.lastStart = start;
             this.lastEnd = end;
@@ -132,7 +132,7 @@ namespace Grobid.PdfToXml
             return string.Empty;
         }
 
-        private void AppendChunk(TextRenderInfo renderInfo, LineSegment lineSegment)
+        private void AppendTokenBlock(TextRenderInfo renderInfo, LineSegment lineSegment)
         {
             var tokenBlock = TokenBlock.Create(
                 renderInfo.GetText(),
@@ -173,7 +173,7 @@ namespace Grobid.PdfToXml
                 getStrokeColor.G);
         }
 
-        private void AppendChunk()
+        private void AppendEmptyTokenBlock()
         {
             this.tokenBlocks.Add(TokenBlock.CreateEmpty());
         }
