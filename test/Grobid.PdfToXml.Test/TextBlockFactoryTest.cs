@@ -31,7 +31,24 @@ namespace Grobid.PdfToXml.Test
         }
 
         [Fact]
-        public void TrailingEmptyBlocksAreNotTrimmed()
+        public void LeadingEmptyBlocksShouldBeTrimmed()
+        {
+            var tokenBlocks = new[]
+            {
+                TokenBlock.CreateEmpty(),
+                TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
+                TokenBlock.CreateEmpty(),
+                TokenBlock.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
+            };
+
+            var testSubject = new TextBlockFactory();
+
+            var textBlocks = testSubject.Create(tokenBlocks, 100);
+            textBlocks[0].Text.Should().Be("The End");
+        }
+
+        [Fact]
+        public void TrailingEmptyBlocksShouldBeTrimmed()
         {
             var tokenBlocks = new[]
             {
@@ -44,7 +61,7 @@ namespace Grobid.PdfToXml.Test
             var testSubject = new TextBlockFactory();
 
             var textBlocks = testSubject.Create(tokenBlocks, 100);
-            textBlocks[0].Text.Should().Be("The End ");
+            textBlocks[0].Text.Should().Be("The End");
         }
 
         [Fact]

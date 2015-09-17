@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace Grobid.PdfToXml
 {
@@ -47,22 +49,7 @@ namespace Grobid.PdfToXml
 
         public string Text
         {
-            get { return this.GetText(); }
-        }
-
-        public string GetText()
-        {
-            var sb = new StringBuilder();
-            foreach (var tokenBlock in this.tokenBlocks)
-            {
-                var s = tokenBlock.IsEmpty
-                            ? " "
-                            : tokenBlock.Text;
-
-                sb.Append((string)s);
-            }
-
-            return sb.ToString();
+            get { return String.Join(" ", tokenBlocks.Select(x => x.Text)); }
         }
     }
 }
