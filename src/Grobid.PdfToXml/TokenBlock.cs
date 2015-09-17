@@ -34,7 +34,7 @@ namespace Grobid.PdfToXml
         {
             get
             {
-                return this.FontName.Weight.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                return this.FontName.FullName.IndexOf("bold", StringComparison.OrdinalIgnoreCase) >= 0 ||
                        this.Flags.HasFlag(FontFlags.Bold);
             }
         }
@@ -43,8 +43,8 @@ namespace Grobid.PdfToXml
         {
             get
             {
-                return this.FontName.Weight.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       this.FontName.Weight.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0||
+                return this.FontName.FullName.IndexOf("italic", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       this.FontName.FullName.IndexOf("oblique", StringComparison.OrdinalIgnoreCase) >= 0 ||
                        this.Flags.HasFlag(FontFlags.Italic);
             }
         }
