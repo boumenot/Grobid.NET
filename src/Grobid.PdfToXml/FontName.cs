@@ -6,13 +6,18 @@ namespace Grobid.PdfToXml
     {
         private FontName() {}
 
+        public string FullName { get; private set; }
+
         public string Tag { get; private set; }
         public string Name { get; private set; }
         public string Weight { get; private set; }
 
         public static FontName Parse(string name)
         {
-            var fontName = new FontName();
+            var fontName = new FontName()
+            {
+                FullName = name,
+            };
 
             int indexOfPlusSign = name.IndexOf('+');
             int indexOfMinusSign = name.IndexOf('-');
