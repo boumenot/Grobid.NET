@@ -8,7 +8,7 @@ namespace Grobid.PdfToXml.Test
     public class ConverterTest
     {
         [Fact]
-        public void Test()
+        public void EssenseShouldSpecificTokenBlocks()
         {
             var testSubject = new Converter();
 
