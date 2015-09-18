@@ -1,19 +1,24 @@
 using FluentAssertions;
+
+using iTextSharp.text;
+
 using Xunit;
 
 namespace Grobid.PdfToXml.Test
 {
     public class TextBlockFactoryTest
     {
+        private static readonly Rectangle BoundingRectangle = new Rectangle(0,0,0,1);
+
         [Fact]
         public void TestBlockShouldConcatenateBlocksOnSameLine()
         {
             var tokenBlocks = new[]
             {
                 TokenBlock.Empty,
-                new TokenBlock { Text = "The" },
+                new TokenBlock { Text = "The", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
-                new TokenBlock { Text = "End" },
+                new TokenBlock { Text = "End", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
             };
 
             var testSubject = new TextBlockFactory();
@@ -28,9 +33,9 @@ namespace Grobid.PdfToXml.Test
             var tokenBlocks = new[]
             {
                 TokenBlock.Empty,
-                new TokenBlock { Text = "The" },
+                new TokenBlock { Text = "The", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
-                new TokenBlock { Text = "End" },
+                new TokenBlock { Text = "End", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
             };
 
             var testSubject = new TextBlockFactory();
@@ -44,9 +49,9 @@ namespace Grobid.PdfToXml.Test
         {
             var tokenBlocks = new[]
             {
-                new TokenBlock { Text = "The" },
+                new TokenBlock { Text = "The", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
-                new TokenBlock { Text = "End" },
+                new TokenBlock { Text = "End", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
             };
 
@@ -61,13 +66,13 @@ namespace Grobid.PdfToXml.Test
         {
             var tokenBlocks = new[]
             {
-                new TokenBlock { Base = 1, Text = "The" },
+                new TokenBlock { Base = 1, Text = "The", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
-                new TokenBlock { Base = 1, Text = "Start" },
+                new TokenBlock { Base = 1, Text = "Start", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
-                new TokenBlock { Base = 2, Text = "The" },
+                new TokenBlock { Base = 2, Text = "The", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
                 TokenBlock.Empty,
-                new TokenBlock { Base = 2, Text = "Finish" },
+                new TokenBlock { Base = 2, Text = "Finish", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
             };
 
             var testSubject = new TextBlockFactory();
@@ -76,6 +81,23 @@ namespace Grobid.PdfToXml.Test
             textBlocks.Should().HaveCount(2);
             textBlocks[0].Text.Should().Be("The Start");
             textBlocks[1].Text.Should().Be("The Finish");
+        }
+
+        [Fact]
+        public void MergeNonEmptyBlocksIntoSingleToken()
+        {
+            var tokenBlocks = new[]
+            {
+                new TokenBlock { Base = 1, Text = "Lan", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
+                new TokenBlock { Base = 1, Text = "gua", BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
+                new TokenBlock { Base = 1, Text = "ge",  BoundingRectangle = TextBlockFactoryTest.BoundingRectangle },
+            };
+
+            var testSubject = new TextBlockFactory();
+
+            var textBlocks = testSubject.Create(tokenBlocks, 100);
+            textBlocks.Should().HaveCount(1);
+            textBlocks[0].Text.Should().Be("Language");
         }
 
         [Fact]
