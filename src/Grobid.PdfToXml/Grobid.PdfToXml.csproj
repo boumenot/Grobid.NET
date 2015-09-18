@@ -39,7 +39,7 @@
     <Compile Include="TextBlock.cs" />
     <Compile Include="TextBlockFactory.cs" />
     <Compile Include="TokenBlock.cs" />
-    <Compile Include="TokenFactory.cs" />
+    <Compile Include="TokenBlockFactory.cs" />
     <Compile Include="XmlTextExtractionStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
