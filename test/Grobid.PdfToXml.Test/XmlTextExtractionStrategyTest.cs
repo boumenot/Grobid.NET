@@ -17,7 +17,9 @@ namespace Grobid.PdfToXml.Test
 
             var tokenBlocks = new List<TokenBlock>();
             var pageSize = reader.GetPageSize(1);
-            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, pageSize.Width, pageSize.Height);
+            var tokenBlockFactory = new TokenFactory(pageSize.Width, pageSize.Height);
+
+            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, tokenBlockFactory);
 
             PdfTextExtractor.GetTextFromPage(reader, 1, xmlTextExtractionStrategy);
             tokenBlocks.Should().NotBeEmpty();

@@ -63,8 +63,9 @@ namespace Grobid.PdfToXml
         {
             var tokenBlocks = new List<TokenBlock>();
             var pageSize = reader.GetPageSize(pageNumber);
+            var tokenBlockFactory = new TokenFactory(pageSize.Width, pageSize.Height);
 
-            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, pageSize.Width, pageSize.Height);
+            var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, tokenBlockFactory);
 
             PdfTextExtractor.GetTextFromPage(reader, pageNumber, xmlTextExtractionStrategy);
             return tokenBlocks.ToArray();

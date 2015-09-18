@@ -44,18 +44,17 @@ namespace Grobid.PdfToXml
                     .Skip(i)
                     .SkipWhile(x => x.IsEmpty)
                     .First()
-                    .BoundingRectangle
-                    .Bottom;
+                    .Base;
 
                 var tokenBlocksOnSameLine = tokenBlocks
                     .Skip(i)
-                    .TakeWhile(x => x.IsEmpty || x.BoundingRectangle.Bottom == y)
+                    .TakeWhile(x => x.IsEmpty || x.Base == y)
                     .ToArray();
 
                 var mergedTokenBlocks = this.Merge(tokenBlocksOnSameLine)
                     .ToArray();
 
-                yield return new TextBlock(mergedTokenBlocks, pageHeight);
+                yield return new TextBlock(mergedTokenBlocks);
                 i += tokenBlocksOnSameLine.Length;
             }
         }

@@ -54,6 +54,7 @@
     <Compile Include="Sample.cs" />
     <Compile Include="TextBlockFactoryTest.cs" />
     <Compile Include="TokenBlockTest.cs" />
+    <Compile Include="TokenFactoryTest.cs" />
     <Compile Include="XmlTextExtractionStrategyTest.cs" />
   </ItemGroup>
   <ItemGroup>

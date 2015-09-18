@@ -16,7 +16,7 @@ namespace Grobid.PdfToXml.Test
             var pageBlocks = pageBackFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
 
             var doc = testSubject.ToXml(pageBlocks);
-            doc.XPathSelectElements("/DOCUMENT/PAGE/TEXT/TOKEN").Should().HaveCount(864);
+            doc.XPathSelectElements("/DOCUMENT/PAGE/TEXT/TOKEN").Should().HaveCount(859);
         }
     }
 }

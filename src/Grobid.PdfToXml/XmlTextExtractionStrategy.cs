@@ -61,14 +61,12 @@ namespace Grobid.PdfToXml
         private Vector lastStart;
         private Vector lastEnd;
         private readonly List<TokenBlock> tokenBlocks;
-        private readonly float pageWidth;
-        private readonly float pageHeight;
+        private readonly TokenFactory tokenBlockFactory;
 
-        public XmlTextExtractionStrategy(List<TokenBlock> tokenBlocks, float pageWidth, float pageHeight)
+        public XmlTextExtractionStrategy(List<TokenBlock> tokenBlocks, TokenFactory tokenBlockFactory)
         {
             this.tokenBlocks = tokenBlocks;
-            this.pageWidth = pageWidth;
-            this.pageHeight = pageHeight;
+            this.tokenBlockFactory = tokenBlockFactory;
         }
 
         public void BeginTextBlock() {}
@@ -117,7 +115,7 @@ namespace Grobid.PdfToXml
                 }
             }
 
-            this.AppendTokenBlock(renderInfo, segment);
+            this.AppendTokenBlock(renderInfo);
 
             this.lastStart = start;
             this.lastEnd = end;
@@ -132,50 +130,15 @@ namespace Grobid.PdfToXml
             return string.Empty;
         }
 
-        private void AppendTokenBlock(TextRenderInfo renderInfo, LineSegment lineSegment)
+        private void AppendTokenBlock(TextRenderInfo renderInfo)
         {
-            var tokenBlock = TokenBlock.Create(
-                renderInfo.GetText(),
-                lineSegment,
-                renderInfo.GetDescentLine().GetStartPoint(),
-                renderInfo.GetAscentLine().GetEndPoint());
-
-            tokenBlock.FontName = FontName.Parse(renderInfo.GetFont().PostscriptFontName);
-            tokenBlock.FontColor = renderInfo.GetStrokeColor() == null ? "#000000" : this.GetFontColor(renderInfo.GetStrokeColor());
-            tokenBlock.Flags = this.GetFlags(renderInfo.GetFont());
-            tokenBlock.Base = this.pageHeight - lineSegment.GetBoundingRectange().Y;
-
-            var fontDescriptor = renderInfo.GetFont().FontDictionary.GetAsDict(PdfName.FONTDESCRIPTOR);
-            var ascent = (fontDescriptor.GetAsNumber(PdfName.ASCENT).FloatValue / 1000) * tokenBlock.FontSize;
-            var descent = (fontDescriptor.GetAsNumber(PdfName.DESCENT).FloatValue / 1000) * tokenBlock.FontSize;
-
-            var yMin = tokenBlock.Base - ascent;
-            var yMax = tokenBlock.Base - descent;
-
-            tokenBlock.Height = yMax - yMin;
-            tokenBlock.Y = yMin;
-
-            this.tokenBlocks.Add(tokenBlock);
-        }
-
-        private FontFlags GetFlags(DocumentFont font)
-        {
-            var flags = font.FontDictionary?.GetAsDict(PdfName.FONTDESCRIPTOR)?.GetAsNumber(PdfName.FLAGS)?.IntValue;
-            return (FontFlags)(flags ?? 0);
-        }
-
-        private string GetFontColor(BaseColor getStrokeColor)
-        {
-            return String.Format(
-                "#{0:x2}{1:x2}{2:x2}",
-                getStrokeColor.R,
-                getStrokeColor.B,
-                getStrokeColor.G);
+            this.tokenBlocks.Add(
+                this.tokenBlockFactory.Create(renderInfo));
         }
 
         private void AppendEmptyTokenBlock()
         {
-            this.tokenBlocks.Add(TokenBlock.CreateEmpty());
+            this.tokenBlocks.Add(TokenBlock.Empty);
         }
     }
 }

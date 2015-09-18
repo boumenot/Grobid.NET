@@ -5,13 +5,11 @@ namespace Grobid.PdfToXml
 {
     public class TextBlock
     {
-        private readonly float pageHeight;
         private readonly TokenBlock[] tokenBlocks;
 
-        public TextBlock(TokenBlock[] tokenBlocks, float pageHeight)
+        public TextBlock(TokenBlock[] tokenBlocks)
         {
             this.tokenBlocks = tokenBlocks;
-            this.pageHeight = pageHeight;
         }
 
         public TokenBlock[] TokenBlocks { get { return this.tokenBlocks; } }
@@ -28,7 +26,7 @@ namespace Grobid.PdfToXml
 
         public float X
         {
-            get { return this.First.StartPoint.X(); }
+            get { return this.First.X; }
         }
 
         public float Y
@@ -38,7 +36,7 @@ namespace Grobid.PdfToXml
 
         public float Width
         {
-            get { return this.Last.EndPoint.X() - this.First.StartPoint.X(); }
+            get { return this.Last.BoundingRectangle.Right- this.First.BoundingRectangle.Left; }
         }
 
         public float Height
