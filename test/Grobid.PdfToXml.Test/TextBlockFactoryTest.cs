@@ -1,89 +1,82 @@
-using System.Linq;
-
 using FluentAssertions;
-using iTextSharp.text.pdf.parser;
 using Xunit;
 
 namespace Grobid.PdfToXml.Test
 {
     public class TextBlockFactoryTest
     {
-        public readonly LineSegment baseline = new LineSegment(new Vector(0, 0, 0), new Vector(0, 0, 0));
-        public readonly Vector bottomLeft1 = new Vector(0, 0, 0);
-        public readonly Vector topRight1 = new Vector(0, 0, 0);
-        public readonly Vector bottomLeft2 = new Vector(1, 1, 0);
-        public readonly Vector topRight2 = new Vector(1, 1, 0);
+        [Fact]
+        public void TestBlockShouldConcatenateBlocksOnSameLine()
+        {
+            var tokenBlocks = new[]
+            {
+                TokenBlock.Empty,
+                new TokenBlock { Text = "The" },
+                TokenBlock.Empty,
+                new TokenBlock { Text = "End" },
+            };
 
-        //[Fact]
-        //public void TestBlockShouldConcatenateBlocksOnSameLine()
-        //{
-        //    var tokenBlocks = new[]
-        //    {
-        //        TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-        //        TokenBlock.Empty,
-        //        TokenBlock.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
-        //    };
+            var testSubject = new TextBlockFactory();
 
-        //    var testSubject = new TextBlockFactory();
+            var textBlocks = testSubject.Create(tokenBlocks, 100);
+            textBlocks[0].Text.Should().Be("The End");
+        }
 
-        //    var textBlocks = testSubject.Create(tokenBlocks, 100);
-        //    textBlocks[0].Text.Should().Be("The End");
-        //}
+        [Fact]
+        public void LeadingEmptyBlocksShouldBeTrimmed()
+        {
+            var tokenBlocks = new[]
+            {
+                TokenBlock.Empty,
+                new TokenBlock { Text = "The" },
+                TokenBlock.Empty,
+                new TokenBlock { Text = "End" },
+            };
 
-        //[Fact]
-        //public void LeadingEmptyBlocksShouldBeTrimmed()
-        //{
-        //    var tokenBlocks = new[]
-        //    {
-        //        TokenBlock.Empty,
-        //        TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-        //        TokenBlock.Empty,
-        //        TokenBlock.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
-        //    };
+            var testSubject = new TextBlockFactory();
 
-        //    var testSubject = new TextBlockFactory();
+            var textBlocks = testSubject.Create(tokenBlocks, 100);
+            textBlocks[0].Text.Should().Be("The End");
+        }
 
-        //    var textBlocks = testSubject.Create(tokenBlocks, 100);
-        //    textBlocks[0].Text.Should().Be("The End");
-        //}
+        [Fact]
+        public void TrailingEmptyBlocksShouldBeTrimmed()
+        {
+            var tokenBlocks = new[]
+            {
+                new TokenBlock { Text = "The" },
+                TokenBlock.Empty,
+                new TokenBlock { Text = "End" },
+                TokenBlock.Empty,
+            };
 
-        //[Fact]
-        //public void TrailingEmptyBlocksShouldBeTrimmed()
-        //{
-        //    var tokenBlocks = new[]
-        //    {
-        //        TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-        //        TokenBlock.Empty,
-        //        TokenBlock.Create("End", this.baseline, this.bottomLeft1, this.topRight1),
-        //        TokenBlock.Empty,
-        //    };
+            var testSubject = new TextBlockFactory();
 
-        //    var testSubject = new TextBlockFactory();
+            var textBlocks = testSubject.Create(tokenBlocks, 100);
+            textBlocks[0].Text.Should().Be("The End");
+        }
 
-        //    var textBlocks = testSubject.Create(tokenBlocks, 100);
-        //    textBlocks[0].Text.Should().Be("The End");
-        //}
+        [Fact]
+        public void TokenBlocksOnDistinctYAxisAreDistinctBlocks()
+        {
+            var tokenBlocks = new[]
+            {
+                new TokenBlock { Base = 1, Text = "The" },
+                TokenBlock.Empty,
+                new TokenBlock { Base = 1, Text = "Start" },
+                TokenBlock.Empty,
+                new TokenBlock { Base = 2, Text = "The" },
+                TokenBlock.Empty,
+                new TokenBlock { Base = 2, Text = "Finish" },
+            };
 
-        //[Fact]
-        //public void TokenBlocksOnDistinctYAxisAreDistinctBlocks()
-        //{
-        //    var tokenBlocks = new[]
-        //    {
-        //        TokenBlock.Create("The", this.baseline, this.bottomLeft1, this.topRight1),
-        //        TokenBlock.Empty,
-        //        TokenBlock.Create("Start", this.baseline, this.bottomLeft1, this.topRight1),
-        //        TokenBlock.Create("The", this.baseline, this.bottomLeft2, this.topRight2),
-        //        TokenBlock.Empty,
-        //        TokenBlock.Create("Finish", this.baseline, this.bottomLeft2, this.topRight2),
-        //    };
+            var testSubject = new TextBlockFactory();
 
-        //    var testSubject = new TextBlockFactory();
-
-        //    var textBlocks = testSubject.Create(tokenBlocks, 100);
-        //    textBlocks.Should().HaveCount(2);
-        //    textBlocks[0].Text.Should().Be("The Start");
-        //    textBlocks[1].Text.Should().Be("The Finish");
-        //}
+            var textBlocks = testSubject.Create(tokenBlocks, 100);
+            textBlocks.Should().HaveCount(2);
+            textBlocks[0].Text.Should().Be("The Start");
+            textBlocks[1].Text.Should().Be("The Finish");
+        }
 
         [Fact]
         public void ParsePdfText()
