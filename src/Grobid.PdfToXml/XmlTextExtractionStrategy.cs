@@ -74,7 +74,6 @@ namespace Grobid.PdfToXml
         public void RenderText(TextRenderInfo renderInfo)
         {
             bool firstRender = this.tokenBlocks.Count == 0;
-            bool hardReturn = false;
 
             LineSegment segment = renderInfo.GetBaseline();
             Vector start = segment.GetStartPoint();
@@ -83,26 +82,6 @@ namespace Grobid.PdfToXml
             Vector x1 = this.lastStart;
 
             if (!firstRender)
-            {
-                Vector x0 = start;
-                Vector x2 = this.lastEnd;
-
-                // see http://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html
-                float dist = (x2.Subtract(x1)).Cross((x1.Subtract(x0))).LengthSquared / x2.Subtract(x1).LengthSquared;
-
-                float sameLineThreshold = 1f; // we should probably base this on the current font metrics, but 1 pt seems to be sufficient for the time being
-                if (dist > sameLineThreshold)
-                    hardReturn = true;
-
-                // Note:  Technically, we should check both the start and end positions, in case the angle of the text changed without any displacement
-                // but this sort of thing probably doesn't happen much in reality, so we'll leave it alone for now
-            }
-
-            if (hardReturn)
-            {
-                this.tokenBlocks.Last().Text += '\n';
-            }
-            else if (!firstRender)
             {
                 if (!this.tokenBlocks.Last().Text.EndsWith(" ") && renderInfo.GetText().Length > 0 && renderInfo.GetText()[0] != ' ')
                 {

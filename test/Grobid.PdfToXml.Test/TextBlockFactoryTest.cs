@@ -85,8 +85,8 @@ namespace Grobid.PdfToXml.Test
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
             var textBlocks = pageBlocks[0].TextBlocks;
 
-            textBlocks[0].Text.Should().Be("The essence of language-integrated query\n");
-            textBlocks[1].Text.Should().Be("James Cheney\n");
+            textBlocks[0].Text.Should().Be("The essence of language-integrated query");
+            textBlocks[1].Text.Should().Be("James Cheney");
         }
 
         [Fact]
