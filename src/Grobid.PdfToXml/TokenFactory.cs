@@ -6,14 +6,14 @@ using iTextSharp.text.pdf.parser;
 
 namespace Grobid.PdfToXml
 {
-    public class TokenFactory
+    public class TokenBlockFactory
     {
         private static readonly string Black = "#000000";
 
         private readonly float pageWidth;
         private readonly float pageHeight;
 
-        public TokenFactory(float pageWidth, float pageHeight)
+        public TokenBlockFactory(float pageWidth, float pageHeight)
         {
             this.pageWidth = pageWidth;
             this.pageHeight = pageHeight;
@@ -91,7 +91,7 @@ namespace Grobid.PdfToXml
         {
             var strokeColor = renderInfo.GetStrokeColor();
             return strokeColor == null
-                       ? TokenFactory.Black
+                       ? TokenBlockFactory.Black
                        : this.StrokeColorToHexColor(strokeColor);
         }
 

@@ -11,7 +11,7 @@ namespace Grobid.PdfToXml.Test
         [Fact]
         public void Test()
         {
-            var testSubject = new TokenFactory(0f, 0f);
+            var testSubject = new TokenBlockFactory(0f, 0f);
             var tokenBlock = new TokenBlock();
         }
     }

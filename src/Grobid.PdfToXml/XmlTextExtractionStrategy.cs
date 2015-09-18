@@ -61,12 +61,12 @@ namespace Grobid.PdfToXml
         private Vector lastStart;
         private Vector lastEnd;
         private readonly List<TokenBlock> tokenBlocks;
-        private readonly TokenFactory tokenBlockFactory;
+        private readonly TokenBlockFactory tokenBlockBlockFactory;
 
-        public XmlTextExtractionStrategy(List<TokenBlock> tokenBlocks, TokenFactory tokenBlockFactory)
+        public XmlTextExtractionStrategy(List<TokenBlock> tokenBlocks, TokenBlockFactory tokenBlockBlockFactory)
         {
             this.tokenBlocks = tokenBlocks;
-            this.tokenBlockFactory = tokenBlockFactory;
+            this.tokenBlockBlockFactory = tokenBlockBlockFactory;
         }
 
         public void BeginTextBlock() {}
@@ -133,7 +133,7 @@ namespace Grobid.PdfToXml
         private void AppendTokenBlock(TextRenderInfo renderInfo)
         {
             this.tokenBlocks.Add(
-                this.tokenBlockFactory.Create(renderInfo));
+                this.tokenBlockBlockFactory.Create(renderInfo));
         }
 
         private void AppendEmptyTokenBlock()
