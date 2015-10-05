@@ -8,6 +8,8 @@ namespace Grobid.PdfToXml
 {
     public interface ITextRenderInfo
     {
+        #region Code for iTextSharp.text.pdf.parser.TextRenderInfo 
+
         PdfString PdfString { get; }
 
         LineSegment GetAscentLine();
@@ -20,7 +22,10 @@ namespace Grobid.PdfToXml
 
         BaseColor GetFillColor();
 
-        DocumentFont GetFont();
+        // XXX(boumenot): this method makes it hard to stub, so I am removing it
+        // the necessary methods have been exposed as distinct methods.  See
+        // "font" region.
+        // DocumentFont GetFont();
 
         int? GetMcid();
 
@@ -39,5 +44,16 @@ namespace Grobid.PdfToXml
         bool HasMcid(int mcid);
 
         bool HasMcid(int mcid, bool checkTheTopmostLevelOnly);
+
+        #endregion
+
+        #region Explicit Font Methods
+
+        float GetFontAscent();
+        float GetFontDescent();
+        int GetFontFlags();
+        string GetPostscriptFontName();
+
+        #endregion
     }
 }

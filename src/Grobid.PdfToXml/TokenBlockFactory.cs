@@ -20,14 +20,13 @@ namespace Grobid.PdfToXml
 
         public TokenBlock Create(ITextRenderInfo renderInfo)
         {
-            var fontDescriptor = renderInfo.GetFont().FontDictionary.GetAsDict(PdfName.FONTDESCRIPTOR);
             var boundingRectangle = this.GetBoundingRectangle(renderInfo);
 
             var fontSize = this.GetFontSize(boundingRectangle);
             var tokenBlockBase = this.GetBase(renderInfo);
 
-            var yMin = tokenBlockBase - this.GetFontAscent(fontDescriptor, fontSize);
-            var yMax = tokenBlockBase - this.GetFontDescent(fontDescriptor, fontSize);
+            var yMin = tokenBlockBase - renderInfo.GetFontAscent() * fontSize;
+            var yMax = tokenBlockBase - renderInfo.GetFontDescent() * fontSize;
 
             var tokenBlock = new TokenBlock
             {
@@ -35,31 +34,19 @@ namespace Grobid.PdfToXml
                 Base = tokenBlockBase,
                 BoundingRectangle = boundingRectangle,
                 FontColor = this.GetFontColor(renderInfo),
-                FontFlags = this.GetFontFlags(fontDescriptor),
+                FontFlags = (FontFlags)renderInfo.GetFontFlags(),
                 FontName = this.GetFontName(renderInfo),
                 FontSize = fontSize,
                 Height = yMax - yMin,
                 IsEmpty = false,
                 Rotation = this.GetRotation(),
-                Text = renderInfo.GetText(),
+                Text = renderInfo.GetText().Normalize(),
                 Width = this.GetWidth(renderInfo),
                 X = this.GetX(renderInfo),
                 Y = yMin,
             };
 
             return tokenBlock;
-        }
-
-        private float GetFontAscent(PdfDictionary fontDescriptor, float fontSize)
-        {
-            var ascent = fontDescriptor.GetAsNumber(PdfName.ASCENT).FloatValue / 1000;
-            return ascent * fontSize;
-        }
-
-        private float GetFontDescent(PdfDictionary fontDescriptor, float fontSize)
-        {
-            var descent = fontDescriptor.GetAsNumber(PdfName.DESCENT).FloatValue / 1000;
-            return descent * fontSize;
         }
 
         private Rectangle GetBoundingRectangle(ITextRenderInfo renderInfo)
@@ -71,12 +58,6 @@ namespace Grobid.PdfToXml
                 renderInfo.GetAscentLine().GetEndPoint().Y());
 
             return rectangle;
-        }
-
-        private FontFlags GetFontFlags(PdfDictionary fontDescriptor)
-        {
-            var flags = fontDescriptor.GetAsNumber(PdfName.FLAGS);
-            return (FontFlags)(flags == null ? 0 : flags.IntValue);
         }
 
         private int GetAngle() { return 0; }
@@ -104,8 +85,7 @@ namespace Grobid.PdfToXml
 
         private FontName GetFontName(ITextRenderInfo renderInfo)
         {
-            return FontName.Parse(
-                renderInfo.GetFont().PostscriptFontName);
+            return FontName.Parse(renderInfo.GetPostscriptFontName());
         }
 
         private float GetFontSize(Rectangle boundingRectangle)

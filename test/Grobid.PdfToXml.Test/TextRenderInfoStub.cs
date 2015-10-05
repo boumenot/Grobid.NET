@@ -85,6 +85,26 @@ namespace Grobid.PdfToXml.Test
             return this.HasMcidStub;
         }
 
+        public float GetFontAscent()
+        {
+            return this.FontAscent;
+        }
+
+        public float GetFontDescent()
+        {
+            return this.FontDescent;
+        }
+
+        public int GetFontFlags()
+        {
+            return this.FontFlags;
+        }
+
+        public string GetPostscriptFontName()
+        {
+            return this.PostscriptFontName;
+        }
+
         #region Stubs
 
         public LineSegment AscentLine { get; set; }
@@ -101,6 +121,10 @@ namespace Grobid.PdfToXml.Test
         public int TextRenderMode { get; set; }
         public LineSegment UnscaledBaseline { get; set; }
         public bool HasMcidStub { get; set; }
+        public float FontAscent { get; set; }
+        public float FontDescent { get; set; }
+        public int FontFlags { get; set; }
+        public string PostscriptFontName { get; set; }
 
         #endregion
     }

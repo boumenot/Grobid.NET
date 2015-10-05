@@ -9,10 +9,12 @@ namespace Grobid.PdfToXml
     internal class TextRenderInfoWrapper : ITextRenderInfo
     {
         private readonly TextRenderInfo textRenderInfo;
+        private readonly PdfDictionary fontDescriptor;
 
         public TextRenderInfoWrapper(TextRenderInfo textRenderInfo)
         {
             this.textRenderInfo = textRenderInfo;
+            this.fontDescriptor = textRenderInfo.GetFont().FontDictionary.GetAsDict(PdfName.FONTDESCRIPTOR);
         }
 
         public PdfString PdfString
@@ -93,6 +95,29 @@ namespace Grobid.PdfToXml
         public bool HasMcid(int mcid, bool checkTheTopmostLevelOnly)
         {
             return this.textRenderInfo.HasMcid(mcid, checkTheTopmostLevelOnly);
+        }
+
+        public float GetFontAscent()
+        {
+            var ascent = fontDescriptor.GetAsNumber(PdfName.ASCENT).FloatValue / 1000;
+            return ascent;
+        }
+
+        public float GetFontDescent()
+        {
+            var descent = fontDescriptor.GetAsNumber(PdfName.DESCENT).FloatValue / 1000;
+            return descent;
+        }
+
+        public int GetFontFlags()
+        {
+            var flags = fontDescriptor.GetAsNumber(PdfName.FLAGS);
+            return flags?.IntValue ?? 0;
+        }
+
+        public string GetPostscriptFontName()
+        {
+            return this.textRenderInfo.GetFont().PostscriptFontName;
         }
     }
 }
