@@ -31,7 +31,7 @@ namespace Grobid.PdfToXml
         public static TokenBlock Merge(TokenBlock[] tokenBlocks)
         {
             var mergedTokenBlock = tokenBlocks[0];
-            mergedTokenBlock.Text = String.Join(String.Empty, tokenBlocks.Select(x => x.Text));
+            mergedTokenBlock.Text = String.Join(String.Empty, tokenBlocks.Select(x => x.Text)).Normalize();
 
             mergedTokenBlock.BoundingRectangle = new Rectangle(
                 tokenBlocks.First().BoundingRectangle.Left,

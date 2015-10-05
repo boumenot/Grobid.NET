@@ -64,5 +64,21 @@ namespace Grobid.PdfToXml.Test
             testSubject.BoundingRectangle.Width.Should().Be(6);
             testSubject.Width.Should().Be(6);
         }
+
+        [Fact]
+        public void MergeShouldNormalizeTextStrings()
+        {
+            var boundingRectangle1 = new Rectangle(0, 1, 1, 2);
+            var boundingRectangle2 = new Rectangle(1, 1, 6, 2);
+
+            var tokenBlocks = new[]
+            {
+                new TokenBlock { Base = 1, Text = "abcd\u0065", BoundingRectangle = boundingRectangle1, Width = 1.3f },
+                new TokenBlock { Base = 1, Text = "\u0301fgh",  BoundingRectangle = boundingRectangle2, Width = 4.9f },
+            };
+
+            var testSubject = TokenBlock.Merge(tokenBlocks);
+            testSubject.Text.ToCharArray().Should().HaveCount(8);
+        }
     }
 }
