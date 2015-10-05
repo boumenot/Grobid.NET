@@ -2,7 +2,6 @@ using System;
 
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
 
 namespace Grobid.PdfToXml
 {
@@ -19,7 +18,7 @@ namespace Grobid.PdfToXml
             this.pageHeight = pageHeight;
         }
 
-        public TokenBlock Create(TextRenderInfo renderInfo)
+        public TokenBlock Create(ITextRenderInfo renderInfo)
         {
             var fontDescriptor = renderInfo.GetFont().FontDictionary.GetAsDict(PdfName.FONTDESCRIPTOR);
             var boundingRectangle = this.GetBoundingRectangle(renderInfo);
@@ -63,7 +62,7 @@ namespace Grobid.PdfToXml
             return descent * fontSize;
         }
 
-        private Rectangle GetBoundingRectangle(TextRenderInfo renderInfo)
+        private Rectangle GetBoundingRectangle(ITextRenderInfo renderInfo)
         {
             var rectangle = new Rectangle(
                 renderInfo.GetDescentLine().GetStartPoint().X(),
@@ -82,12 +81,12 @@ namespace Grobid.PdfToXml
 
         private int GetAngle() { return 0; }
 
-        private float GetBase(TextRenderInfo renderInfo)
+        private float GetBase(ITextRenderInfo renderInfo)
         {
             return this.pageHeight - renderInfo.GetBaseline().GetBoundingRectange().Y;
         }
 
-        private string GetFontColor(TextRenderInfo renderInfo)
+        private string GetFontColor(ITextRenderInfo renderInfo)
         {
             var strokeColor = renderInfo.GetStrokeColor();
             return strokeColor == null
@@ -103,7 +102,7 @@ namespace Grobid.PdfToXml
                 strokeColor.G);
         }
 
-        private FontName GetFontName(TextRenderInfo renderInfo)
+        private FontName GetFontName(ITextRenderInfo renderInfo)
         {
             return FontName.Parse(
                 renderInfo.GetFont().PostscriptFontName);
@@ -116,12 +115,12 @@ namespace Grobid.PdfToXml
 
         private int GetRotation() { return 0; }
 
-        private float GetWidth(TextRenderInfo renderInfo)
+        private float GetWidth(ITextRenderInfo renderInfo)
         {
             return renderInfo.GetBaseline().GetEndPoint().X() - this.GetX(renderInfo);
         }
 
-        private float GetX(TextRenderInfo renderInfo)
+        private float GetX(ITextRenderInfo renderInfo)
         {
             return renderInfo.GetBaseline().GetStartPoint().X();
         }
