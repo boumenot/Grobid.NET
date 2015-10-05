@@ -8,7 +8,7 @@ namespace Grobid.PdfToXml
     public class TokenBlock
     {
         public static readonly TokenBlock Empty = new TokenBlock { IsEmpty = true };
-        
+
         public int Angle { get; set; }
         public float Base { get; set; }
         public Rectangle BoundingRectangle { get; set; }
