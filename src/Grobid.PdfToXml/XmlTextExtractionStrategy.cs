@@ -111,8 +111,9 @@ namespace Grobid.PdfToXml
 
         private void AppendTokenBlock(TextRenderInfo renderInfo)
         {
+            var textRenderInfo = new TextRenderInfoWrapper(renderInfo);
             this.tokenBlocks.Add(
-                this.tokenBlockBlockFactory.Create(renderInfo));
+                this.tokenBlockBlockFactory.Create(textRenderInfo));
         }
 
         private void AppendEmptyTokenBlock()

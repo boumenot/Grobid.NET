@@ -33,11 +33,13 @@
     <Compile Include="FontFlags.cs" />
     <Compile Include="FontName.cs" />
     <Compile Include="IndexGenerator.cs" />
+    <Compile Include="ITextRenderInfo.cs" />
     <Compile Include="ITextSharpExtensions.cs" />
     <Compile Include="PageBlockFactory.cs" />
     <Compile Include="PageBlock.cs" />
     <Compile Include="TextBlock.cs" />
     <Compile Include="TextBlockFactory.cs" />
+    <Compile Include="TextRenderInfoWrapper.cs" />
     <Compile Include="TokenBlock.cs" />
     <Compile Include="TokenBlockFactory.cs" />
     <Compile Include="XmlTextExtractionStrategy.cs" />
