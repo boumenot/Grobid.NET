@@ -46,6 +46,7 @@ Target "BuildApp" (fun _ ->
 
 Target "UnitTests" (fun _ ->
                     !! (sprintf "./test/Grobid.Test/bin/%s/**/Grobid*.Test.dll" buildMode)
+                    ++ (sprintf "./test/Grobid.PdfToXml.Test/bin/%s/**/Grobid*.Test.dll" buildMode)
                     |> xUnit2 (fun x -> { x with XmlOutputPath = Some(testResultsDir @@ "xml");
                                                  ToolPath = "packages/xunit.runner.console/tools/xunit.console.exe"
                                           })
