@@ -15,7 +15,7 @@ namespace Grobid.PdfToXml.Test
     public class BlockFactoryTest
     {
         [Fact]
-        public void Test()
+        public void Test00()
         {
             var testInfoFactory = new PageBlockFactory();
             var pageBlocks = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
@@ -29,6 +29,48 @@ namespace Grobid.PdfToXml.Test
 
             textBlockA.IsSameBlock(textBlockB).Should().BeTrue();
             textBlockB.IsSameBlock(textBlockC).Should().BeFalse();
+        }
+
+        [Fact]
+        public void Test01()
+        {
+            var testInfoFactory = new PageBlockFactory();
+            var pageBlocks = testInfoFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
+            var textBlocks = pageBlocks.First().TextBlocks;
+
+            var xss = new List<List<TextBlock>>
+            {
+                new List<TextBlock>
+                {
+                    textBlocks[0]
+                },
+            };
+
+            int index = 1;
+            int offset = 0;
+
+            while (index < textBlocks.Length)
+            {
+                for (; index < textBlocks.Length; index++)
+                {
+                    if (xss[offset].Last().IsSameBlock(textBlocks[index]))
+                    {
+                        xss[offset].Add(textBlocks[index]);
+                    }
+                    else
+                    {
+                        xss.Add(
+                            new List<TextBlock>
+                            {
+                                textBlocks[index]
+                            });
+                        break;
+                    }
+                }
+
+                offset++;
+                index++;
+            }
         }
     }
 
