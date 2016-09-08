@@ -1,0 +1,5 @@
+﻿FluentAssertions
+iTextSharp
+xunit
+xunit.runner.visualstudio
+xunit.core
