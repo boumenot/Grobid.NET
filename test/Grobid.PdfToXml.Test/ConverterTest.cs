@@ -4,6 +4,7 @@ using FluentAssertions;
 using Xunit;
 using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace Grobid.PdfToXml.Test
 {
@@ -18,7 +19,7 @@ namespace Grobid.PdfToXml.Test
             var pageBlocks = pageBackFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
 
             var doc = testSubject.ToXml(pageBlocks);
-            doc.XPathSelectElements("/DOCUMENT/PAGE/TEXT/TOKEN").Should().HaveCount(859);
+            doc.XPathSelectElements("/DOCUMENT/PAGE/BLOCK/TEXT/TOKEN").Should().HaveCount(859);
         }
 
         [Fact]
@@ -34,9 +35,10 @@ namespace Grobid.PdfToXml.Test
 
             foreach (var pageBlock in pageBlocks)
             {
-                for (int i = 0; i < pageBlock.TextBlocks.Length; i++)
+                var textBlocks = pageBlock.Blocks.SelectMany(x => x.TextBlocks).ToArray();
+                for (int i = 0; i < textBlocks.Length; i++)
                 {
-                    var textBlock = pageBlock.TextBlocks[i];
+                    var textBlock = textBlocks[i];
 
                     sb.AppendFormat($"block[{i}]:");
                     sb.AppendFormat($" font={textBlock.TokenBlocks[0].FontName.FullName}");

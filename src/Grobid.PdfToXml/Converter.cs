@@ -36,7 +36,20 @@ namespace Grobid.PdfToXml
             writer.WriteAttributeString("number", pageBlock.Offset.ToString());
             writer.WriteAttributeString("id", indexGenerator.PageIndex);
 
-            foreach (var textBlock in pageBlock.TextBlocks)
+            foreach (var block in pageBlock.Blocks)
+            {
+                this.WriteBlock(indexGenerator, writer, block);
+            }
+
+            writer.WriteEndElement();
+        }
+
+        private void WriteBlock(IndexGenerator indexGenerator, XmlWriter writer, Block block)
+        {
+            writer.WriteStartElement("BLOCK");
+            writer.WriteAttributeString("id", indexGenerator.BlockIndex);
+
+            foreach (var textBlock in block.TextBlocks)
             {
                 this.WriteTextBlock(indexGenerator, writer, textBlock);
             }

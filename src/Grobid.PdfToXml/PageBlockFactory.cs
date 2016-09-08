@@ -35,25 +35,62 @@ namespace Grobid.PdfToXml
             {
                 var tokenBlocks = this.GetTokenBlocks(reader, i);
                 var textBlocks = this.textBlockFactory.Create(tokenBlocks, reader.GetPageSize(i).Height);
+                var blocks = this.PartitionIntoBlocks(textBlocks);
 
                 var pageBlock = this.CreatePageBlock(
                     reader.GetPageSize(i).Width,
                     reader.GetPageSize(i).Height,
                     i,
-                    textBlocks);
+                    blocks);
 
                 yield return pageBlock;
             }
         }
 
-        private PageBlock CreatePageBlock(float width, float height, int offset, TextBlock[] textBlocks)
+        private Block[] PartitionIntoBlocks(TextBlock[] textBlocks)
+        {
+            var xss = new List<List<TextBlock>>
+            {
+                new List<TextBlock> { textBlocks[0] }
+            };
+
+            int index = 1;
+            int offset = 0;
+
+            while (index < textBlocks.Length)
+            {
+                for (; index < textBlocks.Length; index++)
+                {
+                    if (xss[offset].Last().IsSameBlock(textBlocks[index]))
+                    {
+                        xss[offset].Add(textBlocks[index]);
+                    }
+                    else
+                    {
+                        xss.Add(
+                            new List<TextBlock>
+                            {
+                                textBlocks[index]
+                            });
+                        break;
+                    }
+                }
+
+                offset++;
+                index++;
+            }
+
+            return xss.Select(x => new Block { TextBlocks = x.ToArray() }).ToArray();
+        }
+
+        private PageBlock CreatePageBlock(float width, float height, int offset, Block[] blocks)
         {
             var pageBlock = new PageBlock
             {
                 Width = width,
                 Height = height,
                 Offset = offset,
-                TextBlocks = textBlocks,
+                Blocks = blocks,
             };
 
             return pageBlock;

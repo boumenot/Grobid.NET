@@ -6,6 +6,7 @@ namespace Grobid.PdfToXml
     {
         private int index;
         private int pageIndex;
+        private int blockIndex;
         private int textIndex;
         private int tokenIndex;
 
@@ -17,6 +18,7 @@ namespace Grobid.PdfToXml
                 this.pageIndex++;
                 this.textIndex = 0;
                 this.tokenIndex = 0;
+                this.blockIndex = 0;
                 return String.Format("p{0}", this.pageIndex);
             }
         }
@@ -46,6 +48,15 @@ namespace Grobid.PdfToXml
             {
                 this.index++;
                 return String.Format("p{0}_s{1}", this.pageIndex, this.index);
+            }
+        }
+
+        public string BlockIndex
+        {
+            get
+            {
+                this.blockIndex++;
+                return String.Format("p{0}_b{1}", this.pageIndex, this.blockIndex);
             }
         }
     }

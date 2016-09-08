@@ -20,7 +20,6 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="BlockFactoryTest.cs" />
     <Compile Include="ConverterTest.cs" />
     <Compile Include="EssenseLinqTest.cs" />
     <Compile Include="FontNameTest.cs" />

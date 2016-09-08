@@ -1,3 +1,5 @@
+using System.Linq;
+
 using FluentAssertions;
 
 using iTextSharp.text;
@@ -105,7 +107,7 @@ namespace Grobid.PdfToXml.Test
         {
             var pageBlockFactory = new PageBlockFactory();
             var pageBlocks = pageBlockFactory.Create(Sample.Pdf.OpenEssenseLinq());
-            var textBlocks = pageBlocks[0].TextBlocks;
+            var textBlocks = pageBlocks[0].Blocks.SelectMany(x => x.TextBlocks).ToArray();
 
             textBlocks[0].Text.Should().Be("The essence of language-integrated query");
             textBlocks[1].Text.Should().Be("James Cheney");
@@ -122,7 +124,7 @@ namespace Grobid.PdfToXml.Test
             pageBlock.Width.Should().Be(612);
             pageBlock.Offset.Should().Be(1);
 
-            var textBlock = pageBlocks[0].TextBlocks[0];
+            var textBlock = pageBlocks[0].Blocks[0].TextBlocks[0];
             textBlock.Height.Should().BeInRange(16.12f, 16.13f);
             textBlock.Width.Should().BeInRange(323.95f, 323.96f);
             textBlock.X.Should().BeInRange(143.08f, 143.09f);

@@ -1,3 +1,5 @@
+using System.Linq;
+
 using FluentAssertions;
 using Xunit;
 
@@ -14,8 +16,8 @@ namespace Grobid.PdfToXml.Test
             pageBlocks.Should().HaveCount(1);
             pageBlocks[0].Offset.Should().Be(1);
 
-            var tokenBlocks = pageBlocks[0].TextBlocks;
-            tokenBlocks.Should().HaveCount(104);
+            var textBlocks = pageBlocks[0].Blocks.SelectMany(x => x.TextBlocks);
+            textBlocks.Should().HaveCount(104);
         }
     }
 }
