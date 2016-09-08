@@ -1,13 +1,10 @@
-﻿using fr.limsi.wapiti;
-using org.grobid.core;
-using org.grobid.core.engines.tagging;
-using org.grobid.core.jni;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using fr.limsi.wapiti;
+using org.grobid.core.engines.tagging;
+using org.grobid.core.jni;
 
 namespace Grobid.NET
 {

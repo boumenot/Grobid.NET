@@ -66,7 +66,7 @@ namespace Grobid.NET
                 new java.io.File(this.pathToTemp));
 
             var archive = new ZipArchive(File.OpenRead(this.pathToModelsZip));
-            
+
             var lexicon = this.CreateLexicons(archive);
             var featureTester = new FeatureTesterImpl(lexicon);
 

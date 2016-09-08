@@ -1,14 +1,12 @@
-﻿using org.grobid.core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Xml.Linq;
+
 using FluentAssertions;
 using Xunit;
-using Grobid.NET;
-using System.Xml.Linq;
+
 using org.apache.log4j;
+using org.grobid.core;
+using Grobid.NET;
 
 namespace Grobid.Test
 {

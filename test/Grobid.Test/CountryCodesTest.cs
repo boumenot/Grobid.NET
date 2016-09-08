@@ -1,10 +1,5 @@
-﻿using Grobid.NET;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
+using Grobid.NET;
 using Xunit;
 
 namespace Grobid.Test

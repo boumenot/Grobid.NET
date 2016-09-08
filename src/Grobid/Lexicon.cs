@@ -18,8 +18,8 @@ namespace Grobid.NET
         }
 
         public Lexicon(
-            HashSet<string> firstNames, 
-            HashSet<string> lastNames, 
+            HashSet<string> firstNames,
+            HashSet<string> lastNames,
             HashSet<string> words)
         {
             this.firstNames = firstNames;
@@ -29,7 +29,7 @@ namespace Grobid.NET
 
         public bool IsFirstName(string name) { return this.firstNames.Contains(name); }
         public bool IsLastName(string name) { return this.lastNames.Contains(name); }
-        public bool HasWord(string word) 
+        public bool HasWord(string word)
         {
             var normalized = word.TrimEnd('.', ',', ':', ';');
 
@@ -49,7 +49,7 @@ namespace Grobid.NET
                     this.words.Contains(spaced[1]);
             }
 
-            return this.words.Contains(normalized); 
+            return this.words.Contains(normalized);
         }
 
         public bool inDictionary(string word)
