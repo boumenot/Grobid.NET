@@ -1,5 +1,8 @@
 NUGET
   remote: https://www.nuget.org/api/v2
+    ApprovalTests (3.0.11)
+      ApprovalUtilities (>= 3.0)
+    ApprovalUtilities (3.0.11)
     FAKE (4.39.1)
     FluentAssertions (4.14)
       NETStandard.Library (>= 1.6) - framework: >= netstandard13

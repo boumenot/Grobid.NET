@@ -1,4 +1,5 @@
-﻿FluentAssertions
+﻿ApprovalTests
+FluentAssertions
 iTextSharp
 xunit
 xunit.runner.visualstudio

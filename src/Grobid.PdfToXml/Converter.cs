@@ -60,11 +60,11 @@ namespace Grobid.PdfToXml
         private void WriteTextBlock(IndexGenerator indexGenerator, XmlWriter writer, TextBlock textBlock)
         {
             writer.WriteStartElement("TEXT");
+            writer.WriteAttributeString("x", textBlock.X.ToString());
+            writer.WriteAttributeString("y", textBlock.Y.ToString());
             writer.WriteAttributeString("width", textBlock.Width.ToString());
             writer.WriteAttributeString("height", textBlock.Height.ToString());
             writer.WriteAttributeString("id", indexGenerator.TextIndex);
-            writer.WriteAttributeString("x", textBlock.X.ToString());
-            writer.WriteAttributeString("y", textBlock.Y.ToString());
 
             foreach (var tokenBlock in textBlock.TokenBlocks.Where(x => !x.IsEmpty))
             {
@@ -82,9 +82,9 @@ namespace Grobid.PdfToXml
             }
 
             writer.WriteStartElement("TOKEN");
-            writer.WriteAttributeString("sid", indexGenerator.SidIndex);
             writer.WriteAttributeString("id", indexGenerator.TokenIndex);
-            writer.WriteAttributeString("font-name", tokenBlock.FontName.Name);
+            writer.WriteAttributeString("sid", indexGenerator.SidIndex);
+            writer.WriteAttributeString("font-name", tokenBlock.FontName.FullName.ToLower());
             writer.WriteAttributeString("bold", tokenBlock.IsBold ? "yes" : "no");
             writer.WriteAttributeString("italic", tokenBlock.IsItalic ? "yes" : "no");
             writer.WriteAttributeString("font-size", tokenBlock.FontSize.ToString());

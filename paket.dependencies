@@ -1,5 +1,6 @@
 source https://nuget.org/api/v2
 
+nuget ApprovalTests
 nuget FAKE
 nuget FluentAssertions
 nuget iTextSharp

@@ -1,13 +1,16 @@
-﻿using System.Xml.XPath;
-
-using FluentAssertions;
-using Xunit;
-using System.Text;
+﻿using System.Text;
 using System.IO;
 using System.Linq;
 
+using ApprovalTests;
+using ApprovalTests.Reporters;
+
+using Xunit;
+
+
 namespace Grobid.PdfToXml.Test
 {
+    [UseReporter(typeof(DiffReporter))]
     public class ConverterTest
     {
         [Fact]
@@ -19,14 +22,12 @@ namespace Grobid.PdfToXml.Test
             var pageBlocks = pageBackFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
 
             var doc = testSubject.ToXml(pageBlocks);
-            doc.XPathSelectElements("/DOCUMENT/PAGE/BLOCK/TEXT/TOKEN").Should().HaveCount(859);
+            Approvals.VerifyXml(doc.ToString());
         }
 
         [Fact]
         public void TestThingy()
         {
-            var testSubject = new Converter();
-
             var pageBackFactory = new PageBlockFactory();
             var pageBlocks = pageBackFactory.Create(Sample.Pdf.OpenEssenseLinq(), 1);
 
