@@ -35,7 +35,7 @@ namespace Grobid.PdfToXml
             {
                 var tokenBlocks = this.GetTokenBlocks(reader, i);
                 var textBlocks = this.textBlockFactory.Create(tokenBlocks, reader.GetPageSize(i).Height);
-                var blocks = this.PartitionIntoBlocks(textBlocks);
+                var blocks = this.PartitionIntoBlocks(textBlocks, i - 1);
 
                 var pageBlock = this.CreatePageBlock(
                     reader.GetPageSize(i).Width,
@@ -47,7 +47,7 @@ namespace Grobid.PdfToXml
             }
         }
 
-        private Block[] PartitionIntoBlocks(TextBlock[] textBlocks)
+        private Block[] PartitionIntoBlocks(TextBlock[] textBlocks, int page)
         {
             var xss = new List<List<TextBlock>>
             {
@@ -80,7 +80,7 @@ namespace Grobid.PdfToXml
                 index++;
             }
 
-            return xss.Select(x => new Block { TextBlocks = x.ToArray() }).ToArray();
+            return xss.Select(x => new Block { TextBlocks = x.ToArray(), Page = page }).ToArray();
         }
 
         private PageBlock CreatePageBlock(float width, float height, int offset, Block[] blocks)
