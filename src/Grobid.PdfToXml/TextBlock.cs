@@ -12,41 +12,16 @@ namespace Grobid.PdfToXml
             this.tokenBlocks = tokenBlocks;
         }
 
-        public TokenBlock[] TokenBlocks { get { return this.tokenBlocks; } }
+        public TokenBlock[] TokenBlocks => this.tokenBlocks;
 
-        private TokenBlock First
-        {
-            get { return this.TokenBlocks[0]; }
-        }
+        private TokenBlock First => this.tokenBlocks[0];
+        private TokenBlock Last => this.tokenBlocks[this.tokenBlocks.Length - 1];
 
-        private TokenBlock Last
-        {
-            get { return this.tokenBlocks[this.tokenBlocks.Length - 1]; }
-        }
+        public float X => this.First.X;
+        public float Y => this.First.Y;
 
-        public float X
-        {
-            get { return this.First.X; }
-        }
-
-        public float Y
-        {
-            get { return this.First.Y; }
-        }
-
-        public float Width
-        {
-            get { return this.Last.BoundingRectangle.Right- this.First.BoundingRectangle.Left; }
-        }
-
-        public float Height
-        {
-            get { return this.First.Height; }
-        }
-
-        public string Text
-        {
-            get { return String.Join(" ", tokenBlocks.Select(x => x.Text)); }
-        }
+        public float Width => this.Last.BoundingRectangle.Right - this.First.BoundingRectangle.Left;
+        public float Height => this.First.Height;
+        public string Text => String.Join(" ", tokenBlocks.Select(x => x.Text));
     }
 }
