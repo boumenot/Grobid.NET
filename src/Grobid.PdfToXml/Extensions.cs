@@ -47,6 +47,11 @@ namespace Grobid.PdfToXml
             {
                 yield return s.Substring(offset);
             }
+
+            if (s == String.Empty)
+            {
+                yield return s;
+            }
         }
     }
 }

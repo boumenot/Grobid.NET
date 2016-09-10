@@ -34,5 +34,27 @@ namespace Grobid.PdfToXml.Test
                 ";",
                 "mno");
         }
+
+        [Fact]
+        public void Test03()
+        {
+            var xs = "".SplitWithDelims(Constants.FullPunctuation);
+            xs.Should().ContainInOrder("");
+        }
+
+        [Fact]
+        public void Test04()
+        {
+            var xs = "IsOneToken".SplitWithDelims(Constants.FullPunctuation);
+            xs.Should().ContainInOrder("IsOneToken");
+        }
+
+        [Fact]
+        public void Test05()
+        {
+            string s = null;
+            Action test = () => s.SplitWithDelims(Constants.FullPunctuation).ToArray();
+            test.ShouldThrow<NullReferenceException>();
+        }
     }
 }
