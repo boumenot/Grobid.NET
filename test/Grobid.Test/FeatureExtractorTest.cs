@@ -44,6 +44,16 @@ namespace Grobid.Test
             testSubject.Case("lower").Should().Be(Capitalization.NOCAPS);
             testSubject.Case("").Should().Be(Capitalization.NOCAPS);
         }
+
+        [Fact]
+        public void TestDigit()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.Digit("").Should().Be(Digit.NODIGIT);
+            testSubject.Digit("abc").Should().Be(Digit.NODIGIT);
+            testSubject.Digit("abc123").Should().Be(Digit.CONTAINDIGIT);
+            testSubject.Digit("123").Should().Be(Digit.ALLDIGIT);
+        }
     }
 
     public enum Capitalization
@@ -51,6 +61,13 @@ namespace Grobid.Test
         INITCAP,
         NOCAPS,
         ALLCAP,
+    }
+
+    public enum Digit
+    {
+        ALLDIGIT,
+        CONTAINDIGIT,
+        NODIGIT
     }
 
     public class FeatureExtractor
@@ -87,6 +104,16 @@ namespace Grobid.Test
             }
 
             return cap;
+        }
+
+        public Digit Digit(string s)
+        {
+            var digitCount = s.Count(Char.IsDigit);
+            return digitCount == 0
+                       ? Test.Digit.NODIGIT
+                       : digitCount == s.Length
+                           ? Test.Digit.ALLDIGIT
+                           : Test.Digit.CONTAINDIGIT;
         }
     }
 }
