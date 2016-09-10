@@ -54,6 +54,15 @@ namespace Grobid.Test
             testSubject.Digit("abc123").Should().Be(Digit.CONTAINDIGIT);
             testSubject.Digit("123").Should().Be(Digit.ALLDIGIT);
         }
+
+        [Fact]
+        public void IsSingleCharTest()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.IsSingleChar("").Should().BeFalse();
+            testSubject.IsSingleChar("a").Should().BeTrue();
+            testSubject.IsSingleChar("abc").Should().BeFalse();
+        }
     }
 
     public enum Capitalization
@@ -114,6 +123,11 @@ namespace Grobid.Test
                        : digitCount == s.Length
                            ? Test.Digit.ALLDIGIT
                            : Test.Digit.CONTAINDIGIT;
+        }
+
+        public bool IsSingleChar(string s)
+        {
+            return s.Length == 1;
         }
     }
 }
