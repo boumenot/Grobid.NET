@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FluentAssertions;
 using Xunit;
@@ -97,6 +95,20 @@ namespace Grobid.Test
 
             // negative
             testSubject.IsMonth("abc").Should().BeFalse();
+        }
+
+        [Fact]
+        public void IsYear()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.IsYear("0000").Should().BeFalse();
+            testSubject.IsYear("1000").Should().BeTrue();
+            testSubject.IsYear("2000").Should().BeTrue();
+            testSubject.IsYear("2999").Should().BeTrue();
+            testSubject.IsYear("3000").Should().BeFalse();
+
+            testSubject.IsYear("").Should().BeFalse();
+            testSubject.IsYear("abc").Should().BeFalse();
         }
     }
 
@@ -195,6 +207,13 @@ namespace Grobid.Test
         public bool IsMonth(string s)
         {
             return FeatureExtractor.Months.Contains(s);
+        }
+
+        public bool IsYear(string s)
+        {
+            return s.Length == 4 &&
+                   s.All(Char.IsDigit) &&
+                   (s[0] == '1' || s[0] == '2');
         }
     }
 }
