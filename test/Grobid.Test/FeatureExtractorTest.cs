@@ -63,6 +63,41 @@ namespace Grobid.Test
             testSubject.IsSingleChar("a").Should().BeTrue();
             testSubject.IsSingleChar("abc").Should().BeFalse();
         }
+
+        [Fact]
+        public void IsMonth()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.IsMonth("January").Should().BeTrue();
+            testSubject.IsMonth("February").Should().BeTrue();
+            testSubject.IsMonth("March").Should().BeTrue();
+            testSubject.IsMonth("April").Should().BeTrue();
+            testSubject.IsMonth("May").Should().BeTrue();
+            testSubject.IsMonth("June").Should().BeTrue();
+            testSubject.IsMonth("July").Should().BeTrue();
+            testSubject.IsMonth("August").Should().BeTrue();
+            testSubject.IsMonth("September").Should().BeTrue();
+            testSubject.IsMonth("October").Should().BeTrue();
+            testSubject.IsMonth("November").Should().BeTrue();
+            testSubject.IsMonth("December").Should().BeTrue();
+            testSubject.IsMonth("Jan").Should().BeTrue();
+            testSubject.IsMonth("Feb").Should().BeTrue();
+            testSubject.IsMonth("Mar").Should().BeTrue();
+            testSubject.IsMonth("Apr").Should().BeTrue();
+            testSubject.IsMonth("Jun").Should().BeTrue();
+            testSubject.IsMonth("Jul").Should().BeTrue();
+            testSubject.IsMonth("Aug").Should().BeTrue();
+            testSubject.IsMonth("Sep").Should().BeTrue();
+            testSubject.IsMonth("Oct").Should().BeTrue();
+            testSubject.IsMonth("Nov").Should().BeTrue();
+            testSubject.IsMonth("Dec").Should().BeTrue();
+
+            // case does not matter
+            testSubject.IsMonth("january").Should().BeTrue();
+
+            // negative
+            testSubject.IsMonth("abc").Should().BeFalse();
+        }
     }
 
     public enum Capitalization
@@ -81,6 +116,33 @@ namespace Grobid.Test
 
     public class FeatureExtractor
     {
+        private static HashSet<string> Months = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        };
+
         public string Prefix(string s, int length)
         {
             return s.Substring(0, Math.Min(s.Length, length));
@@ -128,6 +190,11 @@ namespace Grobid.Test
         public bool IsSingleChar(string s)
         {
             return s.Length == 1;
+        }
+
+        public bool IsMonth(string s)
+        {
+            return FeatureExtractor.Months.Contains(s);
         }
     }
 }
