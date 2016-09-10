@@ -34,9 +34,27 @@ namespace Grobid.Test
             testSubject.Suffix("abc", 4).Should().Be("abc");
             testSubject.Suffix("abc", 3).Should().Be("abc");
         }
+
+        [Fact]
+        public void TestCapitalization()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.Case("UPPER").Should().Be(Capitalization.ALLCAP);
+            testSubject.Case("Capital").Should().Be(Capitalization.INITCAP);
+            testSubject.Case("lower").Should().Be(Capitalization.NOCAPS);
+            testSubject.Case("").Should().Be(Capitalization.NOCAPS);
+        }
     }
 
-    public class FeatureExtractor {
+    public enum Capitalization
+    {
+        INITCAP,
+        NOCAPS,
+        ALLCAP,
+    }
+
+    public class FeatureExtractor
+    {
         public string Prefix(string s, int length)
         {
             return s.Substring(0, Math.Min(s.Length, length));
@@ -48,6 +66,27 @@ namespace Grobid.Test
             int offset = s.Length - len;
 
             return s.Substring(offset, len);
+        }
+
+        public Capitalization Case(string s)
+        {
+            if (s.Length == 0)
+            {
+                return Capitalization.NOCAPS;
+            }
+
+            var cap = Capitalization.NOCAPS;
+            if (Char.IsUpper(s[0]))
+            {
+                cap = Capitalization.INITCAP;
+            }
+
+            if (s.All(Char.IsUpper))
+            {
+                cap = Capitalization.ALLCAP;
+            }
+
+            return cap;
         }
     }
 }
