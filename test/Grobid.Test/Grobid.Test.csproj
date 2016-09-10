@@ -140,6 +140,7 @@
     <Compile Include="CountryCodesTest.cs" />
     <Compile Include="EmptyLexicon.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FeatureExtractorTest.cs" />
     <Compile Include="FeatureTesterTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
