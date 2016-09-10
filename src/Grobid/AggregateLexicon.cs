@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Grobid.NET
 {
@@ -25,8 +22,8 @@ namespace Grobid.NET
         }
 
         public AggregateLexicon(
-            Lexicon englishLexicon, 
-            Lexicon germanLexicon, 
+            Lexicon englishLexicon,
+            Lexicon germanLexicon,
             org.grobid.core.lexicon.FastMatcher cityNameFastMatcher,
             CountryCodes countryCodes)
         {

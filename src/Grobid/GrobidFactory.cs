@@ -1,22 +1,17 @@
-﻿using com.sun.tools.javap;
-using java.util;
-using javax.naming;
-using org.apache.log4j;
-using org.grobid.core.document;
-using org.grobid.core.engines;
-using org.grobid.core.lexicon;
-using org.grobid.core.main;
-using org.grobid.core.mock;
-using org.grobid.core.process;
-using org.grobid.core.utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+
+using javax.naming;
+using org.grobid.core.document;
+using org.grobid.core.engines;
+using org.grobid.core.lexicon;
+using org.grobid.core.main;
+using org.grobid.core.process;
+using org.grobid.core.utilities;
 
 namespace Grobid.NET
 {

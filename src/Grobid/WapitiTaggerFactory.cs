@@ -20,12 +20,12 @@ namespace Grobid.NET
 
         public GenericTagger create(org.grobid.core.GrobidModels gm)
         {
-            var fullname = String.Format("models/{0}/model.wapiti", gm.toString());
+            var fullname = $"models/{gm.toString()}/model.wapiti";
             var entry = this.archive.Entries.FirstOrDefault(x => x.FullName == fullname);
 
             if (entry == null)
             {
-                var message = String.Format("The models archive does not contain a model for '{0}'!", fullname);
+                var message = $"The models archive does not contain a model for '{fullname}'!";
                 throw new NullReferenceException(message);
             }
 

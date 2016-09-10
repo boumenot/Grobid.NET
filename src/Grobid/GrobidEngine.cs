@@ -1,6 +1,7 @@
-﻿using org.grobid.core.data;
+﻿using System;
+
+using org.grobid.core.data;
 using org.grobid.core.engines;
-using System;
 
 namespace Grobid.NET
 {
