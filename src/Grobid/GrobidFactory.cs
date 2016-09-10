@@ -46,9 +46,6 @@ namespace Grobid.NET
             GrobidProperties.set_GROBID_HOME_PATH("c:\\");
             GrobidProperties.setGrobidPropertiesPath("c:\\");
 
-            var assemblyPath = Assembly.GetExecutingAssembly().Location;
-            var assemblyDirectory = Path.GetDirectoryName(assemblyPath);
-
             this.pathToModelsZip = pathToModelsZip;
             this.pathToPdf2XmlExe = pathToPdf2XmlExe;
             this.pathToTemp = pathToTemp;
@@ -141,7 +138,7 @@ namespace Grobid.NET
 
         private string GetWordformPath(string name)
         {
-            return String.Format("lexicon/wordforms/{0}-normalized.wf", name);
+            return $"lexicon/wordforms/{name}-normalized.wf";
         }
 
         private string[] ReadAllLines(Stream stream)
