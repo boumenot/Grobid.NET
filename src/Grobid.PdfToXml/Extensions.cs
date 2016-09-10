@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Grobid.PdfToXml
 {
@@ -23,6 +25,28 @@ namespace Grobid.PdfToXml
             bool isMinimalSpacing = (currTextBlock.Y - prevTextBlock.Y) < (prevTextBlock.TokenBlocks[0].FontSize * Extensions.maxLineSpacingDelta);
 
             return (isSimilarLineHeight && isSimilarFontSize && isMinimalSpacing);
+        }
+
+        public static IEnumerable<string> SplitWithDelims(this string s, char[] delimiters)
+        {
+            int index, offset = 0;
+
+            while ((index = s.IndexOfAny(delimiters, offset)) != -1)
+            {
+                int length = index - offset;
+                if (length > 0)
+                {
+                    yield return s.Substring(offset, length);
+                }
+
+                yield return s.Substring(index, 1);
+                offset = index + 1;
+            }
+
+            if (offset < s.Length)
+            {
+                yield return s.Substring(offset);
+            }
         }
     }
 }

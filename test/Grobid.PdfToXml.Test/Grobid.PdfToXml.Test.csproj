@@ -26,6 +26,7 @@
     <Compile Include="IndexGeneratorTest.cs" />
     <Compile Include="PageBlockFactoryTest.cs" />
     <Compile Include="Sample.cs" />
+    <Compile Include="SplitWithDelimsTest.cs" />
     <Compile Include="TextBlockFactoryTest.cs" />
     <Compile Include="TextRenderInfoStub.cs" />
     <Compile Include="TokenBlockFactoryTest.cs" />
