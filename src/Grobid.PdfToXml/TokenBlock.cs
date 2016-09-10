@@ -43,5 +43,37 @@ namespace Grobid.PdfToXml
 
             return mergedTokenBlock;
         }
+
+        public TokenBlock[] Tokenize()
+        {
+            var tokenBlocks = this
+                .Text
+                .SplitWithDelims(Constants.FullPunctuation)
+                .Select(this.CloneWithText)
+                .ToArray();
+
+            return tokenBlocks;
+        }
+
+        private TokenBlock CloneWithText(string text)
+        {
+            return new TokenBlock
+            {
+                FontFlags = this.FontFlags,
+                FontColor = this.FontColor,
+                FontName = this.FontName,
+                FontSize = this.FontSize,
+                Angle = this.Angle,
+                Rotation = this.Rotation,
+                IsEmpty = this.IsEmpty,
+                Base = this.Base,
+                BoundingRectangle = this.BoundingRectangle,
+                Height = this.Height,
+                Width = this.Width,
+                X = this.X,
+                Y = this.Y,
+                Text = text,
+            };
+        }
     }
 }

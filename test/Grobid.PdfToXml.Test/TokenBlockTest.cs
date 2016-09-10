@@ -1,9 +1,7 @@
-using System;
+using System.Linq;
 
 using FluentAssertions;
-
 using iTextSharp.text;
-using iTextSharp.text.pdf.parser;
 using Xunit;
 
 namespace Grobid.PdfToXml.Test
@@ -79,6 +77,127 @@ namespace Grobid.PdfToXml.Test
 
             var testSubject = TokenBlock.Merge(tokenBlocks);
             testSubject.Text.ToCharArray().Should().HaveCount(8);
+        }
+
+        [Fact]
+        public void TokenizeTokenBlock()
+        {
+            var boundingRectangle1 = new Rectangle(0, 1, 2, 3);
+
+            var tokenBlock = new TokenBlock
+            {
+                BoundingRectangle = boundingRectangle1,
+                Width = 1.1f,
+                Height = 2.2f,
+                Angle = 135,
+                Base = 3.3f,
+                Text = "abc,def.",
+                FontColor = "#012345",
+                FontFlags = FontFlags.Bold,
+                FontSize = 5.5f,
+                IsEmpty = false,
+                X = 6.6f,
+                Y = 7.7f,
+            };
+
+            var tokenBlocks = tokenBlock.Tokenize();
+            tokenBlocks.Should().HaveCount(4);
+
+            tokenBlocks[0].Text.Should().Be("abc");
+            tokenBlocks[1].Text.Should().Be(",");
+            tokenBlocks[2].Text.Should().Be("def");
+            tokenBlocks[3].Text.Should().Be(".");
+
+            tokenBlocks.All(x => x.BoundingRectangle.Equals(boundingRectangle1)).Should().BeTrue();
+            tokenBlocks.All(x => x.Width == 1.1f).Should().BeTrue();
+            tokenBlocks.All(x => x.Height == 2.2f).Should().BeTrue();
+            tokenBlocks.All(x => x.Angle == 135).Should().BeTrue();
+            tokenBlocks.All(x => x.Base == 3.3f).Should().BeTrue();
+            tokenBlocks.All(x => x.FontColor == "#012345").Should().BeTrue();
+            tokenBlocks.All(x => x.FontFlags == FontFlags.Bold).Should().BeTrue();
+            tokenBlocks.All(x => x.FontSize == 5.5f).Should().BeTrue();
+            tokenBlocks.All(x => !x.IsEmpty).Should().BeTrue();
+            tokenBlocks.All(x => x.X == 6.6f).Should().BeTrue();
+            tokenBlocks.All(x => x.Y == 7.7f).Should().BeTrue();
+        }
+
+        [Fact]
+        public void TokenizeEmptyText()
+        {
+            var boundingRectangle1 = new Rectangle(0, 1, 2, 3);
+
+            var tokenBlock = new TokenBlock
+            {
+                BoundingRectangle = boundingRectangle1,
+                Width = 1.1f,
+                Height = 2.2f,
+                Angle = 135,
+                Base = 3.3f,
+                Text = "",
+                FontColor = "#012345",
+                FontFlags = FontFlags.Bold,
+                FontSize = 5.5f,
+                IsEmpty = false,
+                X = 6.6f,
+                Y = 7.7f,
+            };
+
+            var tokenBlocks = tokenBlock.Tokenize();
+            tokenBlocks.Should().HaveCount(1);
+
+            tokenBlocks[0].Text.Should().Be("");
+
+            tokenBlocks.All(x => x.BoundingRectangle.Equals(boundingRectangle1)).Should().BeTrue();
+            tokenBlocks.All(x => x.Width == 1.1f).Should().BeTrue();
+            tokenBlocks.All(x => x.Height == 2.2f).Should().BeTrue();
+            tokenBlocks.All(x => x.Angle == 135).Should().BeTrue();
+            tokenBlocks.All(x => x.Base == 3.3f).Should().BeTrue();
+            tokenBlocks.All(x => x.FontColor == "#012345").Should().BeTrue();
+            tokenBlocks.All(x => x.FontFlags == FontFlags.Bold).Should().BeTrue();
+            tokenBlocks.All(x => x.FontSize == 5.5f).Should().BeTrue();
+            tokenBlocks.All(x => !x.IsEmpty).Should().BeTrue();
+            tokenBlocks.All(x => x.X == 6.6f).Should().BeTrue();
+            tokenBlocks.All(x => x.Y == 7.7f).Should().BeTrue();
+
+        }
+
+        [Fact]
+        public void TokenizeSingleToken()
+        {
+            var boundingRectangle1 = new Rectangle(0, 1, 2, 3);
+
+            var tokenBlock = new TokenBlock
+            {
+                BoundingRectangle = boundingRectangle1,
+                Width = 1.1f,
+                Height = 2.2f,
+                Angle = 135,
+                Base = 3.3f,
+                Text = "IsOneToken",
+                FontColor = "#012345",
+                FontFlags = FontFlags.Bold,
+                FontSize = 5.5f,
+                IsEmpty = false,
+                X = 6.6f,
+                Y = 7.7f,
+            };
+
+            var tokenBlocks = tokenBlock.Tokenize();
+            tokenBlocks.Should().HaveCount(1);
+
+            tokenBlocks[0].Text.Should().Be("IsOneToken");
+
+            tokenBlocks.All(x => x.BoundingRectangle.Equals(boundingRectangle1)).Should().BeTrue();
+            tokenBlocks.All(x => x.Width == 1.1f).Should().BeTrue();
+            tokenBlocks.All(x => x.Height == 2.2f).Should().BeTrue();
+            tokenBlocks.All(x => x.Angle == 135).Should().BeTrue();
+            tokenBlocks.All(x => x.Base == 3.3f).Should().BeTrue();
+            tokenBlocks.All(x => x.FontColor == "#012345").Should().BeTrue();
+            tokenBlocks.All(x => x.FontFlags == FontFlags.Bold).Should().BeTrue();
+            tokenBlocks.All(x => x.FontSize == 5.5f).Should().BeTrue();
+            tokenBlocks.All(x => !x.IsEmpty).Should().BeTrue();
+            tokenBlocks.All(x => x.X == 6.6f).Should().BeTrue();
+            tokenBlocks.All(x => x.Y == 7.7f).Should().BeTrue();
         }
     }
 }
