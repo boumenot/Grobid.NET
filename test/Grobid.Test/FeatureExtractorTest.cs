@@ -161,5 +161,32 @@ namespace Grobid.Test
             testSubject.Punctuation("a").Should().Be(Punctuation.NOPUNCT);
             testSubject.Punctuation("dog").Should().Be(Punctuation.NOPUNCT);
         }
+
+        [Fact]
+        public void TestIsDictionaryWord()
+        {
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
+            testSubject.IsDictionaryWord("word").Should().BeTrue();
+            testSubject.IsDictionaryWord("not-in-dictionary").Should().BeFalse();
+        }
+
+        [Fact]
+        public void TestIsName()
+        {
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
+            testSubject.IsForename("Christopher").Should().BeTrue();
+            testSubject.IsForename("christopher").Should().BeTrue();
+            testSubject.IsForename("Seth").Should().BeFalse();
+
+            testSubject.IsSurname("Boumenot").Should().BeTrue();
+            testSubject.IsSurname("boumenot").Should().BeTrue();
+            testSubject.IsSurname("Smith").Should().BeFalse();
+
+            testSubject.IsName("Christopher").Should().BeTrue();
+            testSubject.IsName("christopher").Should().BeTrue();
+            testSubject.IsName("Boumenot").Should().BeTrue();
+            testSubject.IsName("boumenot").Should().BeTrue();
+            testSubject.IsName("Smith").Should().BeFalse();
+        }
     }
 }

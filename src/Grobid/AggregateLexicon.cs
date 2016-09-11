@@ -21,7 +21,7 @@ namespace Grobid.NET
 
         public AggregateLexicon(
             ILexicon englishLexicon,
-            ILexicon germanLexicon, 
+            ILexicon germanLexicon,
             org.grobid.core.lexicon.FastMatcher cityNameFastMatcher,
             CountryCodes countryCodes)
         {

@@ -159,5 +159,25 @@ namespace Grobid
 
             return punc;
         }
+
+        public bool IsForename(string s)
+        {
+            return this.lexicon.IsFirstName(s);
+        }
+
+        public bool IsSurname(string s)
+        {
+            return this.lexicon.IsLastName(s);
+        }
+
+        public bool IsName(string s)
+        {
+            return this.IsForename(s) || this.IsSurname(s);
+        }
+
+        public bool IsDictionaryWord(string s)
+        {
+            return this.lexicon.HasWord(s);
+        }
     }
 }
