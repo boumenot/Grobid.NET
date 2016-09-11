@@ -142,9 +142,12 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AggregateLexicon.cs" />
+    <Compile Include="Capitalization.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CountryCodes.cs" />
+    <Compile Include="Digit.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FeatureExtractor.cs" />
     <Compile Include="FeatureTesterImpl.cs" />
     <Compile Include="GrobidEngine.cs" />
     <Compile Include="IGrobid.cs" />
