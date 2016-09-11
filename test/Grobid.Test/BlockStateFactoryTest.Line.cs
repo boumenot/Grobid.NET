@@ -41,6 +41,32 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void LineStatusAcrossTextBlocksTest()
+        {
+            var tokenBlock1 = new TokenBlock { Text = "TextBlock[0]: LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { Text = "TextBlock[0]: LineEnd", FontName = BlockStateFactoryTest.FontA };
+
+            var tokenBlock3 = new TokenBlock { Text = "TextBlock[1]: LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock4 = new TokenBlock { Text = "TextBlock[1]: LineEnd", FontName = BlockStateFactoryTest.FontA };
+
+            var textBlock1 = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
+            var textBlock2 = new TextBlock(new[] { tokenBlock3, tokenBlock4 });
+            var block = new Block { TextBlocks = new[] { textBlock1, textBlock2 } };
+
+            var testSubject = new BlockStateFactory();
+            var state1 = testSubject.Create(block, textBlock1, tokenBlock1);
+            var state2 = testSubject.Create(block, textBlock1, tokenBlock2);
+
+            var state3 = testSubject.Create(block, textBlock2, tokenBlock3);
+            var state4 = testSubject.Create(block, textBlock2, tokenBlock4);
+
+            state1.LineStatus.Should().Be(LineStatus.LINESTART);
+            state2.LineStatus.Should().Be(LineStatus.LINEEND);
+            state3.LineStatus.Should().Be(LineStatus.LINESTART);
+            state4.LineStatus.Should().Be(LineStatus.LINEEND);
+        }
+
+        [Fact]
         public void LineStatusEndTest()
         {
             var tokenBlock1 = new TokenBlock {  Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
