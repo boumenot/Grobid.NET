@@ -4,6 +4,7 @@ nuget ApprovalTests
 nuget FAKE
 nuget FluentAssertions
 nuget iTextSharp
+nuget Newtonsoft.Json
 nuget xunit
 nuget xunit.core
 nuget xunit.extensibility.core
