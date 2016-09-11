@@ -1,9 +1,5 @@
-﻿using System;
-
-using FluentAssertions;
-
+﻿using FluentAssertions;
 using iTextSharp.text.pdf.parser;
-
 using Xunit;
 
 namespace Grobid.PdfToXml.Test

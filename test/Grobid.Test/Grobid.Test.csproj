@@ -137,16 +137,25 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="BlockStateFactoryTest.Block.cs" />
+    <Compile Include="BlockStateFactoryTest.FontSize.cs" />
+    <Compile Include="BlockStateFactoryTest.Font.cs" />
+    <Compile Include="BlockStateFactoryTest.Line.cs" />
     <Compile Include="CountryCodesTest.cs" />
     <Compile Include="EmptyLexicon.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FeatureExtractorTest.cs" />
     <Compile Include="FeatureTesterTest.cs" />
+    <Compile Include="FeatureVectorExtractorFactoryTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
     <Compile Include="LexiconTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Grobid.PdfToXml\Grobid.PdfToXml.csproj">
+      <Project>{6DACE7CD-2466-4806-9D47-F8DF50233377}</Project>
+      <Name>Grobid.PdfToXml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Grobid\Grobid.csproj">
       <Project>{abb35f54-6f91-4972-b289-d15e3be1999f}</Project>
       <Name>Grobid</Name>

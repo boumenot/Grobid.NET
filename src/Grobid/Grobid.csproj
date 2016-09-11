@@ -156,8 +156,15 @@
     <Compile Include="ILexicon.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
+    <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Punctuation.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Grobid.PdfToXml\Grobid.PdfToXml.csproj">
+      <Project>{6DACE7CD-2466-4806-9D47-F8DF50233377}</Project>
+      <Name>Grobid.PdfToXml</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
