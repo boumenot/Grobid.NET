@@ -101,5 +101,10 @@ namespace Grobid
         {
             return FeatureExtractor.EmailAddress.IsMatch(s);
         }
+
+        public bool HasHttp(string s)
+        {
+            return s.IndexOf("http") >= 0;
+        }
     }
 }

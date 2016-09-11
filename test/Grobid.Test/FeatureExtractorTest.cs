@@ -119,5 +119,17 @@ namespace Grobid.Test
             testSubject.IsEmailAddress("me@").Should().BeFalse();
             testSubject.IsEmailAddress("email").Should().BeFalse();
         }
+
+        [Fact]
+        public void TestHttp()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.HasHttp("http").Should().BeTrue();
+            testSubject.HasHttp("http://archive.org").Should().BeTrue();
+            testSubject.HasHttp("https://archive.org").Should().BeTrue();
+            testSubject.HasHttp("InTheMiddle_http_InTheMiddle").Should().BeTrue();
+
+            testSubject.HasHttp("HTTP").Should().BeFalse();
+        }
     }
 }
