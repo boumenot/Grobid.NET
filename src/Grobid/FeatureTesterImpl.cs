@@ -9,10 +9,10 @@ namespace Grobid.NET
 {
     public class FeatureTesterImpl : FeatureTester
     {
-        private static Regex HasPunctuation = new Regex("^[\\,\\:;\\?\\.]+$", RegexOptions.Compiled);
-        private static Regex EmailAddress = new Regex("^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\]?)|(?:[a-zA-Z0-9-]+\\.)+(?:[a-zA-Z]){2,}\\.?)$", RegexOptions.Compiled);
+        private static readonly Regex HasPunctuation = new Regex("^[\\,\\:;\\?\\.]+$", RegexOptions.Compiled);
+        private static readonly Regex EmailAddress = new Regex("^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\]?)|(?:[a-zA-Z0-9-]+\\.)+(?:[a-zA-Z]){2,}\\.?)$", RegexOptions.Compiled);
 
-        private static HashSet<string> Months = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        private static readonly HashSet<string> Months = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "January",
             "February",
@@ -51,7 +51,7 @@ namespace Grobid.NET
         /// </summary>
         public bool test_all_capital(string str)
         {
-            return !str.Any(x => Char.IsLower(x));
+            return !str.Any(Char.IsLower);
         }
 
         public bool test_common(string str)
@@ -64,7 +64,7 @@ namespace Grobid.NET
         /// </summary>
         public bool test_digit(string str)
         {
-            return str.Any(x => Char.IsDigit(x));
+            return str.Any(Char.IsDigit);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Grobid.NET
         /// </summary>
         public bool test_number(string str)
         {
-            return str.All(x => Char.IsDigit(x));
+            return str.All(Char.IsDigit);
         }
 
         /// <summary>
