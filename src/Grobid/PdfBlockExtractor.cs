@@ -61,7 +61,7 @@ namespace Grobid.NET
             {
                 //BlockStatus = this.GetBlockStatus(block, tokenBlock),
                 //LineStatus = this.GetLineStatus(textBlock, tokenBlock),
-                //FontSizeStatus = this.GetFontSizeStatus(),
+                FontSizeStatus = this.GetFontSizeStatus(tokenBlock.FontSize),
                 FontStatus = this.GetFontStatus(tokenBlock.FontName.FullName),
                 Text = tokenBlock.Text,
             };
@@ -83,9 +83,21 @@ namespace Grobid.NET
             return FontStatus.NEWFONT;
         }
 
-        private FontSizeStatus GetFontSizeStatus()
+        private FontSizeStatus GetFontSizeStatus(float fontSize)
         {
-            throw new NotImplementedException();
+            // TODO: comparison of floats requires an epsilon consideration
+
+            if (this.previousFontSize < fontSize)
+            {
+                return FontSizeStatus.HIGHERFONT;
+            }
+
+            if (this.previousFontSize > fontSize)
+            {
+                return FontSizeStatus.LOWFONT;
+            }
+
+            return FontSizeStatus.SAMEFONTSIZE;
         }
 
         private BlockStatus GetBlockStatus(Block block, TokenBlock tokenBlock)

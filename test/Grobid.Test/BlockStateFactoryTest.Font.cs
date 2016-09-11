@@ -12,7 +12,7 @@ namespace Grobid.Test
         private static readonly FontName FontB = FontName.Parse("CHUFSU+NimbusRomNo9L-Bold");
 
         [Fact]
-        public void InitialFontStatusTest()
+        public void FontStatusInitialTest()
         {
             var tokenBlock = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new [] { tokenBlock });
@@ -25,7 +25,7 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void NewFontStatusTest()
+        public void FontStatusNewTest()
         {
             var tokenBlock1 = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
             var tokenBlock2 = new TokenBlock { FontName = BlockStateFactoryTest.FontB };
@@ -40,7 +40,7 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void SameFontStatusTest()
+        public void FontStatusSameTest()
         {
             var tokenBlock1 = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
             var tokenBlock2 = new TokenBlock { FontName = BlockStateFactoryTest.FontA };

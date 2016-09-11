@@ -9,7 +9,7 @@ namespace Grobid.Test
     public partial class BlockStateFactoryTest
     {
         [Fact]
-        public void InitialFontSizeTest()
+        public void FontSizeStatusInitialTest()
         {
             var tokenBlock = new TokenBlock { FontName = BlockStateFactoryTest.FontA, FontSize = 3.0f };
             var textBlock = new TextBlock(new [] { tokenBlock });
@@ -22,7 +22,7 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void FontSizeLargerTest()
+        public void FontSizeStatusLargerTest()
         {
             var tokenBlock1 = new TokenBlock { FontName = BlockStateFactoryTest.FontA, FontSize = 3.0f };
             var tokenBlock2 = new TokenBlock { FontName = BlockStateFactoryTest.FontB, FontSize = 4.0f };

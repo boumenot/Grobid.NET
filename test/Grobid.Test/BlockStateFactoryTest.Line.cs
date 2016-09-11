@@ -9,7 +9,7 @@ namespace Grobid.Test
     public partial class BlockStateFactoryTest
     {
         [Fact]
-        public void LineStartTest()
+        public void LineStatusInitialTest()
         {
             var tokenBlock = new TokenBlock();
             var textBlock = new TextBlock(new [] { tokenBlock });
@@ -22,7 +22,7 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void LineInTest()
+        public void LineStatusInTest()
         {
             var tokenBlock1 = new TokenBlock { Text = "LineStart" };
             var tokenBlock2 = new TokenBlock { Text = "LineIn" };
@@ -38,7 +38,7 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void LineEndTest()
+        public void LineStatusEndTest()
         {
             var tokenBlock1 = new TokenBlock {  Text = "LineStart" };
             var tokenBlock2 = new TokenBlock {  Text = "LineEnd" };
