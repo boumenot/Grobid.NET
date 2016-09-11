@@ -8,6 +8,7 @@ namespace Grobid
     public class FeatureExtractor
     {
         private static readonly Regex EmailAddress = new Regex("^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\]?)|(?:[a-zA-Z0-9-]+\\.)+(?:[a-zA-Z]){2,}\\.?)$", RegexOptions.Compiled);
+        private static readonly Regex PunctuationRegex = new Regex("^[\\,\\:;\\?\\.]+$", RegexOptions.Compiled);
 
         private static readonly HashSet<string> Months = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
@@ -104,7 +105,50 @@ namespace Grobid
 
         public bool HasHttp(string s)
         {
-            return s.IndexOf("http") >= 0;
+            return s.Contains("http");
+        }
+
+        public bool HasDash(string s)
+        {
+            return s.Contains("-");
+        }
+
+        public Punctuation Punctuation(string s)
+        {
+            var punc = Grobid.Punctuation.NOPUNCT;
+
+            if (FeatureExtractor.PunctuationRegex.IsMatch(s))
+            {
+                punc = Grobid.Punctuation.PUNCT;
+            }
+
+            switch (s)
+            {
+                case "(":
+                case "[":
+                    punc = Grobid.Punctuation.OPENBRACKET;
+                    break;
+                case ")":
+                case "]":
+                    punc = Grobid.Punctuation.ENDBRACKET;
+                    break;
+                case ".":
+                    punc = Grobid.Punctuation.DOT;
+                    break;
+                case ",":
+                    punc = Grobid.Punctuation.COMMA;
+                    break;
+                case "-":
+                    punc = Grobid.Punctuation.HYPHEN;
+                    break;
+                case "\"":
+                case "'":
+                case "`":
+                    punc = Grobid.Punctuation.QUOTE;
+                    break;
+            }
+
+            return punc;
         }
     }
 }

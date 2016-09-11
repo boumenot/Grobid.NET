@@ -156,6 +156,7 @@
     <Compile Include="ILexicon.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
+    <Compile Include="Punctuation.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

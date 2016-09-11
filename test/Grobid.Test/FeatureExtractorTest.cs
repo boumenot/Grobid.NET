@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-using Grobid.NET;
-
 namespace Grobid.Test
 {
     public class FeatureExtractorTest
@@ -121,7 +119,7 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void TestHttp()
+        public void TestHashHttp()
         {
             var testSubject = new FeatureExtractor();
             testSubject.HasHttp("http").Should().BeTrue();
@@ -130,6 +128,38 @@ namespace Grobid.Test
             testSubject.HasHttp("InTheMiddle_http_InTheMiddle").Should().BeTrue();
 
             testSubject.HasHttp("HTTP").Should().BeFalse();
+        }
+
+        [Fact]
+        public void TestHasDash()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.HasDash("-").Should().BeTrue();
+            testSubject.HasDash("a-bc").Should().BeTrue();
+            testSubject.HasDash("abc").Should().BeFalse();
+        }
+
+        [Fact]
+        public void TestPunctuation()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.Punctuation(":").Should().Be(Punctuation.PUNCT);
+            testSubject.Punctuation(";").Should().Be(Punctuation.PUNCT);
+            testSubject.Punctuation("?").Should().Be(Punctuation.PUNCT);
+
+            testSubject.Punctuation(",").Should().Be(Punctuation.COMMA);
+            testSubject.Punctuation(".").Should().Be(Punctuation.DOT);
+            testSubject.Punctuation("-").Should().Be(Punctuation.HYPHEN);
+            testSubject.Punctuation("(").Should().Be(Punctuation.OPENBRACKET);
+            testSubject.Punctuation("[").Should().Be(Punctuation.OPENBRACKET);
+            testSubject.Punctuation(")").Should().Be(Punctuation.ENDBRACKET);
+            testSubject.Punctuation("]").Should().Be(Punctuation.ENDBRACKET);
+            testSubject.Punctuation("\"").Should().Be(Punctuation.QUOTE);
+            testSubject.Punctuation("'").Should().Be(Punctuation.QUOTE);
+            testSubject.Punctuation("`").Should().Be(Punctuation.QUOTE);
+
+            testSubject.Punctuation("a").Should().Be(Punctuation.NOPUNCT);
+            testSubject.Punctuation("dog").Should().Be(Punctuation.NOPUNCT);
         }
     }
 }
