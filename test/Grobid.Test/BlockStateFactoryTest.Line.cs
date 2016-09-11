@@ -80,5 +80,21 @@ namespace Grobid.Test
 
             state.LineStatus.Should().Be(LineStatus.LINEEND);
         }
+
+        /// <summary>
+        /// If there's a single layout, text, and block confirm that LineStatus is LINESTART.
+        /// </summary>
+        [Fact]
+        public void LineStatusSingleBlockTest()
+        {
+            var tokenBlock1 = new TokenBlock { Text = "Line", FontName = BlockStateFactoryTest.FontA };
+            var textBlock1 = new TextBlock(new[] { tokenBlock1 });
+            var block1 = new Block { TextBlocks = new[] { textBlock1 } };
+
+            var testSubject = new BlockStateFactory();
+            var state1 = testSubject.Create(block1, textBlock1, tokenBlock1);
+
+            state1.LineStatus.Should().Be(LineStatus.LINESTART);
+        }
     }
 }

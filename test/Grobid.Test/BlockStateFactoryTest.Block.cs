@@ -62,5 +62,21 @@ namespace Grobid.Test
             state3.BlockStatus.Should().Be(BlockStatus.BLOCKSTART);
             state4.BlockStatus.Should().Be(BlockStatus.BLOCKEND);
         }
+
+        /// <summary>
+        /// If there's a single layout, text, and block confirm that BlockStatus is BLOCKSTART.
+        /// </summary>
+        [Fact]
+        public void BlockStatusSingleBlockTest()
+        {
+            var tokenBlock1 = new TokenBlock { Text = "Line", FontName = BlockStateFactoryTest.FontA };
+            var textBlock1 = new TextBlock(new[] { tokenBlock1 });
+            var block1 = new Block { TextBlocks = new[] { textBlock1 } };
+
+            var testSubject = new BlockStateFactory();
+            var state1 = testSubject.Create(block1, textBlock1, tokenBlock1);
+
+            state1.BlockStatus.Should().Be(BlockStatus.BLOCKSTART);
+        }
     }
 }
