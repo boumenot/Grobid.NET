@@ -39,5 +39,28 @@ namespace Grobid.Test
             state2.BlockStatus.Should().Be(BlockStatus.BLOCKIN);
             state3.BlockStatus.Should().Be(BlockStatus.BLOCKEND);
         }
+
+        [Fact]
+        public void BlockStatusMultiTextBlockTest()
+        {
+            var tokenBlock1 = new TokenBlock { Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock3 = new TokenBlock { Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock4 = new TokenBlock { Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var textBlock1 = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
+            var textBlock2 = new TextBlock(new[] { tokenBlock3, tokenBlock4 });
+            var block1 = new Block { TextBlocks = new[] { textBlock1, textBlock2 } };
+
+            var testSubject = new BlockStateFactory();
+            var state1 = testSubject.Create(block1, textBlock1, tokenBlock1);
+            var state2 = testSubject.Create(block1, textBlock1, tokenBlock2);
+            var state3 = testSubject.Create(block1, textBlock2, tokenBlock3);
+            var state4 = testSubject.Create(block1, textBlock2, tokenBlock4);
+
+            state1.BlockStatus.Should().Be(BlockStatus.BLOCKSTART);
+            state2.BlockStatus.Should().Be(BlockStatus.BLOCKEND);
+            state3.BlockStatus.Should().Be(BlockStatus.BLOCKSTART);
+            state4.BlockStatus.Should().Be(BlockStatus.BLOCKEND);
+        }
     }
 }
