@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 using FluentAssertions;
 using Xunit;
@@ -110,6 +111,17 @@ namespace Grobid.Test
             testSubject.IsYear("").Should().BeFalse();
             testSubject.IsYear("abc").Should().BeFalse();
         }
+
+        [Fact]
+        public void IsEmailAddress()
+        {
+            var testSubject = new FeatureExtractor();
+            testSubject.IsEmailAddress("me@here.com").Should().BeTrue();
+            testSubject.IsEmailAddress("me.you@here.com").Should().BeTrue();
+
+            testSubject.IsEmailAddress("me@").Should().BeFalse();
+            testSubject.IsEmailAddress("email").Should().BeFalse();
+        }
     }
 
     public enum Capitalization
@@ -128,6 +140,8 @@ namespace Grobid.Test
 
     public class FeatureExtractor
     {
+        private static Regex EmailAddress = new Regex("^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\]?)|(?:[a-zA-Z0-9-]+\\.)+(?:[a-zA-Z]){2,}\\.?)$", RegexOptions.Compiled);
+
         private static HashSet<string> Months = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "January",
@@ -214,6 +228,11 @@ namespace Grobid.Test
             return s.Length == 4 &&
                    s.All(Char.IsDigit) &&
                    (s[0] == '1' || s[0] == '2');
+        }
+
+        public bool IsEmailAddress(string s)
+        {
+            return FeatureExtractor.EmailAddress.IsMatch(s);
         }
     }
 }
