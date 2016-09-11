@@ -212,6 +212,9 @@ namespace Grobid.PdfToXml.Test
 
             tokenBlock1.Should().NotBe(tokenBlock3);
             tokenBlock1.GetHashCode().Should().NotBe(tokenBlock3.GetHashCode());
+
+            (tokenBlock1 == tokenBlock2).Should().BeTrue();
+            (tokenBlock1 != tokenBlock3).Should().BeTrue();
         }
     }
 }

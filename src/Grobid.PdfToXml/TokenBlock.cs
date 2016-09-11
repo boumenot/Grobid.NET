@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Linq;
 
 using iTextSharp.text;
@@ -113,6 +114,26 @@ namespace Grobid.PdfToXml
                 this.Height == other.Height &&
                 this.Width == other.Width &&
                 this.Text == other.Text;
+        }
+
+        public static bool operator==(TokenBlock lhs, TokenBlock rhs)
+        {
+            if (System.Object.ReferenceEquals(lhs, rhs))
+            {
+                return true;
+            }
+
+            if ((object)lhs == null || (object)rhs == null)
+            {
+                return false;
+            }
+
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator!=(TokenBlock lhs, TokenBlock rhs)
+        {
+            return !(lhs == rhs);
         }
     }
 }
