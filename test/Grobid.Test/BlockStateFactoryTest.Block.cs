@@ -11,7 +11,7 @@ namespace Grobid.Test
         [Fact]
         public void BlockStatusInitialTest()
         {
-            var tokenBlock = new TokenBlock();
+            var tokenBlock = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new [] { tokenBlock });
             var block = new Block { TextBlocks = new [] { textBlock } };
 
@@ -22,33 +22,22 @@ namespace Grobid.Test
         }
 
         [Fact]
-        public void BlockStatusInTest()
+        public void BlockStatusTest()
         {
-            var tokenBlock1 = new TokenBlock { Text = "LineStart" };
-            var tokenBlock2 = new TokenBlock { Text = "LineIn" };
-            var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
-            var block = new Block { TextBlocks = new[] { textBlock } };
-
-            var testSubject = new BlockStateFactory();
-            testSubject.Create(block, textBlock, tokenBlock1);
-            var state = testSubject.Create(block, textBlock, tokenBlock2);
-
-            state.BlockStatus.Should().Be(BlockStatus.BLOCKIN);
-        }
-
-        [Fact]
-        public void BlockStatusEndTest()
-        {
-            var tokenBlock = new TokenBlock {  Text = "LineStart" };
-            var textBlock = new TextBlock(new[] { tokenBlock });
+            var tokenBlock1 = new TokenBlock { Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { Text = "LineIn", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock3 = new TokenBlock { Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2, tokenBlock3 });
             var block1 = new Block { TextBlocks = new[] { textBlock } };
-            var block2 = new Block { TextBlocks = new[] { textBlock } };
 
             var testSubject = new BlockStateFactory();
-            testSubject.Create(block1, textBlock, tokenBlock);
-            var state = testSubject.Create(block2, textBlock, tokenBlock);
+            var state1 = testSubject.Create(block1, textBlock, tokenBlock1);
+            var state2 = testSubject.Create(block1, textBlock, tokenBlock2);
+            var state3 = testSubject.Create(block1, textBlock, tokenBlock3);
 
-            state.BlockStatus.Should().Be(BlockStatus.BLOCKEND);
+            state1.BlockStatus.Should().Be(BlockStatus.BLOCKSTART);
+            state2.BlockStatus.Should().Be(BlockStatus.BLOCKIN);
+            state3.BlockStatus.Should().Be(BlockStatus.BLOCKEND);
         }
     }
 }
