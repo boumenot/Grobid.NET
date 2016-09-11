@@ -5,7 +5,7 @@ using iTextSharp.text;
 
 namespace Grobid.PdfToXml
 {
-    public class TokenBlock
+    public class TokenBlock : IEquatable<TokenBlock>
     {
         public static readonly TokenBlock Empty = new TokenBlock { IsEmpty = true };
 
@@ -76,6 +76,43 @@ namespace Grobid.PdfToXml
                 Y = this.Y,
                 Text = text,
             };
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + this.X.GetHashCode();
+                hash = hash * 23 + this.Y.GetHashCode();
+                hash = hash * 23 + this.Height.GetHashCode();
+                hash = hash * 23 + this.Width.GetHashCode();
+                hash = hash * 23 + this.Text.GetHashCode();
+
+                return hash;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var other = obj as TokenBlock;
+            return other != null && this.Equals(other);
+        }
+
+        public bool Equals(TokenBlock other)
+        {
+            // TODO: compare with a epsilon
+            return
+                this.X == other.X &&
+                this.Y == other.Y &&
+                this.Height == other.Height &&
+                this.Width == other.Width &&
+                this.Text == other.Text;
         }
     }
 }

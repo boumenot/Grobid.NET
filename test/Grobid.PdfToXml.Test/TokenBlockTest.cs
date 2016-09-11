@@ -199,5 +199,19 @@ namespace Grobid.PdfToXml.Test
             tokenBlocks.All(x => x.X == 6.6f).Should().BeTrue();
             tokenBlocks.All(x => x.Y == 7.7f).Should().BeTrue();
         }
+
+        [Fact]
+        public void EqualityTest()
+        {
+            var tokenBlock1 = new TokenBlock {  X = 1.0f, Y = 1.0f, Width = 2.0f, Height = 2.0f, Text = "tbA" };
+            var tokenBlock2 = new TokenBlock {  X = 1.0f, Y = 1.0f, Width = 2.0f, Height = 2.0f, Text = "tbA" };
+            var tokenBlock3 = new TokenBlock {  X = 1.0f, Y = 1.0f, Width = 2.0f, Height = 2.0f, Text = "tbB" };
+
+            tokenBlock1.Should().Be(tokenBlock2);
+            tokenBlock1.GetHashCode().Should().Be(tokenBlock2.GetHashCode());
+
+            tokenBlock1.Should().NotBe(tokenBlock3);
+            tokenBlock1.GetHashCode().Should().NotBe(tokenBlock3.GetHashCode());
+        }
     }
 }
