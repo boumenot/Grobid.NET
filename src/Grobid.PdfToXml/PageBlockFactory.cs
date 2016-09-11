@@ -31,11 +31,15 @@ namespace Grobid.PdfToXml
 
         private IEnumerable<PageBlock> ReadPages(PdfReader reader)
         {
+            int tokenBlockCount = 0;
+            int textBlockCount = 0;
+            int blockCount = 0;
+
             for (int i = 1; i <= reader.NumberOfPages; i++)
             {
-                var tokenBlocks = this.GetTokenBlocks(reader, i);
-                var textBlocks = this.textBlockFactory.Create(tokenBlocks, reader.GetPageSize(i).Height);
-                var blocks = this.PartitionIntoBlocks(textBlocks, i - 1);
+                var tokenBlocks = this.GetTokenBlocks(reader, i, tokenBlockCount);
+                var textBlocks = this.textBlockFactory.Create(tokenBlocks, reader.GetPageSize(i).Height, textBlockCount);
+                var blocks = this.PartitionIntoBlocks(textBlocks, i - 1, blockCount);
 
                 var pageBlock = this.CreatePageBlock(
                     reader.GetPageSize(i).Width,
@@ -44,10 +48,14 @@ namespace Grobid.PdfToXml
                     blocks);
 
                 yield return pageBlock;
+
+                tokenBlockCount += tokenBlocks.Length;
+                textBlockCount += textBlocks.Length;
+                blockCount += blocks.Length;
             }
         }
 
-        private Block[] PartitionIntoBlocks(TextBlock[] textBlocks, int page)
+        private Block[] PartitionIntoBlocks(TextBlock[] textBlocks, int page, int id)
         {
             var xss = new List<List<TextBlock>>
             {
@@ -80,27 +88,28 @@ namespace Grobid.PdfToXml
                 index++;
             }
 
-            return xss.Select(x => new Block { TextBlocks = x.ToArray(), Page = page }).ToArray();
+            return xss.Select((x,i) => new Block { Id = id + i, TextBlocks = x.ToArray(), Page = page }).ToArray();
         }
 
         private PageBlock CreatePageBlock(float width, float height, int offset, Block[] blocks)
         {
             var pageBlock = new PageBlock
             {
-                Width = width,
+                Id = offset - 1, // zero-based counting
+                Offset = offset, // one-based counting
                 Height = height,
-                Offset = offset,
+                Width = width,
                 Blocks = blocks,
             };
 
             return pageBlock;
         }
 
-        private TokenBlock[] GetTokenBlocks(PdfReader reader, int pageNumber)
+        private TokenBlock[] GetTokenBlocks(PdfReader reader, int pageNumber, int id)
         {
             var tokenBlocks = new List<TokenBlock>();
             var pageSize = reader.GetPageSize(pageNumber);
-            var tokenBlockFactory = new TokenBlockFactory(pageSize.Width, pageSize.Height);
+            var tokenBlockFactory = new TokenBlockFactory(pageSize.Width, pageSize.Height, id);
 
             var xmlTextExtractionStrategy = new XmlTextExtractionStrategy(tokenBlocks, tokenBlockFactory);
 

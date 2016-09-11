@@ -1,10 +1,12 @@
-using System.Linq;
-
+using ApprovalTests;
+using ApprovalTests.Reporters;
 using FluentAssertions;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Grobid.PdfToXml.Test
 {
+    [UseReporter(typeof(DiffReporter))]
     public class PageBlockFactoryTest
     {
         [Fact]
@@ -16,8 +18,7 @@ namespace Grobid.PdfToXml.Test
             pageBlocks.Should().HaveCount(1);
             pageBlocks[0].Offset.Should().Be(1);
 
-            var textBlocks = pageBlocks[0].Blocks.SelectMany(x => x.TextBlocks);
-            textBlocks.Should().HaveCount(104);
+            Approvals.VerifyJson(JsonConvert.SerializeObject(pageBlocks));
         }
     }
 }

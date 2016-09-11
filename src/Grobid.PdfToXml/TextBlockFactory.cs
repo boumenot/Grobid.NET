@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Grobid.PdfToXml
 {
     public class TextBlockFactory
     {
-        public TextBlock[] Create(TokenBlock[] tokenBlocks, float pageHeight)
+        public TextBlock[] Create(TokenBlock[] tokenBlocks, float pageHeight, int id = 0)
         {
-            return this.GetTextBlocks(tokenBlocks, pageHeight).ToArray();
+            return this.GetTextBlocks(tokenBlocks, pageHeight, id).ToArray();
         }
 
         private IEnumerable<TokenBlock> Merge(TokenBlock[] tokenBlocks)
@@ -36,7 +35,7 @@ namespace Grobid.PdfToXml
             }
         }
 
-        private IEnumerable<TextBlock> GetTextBlocks(TokenBlock[] tokenBlocks, float pageHeight)
+        private IEnumerable<TextBlock> GetTextBlocks(TokenBlock[] tokenBlocks, float pageHeight, int id)
         {
             var i = 0;
             while (i < tokenBlocks.Length)
@@ -55,8 +54,9 @@ namespace Grobid.PdfToXml
                 var mergedTokenBlocks = this.Merge(tokenBlocksOnSameLine)
                     .ToArray();
 
-                yield return new TextBlock(mergedTokenBlocks);
+                yield return new TextBlock(mergedTokenBlocks, id);
                 i += tokenBlocksOnSameLine.Length;
+                id++;
             }
         }
     }

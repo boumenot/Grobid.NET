@@ -5,6 +5,8 @@ namespace Grobid.PdfToXml
 {
     public class Block
     {
+        public int Id { get; set; }
+
         public FontName FontName => this.First.FontName;
         public float FontSize => this.First.FontSize;
         public string FontColor => this.First.FontColor;

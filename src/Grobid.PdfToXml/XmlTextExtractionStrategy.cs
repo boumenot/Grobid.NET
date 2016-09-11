@@ -79,8 +79,6 @@ namespace Grobid.PdfToXml
             Vector start = segment.GetStartPoint();
             Vector end = segment.GetEndPoint();
 
-            Vector x1 = this.lastStart;
-
             if (!firstRender)
             {
                 if (!this.tokenBlocks.Last().Text.EndsWith(" ") && renderInfo.GetText().Length > 0 && renderInfo.GetText()[0] != ' ')

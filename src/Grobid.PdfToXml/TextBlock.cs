@@ -5,23 +5,24 @@ namespace Grobid.PdfToXml
 {
     public class TextBlock
     {
-        private readonly TokenBlock[] tokenBlocks;
-
-        public TextBlock(TokenBlock[] tokenBlocks)
+        public TextBlock(TokenBlock[] tokenBlocks, int id = 0)
         {
-            this.tokenBlocks = tokenBlocks;
+            this.TokenBlocks = tokenBlocks;
+            this.Id = id;
         }
 
-        public TokenBlock[] TokenBlocks => this.tokenBlocks;
-
-        private TokenBlock First => this.tokenBlocks[0];
-        private TokenBlock Last => this.tokenBlocks[this.tokenBlocks.Length - 1];
+        public int Id { get; }
 
         public float X => this.First.X;
         public float Y => this.First.Y;
 
-        public float Width => this.Last.BoundingRectangle.Right - this.First.BoundingRectangle.Left;
         public float Height => this.First.Height;
-        public string Text => String.Join(" ", tokenBlocks.Select(x => x.Text));
+        public float Width => this.Last.BoundingRectangle.Right - this.First.BoundingRectangle.Left;
+        public string Text => String.Join(" ", this.TokenBlocks.Select(x => x.Text));
+
+        public TokenBlock[] TokenBlocks { get; }
+
+        private TokenBlock First => this.TokenBlocks[0];
+        private TokenBlock Last => this.TokenBlocks[this.TokenBlocks.Length - 1];
     }
 }

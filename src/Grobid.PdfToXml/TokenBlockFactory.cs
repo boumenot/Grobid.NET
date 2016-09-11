@@ -1,7 +1,6 @@
 using System;
 
 using iTextSharp.text;
-using iTextSharp.text.pdf;
 
 namespace Grobid.PdfToXml
 {
@@ -11,11 +10,13 @@ namespace Grobid.PdfToXml
 
         private readonly float pageWidth;
         private readonly float pageHeight;
+        private int id;
 
-        public TokenBlockFactory(float pageWidth, float pageHeight)
+        public TokenBlockFactory(float pageWidth, float pageHeight, int id = 0)
         {
             this.pageWidth = pageWidth;
             this.pageHeight = pageHeight;
+            this.id = id;
         }
 
         public TokenBlock Create(ITextRenderInfo renderInfo)
@@ -30,6 +31,8 @@ namespace Grobid.PdfToXml
 
             var tokenBlock = new TokenBlock
             {
+                Id = this.id++,
+
                 Angle = this.GetAngle(),
                 Base = tokenBlockBase,
                 BoundingRectangle = boundingRectangle,

@@ -9,6 +9,12 @@ namespace Grobid.PdfToXml
     {
         public static readonly TokenBlock Empty = new TokenBlock { IsEmpty = true };
 
+        public int Id { get; set; }
+
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Height { get; set; }
+        public float Width { get; set; }
         public int Angle { get; set; }
         public float Base { get; set; }
         public Rectangle BoundingRectangle { get; set; }
@@ -16,13 +22,9 @@ namespace Grobid.PdfToXml
         public FontFlags FontFlags { get; set; }
         public FontName FontName { get; set; }
         public float FontSize { get; set; }
-        public float Height { get; set; }
         public bool IsEmpty { get; set; }
         public int Rotation { get; set; }
         public string Text { get; set; }
-        public float Width { get; set; }
-        public float X { get; set; }
-        public float Y { get; set; }
 
         public bool IsBold => this.FontName.IsBold || this.FontFlags.HasFlag(FontFlags.Bold);
         public bool IsItalic => this.FontName.IsItalic || this.FontFlags.HasFlag(FontFlags.Italic);

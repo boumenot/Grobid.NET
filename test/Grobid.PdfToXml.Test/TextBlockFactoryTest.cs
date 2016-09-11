@@ -1,9 +1,7 @@
 using System.Linq;
 
 using FluentAssertions;
-
 using iTextSharp.text;
-
 using Xunit;
 
 namespace Grobid.PdfToXml.Test
