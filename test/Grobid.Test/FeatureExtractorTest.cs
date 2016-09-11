@@ -8,7 +8,7 @@ namespace Grobid.Test
         [Fact]
         public void TestPrefix()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.Prefix("Christopher", 1).Should().Be("C");
             testSubject.Prefix("Christopher", 2).Should().Be("Ch");
             testSubject.Prefix("Christopher", 3).Should().Be("Chr");
@@ -20,7 +20,7 @@ namespace Grobid.Test
         [Fact]
         public void TestSuffix()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.Suffix("Christopher", 1).Should().Be("r");
             testSubject.Suffix("Christopher", 2).Should().Be("er");
             testSubject.Suffix("Christopher", 3).Should().Be("her");
@@ -32,7 +32,7 @@ namespace Grobid.Test
         [Fact]
         public void TestCapitalization()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.Case("UPPER").Should().Be(Capitalization.ALLCAP);
             testSubject.Case("Capital").Should().Be(Capitalization.INITCAP);
             testSubject.Case("lower").Should().Be(Capitalization.NOCAPS);
@@ -42,7 +42,7 @@ namespace Grobid.Test
         [Fact]
         public void TestDigit()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.Digit("").Should().Be(Digit.NODIGIT);
             testSubject.Digit("abc").Should().Be(Digit.NODIGIT);
             testSubject.Digit("abc123").Should().Be(Digit.CONTAINDIGIT);
@@ -52,7 +52,7 @@ namespace Grobid.Test
         [Fact]
         public void IsSingleCharTest()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.IsSingleChar("").Should().BeFalse();
             testSubject.IsSingleChar("a").Should().BeTrue();
             testSubject.IsSingleChar("abc").Should().BeFalse();
@@ -61,7 +61,7 @@ namespace Grobid.Test
         [Fact]
         public void IsMonth()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.IsMonth("January").Should().BeTrue();
             testSubject.IsMonth("February").Should().BeTrue();
             testSubject.IsMonth("March").Should().BeTrue();
@@ -96,7 +96,7 @@ namespace Grobid.Test
         [Fact]
         public void IsYear()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.IsYear("0000").Should().BeFalse();
             testSubject.IsYear("1000").Should().BeTrue();
             testSubject.IsYear("2000").Should().BeTrue();
@@ -110,7 +110,7 @@ namespace Grobid.Test
         [Fact]
         public void IsEmailAddress()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.IsEmailAddress("me@here.com").Should().BeTrue();
             testSubject.IsEmailAddress("me.you@here.com").Should().BeTrue();
 
@@ -121,7 +121,7 @@ namespace Grobid.Test
         [Fact]
         public void TestHashHttp()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.HasHttp("http").Should().BeTrue();
             testSubject.HasHttp("http://archive.org").Should().BeTrue();
             testSubject.HasHttp("https://archive.org").Should().BeTrue();
@@ -133,7 +133,7 @@ namespace Grobid.Test
         [Fact]
         public void TestHasDash()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.HasDash("-").Should().BeTrue();
             testSubject.HasDash("a-bc").Should().BeTrue();
             testSubject.HasDash("abc").Should().BeFalse();
@@ -142,7 +142,7 @@ namespace Grobid.Test
         [Fact]
         public void TestPunctuation()
         {
-            var testSubject = new FeatureExtractor();
+            var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.Punctuation(":").Should().Be(Punctuation.PUNCT);
             testSubject.Punctuation(";").Should().Be(Punctuation.PUNCT);
             testSubject.Punctuation("?").Should().Be(Punctuation.PUNCT);

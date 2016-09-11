@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+using Grobid.NET;
+
 namespace Grobid
 {
     public class FeatureExtractor
@@ -36,6 +38,13 @@ namespace Grobid
             "Nov",
             "Dec",
         };
+
+        private readonly ILexicon lexicon;
+
+        public FeatureExtractor(ILexicon lexicon)
+        {
+            this.lexicon = lexicon;
+        }
 
         public string Prefix(string s, int length)
         {
