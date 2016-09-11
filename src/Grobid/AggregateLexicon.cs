@@ -6,10 +6,8 @@ namespace Grobid.NET
     public class AggregateLexicon : ILexicon
     {
         private readonly ILexicon[] lexicons;
-        private Lexicon englishLexicon;
-        private Lexicon germanLexicon;
-        private org.grobid.core.lexicon.FastMatcher cityNameFastMatcher;
-        private CountryCodes countryCodes;
+        private readonly org.grobid.core.lexicon.FastMatcher cityNameFastMatcher;
+        private readonly CountryCodes countryCodes;
 
         public AggregateLexicon(ILexicon lexicon, params ILexicon[] lexicons)
         {
@@ -22,14 +20,12 @@ namespace Grobid.NET
         }
 
         public AggregateLexicon(
-            Lexicon englishLexicon,
-            Lexicon germanLexicon,
+            ILexicon englishLexicon,
+            ILexicon germanLexicon,
             org.grobid.core.lexicon.FastMatcher cityNameFastMatcher,
             CountryCodes countryCodes)
         {
-            this.englishLexicon = englishLexicon;
-            this.germanLexicon = germanLexicon;
-            this.lexicons = new[] { this.englishLexicon, this.germanLexicon };
+            this.lexicons = new ILexicon[] { englishLexicon, germanLexicon };
 
             this.cityNameFastMatcher = cityNameFastMatcher;
             this.countryCodes = countryCodes;
