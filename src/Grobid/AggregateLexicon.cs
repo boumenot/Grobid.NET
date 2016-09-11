@@ -11,7 +11,7 @@ namespace Grobid.NET
 
         public AggregateLexicon(ILexicon lexicon, params ILexicon[] lexicons)
         {
-            this.lexicons = Enumerable.Repeat<ILexicon>(lexicon, 1).Concat(lexicons).ToArray();
+            this.lexicons = Enumerable.Repeat(lexicon, 1).Concat(lexicons).ToArray();
         }
 
         public AggregateLexicon(IEnumerable<ILexicon> lexicons)
@@ -21,7 +21,7 @@ namespace Grobid.NET
 
         public AggregateLexicon(
             ILexicon englishLexicon,
-            ILexicon germanLexicon,
+            ILexicon germanLexicon, 
             org.grobid.core.lexicon.FastMatcher cityNameFastMatcher,
             CountryCodes countryCodes)
         {
