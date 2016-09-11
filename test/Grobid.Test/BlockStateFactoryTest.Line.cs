@@ -11,7 +11,7 @@ namespace Grobid.Test
         [Fact]
         public void LineStatusInitialTest()
         {
-            var tokenBlock = new TokenBlock();
+            var tokenBlock = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new [] { tokenBlock });
             var block = new Block { TextBlocks = new [] { textBlock } };
 
@@ -24,24 +24,27 @@ namespace Grobid.Test
         [Fact]
         public void LineStatusInTest()
         {
-            var tokenBlock1 = new TokenBlock { Text = "LineStart" };
-            var tokenBlock2 = new TokenBlock { Text = "LineIn" };
-            var tokenBlock3 = new TokenBlock { Text = "LineEnd" };
+            var tokenBlock1 = new TokenBlock { Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { Text = "LineIn", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock3 = new TokenBlock { Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2, tokenBlock3 });
             var block = new Block { TextBlocks = new[] { textBlock } };
 
             var testSubject = new BlockStateFactory();
-            testSubject.Create(block, textBlock, tokenBlock1);
-            var state = testSubject.Create(block, textBlock, tokenBlock2);
+            var state1 = testSubject.Create(block, textBlock, tokenBlock1);
+            var state2 = testSubject.Create(block, textBlock, tokenBlock2);
+            var state3 = testSubject.Create(block, textBlock, tokenBlock3);
 
-            state.LineStatus.Should().Be(LineStatus.LINEIN);
+            state1.LineStatus.Should().Be(LineStatus.LINESTART);
+            state2.LineStatus.Should().Be(LineStatus.LINEIN);
+            state3.LineStatus.Should().Be(LineStatus.LINEEND);
         }
 
         [Fact]
         public void LineStatusEndTest()
         {
-            var tokenBlock1 = new TokenBlock {  Text = "LineStart" };
-            var tokenBlock2 = new TokenBlock {  Text = "LineEnd" };
+            var tokenBlock1 = new TokenBlock {  Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock {  Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
             var block = new Block { TextBlocks = new[] { textBlock } };
 

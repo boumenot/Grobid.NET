@@ -60,7 +60,7 @@ namespace Grobid.NET
             var blockState = new BlockState
             {
                 //BlockStatus = this.GetBlockStatus(block, tokenBlock),
-                //LineStatus = this.GetLineStatus(textBlock, tokenBlock),
+                LineStatus = this.GetLineStatus(textBlock, tokenBlock),
                 FontSizeStatus = this.GetFontSizeStatus(tokenBlock.FontSize),
                 FontStatus = this.GetFontStatus(tokenBlock.FontName.FullName),
                 Text = tokenBlock.Text,
@@ -111,21 +111,24 @@ namespace Grobid.NET
 
         private LineStatus GetLineStatus(TextBlock textBlock, TokenBlock tokenBlock)
         {
-            return this.IsTokenBeginOfLine()
+            return this.IsTokenBeginOfLine(textBlock, tokenBlock)
                        ? LineStatus.LINESTART
-                       : this.IsTokenEndOfLine()
+                       : this.IsTokenEndOfLine(textBlock, tokenBlock)
                            ? LineStatus.LINEEND
                            : LineStatus.LINEIN;
         }
 
-        private bool IsTokenBeginOfLine()
+
+        private bool IsTokenBeginOfLine(TextBlock textBlock, TokenBlock tokenBlock)
         {
-            return false;
+            var firstToken = textBlock.TokenBlocks[0];
+            return firstToken == tokenBlock;
         }
 
-        private bool IsTokenEndOfLine()
+        private bool IsTokenEndOfLine(TextBlock textBlock, TokenBlock tokenBlock)
         {
-            return false;
+            var lastToken = textBlock.TokenBlocks[textBlock.TokenBlocks.Length - 1];
+            return lastToken == tokenBlock;
         }
 
         private bool IsTokenBeginOfBlock()
