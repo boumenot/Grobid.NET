@@ -16,7 +16,7 @@ namespace Grobid.Test
 
         public static Stream ToStream(this IEnumerable<string> xs)
         {
-            return Extensions.ToStream(String.Join(Environment.NewLine, xs.ToArray()));
+            return String.Join(Environment.NewLine, xs.ToArray()).ToStream();
         }
     }
 }

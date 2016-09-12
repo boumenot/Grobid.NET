@@ -142,6 +142,9 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AggregateLexicon.cs" />
+    <Compile Include="BlockState.cs" />
+    <Compile Include="BlockStateFactory.cs" />
+    <Compile Include="BlockStatus.cs" />
     <Compile Include="Capitalization.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CountryCodes.cs" />
@@ -149,13 +152,18 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FeatureExtractor.cs" />
     <Compile Include="FeatureTesterImpl.cs" />
+    <Compile Include="FontSizeStatus.cs" />
+    <Compile Include="FontStatus.cs" />
     <Compile Include="GrobidEngine.cs" />
+    <Compile Include="HeaderFeatureVector.cs" />
+    <Compile Include="HeaderFeatureVectorFactory.cs" />
     <Compile Include="IGrobid.cs" />
     <Compile Include="GrobidClassLoader.cs" />
     <Compile Include="GrobidFactory.cs" />
     <Compile Include="ILexicon.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
+    <Compile Include="LineStatus.cs" />
     <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Punctuation.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />

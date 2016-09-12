@@ -2,7 +2,6 @@
 
 using ApprovalTests;
 using ApprovalTests.Reporters;
-
 using Newtonsoft.Json;
 using Xunit;
 

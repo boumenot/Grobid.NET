@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Grobid.PdfToXml;
 
@@ -20,7 +21,8 @@ namespace Grobid.NET
             {
                 foreach (var textBlock in block.TextBlocks)
                 {
-                    foreach (var tokenBlock in textBlock.TokenBlocks)
+                    var tokenBlocks = textBlock.TokenBlocks.SelectMany(x => x.Tokenize());
+                    foreach (var tokenBlock in tokenBlocks)
                     {
                         var blockState = this.factory.Create(block, textBlock, tokenBlock);
                         yield return transform(blockState);

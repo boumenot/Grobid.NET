@@ -37,6 +37,5 @@ namespace Grobid.Test
             lexicon.IsLastName("star").Should().BeTrue();
             lexicon.HasWord("def").Should().BeTrue();
         }
-
     }
 }
