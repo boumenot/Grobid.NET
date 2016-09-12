@@ -17,18 +17,13 @@ namespace Grobid.NET
 
         public IEnumerable<T> Extract(IEnumerable<Block> blocks, Func<BlockState, T> transform)
         {
-            foreach (var block in blocks)
-            {
-                foreach (var textBlock in block.TextBlocks)
-                {
-                    var tokenBlocks = textBlock.TokenBlocks.SelectMany(x => x.Tokenize());
-                    foreach (var tokenBlock in tokenBlocks)
-                    {
-                        var blockState = this.factory.Create(block, textBlock, tokenBlock);
-                        yield return transform(blockState);
-                    }
-                }
-            }
+            return from block in blocks
+                   from textBlock in block.TextBlocks
+                   let tokenBlocks = textBlock.TokenBlocks.SelectMany(x => x.Tokenize())
+                   from tokenBlock in tokenBlocks
+                   select this.factory.Create(block, textBlock, tokenBlock)
+                   into blockState
+                   select transform(blockState);
         }
     }
 }
