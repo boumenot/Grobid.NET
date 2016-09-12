@@ -19,6 +19,7 @@ namespace Grobid.Test
             var state = testSubject.Create(block, textBlock, tokenBlock);
 
             state.FontSizeStatus.Should().Be(FontSizeStatus.HIGHERFONT);
+            state.FontName.FullName.Should().Be(BlockStateFactoryTest.FontA.FullName);
         }
 
         [Fact]

@@ -23,6 +23,7 @@ namespace Grobid.NET
                 LineStatus = this.GetLineStatus(textBlock, tokenBlock),
                 FontSizeStatus = this.GetFontSizeStatus(tokenBlock.FontSize),
                 FontStatus = this.GetFontStatus(tokenBlock.FontName.FullName),
+                FontName = tokenBlock.FontName,
                 Text = tokenBlock.Text,
             };
 
