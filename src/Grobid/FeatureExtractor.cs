@@ -179,5 +179,10 @@ namespace Grobid
         {
             return this.lexicon.HasWord(s);
         }
+
+        public bool IsLocationName(string s)
+        {
+            return false; // TODO: implement me
+        }
     }
 }
