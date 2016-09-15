@@ -61,23 +61,22 @@ namespace Grobid
 
         public Capitalization Case(string s)
         {
-            if (s.Length == 0)
+            if (s.Length == 0 || s.All(Char.IsDigit))
             {
                 return Capitalization.NOCAPS;
             }
 
-            var cap = Capitalization.NOCAPS;
-            if (Char.IsUpper(s[0]))
+            if (s.Length > 1 && Char.IsUpper(s[0]) && s.Skip(1).All(Char.IsLower))
             {
-                cap = Capitalization.INITCAP;
+                return Capitalization.INITCAP;
             }
 
-            if (s.All(Char.IsUpper))
+            if (s.Any(Char.IsLower))
             {
-                cap = Capitalization.ALLCAP;
+                return Capitalization.NOCAPS;
             }
 
-            return cap;
+            return Capitalization.ALLCAP;
         }
 
         public Digit Digit(string s)
@@ -153,6 +152,7 @@ namespace Grobid
                 case "\"":
                 case "'":
                 case "`":
+                case "’":
                     punc = Grobid.Punctuation.QUOTE;
                     break;
             }
