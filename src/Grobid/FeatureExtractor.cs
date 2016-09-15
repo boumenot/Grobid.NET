@@ -152,7 +152,6 @@ namespace Grobid
                 case "\"":
                 case "'":
                 case "`":
-                case "’":
                     punc = Grobid.Punctuation.QUOTE;
                     break;
             }

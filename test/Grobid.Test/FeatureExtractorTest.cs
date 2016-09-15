@@ -161,7 +161,6 @@ namespace Grobid.Test
             testSubject.Punctuation("\"").Should().Be(Punctuation.QUOTE);
             testSubject.Punctuation("'").Should().Be(Punctuation.QUOTE);
             testSubject.Punctuation("`").Should().Be(Punctuation.QUOTE);
-            testSubject.Punctuation("’").Should().Be(Punctuation.QUOTE);
 
             testSubject.Punctuation("a").Should().Be(Punctuation.NOPUNCT);
             testSubject.Punctuation("dog").Should().Be(Punctuation.NOPUNCT);
