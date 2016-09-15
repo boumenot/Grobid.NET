@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 using iTextSharp.text;
 
@@ -34,6 +35,10 @@ namespace Grobid.PdfToXml
         {
             var mergedTokenBlock = tokenBlocks[0];
             mergedTokenBlock.Text = String.Join(String.Empty, tokenBlocks.Select(x => x.Text)).Normalize();
+
+            mergedTokenBlock.Text = mergedTokenBlock.Text.Replace("ﬁ", "fi");
+            mergedTokenBlock.Text = mergedTokenBlock.Text.Replace("ﬂ", "fl");
+            mergedTokenBlock.Text = mergedTokenBlock.Text.Replace("’", "'");
 
             mergedTokenBlock.BoundingRectangle = new Rectangle(
                 tokenBlocks.First().BoundingRectangle.Left,
