@@ -34,6 +34,10 @@ namespace Grobid.Test
         {
             var testSubject = new FeatureExtractor(EmptyLexicon.Instance);
             testSubject.Case("UPPER").Should().Be(Capitalization.ALLCAP);
+            testSubject.Case("...").Should().Be(Capitalization.ALLCAP);
+            testSubject.Case(",,,").Should().Be(Capitalization.ALLCAP);
+            testSubject.Case("123").Should().Be(Capitalization.NOCAPS);
+            testSubject.Case("wadler@inf").Should().Be(Capitalization.NOCAPS);
             testSubject.Case("Capital").Should().Be(Capitalization.INITCAP);
             testSubject.Case("lower").Should().Be(Capitalization.NOCAPS);
             testSubject.Case("").Should().Be(Capitalization.NOCAPS);
@@ -157,6 +161,7 @@ namespace Grobid.Test
             testSubject.Punctuation("\"").Should().Be(Punctuation.QUOTE);
             testSubject.Punctuation("'").Should().Be(Punctuation.QUOTE);
             testSubject.Punctuation("`").Should().Be(Punctuation.QUOTE);
+            testSubject.Punctuation("’").Should().Be(Punctuation.QUOTE);
 
             testSubject.Punctuation("a").Should().Be(Punctuation.NOPUNCT);
             testSubject.Punctuation("dog").Should().Be(Punctuation.NOPUNCT);

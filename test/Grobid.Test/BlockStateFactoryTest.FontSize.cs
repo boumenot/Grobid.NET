@@ -49,7 +49,7 @@ namespace Grobid.Test
             testSubject.Create(block, textBlock, tokenBlock1);
             var state = testSubject.Create(block, textBlock, tokenBlock2);
 
-            state.FontSizeStatus.Should().Be(FontSizeStatus.LOWFONT);
+            state.FontSizeStatus.Should().Be(FontSizeStatus.LOWERFONT);
         }
 
         [Fact]

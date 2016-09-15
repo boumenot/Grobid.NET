@@ -11,7 +11,7 @@ namespace Grobid.Test
         public void TestAllCapital()
         {
             var testSubject = new FeatureTesterImpl(EmptyLexicon.Instance);
-            testSubject.test_all_capital("ALLCAPS").Should().BeTrue();
+            testSubject.test_all_capital("ALLCAP").Should().BeTrue();
             testSubject.test_all_capital("ALL_CAPS").Should().BeTrue();
 
             testSubject.test_all_capital("ALL123CAPS").Should().BeTrue();

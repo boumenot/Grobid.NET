@@ -19,8 +19,7 @@ namespace Grobid.NET
         {
             return from block in blocks
                    from textBlock in block.TextBlocks
-                   let tokenBlocks = textBlock.TokenBlocks.SelectMany(x => x.Tokenize())
-                   from tokenBlock in tokenBlocks
+                   from tokenBlock in textBlock.TokenBlocks
                    select this.factory.Create(block, textBlock, tokenBlock)
                    into blockState
                    select transform(blockState);

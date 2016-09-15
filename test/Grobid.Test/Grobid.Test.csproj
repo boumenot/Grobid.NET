@@ -146,7 +146,6 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FeatureExtractorTest.cs" />
     <Compile Include="FeatureTesterTest.cs" />
-    <Compile Include="FeatureVectorExtractorFactoryTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="HeaderFeatureVectorTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
@@ -170,7 +169,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\content\lexicon\wordforms\english-normalized.wf">
+      <Link>content\lexicon\wordforms\english-normalized.wf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\content\lexicon\wordforms\german-normalized.wf">
+      <Link>content\lexicon\wordforms\german-normalized.wf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\content\lexicon\names\firstnames.txt">
+      <Link>content\lexicon\names\firstnames.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\content\lexicon\names\lastnames.txt">
+      <Link>content\lexicon\names\lastnames.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>

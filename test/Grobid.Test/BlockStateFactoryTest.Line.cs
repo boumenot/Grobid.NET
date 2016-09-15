@@ -61,8 +61,8 @@ namespace Grobid.Test
             var state4 = testSubject.Create(block, textBlock2, tokenBlock4);
 
             state1.LineStatus.Should().Be(LineStatus.LINESTART);
-            state2.LineStatus.Should().Be(LineStatus.LINEEND);
-            state3.LineStatus.Should().Be(LineStatus.LINESTART);
+            state2.LineStatus.Should().Be(LineStatus.LINEIN);
+            state3.LineStatus.Should().Be(LineStatus.LINEIN);
             state4.LineStatus.Should().Be(LineStatus.LINEEND);
         }
 

@@ -1643,7 +1643,7 @@
                 "Width": 74.06247,
                 "X": 54.00003,
                 "Y": 219.496811,
-                "Text": "Language-integrated query is receiving renewed attention, in part\nbecause of its support through Microsoft’s LINQ framework. We\npresent a theory of language-integrated query based on quotation\nand normalisation of quoted terms. Our technique supports abstrac-\ntion over values and predicates, composition of queries, dynamic\ngeneration of queries, and queries with nested intermediate data.\nHigher-order features prove useful even for constructing ﬁrst-order\nqueries. We prove that normalisation always succeeds in translat-\ning any query of ﬂat relation type to SQL. We present experimental\nresults conﬁrming our technique works, even in situations where\nMicrosoft’s LINQ framework either fails to produce an SQL query\nor, in one case, produces an avalanche of SQL queries.",
+                "Text": "Language-integrated query is receiving renewed attention, in part\nbecause of its support through Microsoft's LINQ framework. We\npresent a theory of language-integrated query based on quotation\nand normalisation of quoted terms. Our technique supports abstrac-\ntion over values and predicates, composition of queries, dynamic\ngeneration of queries, and queries with nested intermediate data.\nHigher-order features prove useful even for constructing first-order\nqueries. We prove that normalisation always succeeds in translat-\ning any query of flat relation type to SQL. We present experimental\nresults confirming our technique works, even in situations where\nMicrosoft's LINQ framework either fails to produce an SQL query\nor, in one case, produces an avalanche of SQL queries.",
                 "Page": 0,
                 "TextBlocks": [
                     {
@@ -2070,7 +2070,7 @@
                         "Y": 229.459824,
                         "Height": 8.015991,
                         "Width": 239.107025,
-                        "Text": "because of its support through Microsoft’s LINQ framework. We",
+                        "Text": "because of its support through Microsoft's LINQ framework. We",
                         "TokenBlocks": [
                             {
                                 "Id": 51,
@@ -2373,7 +2373,7 @@
                                 "FontSize": 8.966431,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "Microsoft’s",
+                                "Text": "Microsoft's",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -4415,7 +4415,7 @@
                         "Y": 279.272827,
                         "Height": 8.015961,
                         "Width": 239.106964,
-                        "Text": "Higher-order features prove useful even for constructing ﬁrst-order",
+                        "Text": "Higher-order features prove useful even for constructing first-order",
                         "TokenBlocks": [
                             {
                                 "Id": 104,
@@ -4820,7 +4820,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "ﬁrst-order",
+                                "Text": "first-order",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -5302,7 +5302,7 @@
                         "Y": 299.197845,
                         "Height": 8.015961,
                         "Width": 239.107,
-                        "Text": "ing any query of ﬂat relation type to SQL. We present experimental",
+                        "Text": "ing any query of flat relation type to SQL. We present experimental",
                         "TokenBlocks": [
                             {
                                 "Id": 132,
@@ -5554,7 +5554,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "ﬂat",
+                                "Text": "flat",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -5924,7 +5924,7 @@
                         "Y": 309.160858,
                         "Height": 8.015961,
                         "Width": 239.106964,
-                        "Text": "results conﬁrming our technique works, even in situations where",
+                        "Text": "results confirming our technique works, even in situations where",
                         "TokenBlocks": [
                             {
                                 "Id": 147,
@@ -6023,7 +6023,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "conﬁrming",
+                                "Text": "confirming",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -6393,7 +6393,7 @@
                         "Y": 319.123871,
                         "Height": 8.015961,
                         "Width": 239.107,
-                        "Text": "Microsoft’s LINQ framework either fails to produce an SQL query",
+                        "Text": "Microsoft's LINQ framework either fails to produce an SQL query",
                         "TokenBlocks": [
                             {
                                 "Id": 159,
@@ -6441,7 +6441,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "Microsoft’s",
+                                "Text": "Microsoft's",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -7447,7 +7447,7 @@
                 "Width": 41.362,
                 "X": 54.00003,
                 "Y": 347.0292,
-                "Text": "Computing Classiﬁcation Software and its engineering! Soft-\nware notations and tools! General programming languages!\nLanguage features",
+                "Text": "Computing Classification Software and its engineering! Soft-\nware notations and tools! General programming languages!\nLanguage features",
                 "Page": 0,
                 "TextBlocks": [
                     {
@@ -7456,7 +7456,7 @@
                         "Y": 347.0292,
                         "Height": 8.042877,
                         "Width": 239.103821,
-                        "Text": "Computing Classiﬁcation Software and its engineering! Soft-",
+                        "Text": "Computing Classification Software and its engineering! Soft-",
                         "TokenBlocks": [
                             {
                                 "Id": 186,
@@ -7555,7 +7555,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "Classiﬁcation",
+                                "Text": "Classification",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -8841,7 +8841,7 @@
                 "Width": 6.47373962,
                 "X": 54.00003,
                 "Y": 428.155884,
-                "Text": "A quarter-century ago, Copeland and Maier (1984) decried the\n“impedance mismatch” between database and conventional pro-\ngramming models, and Atkinson and Buneman (1987) spoke of\n“The need for a uniform language” (their emphasis), and observed\nthat “Databases and programming languages have developed al-\nmost independently of one another for the past twenty years.”\nSmooth integration of database queries with programming lan-\nguages, also known as language-integrated query, remains an open\nproblem. Language-integrated query is receiving renewed atten-\ntion, in part because of its support through Microsoft’s LINQ\nframework (Meijer et al. 2006; Syme 2006).\nThe problem is simple: two languages are more than twice\nas difﬁcult to use as one language. Most programming languages\nsupport nested data and data abstraction, while most relational\ndatabases only support ﬂat tables over concrete data. Any task in-\nvolving both requires that the programmer keep in mind two rep-\nresentations of the same underlying data, converting between them\nand synchronising updates to either. This pervasive bookkeeping\nadds to the mental burden on the programmer and leads to complex\ncode, bugs, and security holes such as SQL injection attacks.",
+                "Text": "A quarter-century ago, Copeland and Maier (1984) decried the\n“impedance mismatch” between database and conventional pro-\ngramming models, and Atkinson and Buneman (1987) spoke of\n“The need for a uniform language” (their emphasis), and observed\nthat “Databases and programming languages have developed al-\nmost independently of one another for the past twenty years.”\nSmooth integration of database queries with programming lan-\nguages, also known as language-integrated query, remains an open\nproblem. Language-integrated query is receiving renewed atten-\ntion, in part because of its support through Microsoft's LINQ\nframework (Meijer et al. 2006; Syme 2006).\nThe problem is simple: two languages are more than twice\nas difficult to use as one language. Most programming languages\nsupport nested data and data abstraction, while most relational\ndatabases only support flat tables over concrete data. Any task in-\nvolving both requires that the programmer keep in mind two rep-\nresentations of the same underlying data, converting between them\nand synchronising updates to either. This pervasive bookkeeping\nadds to the mental burden on the programmer and leads to complex\ncode, bugs, and security holes such as SQL injection attacks.",
                 "Page": 0,
                 "TextBlocks": [
                     {
@@ -12867,7 +12867,7 @@
                         "Y": 517.819946,
                         "Height": 8.015991,
                         "Width": 239.106979,
-                        "Text": "tion, in part because of its support through Microsoft’s LINQ",
+                        "Text": "tion, in part because of its support through Microsoft's LINQ",
                         "TokenBlocks": [
                             {
                                 "Id": 319,
@@ -13323,7 +13323,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "Microsoft’s",
+                                "Text": "Microsoft's",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -14274,7 +14274,7 @@
                         "Y": 547.708,
                         "Height": 8.015991,
                         "Width": 239.106979,
-                        "Text": "as difﬁcult to use as one language. Most programming languages",
+                        "Text": "as difficult to use as one language. Most programming languages",
                         "TokenBlocks": [
                             {
                                 "Id": 352,
@@ -14373,7 +14373,7 @@
                                 "FontSize": 8.966415,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "difﬁcult",
+                                "Text": "difficult",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -15263,7 +15263,7 @@
                         "Y": 567.633,
                         "Height": 8.015991,
                         "Width": 239.107071,
-                        "Text": "databases only support ﬂat tables over concrete data. Any task in-",
+                        "Text": "databases only support flat tables over concrete data. Any task in-",
                         "TokenBlocks": [
                             {
                                 "Id": 374,
@@ -15464,7 +15464,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "ﬂat",
+                                "Text": "flat",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -18448,7 +18448,7 @@
                 "Width": 30.538269,
                 "X": 54.0000458,
                 "Y": 717.319031,
-                "Text": "[Copyright notice will appear here once ’preprint’ option is removed.]",
+                "Text": "[Copyright notice will appear here once 'preprint' option is removed.]",
                 "Page": 0,
                 "TextBlocks": [
                     {
@@ -18457,7 +18457,7 @@
                         "Y": 717.319031,
                         "Height": 6.234558,
                         "Width": 195.336121,
-                        "Text": "[Copyright notice will appear here once ’preprint’ option is removed.]",
+                        "Text": "[Copyright notice will appear here once 'preprint' option is removed.]",
                         "TokenBlocks": [
                             {
                                 "Id": 452,
@@ -18811,7 +18811,7 @@
                                 "FontSize": 6.97380066,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "’preprint’",
+                                "Text": "'preprint'",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -18991,7 +18991,7 @@
                 "Width": 18.434906,
                 "X": 328.969055,
                 "Y": 205.548935,
-                "Text": "Most database developers work in two languages. Wrapper li-\nbraries, such as JDBC, provide raw access to high-performance\nSQL, but the resulting code is difﬁcult to maintain. Object-\nrelational mapping frameworks, such as Hibernate, provide an\nobject-oriented view of the data that makes code easier to maintain\nbut sacriﬁces performance (Goldschmidt et al. 2008). Workarounds\nto recover performance, such as framework-speciﬁc query lan-\nguages, reintroduce the drawbacks of the two-language approach.\nWe present a theory of language-integrated query based on quo-\ntation and normalisation of quoted terms, called Idealised LINQ.\nMicrosoft LINQ was released as a part of .NET Framework 3.5\nin November 2007, and LINQ continues to evolve with new re-\nleases. LINQ translates query expressions in the source language\ninto queries in a target language such as SQL or XQuery. In this\npaper we focus on SQL. However, we believe the ideas in this pa-\nper adapt to systems other than Microsoft LINQ, to targets other\nthan SQL, and even to domains other than database queries.\nThere are variants of LINQ for C#, Visual Basic, and F#, among\nothers. Idealised LINQ corresponds most closely to LINQ for F#.\nWe choose F# as a basis because it supports the features we require:\nlambda abstraction, records and lists, comprehension notation, and\nquotation and anti-quotation. Idealised LINQ can easily be adapted\nto any language with these features. For instance, we believe similar\nideas could be adapted to C#, though more clumsily.\nExisting implementations of LINQ can be unpredictable, as the\ndocumentation does not describe which terms will successfully\ntranslate to SQL and which will not. We show that some terms\nwhich translate in the F# 2.0 release do not translate in the F# 3.0\nrelease, and vice versa; and that at least one term generates an\navalanche of queries, in the sense of Grust et al. (2010), where\none LINQ query translates to a large number of SQL queries. In\ncontrast, our technique is predictable, as it guarantees that every\nterm of ﬂat type containing only certain constructs will successfully\ntranslate to a single SQL query. Further, our technique improves the\nexpressiveness of existing systems, as it translates terms that fail to\ntranslate under F# 2.0 or F# 3.0.\nThe contributions of this paper are:",
+                "Text": "Most database developers work in two languages. Wrapper li-\nbraries, such as JDBC, provide raw access to high-performance\nSQL, but the resulting code is difficult to maintain. Object-\nrelational mapping frameworks, such as Hibernate, provide an\nobject-oriented view of the data that makes code easier to maintain\nbut sacrifices performance (Goldschmidt et al. 2008). Workarounds\nto recover performance, such as framework-specific query lan-\nguages, reintroduce the drawbacks of the two-language approach.\nWe present a theory of language-integrated query based on quo-\ntation and normalisation of quoted terms, called Idealised LINQ.\nMicrosoft LINQ was released as a part of .NET Framework 3.5\nin November 2007, and LINQ continues to evolve with new re-\nleases. LINQ translates query expressions in the source language\ninto queries in a target language such as SQL or XQuery. In this\npaper we focus on SQL. However, we believe the ideas in this pa-\nper adapt to systems other than Microsoft LINQ, to targets other\nthan SQL, and even to domains other than database queries.\nThere are variants of LINQ for C#, Visual Basic, and F#, among\nothers. Idealised LINQ corresponds most closely to LINQ for F#.\nWe choose F# as a basis because it supports the features we require:\nlambda abstraction, records and lists, comprehension notation, and\nquotation and anti-quotation. Idealised LINQ can easily be adapted\nto any language with these features. For instance, we believe similar\nideas could be adapted to C#, though more clumsily.\nExisting implementations of LINQ can be unpredictable, as the\ndocumentation does not describe which terms will successfully\ntranslate to SQL and which will not. We show that some terms\nwhich translate in the F# 2.0 release do not translate in the F# 3.0\nrelease, and vice versa; and that at least one term generates an\navalanche of queries, in the sense of Grust et al. (2010), where\none LINQ query translates to a large number of SQL queries. In\ncontrast, our technique is predictable, as it guarantees that every\nterm of flat type containing only certain constructs will successfully\ntranslate to a single SQL query. Further, our technique improves the\nexpressiveness of existing systems, as it translates terms that fail to\ntranslate under F# 2.0 or F# 3.0.\nThe contributions of this paper are:",
                 "Page": 0,
                 "TextBlocks": [
                     {
@@ -19938,7 +19938,7 @@
                         "Y": 225.47496,
                         "Height": 8.015991,
                         "Width": 239.106964,
-                        "Text": "SQL, but the resulting code is difﬁcult to maintain. Object-",
+                        "Text": "SQL, but the resulting code is difficult to maintain. Object-",
                         "TokenBlocks": [
                             {
                                 "Id": 489,
@@ -20292,7 +20292,7 @@
                                 "FontSize": 8.966431,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "difﬁcult",
+                                "Text": "difficult",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -21447,7 +21447,7 @@
                         "Y": 255.362961,
                         "Height": 8.015976,
                         "Width": 239.107147,
-                        "Text": "but sacriﬁces performance (Goldschmidt et al. 2008). Workarounds",
+                        "Text": "but sacrifices performance (Goldschmidt et al. 2008). Workarounds",
                         "TokenBlocks": [
                             {
                                 "Id": 525,
@@ -21546,7 +21546,7 @@
                                 "FontSize": 8.966431,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "sacriﬁces",
+                                "Text": "sacrifices",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -21865,7 +21865,7 @@
                         "Y": 265.324921,
                         "Height": 8.015991,
                         "Width": 239.107025,
-                        "Text": "to recover performance, such as framework-speciﬁc query lan-",
+                        "Text": "to recover performance, such as framework-specific query lan-",
                         "TokenBlocks": [
                             {
                                 "Id": 537,
@@ -22168,7 +22168,7 @@
                                 "FontSize": 8.966431,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "framework-speciﬁc",
+                                "Text": "framework-specific",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -36099,7 +36099,7 @@
                         "Y": 524.354248,
                         "Height": 8.015991,
                         "Width": 239.107147,
-                        "Text": "term of ﬂat type containing only certain constructs will successfully",
+                        "Text": "term of flat type containing only certain constructs will successfully",
                         "TokenBlocks": [
                             {
                                 "Id": 862,
@@ -36249,7 +36249,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "ﬂat",
+                                "Text": "flat",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
@@ -41463,7 +41463,7 @@
                 "Width": 11.7280579,
                 "X": 329.965057,
                 "Y": 643.7542,
-                "Text": "We develop the formal theory and prove that normalisation\nalways succeeds in translating any query of ﬂat type to SQL\n(Section 5).",
+                "Text": "We develop the formal theory and prove that normalisation\nalways succeeds in translating any query of flat type to SQL\n(Section 5).",
                 "Page": 0,
                 "TextBlocks": [
                     {
@@ -41941,7 +41941,7 @@
                         "Y": 653.7172,
                         "Height": 8.015991,
                         "Width": 226.150543,
-                        "Text": "always succeeds in translating any query of ﬂat type to SQL",
+                        "Text": "always succeeds in translating any query of flat type to SQL",
                         "TokenBlocks": [
                             {
                                 "Id": 997,
@@ -42346,7 +42346,7 @@
                                 "FontSize": 8.9664,
                                 "IsEmpty": false,
                                 "Rotation": 0,
-                                "Text": "ﬂat",
+                                "Text": "flat",
                                 "IsBold": false,
                                 "IsItalic": false,
                                 "IsSymbolic": true
