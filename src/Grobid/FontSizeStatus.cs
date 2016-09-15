@@ -4,6 +4,6 @@
     {
         HIGHERFONT,
         SAMEFONTSIZE,
-        LOWFONT,
+        LOWERFONT,
     }
 }
