@@ -21,7 +21,7 @@ namespace Grobid.NET
         private readonly string pathToPdf2XmlExe;
         private readonly string pathToTemp;
 
-        private static LexiconFactory lexiconFactory = new LexiconFactory();
+        private static readonly LexiconFactory lexiconFactory = new LexiconFactory();
 
         static GrobidFactory()
         {
