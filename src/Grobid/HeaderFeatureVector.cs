@@ -28,10 +28,9 @@
         public bool IsLocationName { get; set; }
         public bool IsYear { get; set; }
         public bool IsMonth { get; set; }
-        public bool IsEmail { get; set; }
+        public bool IsEmailAddress { get; set; }
         public bool IsHttp { get; set; }
         public bool HasDash { get; set; }
         public Punctuation Punctuation { get; set; }
-
     }
 }
