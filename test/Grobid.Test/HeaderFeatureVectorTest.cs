@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -105,28 +104,6 @@ namespace Grobid.Test
 
             Approvals.Verify(
                 String.Join(Environment.NewLine, featureVectors.Select(x => String.Join(" ", x))));
-        }
-    }
-
-    public class BlockReflower
-    {
-        public IEnumerable<Block> Reflow(IEnumerable<Block> blocks)
-        {
-            foreach (var block in blocks)
-            {
-                var textBlocks = new List<TextBlock>();
-
-                foreach (var textBlock in block.TextBlocks)
-                {
-                    var tokenBlocks = textBlock.TokenBlocks.SelectMany(x => x.Tokenize())
-                        .ToArray();
-
-                    textBlocks.Add(
-                        new TextBlock(tokenBlocks, textBlock.Id));
-                }
-
-                yield return new Block { Id = block.Id, TextBlocks = textBlocks.ToArray() };
-            }
         }
     }
 }

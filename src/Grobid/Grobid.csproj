@@ -142,6 +142,7 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AggregateLexicon.cs" />
+    <Compile Include="BlockReflower.cs" />
     <Compile Include="BlockState.cs" />
     <Compile Include="BlockStateFactory.cs" />
     <Compile Include="BlockStatus.cs" />
