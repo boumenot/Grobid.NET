@@ -16,3 +16,6 @@ matrix:
   fast_finish: true
 
 version: 0.0.1.{build}
+
+cache:
+  - packages -> paket.lock
