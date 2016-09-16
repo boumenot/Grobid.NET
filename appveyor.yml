@@ -1,9 +1,25 @@
 init:
-  - git config --global core.autocrlf input
+ - git config --global core.autocrlf input
 
 build_script:
-  - cmd: build.cmd
+ - cmd: build.cmd
 
 test: off
 
+platform:
+ - x64
+
+configuration:
+ - Debug
+
+matrix:
+ - fast_finish: true
+
 version: 0.0.1.{build}
+
+assembly_info:
+ patch: true
+ file: build/GlobalAssemblyInfo.cs
+ assembly_version: '{version}'
+ assembly_file_verison: '{version}'
+ assembly_informational_version: '{version}'
