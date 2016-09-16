@@ -16,10 +16,3 @@ matrix:
   fast_finish: true
 
 version: 0.0.1.{build}
-
-assembly_info:
-  patch: true
-  file: build/GlobalAssemblyInfo.cs
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
