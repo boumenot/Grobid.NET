@@ -587,3 +587,7 @@ NUGET
     xunit.runner.console (2.1)
     xunit.runner.visualstudio (2.1.0) - version_in_path: true
     xunit.runners (2.0)
+  remote: https://www.myget.org/F/boumenot-ikvm
+    IKVM (8.1.5721.0)
+    IKVM.NativeBinaries (8.1.5721.0)
+      IKVM (8.1.5721)
