@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-using Grobid.PdfToXml;
-
+using FluentAssertions;
 using Xunit;
+
+using Grobid.NET;
+using Grobid.PdfToXml;
 
 namespace Grobid.Test
 {
@@ -15,15 +13,80 @@ namespace Grobid.Test
         [Fact]
         public void Test()
         {
-            var tokenBlock = new TokenBlock {  Text = "Something" };
-            var textBlock = new TextBlock(new[] {tokenBlock}, 0);
-            var block = new Block { TextBlocks = new [] { textBlock }} ;
-
             var testSubject = new IntroudctionFilter();
-            var blocks = new[] { block };
+            this.CreateFakeBlocks("1. PROBLEM").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+            this.CreateFakeBlocks("1. PROBLEMS").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
 
+            this.CreateFakeBlocks("1. Introduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+            this.CreateFakeBlocks("1.\nIntroduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("1. Content").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+            this.CreateFakeBlocks("1.\nContent").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("1. INTRODUCTION").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("I. Introduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+            this.CreateFakeBlocks("I.  Introduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("I. Einleitung").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("1. Einleitung").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("1 Einleitung").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("1 Introduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+
+            this.CreateFakeBlocks("Will Not Match").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(15);
+            this.CreateFakeBlocks("2. Introduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(15);
+        }
+
+        private Block[] CreateFakeBlocks(string text)
+        {
+            var blocks = new List<Block>();
+
+            for (int i = 0; i < 7; i++)
+            {
+                var tokenBlock = new TokenBlock { Text = "Something" };
+                var textBlock = new TextBlock(new[] { tokenBlock }, -1);
+
+                blocks.Add(new Block { TextBlocks = new [] { textBlock }});
+
+            }
+
+            var blockToBeMatched = new Block
+            {
+                TextBlocks = new[]
+                {
+                    new TextBlock(
+                        new[]
+                        {
+                            new TokenBlock
+                            {
+                                Text = text
+                            }
+                        }),
+                }
+            };
+
+            blocks.Add(blockToBeMatched);
+
+            for (int i = 0; i < 7; i++)
+            {
+                var tokenBlock = new TokenBlock { Text = "Something" };
+                var textBlock = new TextBlock(new[] { tokenBlock }, -1);
+
+                blocks.Add(new Block { TextBlocks = new[] { textBlock } });
+            }
+
+            return blocks.ToArray();
         }
     }
 
-    public class IntroudctionFilter {}
+    public class IntroudctionFilter
+    {
+        public bool IsIntroduction(Block arg)
+        {
+            return DocumentStructure.IntroductionStrict.IsMatch(arg.Text);
+        }
+    }
 }
