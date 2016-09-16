@@ -18,8 +18,8 @@ matrix:
 version: 0.0.1.{build}
 
 assembly_info:
- patch: true
- file: build/GlobalAssemblyInfo.cs
- assembly_version: '{version}'
- assembly_file_verison: '{version}'
- assembly_informational_version: '{version}'
+  patch: true
+  file: build/GlobalAssemblyInfo.cs
+  assembly_version: '{version}'
+  assembly_file_verison: '{version}'
+  assembly_informational_version: '{version}'
