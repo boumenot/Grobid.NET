@@ -1,19 +1,19 @@
 init:
- - git config --global core.autocrlf input
+  - git config --global core.autocrlf input
 
 build_script:
- - cmd: build.cmd
+  - cmd: build.cmd
 
 test: off
 
 platform:
- - x64
+  - x64
 
 configuration:
- - Debug
+  - Debug
 
 matrix:
- - fast_finish: true
+  - fast_finish: true
 
 version: 0.0.1.{build}
 
