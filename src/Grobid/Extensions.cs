@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Grobid.NET
 {
@@ -8,6 +9,19 @@ namespace Grobid.NET
         {
             U value;
             return dict.TryGetValue(key, out value) ? value : defaultValue;
+        }
+
+        public static IEnumerable<T> TakeUntil<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+        {
+            foreach (var item in collection)
+            {
+                yield return item;
+
+                if (predicate(item))
+                {
+                    yield break;
+                }
+            }
         }
     }
 }

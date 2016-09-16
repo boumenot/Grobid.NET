@@ -144,10 +144,12 @@
     <Compile Include="CountryCodesTest.cs" />
     <Compile Include="EmptyLexicon.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="ExtensionsTest.cs" />
     <Compile Include="FeatureExtractorTest.cs" />
     <Compile Include="FeatureTesterTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="HeaderFeatureVectorTest.cs" />
+    <Compile Include="IntroductionFilterTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
     <Compile Include="LexiconTest.cs" />
     <Compile Include="PdfBlockExtractorTest.cs" />
