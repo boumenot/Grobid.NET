@@ -13,9 +13,11 @@ namespace Grobid.Test
         [Fact]
         public void Test()
         {
-            var testSubject = new IntroudctionFilter();
+            var testSubject = new IntroductionFilter();
             this.CreateFakeBlocks("1. PROBLEM").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
             this.CreateFakeBlocks("1. PROBLEMS").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+            this.CreateFakeBlocks("1 . PROBLEMS").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
+            this.CreateFakeBlocks("1.PROBLEMS").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
 
             this.CreateFakeBlocks("1. Introduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
             this.CreateFakeBlocks("1.\nIntroduction").TakeUntil(testSubject.IsIntroduction).Should().HaveCount(8);
@@ -79,14 +81,6 @@ namespace Grobid.Test
             }
 
             return blocks.ToArray();
-        }
-    }
-
-    public class IntroudctionFilter
-    {
-        public bool IsIntroduction(Block arg)
-        {
-            return DocumentStructure.IntroductionStrict.IsMatch(arg.Text);
         }
     }
 }

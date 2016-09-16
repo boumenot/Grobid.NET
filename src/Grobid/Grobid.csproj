@@ -163,6 +163,7 @@
     <Compile Include="GrobidClassLoader.cs" />
     <Compile Include="GrobidFactory.cs" />
     <Compile Include="ILexicon.cs" />
+    <Compile Include="IntroductionFilter.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
     <Compile Include="LineStatus.cs" />

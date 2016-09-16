@@ -100,7 +100,11 @@ namespace Grobid.Test
             };
 
             var testSubject = new PdfBlockExtractor<string[]>();
-            var featureVectors = testSubject.Extract(blocks, x => formatter(headerFeatureVectorFactory.Create(x)));
+
+            var introductionFilter = new IntroductionFilter();
+            var preIntroBlocks = blocks.TakeUntil(introductionFilter.IsIntroduction).ToArray();
+
+            var featureVectors = testSubject.Extract(preIntroBlocks, x => formatter(headerFeatureVectorFactory.Create(x)));
 
             Approvals.Verify(
                 String.Join(Environment.NewLine, featureVectors.Select(x => String.Join(" ", x))));
