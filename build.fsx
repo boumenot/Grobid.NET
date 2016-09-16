@@ -22,14 +22,14 @@ let release = parseReleaseNotes (IO.File.ReadAllLines "RELEASE_NOTES.md")
 
 MSBuildDefaults <- {
   MSBuildDefaults with
-    ToolsVersion = Some "12.0"
+    ToolsVersion = Some "14.0"
     Verbosity = Some MSBuildVerbosity.Minimal }
 
 let buildMode = getBuildParamOrDefault "buildMode" "Debug" 
 
 let setParams defaults = {
   defaults with
-    ToolsVersion = Some("12.0")
+    ToolsVersion = Some("14.0")
     Targets = ["Build"]
     Properties =
       [

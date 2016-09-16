@@ -13,7 +13,7 @@ nuget xunit.runner.console
 nuget xunit.runner.visualstudio >= 2.0 version_in_path: true
 nuget xunit.runners
 
-source https://www.myget.org/F/boumenot-ikvm/api/v3/index.json
+source https://www.myget.org/F/boumenot/api/v3/index.json
 
 nuget IKVM
 nuget IKVM.NativeBinaries

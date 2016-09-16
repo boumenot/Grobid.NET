@@ -4,3 +4,5 @@ xunit.runner.visualstudio
 xunit.core
 Newtonsoft.Json
 ApprovalTests
+ikvm
+ikvm.nativebinaries
