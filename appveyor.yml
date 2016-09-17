@@ -3,7 +3,7 @@ init:
 
 build_script:
   - cmd: build.cmd BuildApp
-  - cmd: build.cmd
+  - cmd: build.cmd UnitTests
 
 test: off
 
