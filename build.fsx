@@ -78,7 +78,7 @@ Target "NuGet" (fun _ ->
                             OutputPath = "publish"
                             AccessKey = getBuildParamOrDefault "nugetkey" ""
                             Publish = hasBuildParam "nugetkey"
-                            Dependencies = referenceDependencies [ "IKVM" ] @ [ "Grobid.Models", "1.0.0" ]
+                            Dependencies = referenceDependencies [ "IKVM" ] @ [ "Grobid.Models", "3.3.0" ]
                             Files = [ (@"..\nuget\build\grobid.x64.props",                    Some @"build\grobid.x64.props", None)
                                       (@"..\lib\native\x64\libwapiti.dll",                    Some @"native\x64\",            None)
                                       (@"..\lib\native\x64\libwapiti_swig.dll",               Some @"native\x64",             None)
@@ -96,7 +96,7 @@ Target "NuGet.Models" (fun _ ->
                             Project = project
                             Summary = summary
                             Description = description
-                            Version = release.NugetVersion
+                            Version = "3.3.0"
                             ReleaseNotes = String.Join(Environment.NewLine, release.Notes)
                             Tags = tags
                             OutputPath = "publish"

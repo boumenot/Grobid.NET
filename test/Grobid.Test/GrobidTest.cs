@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Xml.Linq;
 
 using FluentAssertions;
@@ -23,7 +25,7 @@ namespace Grobid.Test
         public void ExtractTest()
         {
             var factory = new GrobidFactory(
-                @"c:\dev\grobid.net\grobid.zip",
+                "grobid.zip",
                 @"c:\dev\grobid.net\bin\pdf2xml.exe",
                 @"c:\temp");
 

@@ -14,3 +14,4 @@ nuget xunit.runners
 source https://www.myget.org/F/boumenot/api/v3/index.json
 
 nuget Grobid.NET
+nuget Grobid.Models copy_content_to_output_dir: preserve_newest
