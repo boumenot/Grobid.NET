@@ -3,6 +3,7 @@
   <Import Project="..\..\packages\xunit.runner.visualstudio\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\packages\xunit.runner.visualstudio\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props" Condition="Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" />
   <Import Project="..\..\build\grobid.src.settings" />
+  <Import Project="..\..\packages\Grobid.NET\build\Grobid.props" Condition="Exists('..\..\packages\Grobid.NET\build\Grobid.props')" Label="Paket" />
   <Import Project="..\..\packages\IKVM.NativeBinaries\build\IKVM.NativeBinaries.props" Condition="Exists('..\..\packages\IKVM.NativeBinaries\build\IKVM.NativeBinaries.props')" Label="Paket" />
   <PropertyGroup>
     <RootNamespace>Grobid.Test</RootNamespace>
@@ -12,9 +13,6 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Grobid.Java">
-      <HintPath>..\..\lib\java\Grobid.Java.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Xml" />
@@ -123,10 +121,6 @@
     </When>
   </Choose>
   <Import Project="..\..\packages\xunit.core\build\$(__paket__xunit_core_props).props" Condition="Exists('..\..\packages\xunit.core\build\$(__paket__xunit_core_props).props')" Label="Paket" />
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="$(ProjectDir)\..\..\lib\native\x64\libwapiti.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(ProjectDir)\..\..\lib\native\x64\libwapiti_swig.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
-  </Target>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
@@ -295,6 +289,17 @@
         </Reference>
         <Reference Include="FluentAssertions">
           <HintPath>..\..\packages\FluentAssertions\lib\wpa81\FluentAssertions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v3.0' Or $(TargetFrameworkVersion) == 'v3.5' Or $(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
+      <ItemGroup>
+        <Reference Include="Grobid.Java">
+          <HintPath>..\..\packages\Grobid.NET\lib\net20\Grobid.Java.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

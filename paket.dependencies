@@ -15,5 +15,6 @@ nuget xunit.runners
 
 source https://www.myget.org/F/boumenot/api/v3/index.json
 
+nuget Grobid.NET
 nuget IKVM
 nuget IKVM.NativeBinaries

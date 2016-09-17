@@ -1,8 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props" Condition="Exists('..\..\packages\IKVM.NativeBinaries.8.1.5721.0\build\IKVM.NativeBinaries.props')" />
   <Import Project="..\..\build\grobid.src.settings" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\..\packages\Grobid.NET\build\Grobid.props" Condition="Exists('..\..\packages\Grobid.NET\build\Grobid.props')" Label="Paket" />
   <Import Project="..\..\packages\IKVM.NativeBinaries\build\IKVM.NativeBinaries.props" Condition="Exists('..\..\packages\IKVM.NativeBinaries\build\IKVM.NativeBinaries.props')" Label="Paket" />
   <PropertyGroup>
     <ProjectGuid>{ABB35F54-6F91-4972-B289-D15E3BE1999F}</ProjectGuid>
@@ -13,9 +14,6 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Grobid.Java">
-      <HintPath>..\..\lib\java\Grobid.Java.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -67,10 +65,17 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="$(ProjectDir)\..\..\lib\native\x64\libwapiti.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(ProjectDir)\..\..\lib\native\x64\libwapiti_swig.dll" DestinationFolder="$(TargetDir)\native\x64" SkipUnchangedFiles="true" />
-  </Target>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v3.0' Or $(TargetFrameworkVersion) == 'v3.5' Or $(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
+      <ItemGroup>
+        <Reference Include="Grobid.Java">
+          <HintPath>..\..\packages\Grobid.NET\lib\net20\Grobid.Java.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <ItemGroup>
     <Reference Include="IKVM.AWT.WinForms">
       <HintPath>..\..\packages\IKVM\lib\IKVM.AWT.WinForms.dll</HintPath>
