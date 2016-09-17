@@ -1,3 +1,4 @@
+framework: >= net46
 source https://nuget.org/api/v2
 
 nuget ApprovalTests
@@ -6,9 +7,6 @@ nuget FluentAssertions
 nuget iTextSharp
 nuget Newtonsoft.Json
 nuget xunit
-nuget xunit.core
-nuget xunit.extensibility.core
-nuget xunit.extensibility.execution
 nuget xunit.runner.console
 nuget xunit.runner.visualstudio >= 2.0 version_in_path: true
 nuget xunit.runners
@@ -16,5 +14,3 @@ nuget xunit.runners
 source https://www.myget.org/F/boumenot/api/v3/index.json
 
 nuget Grobid.NET
-nuget IKVM
-nuget IKVM.NativeBinaries

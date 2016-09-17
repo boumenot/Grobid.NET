@@ -91,7 +91,7 @@ namespace Grobid.NET
         private static string GetFullNativeWapitiName(string file)
         {
             var assemblyPath = GrobidFactory.GetExecutingAssemblyPath();
-            var path = Path.Combine(assemblyPath, "native", "x64", file);
+            var path = Path.Combine(assemblyPath, "NativeBinaries", "x64", "lib", file);
 
             return path;
         }
