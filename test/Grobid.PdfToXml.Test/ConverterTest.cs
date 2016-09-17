@@ -81,7 +81,7 @@ namespace Grobid.PdfToXml.Test
             File.WriteAllText(@"c:\temp\grobid-dot-net.log", sb.ToString());
         }
 
-        [Fact]
+        // [Fact]
         public void TestThingy01()
         {
             var pageBackFactory = new PageBlockFactory();

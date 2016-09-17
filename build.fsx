@@ -16,7 +16,7 @@ let projectSummary = projectDescription
 
 let tags = ""
 
-let testResultsDir = "./testresults"
+let testResultsDir = "./"
 
 let release = parseReleaseNotes (IO.File.ReadAllLines "RELEASE_NOTES.md")
 
@@ -47,7 +47,8 @@ Target "BuildApp" (fun _ ->
 Target "UnitTests" (fun _ ->
                     !! (sprintf "./test/Grobid.Test/bin/%s/**/Grobid*.Test.dll" buildMode)
                     ++ (sprintf "./test/Grobid.PdfToXml.Test/bin/%s/**/Grobid*.Test.dll" buildMode)
-                    |> xUnit2 (fun x -> { x with XmlOutputPath = Some(testResultsDir @@ "xml");
+                    |> xUnit2 (fun x -> { x with XmlOutputPath = Some(testResultsDir @@ "xunit2.xml");
+                                                 HtmlOutputPath = Some(testResultsDir @@ "xunit2.html");
                                                  ToolPath = "packages/xunit.runner.console/tools/xunit.console.exe"
                                           })
 )
