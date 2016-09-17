@@ -1,17 +1,18 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
-using System.Xml.Linq;
 
+using ApprovalTests;
+using ApprovalTests.Reporters;
 using FluentAssertions;
 using Xunit;
 
+using Grobid.NET;
 using org.apache.log4j;
 using org.grobid.core;
-using Grobid.NET;
 
 namespace Grobid.Test
 {
+    [UseReporter(typeof(DiffReporter))]
     public class GrobidTest
     {
         static GrobidTest()
@@ -24,18 +25,18 @@ namespace Grobid.Test
         [Trait("Test", "EndToEnd")]
         public void ExtractTest()
         {
+            var binPath = Environment.GetEnvironmentVariable("PDFTOXMLEXE");
+
             var factory = new GrobidFactory(
                 "grobid.zip",
-                @"c:\dev\grobid.net\bin\pdf2xml.exe",
-                @"c:\temp");
+                binPath,
+                Directory.GetCurrentDirectory());
 
             var grobid = factory.Create();
-            var result = grobid.Extract(@"c:\dev\grobid.net\content\essence-linq.pdf");
+            var result = grobid.Extract(@"essence-linq.pdf");
 
             result.Should().NotBeEmpty();
-
-            Action test = () => XDocument.Parse(result);
-            test.ShouldNotThrow();
+            Approvals.Verify(result);
         }
 
         [Fact]

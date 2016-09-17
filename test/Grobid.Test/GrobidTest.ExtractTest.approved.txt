@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" 
+ xmlns:mml="http://www.w3.org/1998/Math/MathML">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">The essence of language-integrated query</title>
+			</titleStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName>
+								<forename type="first">James</forename>
+								<surname>Cheney</surname>
+							</persName>
+							<email>jcheney@inf.ed.ac.uk</email>
+							<affiliation>
+								<orgName type="institution">The University of Edinburgh</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">The essence of language-integrated query</title>
+					</analytic>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+	<text>
+	</text>
+</TEI>
