@@ -25,7 +25,7 @@ namespace Grobid.PdfToXml.Test
             Approvals.VerifyXml(doc.ToString());
         }
 
-        [Fact]
+        // [Fact]
         public void TestThingy()
         {
             var pageBackFactory = new PageBlockFactory();
