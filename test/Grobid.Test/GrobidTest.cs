@@ -18,7 +18,7 @@ namespace Grobid.Test
         static GrobidTest()
         {
             // BasicConfigurator.configure();
-            // org.apache.log4j.Logger.getRootLogger().setLevel(Level.DEBUG);
+            org.apache.log4j.Logger.getRootLogger().setLevel(Level.ERROR);
         }
 
         [Fact]
