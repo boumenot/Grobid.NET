@@ -9,7 +9,7 @@
 			<sourceDesc>
 				<biblStruct>
 					<analytic>
-						<author role="corresp">
+						<author>
 							<persName>
 								<forename type="first">James</forename>
 								<surname>Cheney</surname>
@@ -19,12 +19,61 @@
 								<orgName type="institution">The University of Edinburgh</orgName>
 							</affiliation>
 						</author>
+						<author>
+							<persName>
+								<forename type="first">Sam</forename>
+								<surname>Lindley</surname>
+							</persName>
+							<email>sam.lindley@strath.ac.uk</email>
+							<affiliation>
+								<orgName type="institution">University of Strathclyde</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName>
+								<forename type="first">Philip</forename>
+								<surname>Wadler</surname>
+							</persName>
+							<email>wadler@inf.ed.ac.uk</email>
+							<affiliation>
+								<orgName type="institution">The University of Edinburgh</orgName>
+							</affiliation>
+						</author>
 						<title level="a" type="main">The essence of language-integrated query</title>
 					</analytic>
 				</biblStruct>
 			</sourceDesc>
 		</fileDesc>
+		<profileDesc>
+			<textClass>
+				<keywords type="author">
+					<list>
+						<item>
+							<term>lambda calculus</term>
+						</item>
+						<item>
+							<term>LINQ</term>
+						</item>
+						<item>
+							<term>F#</term>
+						</item>
+						<item>
+							<term>quotation</term>
+						</item>
+						<item>
+							<term>anti-quotation</term>
+						</item>
+					</list>
+				</keywords>
+			</textClass>
+		</profileDesc>
 	</teiHeader>
 	<text>
+		<front>
+			<div type="abstract">
+				<head>Abstract</head>
+<p>Language-integrated query is receiving renewed attention, in part because of its support through Microsoft&apos;s LINQ framework. We present a theory of language-integrated query based on quotation and normalisation of quoted terms. Our technique supports abstraction over values and predicates, composition of queries, dynamic generation of queries, and queries with nested intermediate data. Higher-order features prove useful even for constructing first-order queries. We prove that normalisation always succeeds in translating any query of flat relation type to SQL. We present experimental results confirming our technique works, even in situations where Microsoft&apos;s LINQ framework either fails to produce an SQL query or, in one case, produces an avalanche of SQL queries. Computing Classification Software and its engineering ? Software notations and tools ? General programming languages ? Language features</p>
+			</div>
+		</front>
 	</text>
 </TEI>
