@@ -18,7 +18,7 @@ namespace Grobid.Test
         static GrobidTest()
         {
             BasicConfigurator.configure();
-            org.apache.log4j.Logger.getRootLogger().setLevel(Level.INFO);
+            org.apache.log4j.Logger.getRootLogger().setLevel(Level.DEBUG);
         }
 
         [Fact]
@@ -26,6 +26,7 @@ namespace Grobid.Test
         public void ExtractTest()
         {
             var binPath = Environment.GetEnvironmentVariable("PDFTOXMLEXE");
+            org.apache.log4j.Logger.getRootLogger().info("PDFTOXMLEXE=" + binPath);
 
             var factory = new GrobidFactory(
                 "grobid.zip",
