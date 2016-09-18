@@ -6,7 +6,6 @@ build_script:
   - set TEMP=%APPVEYOR_BUILD_FOLDER%\temp
   - set TMP=%APPVEYOR_BUILD_FOLDER%\temp
   - set PDFTOXMLEXE=%APPVEYOR_BUILD_FOLDER%\pdftoxml.exe
-  - %PDFTOXMLEXE%
   - ps: curl 'https://github.com/kermitt2/grobid/raw/master/grobid-home/pdf2xml/win-32/pdftoxml.exe' -OutFile 'pdftoxml.exe'
   - build.cmd BuildApp
   - build.cmd UnitTests
