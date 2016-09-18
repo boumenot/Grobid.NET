@@ -1,3 +1,7 @@
+version: 0.0.1.{build}
+
+image: Visual Studio 2015
+
 init:
   - git config --global core.autocrlf input
 
@@ -7,21 +11,23 @@ build_script:
   - build.cmd UnitTests
   - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\xunit2.xml))
 
-test: off
-
-platform:
-  - x64
-
-configuration:
-  - Debug
-
 matrix:
   fast_finish: true
 
-version: 0.0.1.{build}
+# cache:
+#   - packages -> paket.lock
 
-cache:
-  - packages -> paket.lock
+assembly_info:
+  patch: true
+  file: build\GlobalAssemblyInfo.cs
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
+configuration: Debug
+platform: x64
+
+test: off
 
 # on_finish:
 #   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
