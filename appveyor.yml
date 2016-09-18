@@ -2,11 +2,7 @@ init:
   - git config --global core.autocrlf input
 
 build_script:
-  - mkdir temp
-  - set TEMP=%APPVEYOR_BUILD_FOLDER%\temp
-  - set TMP=%APPVEYOR_BUILD_FOLDER%\temp
-  - set PDFTOXMLEXE=%APPVEYOR_BUILD_FOLDER%\pdftoxml.exe
-  - ps: curl 'https://github.com/kermitt2/grobid/raw/master/grobid-home/pdf2xml/win-32/pdftoxml.exe' -OutFile 'pdftoxml.exe'
+  - set PDFTOXMLEXE=%APPVEYOR_BUILD_FOLDER%\packages\pdf2xml\bin\pdf2xml.exe
   - build.cmd BuildApp
   - build.cmd UnitTests
   - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\xunit2.xml))
@@ -27,5 +23,5 @@ version: 0.0.1.{build}
 cache:
   - packages -> paket.lock
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+# on_finish:
+#   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
