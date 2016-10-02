@@ -58,9 +58,36 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryCopyright01()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"copyrights\">┬⌐ 2004 Elsevier Ireland Ltd. All rights reserved.<lb /></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryDate00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<date>February 1991 <lb/></date>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryDate01()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<date type=\"submission\">19 November 2009<lb /></date>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryDedication00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"dedication\">Dedicated to H. Hintenberger on the occasion of his 70th birth<lb /></note>");
 
             var testSubject = new TeiFeatureFactory();
             Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));

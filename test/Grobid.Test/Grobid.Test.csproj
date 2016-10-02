@@ -82,7 +82,10 @@
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAffiliation00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAuthor00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryCopyright00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryCopyright01.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryDate00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryDate01.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryDedication00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryDegree00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryEmail00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryGrant00.approved.txt" />
