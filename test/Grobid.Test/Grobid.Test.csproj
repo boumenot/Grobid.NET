@@ -37,6 +37,7 @@
     <Compile Include="LexiconTest.cs" />
     <Compile Include="PdfBlockExtractorTest.cs" />
     <Compile Include="Sample.cs" />
+    <Compile Include="TeiFeatureFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Grobid.PdfToXml\Grobid.PdfToXml.csproj">

@@ -5,11 +5,12 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 
 using ApprovalTests;
-using ApprovalTests.Core;
+using ApprovalTests.Reporters;
 using Xunit;
 
 namespace Grobid.Test
 {
+    [UseReporter(typeof(DiffReporter))]
     public class TeiFeatureFactoryTest
     {
         [Fact]
