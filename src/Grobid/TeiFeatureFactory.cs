@@ -8,6 +8,56 @@ using Grobid.PdfToXml;
 
 namespace Grobid.NET
 {
+    public class TeiFeature
+    {
+        public string Value { get; set; }
+        public string Classification { get; set; }
+        public int TokenIndex { get; set; }
+        public bool IsStart => this.TokenIndex == 0;
+
+        internal bool IsControl => this.Value == "@newline";
+
+        public static TeiFeature Create(string value, string classification, int tokenIndex)
+        {
+            var feature = new TeiFeature
+            {
+                Value = value,
+                Classification = classification,
+                TokenIndex = tokenIndex,
+            };
+
+            return feature;
+        }
+    }
+
+    public class TeiFeatureFormatter
+    {
+        private static string OnePrefix = "I-";
+
+        public string Format(TeiFeature x)
+        {
+            if (x.IsControl)
+            {
+                return x.Value;
+            }
+
+            return $"{x.Value} {(x.IsStart ? TeiFeatureFormatter.OnePrefix : string.Empty)}<{x.Classification}>";
+        }
+
+        public string[] Format(TeiFeature[] teiFeatures)
+        {
+            var strings = teiFeatures.Select(this.Format)
+                .ToArray();
+
+            return strings;
+        }
+
+        public string CreateString(TeiFeature[] teiFeatures)
+        {
+            return String.Join(Environment.NewLine, this.Format(teiFeatures));
+        }
+    }
+
     public class TeiFeatureFactory
     {
         private static string[] XPathExpressions = new string[]
@@ -52,15 +102,14 @@ namespace Grobid.NET
             //"/tei/text/front/web",
         };
 
-        private static string OnePrefix = "I-";
-        private static Dictionary<string, Func<XElement, string[]>> XElementProcessor;
+        private static Dictionary<string, Func<XElement, TeiFeature[]>> XElementProcessor;
 
         private static string XPathExpression;
 
         static TeiFeatureFactory()
         {
             TeiFeatureFactory.XPathExpression = string.Join("|", TeiFeatureFactory.XPathExpressions);
-            TeiFeatureFactory.XElementProcessor = new Dictionary<string, Func<XElement, string[]>>
+            TeiFeatureFactory.XElementProcessor = new Dictionary<string, Func<XElement, TeiFeature[]>>
             {
                 {"address", x => TeiFeatureFactory.Annotate("address", x) },
                 {"affiliation", x => TeiFeatureFactory.Annotate("affiliation", x) },
@@ -82,29 +131,23 @@ namespace Grobid.NET
             };
         }
 
-        private static string[] Annotate(string annotation, XElement element)
+        private static TeiFeature[] Annotate(string annotation, XElement element)
         {
             var xs = element
                 .DescendantNodes()
                 // HACK(1)
                 .Select(x => x is XText ? ((XText)x).Value : ((XElement)x).Name == "lb" ? "@newline" : string.Empty)
-                .SelectMany(x => x.SplitWithDelims(PdfToXml.Constants.FullPunctuation))
                 // Usually we want to keep the delimiter, but in this case we ignore
-                // the any whitespace because it is unnecessary.
+                // any whitespace because it is unnecessary.
+                .SelectMany(x => x.SplitWithDelims(PdfToXml.Constants.FullPunctuation))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select(
-                    (x, i) => string.Format("{0} {1}{2}",
-                        x,
-                        i == 0 ? TeiFeatureFactory.OnePrefix : string.Empty,
-                        x == "@newline" ? string.Empty : $"<{annotation}>"))
-                // HACK(2)
-                .Select(x => x.TrimEnd())
+                .Select((x, i) => TeiFeature.Create(x, annotation, i))
                 .ToArray();
 
             return xs;
         }
 
-        private static string[] AnnotateNote(XElement element)
+        private static TeiFeature[] AnnotateNote(XElement element)
         {
             string type = element.Attribute("type")?.Value ?? string.Empty;
 
@@ -149,9 +192,9 @@ namespace Grobid.NET
                 $"{element.Name.LocalName}[@type='{attrValue}']");
         }
 
-        public string Create(XDocument doc)
+        public TeiFeature[] Create(XDocument doc)
         {
-            var strings = doc
+            var features = doc
                 .XPathSelectElements(TeiFeatureFactory.XPathExpression)
                 // Get the list of possible XPath Processor keys
                 .Select(
@@ -172,7 +215,7 @@ namespace Grobid.NET
                 .SelectMany(x => x.Func(x.Element))
                 .ToArray();
 
-            return String.Join(Environment.NewLine, strings);
+            return features;
         }
     }
 }
