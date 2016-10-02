@@ -101,14 +101,14 @@ namespace Grobid.Test
             TeiFeatureFactory.XPathExpression = string.Join("|", TeiFeatureFactory.XPathExpressions);
             TeiFeatureFactory.XElementProcessor = new Dictionary<string, Func<XElement, string[]>>
             {
-                {"titlePart", TeiFeatureFactory.ExtractTitle},
-                {"titlePart[@type='main']", TeiFeatureFactory.ExtractTitle},
+                {"titlePart", x => TeiFeatureFactory.Annotate("title", x) },
+                {"titlePart[@type='main']", x => TeiFeatureFactory.Annotate("title", x) },
             };
         }
 
-        private static string[] Annotate(string annotation, string value)
+        private static string[] Annotate(string annotation, XElement element)
         {
-            return value
+            return element.Value
                 .SplitWithDelims(Constants.FullPunctuation)
                 // Usually we want to keep the delimiter, but in this case we ignore
                 // the any whitespace because it is unnecessary.
@@ -116,11 +116,6 @@ namespace Grobid.Test
                 .Select(
                     (x, i) => $"{x} {(i == 0 ? TeiFeatureFactory.OnePrefix : string.Empty)}<{annotation}>")
                 .ToArray();
-        }
-
-        private static string[] ExtractTitle(XElement arg)
-        {
-            return TeiFeatureFactory.Annotate("title", arg.Value);
         }
 
         private static string ToFuncName(XElement element)
