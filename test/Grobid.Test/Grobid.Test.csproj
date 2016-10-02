@@ -77,6 +77,9 @@
     </Content>
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAddress00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>

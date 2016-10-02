@@ -58,6 +58,7 @@
     <Compile Include="LineStatus.cs" />
     <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Punctuation.cs" />
+    <Compile Include="TeiFeatureFactory.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
