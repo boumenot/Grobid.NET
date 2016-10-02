@@ -96,6 +96,7 @@
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryOther00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryPhone00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryPubNum00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryReference00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactorySubmission00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />

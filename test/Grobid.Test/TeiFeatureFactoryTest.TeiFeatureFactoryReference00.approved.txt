@@ -1,0 +1,36 @@
+﻿Proceedings I-<reference>
+of <reference>
+the <reference>
+4th <reference>
+KRDB <reference>
+Workshop <reference>
+@newline
+Athens <reference>
+, <reference>
+Greece <reference>
+, <reference>
+30 <reference>
+- <reference>
+August <reference>
+- <reference>
+1997 <reference>
+@newline
+( <reference>
+F <reference>
+. <reference>
+Baader <reference>
+, <reference>
+M <reference>
+. <reference>
+A <reference>
+. <reference>
+Jeusfeld <reference>
+, <reference>
+W <reference>
+. <reference>
+Nutt <reference>
+, <reference>
+eds <reference>
+. <reference>
+) <reference>
+@newline

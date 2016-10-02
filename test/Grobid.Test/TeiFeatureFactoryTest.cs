@@ -184,6 +184,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryReference00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type = \"reference\" > Proceedings of the 4th KRDB Workshop<lb /> Athens, Greece, 30-August-1997 <lb />(F.Baader, M.A.Jeusfeld, W.Nutt, eds.) <lb /></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactorySubmission00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<note type=\"submission\">Submitted to the Graduate School of the <lb/></note>");
