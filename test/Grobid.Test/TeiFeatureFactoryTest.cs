@@ -112,6 +112,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryEnTitle00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"english-title\">Simultaneous Measurement<lb /> of Hyperfine Structure, Stark-Effect<lb /> and Zeeman-Effect<lb /> of 87 RbF<lb /> with a Molecular<lb /> Beam Resonance<lb /> Apparatus<lb /></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryGrant00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<note type=\"grant\">This research was sponsored by the Air Force Materiel Command (AFMC) and the Defense Advanced Research Projects Agency (DARPA) under contract number, F19628-95-C-0050. </note>");
