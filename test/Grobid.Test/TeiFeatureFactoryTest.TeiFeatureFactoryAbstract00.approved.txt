@@ -1,0 +1,99 @@
+﻿Abstract I-<abstract>
+@newline
+The <abstract>
+advent <abstract>
+and <abstract>
+acceptance <abstract>
+of <abstract>
+massively <abstract>
+parallel <abstract>
+@newline
+machines <abstract>
+has <abstract>
+made <abstract>
+it <abstract>
+increasingly <abstract>
+important <abstract>
+to <abstract>
+have <abstract>
+@newline
+tools <abstract>
+to <abstract>
+analyze <abstract>
+the <abstract>
+performance <abstract>
+of <abstract>
+programs <abstract>
+running <abstract>
+on <abstract>
+these <abstract>
+machines <abstract>
+. <abstract>
+Current <abstract>
+day <abstract>
+performance <abstract>
+@newline
+tools <abstract>
+suffer <abstract>
+from <abstract>
+two <abstract>
+drawbacks <abstract>
+: <abstract>
+they <abstract>
+are <abstract>
+not <abstract>
+scalable <abstract>
+@newline
+and <abstract>
+they <abstract>
+lose <abstract>
+specific <abstract>
+information <abstract>
+about <abstract>
+the <abstract>
+user <abstract>
+program <abstract>
+in <abstract>
+their <abstract>
+attempt <abstract>
+for <abstract>
+generality <abstract>
+. <abstract>
+In <abstract>
+this <abstract>
+paper <abstract>
+, <abstract>
+@newline
+we <abstract>
+present <abstract>
+Projections <abstract>
+, <abstract>
+a <abstract>
+scalable <abstract>
+performance <abstract>
+tool <abstract>
+, <abstract>
+@newline
+for <abstract>
+Charm <abstract>
+that <abstract>
+can <abstract>
+provide <abstract>
+program <abstract>
+- <abstract>
+specific <abstract>
+information <abstract>
+to <abstract>
+help <abstract>
+the <abstract>
+users <abstract>
+better <abstract>
+understand <abstract>
+the <abstract>
+behavior <abstract>
+@newline
+of <abstract>
+their <abstract>
+programs <abstract>
+. <abstract>
+@newline

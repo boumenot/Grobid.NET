@@ -13,6 +13,15 @@ namespace Grobid.Test
     public class TeiFeatureFactoryTest
     {
         [Fact]
+        public void TeiFeatureFactoryAbstract00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<div type=\"abstract\">Abstract <lb/>The advent and acceptance of massively parallel <lb/>machines has made it increasingly important to have <lb/>tools to analyze the performance of programs running on these machines. Current day performance <lb/>tools suffer from two drawbacks: they are not scalable <lb/>and they lose specific information about the user program in their attempt for generality. In this paper, <lb/>we present Projections, a scalable performance tool, <lb/>for Charm that can provide program-specific information to help the users better understand the behavior <lb/>of their programs. <lb/></div>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryAddress00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<address>Urbana, IL 61801 Urbana, IL 61801 <lb/></address>");
