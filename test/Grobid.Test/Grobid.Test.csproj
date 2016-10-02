@@ -90,6 +90,7 @@
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryIntro01.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryKeyword00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryOther00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryPubNum00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactorySubmission00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
