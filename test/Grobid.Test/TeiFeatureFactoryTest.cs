@@ -6,6 +6,9 @@ using System.Xml.XPath;
 
 using ApprovalTests;
 using ApprovalTests.Reporters;
+
+using Grobid.PdfToXml;
+
 using Xunit;
 
 namespace Grobid.Test
@@ -103,9 +106,13 @@ namespace Grobid.Test
             };
         }
 
-        private static string[] Annotate(string annotation, string[] elements)
+        private static string[] Annotate(string annotation, string value)
         {
-            return elements
+            return value
+                .SplitWithDelims(Constants.FullPunctuation)
+                // Usually we want to keep the delimiter, but in this case we ignore
+                // the any whitespace because it is unnecessary.
+                .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Select(
                     (x, i) => $"{x} {(i == 0 ? TeiFeatureFactory.OnePrefix : string.Empty)}<{annotation}>")
                 .ToArray();
@@ -113,7 +120,7 @@ namespace Grobid.Test
 
         private static string[] ExtractTitle(XElement arg)
         {
-            return TeiFeatureFactory.Annotate("title", arg.Value.Split(' '));
+            return TeiFeatureFactory.Annotate("title", arg.Value);
         }
 
         private static string ToFuncName(XElement element)
