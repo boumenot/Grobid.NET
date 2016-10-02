@@ -49,9 +49,36 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryCopyright00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"copyright\">Copyright c fl1997 Mark Lillibridge <lb/></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryDegree00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"degree\">Submitted in partial fulfillment of the requirements <lb/>for the degree of Doctor of Philosophy. <lb/>Thesis Committee: <lb/>Robert Harper, Chair <lb/>Peter Lee <lb/>John Reynolds <lb/>Luca Cardelli, DEC SRC <lb/></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryEmail00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<email>email: sinha@cs.uiuc.edu </email> <email>email: kale@cs.uiuc.edu <lb/></email>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryGrant00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"grant\">This research was sponsored by the Air Force Materiel Command (AFMC) and the Defense Advanced Research Projects Agency (DARPA) under contract number, F19628-95-C-0050. </note>");
 
             var testSubject = new TeiFeatureFactory();
             Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
@@ -79,6 +106,15 @@ namespace Grobid.Test
         public void TeiFeatureFactoryIntro01()
         {
             var tei = this.InsertXmlSnippetIntoTei("<div type=\"introduction\">1 Introduction<lb/></div>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryOther00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"other\">The U.S. Government is authorized to reproduce and distribute reprints for Government purposes notwithstanding <lb/>any copyright notation thereon. <lb/>The views and conclusions contained in this document are those of the author and should not be <lb/>interpreted as representing the official policies or endorsements, either expressed or implied, of the U.S. <lb/>Government. <lb/></note>");
 
             var testSubject = new TeiFeatureFactory();
             Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
