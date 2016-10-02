@@ -94,6 +94,7 @@
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactorySubmission00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryWeb00.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>

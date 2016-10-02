@@ -1,0 +1,13 @@
+﻿http I-<web>
+: <web>
+/ <web>
+/ <web>
+ciir <web>
+. <web>
+cs <web>
+. <web>
+umass <web>
+. <web>
+edu <web>
+/ <web>
+@newline

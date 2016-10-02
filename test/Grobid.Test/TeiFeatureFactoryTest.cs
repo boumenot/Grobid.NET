@@ -165,6 +165,14 @@ namespace Grobid.Test
             Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
         }
 
+        [Fact]
+        public void TeiFeatureFactoryWeb00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<ptr type = \"web\" > http://ciir.cs.umass.edu/ <lb/></ptr>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
 
         private string InsertXmlSnippetIntoTei(string s)
         {
