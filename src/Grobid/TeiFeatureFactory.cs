@@ -25,7 +25,7 @@ namespace Grobid.NET
             //"/tei/text/front/div[@type='introduction']",
             //"/tei/text/front/div[@type='paragraph']",
             "/tei/text/front/docTitle/titlePart",
-            //"/tei/text/front/email",
+            "/tei/text/front/email",
             //"/tei/text/front/fileDesc[@xml:id]",
             //"/tei/text/front/idno",
             //"/tei/text/front/keyword",
@@ -61,6 +61,7 @@ namespace Grobid.NET
                 {"address", x => TeiFeatureFactory.Annotate("address", x) },
                 {"affiliation", x => TeiFeatureFactory.Annotate("affiliation", x) },
                 {"docAuthor", x => TeiFeatureFactory.Annotate("author", x) },
+                {"email", x => TeiFeatureFactory.Annotate("email", x) },
                 {"titlePart", x => TeiFeatureFactory.Annotate("title", x) },
                 {"titlePart[@type='main']", x => TeiFeatureFactory.Annotate("title", x) },
             };
