@@ -77,7 +77,13 @@
     </Content>
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAbstract00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAddress00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAffiliation00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAuthor00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryEmail00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryIntro00.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryIntro01.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
   </ItemGroup>
