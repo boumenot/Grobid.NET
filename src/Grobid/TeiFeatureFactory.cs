@@ -121,8 +121,8 @@ namespace Grobid.NET
                     return TeiFeatureFactory.Annotate("entitle", element);
                 case "grant":
                     return TeiFeatureFactory.Annotate("grant", element);
-                case "other":
-                    return TeiFeatureFactory.Annotate("note", element);
+                //case "other":
+                //    return TeiFeatureFactory.Annotate("note", element);
                 case "phone":
                     return TeiFeatureFactory.Annotate("phone", element);
                 case "reference":
