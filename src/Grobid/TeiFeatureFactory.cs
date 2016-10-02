@@ -17,7 +17,7 @@ namespace Grobid.NET
             //"/tei/text/front/biblScope[@type='vol']",
             "/tei/text/front/byline/affiliation",
             "/tei/text/front/byline/docAuthor",
-            //"/tei/text/front/date",
+            "/tei/text/front/date",
             //"/tei/text/front/date[@type='submission']",
             //"/tei/text/front/degree",
             "/tei/text/front/div[@type='abstract']",
@@ -60,6 +60,7 @@ namespace Grobid.NET
             {
                 {"address", x => TeiFeatureFactory.Annotate("address", x) },
                 {"affiliation", x => TeiFeatureFactory.Annotate("affiliation", x) },
+                {"date", x => TeiFeatureFactory.Annotate("date", x) },
                 {"docAuthor", x => TeiFeatureFactory.Annotate("author", x) },
                 {"div[@type='abstract']", x => TeiFeatureFactory.Annotate("abstract", x) },
                 {"email", x => TeiFeatureFactory.Annotate("email", x) },

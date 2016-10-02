@@ -58,6 +58,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryDate00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<date>February 1991 <lb/></date>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryDegree00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<note type=\"degree\">Submitted in partial fulfillment of the requirements <lb/>for the degree of Doctor of Philosophy. <lb/>Thesis Committee: <lb/>Robert Harper, Chair <lb/>Peter Lee <lb/>John Reynolds <lb/>Luca Cardelli, DEC SRC <lb/></note>");
