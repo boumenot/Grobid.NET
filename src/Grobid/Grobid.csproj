@@ -42,6 +42,7 @@
     <Compile Include="DocumentStructure.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FeatureExtractor.cs" />
+    <Compile Include="FeatureRow.cs" />
     <Compile Include="FeatureTesterImpl.cs" />
     <Compile Include="FontSizeStatus.cs" />
     <Compile Include="FontStatus.cs" />
@@ -56,9 +57,11 @@
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
     <Compile Include="LineStatus.cs" />
+    <Compile Include="MergedFeatureRow.cs" />
     <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Punctuation.cs" />
     <Compile Include="TeiFeatureFactory.cs" />
+    <Compile Include="TeiFeatureMerge.cs" />
     <Compile Include="TokenAligner.cs" />
     <Compile Include="WapitiTaggerFactory.cs" />
   </ItemGroup>
