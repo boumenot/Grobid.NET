@@ -3,55 +3,13 @@ using System.Linq;
 using System.Xml.Linq;
 
 using ApprovalTests;
+using Xunit;
 
 using Grobid.NET;
 
-using Xunit;
 
 namespace Grobid.Test
 {
-    public struct MergedFeatureRow
-    {
-        public string Value { get; set; }
-        public string Expected { get; set; }
-        public string Actual { get; set; }
-
-        public static MergedFeatureRow Create(string value, string expected, string actual)
-        {
-            var row = new MergedFeatureRow
-            {
-                Value = value,
-                Expected = expected,
-                Actual = actual,
-            };
-
-            return row;
-        }
-    }
-
-    public class TeiFeatureMerge
-    {
-        private readonly TokenAligner<string> aligner;
-
-        public TeiFeatureMerge()
-        {
-            this.aligner = new TokenAligner<string>();
-        }
-
-        public MergedFeatureRow[] Merge(TeiFeature[] teiFeatures, FeatureRow[] featureRows)
-        {
-            var aligned = this.aligner.Align(
-                    teiFeatures,
-                    x => x.Value,
-                    featureRows,
-                    x => x.Value,
-                    (tei, row, value) => MergedFeatureRow.Create(value, tei.Classification, row.Classification))
-                .ToArray();
-
-            return aligned;
-        }
-    }
-
     public class TeiFeatureMergeTest
     {
         [Fact]
