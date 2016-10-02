@@ -13,8 +13,6 @@ namespace Grobid.NET
         private static string[] XPathExpressions = new string[]
         {
             "/tei/text/front/address",
-            //"/tei/text/front/biblScope[@type='pp']",
-            //"/tei/text/front/biblScope[@type='vol']",
             "/tei/text/front/byline/affiliation",
             "/tei/text/front/byline/docAuthor",
             "/tei/text/front/date",
@@ -29,6 +27,7 @@ namespace Grobid.NET
             "/tei/text/front/idno",
             //"/tei/text/front/keyword",
             "/tei/text/front/keywords",
+
             "/tei/text/front/note",
             //"/tei/text/front/note[@type='acknowledgement']",
             //"/tei/text/front/note[@type='copyright']",
@@ -38,13 +37,18 @@ namespace Grobid.NET
             //"/tei/text/front/note[@type='english-title']",
             //"/tei/text/front/note[@type='grant']",
             //"/tei/text/front/note[@type='notification']",
-            "/tei/text/front/note[@type='other']",
-            "/tei/text/front/note[@type='phone']",
-            "/tei/text/front/note[@type='reference']",
-            "/tei/text/front/note[@type='submission']",
+            //"/tei/text/front/note[@type='other']",
+            //"/tei/text/front/note[@type='phone']",
+            //"/tei/text/front/note[@type='reference']",
+            //"/tei/text/front/note[@type='submission']",
+
             "/tei/text/front/ptr[@type='web']",
             "/tei/text/front/reference",
-            //"/tei/text/front/title",
+
+            // TBD: not needed so therefore not implemented yet
+            //"/citations/bibl/biblScope[@type='pp']",
+            //"/citations/bibl/biblScope[@type='vol']",
+            //"/citations/bibl/title",
             //"/tei/text/front/web",
         };
 
