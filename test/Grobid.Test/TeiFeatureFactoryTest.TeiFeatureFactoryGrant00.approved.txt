@@ -8,7 +8,8 @@ Air <grant>
 Force <grant>
 Materiel <grant>
 Command <grant>
-(AFMC <grant>
+( <grant>
+AFMC <grant>
 ) <grant>
 and <grant>
 the <grant>
@@ -17,7 +18,8 @@ Advanced <grant>
 Research <grant>
 Projects <grant>
 Agency <grant>
-(DARPA <grant>
+( <grant>
+DARPA <grant>
 ) <grant>
 under <grant>
 contract <grant>
