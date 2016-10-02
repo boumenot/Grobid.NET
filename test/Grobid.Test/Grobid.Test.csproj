@@ -84,6 +84,7 @@
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryEmail00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryIntro00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryIntro01.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryKeyword00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
   </ItemGroup>

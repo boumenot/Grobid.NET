@@ -58,6 +58,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryKeyword00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<keywords>Keywords: projective reconstruction, affine reconstruction, partial calibration, qualitative depth<lb/></keywords>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryIntro00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<div type=\"intro\">1 Introduction<lb/></div>");
