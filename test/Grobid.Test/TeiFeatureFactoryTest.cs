@@ -103,6 +103,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryDegree01()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<degree>This report is a reset version of a masters thesis submitted to the Department of Electrical <lb />Engineering and Computer Science on May 15, 1994 in partial fulfillment of the requirements <lb />for the degree of Master of Engineering. <lb /></degree>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryEmail00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<email>email: sinha@cs.uiuc.edu </email> <email>email: kale@cs.uiuc.edu <lb/></email>");
