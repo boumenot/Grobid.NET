@@ -77,6 +77,7 @@
     </Content>
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
+    <Content Include="TeiFeatureFactoryTest.TeiFeatureFactory00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAbstract00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAddress00.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryAffiliation00.approved.txt" />
