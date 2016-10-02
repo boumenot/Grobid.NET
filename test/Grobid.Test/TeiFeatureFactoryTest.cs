@@ -22,6 +22,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryAffiliation00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<byline><affiliation>Department of Computer Science Department of Computer Science <lb/>University of Illinois University of Illinois <lb/></affiliation></byline>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryTitle00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<docTitle><titlePart>The wizard quickly jinxed the gnomes before they vaporized</titlePart></docTitle>");

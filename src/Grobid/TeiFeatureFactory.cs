@@ -13,7 +13,7 @@ namespace Grobid.NET
         private static string[] XPathExpressions = new string[]
         {
             "/tei/text/front/address",
-            //"/tei/text/front/affiliation",
+            "/tei/text/front/byline/affiliation",
             //"/tei/text/front/biblScope[@type='pp']",
             //"/tei/text/front/biblScope[@type='vol']",
             //"/tei/text/front/byline/affiliation",
@@ -60,6 +60,7 @@ namespace Grobid.NET
             TeiFeatureFactory.XElementProcessor = new Dictionary<string, Func<XElement, string[]>>
             {
                 {"address", x => TeiFeatureFactory.Annotate("address", x) },
+                {"affiliation", x => TeiFeatureFactory.Annotate("affiliation", x) },
                 {"titlePart", x => TeiFeatureFactory.Annotate("title", x) },
                 {"titlePart[@type='main']", x => TeiFeatureFactory.Annotate("title", x) },
             };
@@ -67,24 +68,24 @@ namespace Grobid.NET
 
         private static string[] Annotate(string annotation, XElement element)
         {
-            var list = element.Value
-                .SplitWithDelims(PdfToXml.Constants.FullPunctuation)
+            var xs = element
+                .DescendantNodes()
+                // HACK(1)
+                .Select(x => x is XText ? ((XText)x).Value : ((XElement)x).Name == "lb" ? "@newline" : string.Empty)
+                .SelectMany(x => x.SplitWithDelims(PdfToXml.Constants.FullPunctuation))
                 // Usually we want to keep the delimiter, but in this case we ignore
                 // the any whitespace because it is unnecessary.
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Select(
-                    (x, i) => $"{x} {(i == 0 ? TeiFeatureFactory.OnePrefix : string.Empty)}<{annotation}>")
-                .ToList();
+                    (x, i) => string.Format("{0} {1}{2}",
+                        x,
+                        i == 0 ? TeiFeatureFactory.OnePrefix : string.Empty,
+                        x == "@newline" ? string.Empty : $"<{annotation}>"))
+                // HACK(2)
+                .Select(x => x.TrimEnd())
+                .ToArray();
 
-            // HACK: I am not sure if this is sufficient, and even so I would
-            // prefer a more elegant solution.
-            var lastNode = element.LastNode as XElement;
-            if (lastNode != null && lastNode.Name.LocalName == "lb")
-            {
-                list.Add("@newline");
-            }
-
-            return list.ToArray();
+            return xs;
         }
 
         private static string ToFuncName(XElement element)
