@@ -29,21 +29,21 @@ namespace Grobid.NET
             "/tei/text/front/idno",
             //"/tei/text/front/keyword",
             "/tei/text/front/keywords",
-            //"/tei/text/front/note",
+            "/tei/text/front/note",
             //"/tei/text/front/note[@type='acknowledgement']",
-            "/tei/text/front/note[@type='copyright']",
-            "/tei/text/front/note[@type='copyrights']",
-            "/tei/text/front/note[@type='dedication']",
-            "/tei/text/front/note[@type='degree']",
-            "/tei/text/front/note[@type='english-title']",
-            "/tei/text/front/note[@type='grant']",
+            //"/tei/text/front/note[@type='copyright']",
+            //"/tei/text/front/note[@type='copyrights']",
+            //"/tei/text/front/note[@type='dedication']",
+            //"/tei/text/front/note[@type='degree']",
+            //"/tei/text/front/note[@type='english-title']",
+            //"/tei/text/front/note[@type='grant']",
             //"/tei/text/front/note[@type='notification']",
             "/tei/text/front/note[@type='other']",
             "/tei/text/front/note[@type='phone']",
             "/tei/text/front/note[@type='reference']",
             "/tei/text/front/note[@type='submission']",
             "/tei/text/front/ptr[@type='web']",
-            //"/tei/text/front/reference",
+            "/tei/text/front/reference",
             //"/tei/text/front/title",
             //"/tei/text/front/web",
         };
@@ -70,17 +70,9 @@ namespace Grobid.NET
                 {"email", x => TeiFeatureFactory.Annotate("email", x) },
                 {"keywords", x => TeiFeatureFactory.Annotate("keyword", x) },
                 {"idno", x => TeiFeatureFactory.Annotate("pubnum", x) },
-                {"note[@type='copyright']", x => TeiFeatureFactory.Annotate("copyright", x) },
-                {"note[@type='copyrights']", x => TeiFeatureFactory.Annotate("copyright", x) },
-                {"note[@type='degree']", x => TeiFeatureFactory.Annotate("degree", x) },
-                {"note[@type='dedication']", x => TeiFeatureFactory.Annotate("dedication", x) },
-                {"note[@type='english-title']", x => TeiFeatureFactory.Annotate("entitle", x) },
-                {"note[@type='grant']", x => TeiFeatureFactory.Annotate("grant", x) },
-                {"note[@type='other']", x => TeiFeatureFactory.Annotate("note", x) },
-                {"note[@type='phone']", x => TeiFeatureFactory.Annotate("phone", x) },
-                {"note[@type='reference']", x => TeiFeatureFactory.Annotate("reference", x) },
-                {"note[@type='submission']", x => TeiFeatureFactory.Annotate("submission", x) },
+                {"note", TeiFeatureFactory.AnnotateNote },
                 {"ptr[@type='web']", x => TeiFeatureFactory.Annotate("web", x) },
+                {"reference", x => TeiFeatureFactory.Annotate("reference", x) },
                 {"titlePart[@type='main']", x => TeiFeatureFactory.Annotate("title", x) },
                 {"titlePart", x => TeiFeatureFactory.Annotate("title", x) },
             };
@@ -108,26 +100,71 @@ namespace Grobid.NET
             return xs;
         }
 
-        private static string ToFuncName(XElement element)
+        private static string[] AnnotateNote(XElement element)
         {
-            var attr = element.Attribute("type");
-            var value = attr == null
-                            ? $"{element.Name.LocalName}"
-                            : $"{element.Name.LocalName}[@type='{attr.Value}']";
+            string type = element.Attribute("type")?.Value ?? string.Empty;
 
-            return value;
+            switch (type)
+            {
+                case "copyright":
+                case "copyrights":
+                    return TeiFeatureFactory.Annotate("copyright", element);
+                case "degree":
+                    return TeiFeatureFactory.Annotate("degree", element);
+                case "dedication":
+                    return TeiFeatureFactory.Annotate("dedication", element);
+                case "english-title":
+                    return TeiFeatureFactory.Annotate("entitle", element);
+                case "grant":
+                    return TeiFeatureFactory.Annotate("grant", element);
+                case "other":
+                    return TeiFeatureFactory.Annotate("note", element);
+                case "phone":
+                    return TeiFeatureFactory.Annotate("phone", element);
+                case "reference":
+                    return TeiFeatureFactory.Annotate("reference", element);
+                case "submission":
+                    return TeiFeatureFactory.Annotate("submission", element);
+                default:
+                    return TeiFeatureFactory.Annotate("note", element);
+            }
+        }
+
+        /// <summary>
+        /// Return a tuple of possible XPath Processor lookup keys.
+        /// </summary>
+        /// <para>
+        /// The first tuple item is just the name of the element.  The second
+        /// tuple item is the element name and attribute of type.
+        /// </para>
+        private static Tuple<string, string> ToFuncName(XElement element)
+        {
+            var attrValue = element.Attribute("type")?.Value;
+            return Tuple.Create(
+                $"{element.Name.LocalName}",
+                $"{element.Name.LocalName}[@type='{attrValue}']");
         }
 
         public string Create(XDocument doc)
         {
             var strings = doc
                 .XPathSelectElements(TeiFeatureFactory.XPathExpression)
+                // Get the list of possible XPath Processor keys
                 .Select(
                     x => new
                     {
                         Element = x,
-                        Func = TeiFeatureFactory.XElementProcessor[TeiFeatureFactory.ToFuncName(x)],
+                        FuncNames = TeiFeatureFactory.ToFuncName(x),
                     })
+                // Get the processor used to compute the result.  Favor the more
+                // *precise* key, which is of the form element[@type='value'].
+                .Select(x => new
+                {
+                    x.Element,
+                    Func = TeiFeatureFactory.XElementProcessor.ContainsKey(x.FuncNames.Item2) ?
+                        TeiFeatureFactory.XElementProcessor[x.FuncNames.Item2] :
+                        TeiFeatureFactory.XElementProcessor[x.FuncNames.Item1],
+                })
                 .SelectMany(x => x.Func(x.Element))
                 .ToArray();
 

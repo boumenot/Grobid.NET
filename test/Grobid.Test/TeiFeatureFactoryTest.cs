@@ -166,6 +166,24 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryNote00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note>Articles<lb /></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryNote01()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"will-not-match-known-type\">Articles<lb /></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryOther00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<note type=\"other\">The U.S. Government is authorized to reproduce and distribute reprints for Government purposes notwithstanding <lb/>any copyright notation thereon. <lb/>The views and conclusions contained in this document are those of the author and should not be <lb/>interpreted as representing the official policies or endorsements, either expressed or implied, of the U.S. <lb/>Government. <lb/></note>");
@@ -196,6 +214,15 @@ namespace Grobid.Test
         public void TeiFeatureFactoryReference00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<note type = \"reference\" > Proceedings of the 4th KRDB Workshop<lb /> Athens, Greece, 30-August-1997 <lb />(F.Baader, M.A.Jeusfeld, W.Nutt, eds.) <lb /></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
+        public void TeiFeatureFactoryReference01()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<reference>Methods 53 (2011) 347ΓÇô355<lb /></reference>");
 
             var testSubject = new TeiFeatureFactory();
             Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
