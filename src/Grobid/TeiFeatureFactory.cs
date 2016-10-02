@@ -67,14 +67,24 @@ namespace Grobid.NET
 
         private static string[] Annotate(string annotation, XElement element)
         {
-            return element.Value
+            var list = element.Value
                 .SplitWithDelims(PdfToXml.Constants.FullPunctuation)
                 // Usually we want to keep the delimiter, but in this case we ignore
                 // the any whitespace because it is unnecessary.
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Select(
                     (x, i) => $"{x} {(i == 0 ? TeiFeatureFactory.OnePrefix : string.Empty)}<{annotation}>")
-                .ToArray();
+                .ToList();
+
+            // HACK: I am not sure if this is sufficient, and even so I would
+            // prefer a more elegant solution.
+            var lastNode = element.LastNode as XElement;
+            if (lastNode != null && lastNode.Name.LocalName == "lb")
+            {
+                list.Add("@newline");
+            }
+
+            return list.ToArray();
         }
 
         private static string ToFuncName(XElement element)
