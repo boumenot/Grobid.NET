@@ -31,6 +31,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryAuthor00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<byline><docAuthor>Amitabh B.Sinha Laxmikant V. Kale<lb/></docAuthor></byline>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryTitle00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<docTitle><titlePart>The wizard quickly jinxed the gnomes before they vaporized</titlePart></docTitle>");

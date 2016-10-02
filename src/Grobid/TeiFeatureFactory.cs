@@ -13,11 +13,10 @@ namespace Grobid.NET
         private static string[] XPathExpressions = new string[]
         {
             "/tei/text/front/address",
-            "/tei/text/front/byline/affiliation",
             //"/tei/text/front/biblScope[@type='pp']",
             //"/tei/text/front/biblScope[@type='vol']",
-            //"/tei/text/front/byline/affiliation",
-            //"/tei/text/front/byline/docAuthor",
+            "/tei/text/front/byline/affiliation",
+            "/tei/text/front/byline/docAuthor",
             //"/tei/text/front/date",
             //"/tei/text/front/date[@type='submission']",
             //"/tei/text/front/degree",
@@ -61,6 +60,7 @@ namespace Grobid.NET
             {
                 {"address", x => TeiFeatureFactory.Annotate("address", x) },
                 {"affiliation", x => TeiFeatureFactory.Annotate("affiliation", x) },
+                {"docAuthor", x => TeiFeatureFactory.Annotate("author", x) },
                 {"titlePart", x => TeiFeatureFactory.Annotate("title", x) },
                 {"titlePart[@type='main']", x => TeiFeatureFactory.Annotate("title", x) },
             };
