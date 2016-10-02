@@ -18,8 +18,6 @@ namespace Grobid.NET
             "/tei/text/front/byline/affiliation",
             "/tei/text/front/byline/docAuthor",
             "/tei/text/front/date",
-            // NOTE: redundant, above element automatically matches
-            //"/tei/text/front/date[@type='submission']",
             "/tei/text/front/degree",
             "/tei/text/front/div[@type='abstract']",
             "/tei/text/front/div[@type='intro']",
@@ -63,7 +61,7 @@ namespace Grobid.NET
                 {"address", x => TeiFeatureFactory.Annotate("address", x) },
                 {"affiliation", x => TeiFeatureFactory.Annotate("affiliation", x) },
                 {"date", x => TeiFeatureFactory.Annotate("date", x) },
-                {"date[@type='submission']", x => TeiFeatureFactory.Annotate("date", x) },
+                {"date[@type='submission']", x => TeiFeatureFactory.Annotate("date-submission", x) },
                 {"degree", x => TeiFeatureFactory.Annotate("degree", x) },
                 {"docAuthor", x => TeiFeatureFactory.Annotate("author", x) },
                 {"div[@type='abstract']", x => TeiFeatureFactory.Annotate("abstract", x) },
