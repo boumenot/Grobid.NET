@@ -130,6 +130,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactoryPhone00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"phone\">(615) 343-4111 <lb/></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryPubNum00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<idno>Technical Report CS91-13 <lb/></idno>");
