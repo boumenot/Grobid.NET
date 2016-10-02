@@ -46,6 +46,35 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactory01()
+        {
+            var tei = @"<tei>
+  <teiHeader>
+    <fileDesc xml:id=""306""/>
+  </teiHeader>
+  <text xml:lang=""en"">
+    <front>
+      <docTitle>
+	<titlePart type=""main"">Tolerating Latency with Dagger <lb/></titlePart>
+      </docTitle>
+      <byline><docAuthor>Attila Gursoy and L.V.Kale <lb/></docAuthor></byline>
+      <byline><affiliation>Department of Computer Science <lb/>University of Illinois at Urbana-Champaign <lb/></affiliation></byline>
+      <note type=""other"">Urbana IL 61801, USA <lb/></note>
+      <email>{fgursoy,kaleg}@cs.uiuc.edu <lb/></email>
+      <div type=""abstract"">Abstract <lb/>The communication latency is a major issue that must be dealt with in parallel <lb/>computing. The parallel computation model therefore must provide the ability to tolerate <lb/>such latencies. Communication using blocking receives is the commonly used mechanism <lb/>in parallel programming today. Message driven execution is an alternate mechanism <lb/>which does not use receive style statements at all. The message driven execution style <lb/>promotes the overlap of computation and communication: Programs written in this style <lb/>exhibit increased latency tolerance. However, they are often difficult to develop and <lb/>debug. We present a coordination language called Dagger to alleviate this problem. The <lb/>language has a mechanism which is called expect, that replaces the receive statement. <lb/>It has been implemented in the Charm parallel programming system, and runs programs <lb/>portably on a variety of parallel machines. <lb/></div>
+      <div type=""intro"">1. INTRODUCTION<lb/></div>
+    </front>
+  </text>
+</tei>";
+
+            var testSubject = new TeiFeatureFactory();
+            var formatter = new TeiFeatureFormatter();
+
+            Approvals.Verify(formatter.CreateString(testSubject.Create(XDocument.Parse(tei))));
+        }
+
+
+        [Fact]
         public void TeiFeatureFactoryAbstract00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<div type=\"abstract\">Abstract <lb/>The advent and acceptance of massively parallel <lb/>machines has made it increasingly important to have <lb/>tools to analyze the performance of programs running on these machines. Current day performance <lb/>tools suffer from two drawbacks: they are not scalable <lb/>and they lose specific information about the user program in their attempt for generality. In this paper, <lb/>we present Projections, a scalable performance tool, <lb/>for Charm that can provide program-specific information to help the users better understand the behavior <lb/>of their programs. <lb/></div>");

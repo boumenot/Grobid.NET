@@ -1,0 +1,203 @@
+﻿Tolerating I-<title>
+Latency <title>
+with <title>
+Dagger <title>
+@newline
+Attila I-<author>
+Gursoy <author>
+and <author>
+L <author>
+. <author>
+V <author>
+. <author>
+Kale <author>
+@newline
+Department I-<affiliation>
+of <affiliation>
+Computer <affiliation>
+Science <affiliation>
+@newline
+University <affiliation>
+of <affiliation>
+Illinois <affiliation>
+at <affiliation>
+Urbana <affiliation>
+- <affiliation>
+Champaign <affiliation>
+@newline
+Urbana I-<note>
+IL <note>
+61801 <note>
+, <note>
+USA <note>
+@newline
+{fgursoy I-<email>
+, <email>
+kaleg}@cs <email>
+. <email>
+uiuc <email>
+. <email>
+edu <email>
+@newline
+Abstract I-<abstract>
+@newline
+The <abstract>
+communication <abstract>
+latency <abstract>
+is <abstract>
+a <abstract>
+major <abstract>
+issue <abstract>
+that <abstract>
+must <abstract>
+be <abstract>
+dealt <abstract>
+with <abstract>
+in <abstract>
+parallel <abstract>
+@newline
+computing <abstract>
+. <abstract>
+The <abstract>
+parallel <abstract>
+computation <abstract>
+model <abstract>
+therefore <abstract>
+must <abstract>
+provide <abstract>
+the <abstract>
+ability <abstract>
+to <abstract>
+tolerate <abstract>
+@newline
+such <abstract>
+latencies <abstract>
+. <abstract>
+Communication <abstract>
+using <abstract>
+blocking <abstract>
+receives <abstract>
+is <abstract>
+the <abstract>
+commonly <abstract>
+used <abstract>
+mechanism <abstract>
+@newline
+in <abstract>
+parallel <abstract>
+programming <abstract>
+today <abstract>
+. <abstract>
+Message <abstract>
+driven <abstract>
+execution <abstract>
+is <abstract>
+an <abstract>
+alternate <abstract>
+mechanism <abstract>
+@newline
+which <abstract>
+does <abstract>
+not <abstract>
+use <abstract>
+receive <abstract>
+style <abstract>
+statements <abstract>
+at <abstract>
+all <abstract>
+. <abstract>
+The <abstract>
+message <abstract>
+driven <abstract>
+execution <abstract>
+style <abstract>
+@newline
+promotes <abstract>
+the <abstract>
+overlap <abstract>
+of <abstract>
+computation <abstract>
+and <abstract>
+communication <abstract>
+: <abstract>
+Programs <abstract>
+written <abstract>
+in <abstract>
+this <abstract>
+style <abstract>
+@newline
+exhibit <abstract>
+increased <abstract>
+latency <abstract>
+tolerance <abstract>
+. <abstract>
+However <abstract>
+, <abstract>
+they <abstract>
+are <abstract>
+often <abstract>
+difficult <abstract>
+to <abstract>
+develop <abstract>
+and <abstract>
+@newline
+debug <abstract>
+. <abstract>
+We <abstract>
+present <abstract>
+a <abstract>
+coordination <abstract>
+language <abstract>
+called <abstract>
+Dagger <abstract>
+to <abstract>
+alleviate <abstract>
+this <abstract>
+problem <abstract>
+. <abstract>
+The <abstract>
+@newline
+language <abstract>
+has <abstract>
+a <abstract>
+mechanism <abstract>
+which <abstract>
+is <abstract>
+called <abstract>
+expect <abstract>
+, <abstract>
+that <abstract>
+replaces <abstract>
+the <abstract>
+receive <abstract>
+statement <abstract>
+. <abstract>
+@newline
+It <abstract>
+has <abstract>
+been <abstract>
+implemented <abstract>
+in <abstract>
+the <abstract>
+Charm <abstract>
+parallel <abstract>
+programming <abstract>
+system <abstract>
+, <abstract>
+and <abstract>
+runs <abstract>
+programs <abstract>
+@newline
+portably <abstract>
+on <abstract>
+a <abstract>
+variety <abstract>
+of <abstract>
+parallel <abstract>
+machines <abstract>
+. <abstract>
+@newline
+1 I-<intro>
+. <intro>
+INTRODUCTION <intro>
+@newline

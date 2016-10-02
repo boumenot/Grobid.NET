@@ -40,11 +40,20 @@ namespace Grobid.Test
         [Fact]
         public void FeatureRow03()
         {
+            var testSubject = FeatureRow.Parse("The the 1 1 0 1 0 LINESTART 0 1");
+
+            testSubject.Classification.Should().BeEmpty();
+            testSubject.Value.Should().Be("The");
+            testSubject.IsStart.Should().BeFalse();
+        }
+
+        [Fact]
+        public void FeatureRow04()
+        {
             var malformedFeatureRows = new[]
             {
-                "The the 1 1 0 1 0 LINESTART 0 1",
                 "The the 1 1 0 1 0 LINESTART 0 1 <title",
-                "The the 1 1 0 1 0 LINESTART 0 1 title>",
+                //"The the 1 1 0 1 0 LINESTART 0 1 title>",
                 "The the 1 1 0 1 0 LINESTART 0 1 >title<",
                 "The\tthe\t1\t1\t0\t1\t0\tLINESTART\t0\t1\t<title>",
                 "<title>",
@@ -53,7 +62,7 @@ namespace Grobid.Test
             foreach (var malformedFeatureRow in malformedFeatureRows)
             {
                 Action action = () => FeatureRow.Parse(malformedFeatureRow);
-                action.ShouldThrow<ArgumentException>();
+                action.ShouldThrow<ArgumentException>(malformedFeatureRow);
             }
         }
     }
@@ -82,7 +91,7 @@ namespace Grobid.Test
             int begin = s.LastIndexOf("<");
             if (begin == -1)
             {
-                throw new ArgumentException($"Cannot locate start of classification token in '{s}'");
+                return Tuple.Create(string.Empty, false);
             }
 
             int end = s.LastIndexOf(">");
