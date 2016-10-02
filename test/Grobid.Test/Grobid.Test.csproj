@@ -28,6 +28,7 @@
     <Compile Include="EmptyLexicon.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ExtensionsTest.cs" />
+    <Compile Include="TokenAlignerTest.cs" />
     <Compile Include="FeatureExtractorTest.cs" />
     <Compile Include="FeatureTesterTest.cs" />
     <Compile Include="GrobidTest.cs" />
