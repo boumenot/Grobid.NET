@@ -121,6 +121,15 @@ namespace Grobid.Test
         }
 
         [Fact]
+        public void TeiFeatureFactorySubmission00()
+        {
+            var tei = this.InsertXmlSnippetIntoTei("<note type=\"submission\">Submitted to the Graduate School of the <lb/></note>");
+
+            var testSubject = new TeiFeatureFactory();
+            Approvals.Verify(testSubject.Create(XDocument.Parse(tei)));
+        }
+
+        [Fact]
         public void TeiFeatureFactoryTitle00()
         {
             var tei = this.InsertXmlSnippetIntoTei("<docTitle><titlePart>The wizard quickly jinxed the gnomes before they vaporized</titlePart></docTitle>");

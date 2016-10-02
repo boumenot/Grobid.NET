@@ -41,7 +41,7 @@ namespace Grobid.NET
             "/tei/text/front/note[@type='other']",
             //"/tei/text/front/note[@type='phone']",
             //"/tei/text/front/note[@type='reference']",
-            //"/tei/text/front/note[@type='submission']",
+            "/tei/text/front/note[@type='submission']",
             //"/tei/text/front/ptr[@type='web']",
             //"/tei/text/front/reference",
             //"/tei/text/front/title",
@@ -70,6 +70,7 @@ namespace Grobid.NET
                 {"note[@type='degree']", x => TeiFeatureFactory.Annotate("degree", x) },
                 {"note[@type='grant']", x => TeiFeatureFactory.Annotate("grant", x) },
                 {"note[@type='other']", x => TeiFeatureFactory.Annotate("note", x) },
+                {"note[@type='submission']", x => TeiFeatureFactory.Annotate("submission", x) },
                 {"titlePart", x => TeiFeatureFactory.Annotate("title", x) },
                 {"titlePart[@type='main']", x => TeiFeatureFactory.Annotate("title", x) },
             };
