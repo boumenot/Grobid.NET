@@ -29,15 +29,10 @@ namespace Grobid.NET
                 return Tuple.Create(string.Empty, false);
             }
 
-            int end = s.LastIndexOf(">");
+            int end = s.IndexOf(">", begin);
             if (end == -1)
             {
                 throw new ArgumentException($"Cannot locate end of classification token in '{s}'");
-            }
-
-            if (begin > end)
-            {
-                throw new ArgumentException($"Cannot classification token in '{s}'");
             }
 
             bool isStart = begin >= 2 && s[begin - 2] == 'I' && s[begin - 1] == '-';

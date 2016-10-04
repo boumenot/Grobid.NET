@@ -26,6 +26,8 @@
     <Compile Include="BlockStateFactoryTest.Line.cs" />
     <Compile Include="CountryCodesTest.cs" />
     <Compile Include="EmptyLexicon.cs" />
+    <Compile Include="ModelScorerTest.cs" />
+    <Compile Include="TrainerRowTest.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ExtensionsTest.cs" />
     <Compile Include="FeatureRowTest.cs" />
