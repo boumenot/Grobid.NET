@@ -29,6 +29,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="ExtensionsTest.cs" />
     <Compile Include="FeatureRowTest.cs" />
+    <Compile Include="ModelStatTest.cs" />
     <Compile Include="TeiFeatureFormatterTest.cs" />
     <Compile Include="TeiFeatureMergeTest.cs" />
     <Compile Include="TokenAlignerTest.cs" />

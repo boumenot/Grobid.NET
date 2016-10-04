@@ -54,10 +54,12 @@
     <Compile Include="GrobidFactory.cs" />
     <Compile Include="ILexicon.cs" />
     <Compile Include="IntroductionFilter.cs" />
+    <Compile Include="LabelStat.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
     <Compile Include="LineStatus.cs" />
     <Compile Include="MergedFeatureRow.cs" />
+    <Compile Include="ModelStat.cs" />
     <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Punctuation.cs" />
     <Compile Include="TeiFeatureFactory.cs" />
