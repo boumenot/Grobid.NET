@@ -27,6 +27,7 @@
     <Compile Include="CountryCodesTest.cs" />
     <Compile Include="EmptyLexicon.cs" />
     <Compile Include="ModelScorerTest.cs" />
+    <Compile Include="TeiFeatureMergeBatchTest.cs" />
     <Compile Include="TrainerRowTest.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ExtensionsTest.cs" />

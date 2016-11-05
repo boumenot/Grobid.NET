@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Grobid.NET
 {
@@ -11,7 +12,7 @@ namespace Grobid.NET
 
         public ModelStat Stat { get; }
 
-        public void Score(string expected, string obtained)
+        public void Eval(string expected, string obtained)
         {
             bool isNewLabel = this.IsNewLabel(expected);
 
@@ -33,6 +34,16 @@ namespace Grobid.NET
         private bool IsNewLabel(string expected)
         {
             return !this.Stat.Labels.Contains(expected);
+        }
+
+        public IEnumerable<LabelScore> Scores()
+        {
+            var total = this.Stat.LabelStats.Values.Sum(x => x.Expected + x.FalsePositive);
+            foreach (var label in this.Stat.Labels)
+            {
+                var labelStat = this.Stat.LabelStats[label];
+                yield return new LabelScore(label, total, labelStat);
+            }
         }
     }
 }

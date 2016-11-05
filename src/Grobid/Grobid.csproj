@@ -38,6 +38,7 @@
     <Compile Include="Capitalization.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CountryCodes.cs" />
+    <Compile Include="CumulativeScore.cs" />
     <Compile Include="Digit.cs" />
     <Compile Include="DocumentStructure.cs" />
     <Compile Include="Extensions.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="GrobidFactory.cs" />
     <Compile Include="ILexicon.cs" />
     <Compile Include="IntroductionFilter.cs" />
+    <Compile Include="LabelScore.cs" />
     <Compile Include="LabelStat.cs" />
     <Compile Include="Lexicon.cs" />
     <Compile Include="LexiconFactory.cs" />
