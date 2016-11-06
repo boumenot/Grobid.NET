@@ -21,7 +21,6 @@ namespace Grobid.Test
             var teiFeatureFactory = new TeiFeatureFactory();
 
             var mergedCorpus = Directory.EnumerateFiles(@"c:\temp\corpus\header\label", "*.header")
-                .Take(250)
                 .Select(x => new {
                     HeaderFullName = x,
                     TeiFullName = Path.Combine(@"c:\temp\corpus\header\tei", $"{Path.GetFileNameWithoutExtension(x)}.tei"),
@@ -50,7 +49,7 @@ namespace Grobid.Test
 
             foreach (var label in scorer.Scores().OrderBy(x => x.Label))
             {
-                sb.AppendFormat("{0,16} {1,10:N2} {2,10:N2} {3,10:N2} {4,10:N2}\n",
+                sb.AppendFormat("{0,16} {1,10:N3} {2,10:N3} {3,10:N3} {4,10:N3}\n",
                     label.Label,
                     label.Accuracy,
                     label.Precision,
@@ -60,14 +59,14 @@ namespace Grobid.Test
 
             var cumulativeScorer = CumulativeScore.Create(scorer.Scores().ToArray());
             sb.AppendLine();
-            sb.AppendFormat("{0,16} {1,10:N2} {2,10:N2} {3,10:N2} {4,10:N2}\n",
+            sb.AppendFormat("{0,16} {1,10:N3} {2,10:N3} {3,10:N3} {4,10:N3}\n",
                 "MICRO AVG.",
                 cumulativeScorer.MicroLabelScore.Accuracy,
                 cumulativeScorer.MicroLabelScore.Precision,
                 cumulativeScorer.MicroLabelScore.Recall,
                 cumulativeScorer.MicroLabelScore.F0);
 
-            sb.AppendFormat("{0,16} {1,10:N2} {2,10:N2} {3,10:N2} {4,10:N2}\n",
+            sb.AppendFormat("{0,16} {1,10:N3} {2,10:N3} {3,10:N3} {4,10:N3}\n",
                 "MACRO AVG.",
                 cumulativeScorer.MacroLabelScore.Accuracy,
                 cumulativeScorer.MacroLabelScore.Precision,

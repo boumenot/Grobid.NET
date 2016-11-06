@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid", "src\Grobid\Grobid.csproj", "{ABB35F54-6F91-4972-B289-D15E3BE1999F}"
 EndProject
@@ -13,28 +13,46 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.PdfToXml", "src\Grob
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.PdfToXml.Test", "test\Grobid.PdfToXml.Test\Grobid.PdfToXml.Test.csproj", "{313A2156-E422-4EA4-8E51-F4238640F539}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wapiti", "src\Wapiti\Wapiti.csproj", "{ED3733E5-B484-4359-BFF4-1FF3E28646F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Debug|x64.ActiveCfg = Debug|x64
 		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Debug|x64.Build.0 = Debug|x64
+		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Release|Any CPU.ActiveCfg = Release|x64
 		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Release|x64.ActiveCfg = Release|x64
 		{ABB35F54-6F91-4972-B289-D15E3BE1999F}.Release|x64.Build.0 = Release|x64
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Debug|x64.ActiveCfg = Debug|x64
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Debug|x64.Build.0 = Debug|x64
+		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|Any CPU.ActiveCfg = Release|x64
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|x64.ActiveCfg = Release|x64
 		{B3704634-4D8C-4E18-9826-8FED25FF1FB5}.Release|x64.Build.0 = Release|x64
+		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Debug|x64.ActiveCfg = Debug|x64
 		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Debug|x64.Build.0 = Debug|x64
+		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Release|Any CPU.ActiveCfg = Release|x64
 		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Release|x64.ActiveCfg = Release|x64
 		{6DACE7CD-2466-4806-9D47-F8DF50233377}.Release|x64.Build.0 = Release|x64
+		{313A2156-E422-4EA4-8E51-F4238640F539}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{313A2156-E422-4EA4-8E51-F4238640F539}.Debug|x64.ActiveCfg = Debug|x64
 		{313A2156-E422-4EA4-8E51-F4238640F539}.Debug|x64.Build.0 = Debug|x64
+		{313A2156-E422-4EA4-8E51-F4238640F539}.Release|Any CPU.ActiveCfg = Release|x64
 		{313A2156-E422-4EA4-8E51-F4238640F539}.Release|x64.ActiveCfg = Release|x64
 		{313A2156-E422-4EA4-8E51-F4238640F539}.Release|x64.Build.0 = Release|x64
+		{ED3733E5-B484-4359-BFF4-1FF3E28646F6}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{ED3733E5-B484-4359-BFF4-1FF3E28646F6}.Debug|x64.ActiveCfg = Debug|x64
+		{ED3733E5-B484-4359-BFF4-1FF3E28646F6}.Debug|x64.Build.0 = Debug|x64
+		{ED3733E5-B484-4359-BFF4-1FF3E28646F6}.Release|Any CPU.ActiveCfg = Release|x64
+		{ED3733E5-B484-4359-BFF4-1FF3E28646F6}.Release|x64.ActiveCfg = Release|x64
+		{ED3733E5-B484-4359-BFF4-1FF3E28646F6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
