@@ -9,12 +9,15 @@ let nugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 
 let authors = ["Christopher Boumenot"]
 let project = "Grobid.Models"
-let summary = "You are a summary."
-let description = "You are a description."
+let summary = "GROBID Model for Wapiti"
+let description = summary
 
-let projectName = "Grobid.x64"
-let projectDescription = "GROBID for .NET"
-let projectSummary = projectDescription
+let projectName = "Grobid-IKVM.x64"
+let projectDescription = "IKVM port for GROBID on Java"
+let projectSummary = """
+Java version of GROBID ported to .NET using IKVM.  GROBID uses a native 
+library, Wapiti, for training and labeling.
+"""
 
 let tags = ""
 let testResultsDir = "./"
@@ -96,11 +99,10 @@ Target "NuGet" (fun _ ->
             OutputPath = "publish"
             AccessKey = getBuildParamOrDefault "nugetkey" ""
             Publish = hasBuildParam "nugetkey"
-            Dependencies = referenceDependencies [ "IKVM" ] @ [ "Grobid.Models", "3.3.0" ]
+            Dependencies = referenceDependencies [ "IKVM"; "IKVM.NativeBinaries" ] @ [ "Grobid.Models", "3.3.0" ]
             Files = [ (@"..\nuget\build\grobid.x64.props",                    Some @"build\grobid.x64.props", None)
-                      (@"..\lib\native\x64\libwapiti.dll",                    Some @"native\x64\",            None)
-                      (@"..\lib\java\Grobid.Java.dll",                        Some @"lib\net45",              None)
-                      (@"..\src\Grobid\bin" @@ buildMode @@ "Grobid.Net.dll", Some @"lib\net45",              None) ] })
+                      (@"..\lib\native\x64\libwapiti.dll",                    Some @"NativeBinaries\x64\lib", None)
+                      (@"..\lib\java\Grobid.Java.dll",                        Some @"lib\net45",              None) ] })
         ("nuget/" + projectName + ".nuspec"))
 
 // == grobid.models.X.Y.Z.nupkg

@@ -1,6 +1,6 @@
 FluentAssertions
-Grobid.NET
 xunit
 xunit.runner.visualstudio
 Newtonsoft.Json
 ApprovalTests
+Grobid-IKVM.x64

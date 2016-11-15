@@ -30,9 +30,6 @@ namespace Grobid.NET
             var libwapiti_dll = GrobidFactory.GetFullNativeWapitiName("libwapiti.dll");
             LibraryLoader.explicitLoad(libwapiti_dll);
 
-            var libwapiti_swig_dll = GrobidFactory.GetFullNativeWapitiName("libwapiti_swig.dll");
-            LibraryLoader.explicitLoad(libwapiti_swig_dll);
-
             //BasicConfigurator.configure();
             //org.apache.log4j.Logger.getRootLogger().setLevel(Level.DEBUG);
         }

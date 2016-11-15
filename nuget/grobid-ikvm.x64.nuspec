@@ -7,12 +7,12 @@
     <owners>@authors@</owners>
     <language>en-US</language>
     <projectUrl>https://github.com/boumenot/Grobid.NET</projectUrl>
-    <licenseUrl>https://github.com/boumenot/Grobid.NET/LICENSE.txt</licenseUrl>
+    <licenseUrl>https://github.com/boumenot/Grobid.NET/blob/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>@summary@</summary>
     <description>@description@</description>
     <releaseNotes>@releaseNotes@</releaseNotes>
-    <copyright>Copyright 2015</copyright>
+    <copyright>Copyright 2016</copyright>
     <tags>@tags@</tags>
     @dependencies@
   </metadata>

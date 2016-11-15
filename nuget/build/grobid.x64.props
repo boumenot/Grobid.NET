@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <ItemGroup>
-        <None Condition="Exists('$(MSBuildThisFileDirectory)\..\native\x64\libwapiti.dll')" 
-              Include="$(MSBuildThisFileDirectory)\..\native\x64\libwapiti.dll">
-            <Link>native\x64\libwapiti.dll</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Condition="Exists('$(MSBuildThisFileDirectory)\..\native\x64\libwapiti_swig.dll')" 
-              Include="$(MSBuildThisFileDirectory)\..\native\x64\libwapiti_swig.dll">
-            <Link>native\x64\libwapiti_swig.dll</Link>
+        <None Condition="Exists('$(MSBuildThisFileDirectory)\..\NativeBinaries\x64\lib\libwapiti.dll')" 
+              Include="$(MSBuildThisFileDirectory)\..\NativeBinaries\x64\lib\libwapiti.dll">
+            <Link>NativeBinaries\x64\lib\libwapiti.dll</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

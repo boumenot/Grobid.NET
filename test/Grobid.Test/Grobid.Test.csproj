@@ -75,6 +75,10 @@
     <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="grobid.zip">
+      <Paket>True</Paket>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\content\lexicon\names\firstnames.txt">
       <Link>content\lexicon\names\firstnames.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -137,11 +141,11 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <PropertyGroup>
-        <__paket__Grobid_props>Grobid</__paket__Grobid_props>
+        <__paket__grobid_x64_props>grobid.x64</__paket__grobid_x64_props>
       </PropertyGroup>
     </When>
   </Choose>
-  <Import Project="..\..\packages\Grobid.NET\build\$(__paket__Grobid_props).props" Condition="Exists('..\..\packages\Grobid.NET\build\$(__paket__Grobid_props).props')" Label="Paket" />
+  <Import Project="..\..\packages\Grobid-IKVM.x64\build\$(__paket__grobid_x64_props).props" Condition="Exists('..\..\packages\Grobid-IKVM.x64\build\$(__paket__grobid_x64_props).props')" Label="Paket" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
@@ -189,7 +193,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
         <Reference Include="Grobid.Java">
-          <HintPath>..\..\packages\Grobid.NET\lib\net20\Grobid.Java.dll</HintPath>
+          <HintPath>..\..\packages\Grobid-IKVM.x64\lib\net45\Grobid.Java.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
