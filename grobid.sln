@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.PdfToXml", "src\Grob
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grobid.PdfToXml.Test", "test\Grobid.PdfToXml.Test\Grobid.PdfToXml.Test.csproj", "{313A2156-E422-4EA4-8E51-F4238640F539}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B6FB21AC-2666-45F5-B8BF-1EA005F21493}"
+	ProjectSection(SolutionItems) = preProject
+		build.fsx = build.fsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

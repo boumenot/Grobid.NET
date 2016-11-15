@@ -2,6 +2,9 @@ version: 0.0.1.{build}
 
 image: Visual Studio 2015
 
+cache:
+  - packages -> paket.lock
+
 init:
   - git config --global core.autocrlf input
 
@@ -11,15 +14,11 @@ skip_commits:
 
 build_script:
   - set PDFTOXMLEXE=%APPVEYOR_BUILD_FOLDER%\packages\pdf2xml\bin\pdf2xml.exe
-  - build.cmd BuildApp
-  - build.cmd UnitTests
+  - build.cmd
   - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\xunit2.xml))
 
 matrix:
   fast_finish: true
-
-# cache:
-#   - packages -> paket.lock
 
 assembly_info:
   patch: true
