@@ -37,8 +37,6 @@
     <Compile Include="TeiFeatureMergeTest.cs" />
     <Compile Include="TokenAlignerTest.cs" />
     <Compile Include="FeatureExtractorTest.cs" />
-    <Compile Include="FeatureTesterTest.cs" />
-    <Compile Include="GrobidTest.cs" />
     <Compile Include="HeaderFeatureVectorTest.cs" />
     <Compile Include="IntroductionFilterTest.cs" />
     <Compile Include="LexiconFactoryTest.cs" />
@@ -75,10 +73,6 @@
     <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="grobid.zip">
-      <Paket>True</Paket>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\content\lexicon\names\firstnames.txt">
       <Link>content\lexicon\names\firstnames.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -132,22 +126,6 @@
   <Import Project="..\..\packages\xunit.runner.visualstudio.2.1.0\build\$(__paket__xunit_runner_visualstudio_props).props" Condition="Exists('..\..\packages\xunit.runner.visualstudio.2.1.0\build\$(__paket__xunit_runner_visualstudio_props).props')" Label="Paket" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
-      <PropertyGroup>
-        <__paket__IKVM_NativeBinaries_props>IKVM.NativeBinaries</__paket__IKVM_NativeBinaries_props>
-      </PropertyGroup>
-    </When>
-  </Choose>
-  <Import Project="..\..\packages\IKVM.NativeBinaries\build\$(__paket__IKVM_NativeBinaries_props).props" Condition="Exists('..\..\packages\IKVM.NativeBinaries\build\$(__paket__IKVM_NativeBinaries_props).props')" Label="Paket" />
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
-      <PropertyGroup>
-        <__paket__grobid_x64_props>grobid.x64</__paket__grobid_x64_props>
-      </PropertyGroup>
-    </When>
-  </Choose>
-  <Import Project="..\..\packages\Grobid-IKVM.x64\build\$(__paket__grobid_x64_props).props" Condition="Exists('..\..\packages\Grobid-IKVM.x64\build\$(__paket__grobid_x64_props).props')" Label="Paket" />
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
         <Reference Include="ApprovalTests">
           <HintPath>..\..\packages\ApprovalTests\lib\net40\ApprovalTests.dll</HintPath>
@@ -183,169 +161,6 @@
         </Reference>
         <Reference Include="FluentAssertions">
           <HintPath>..\..\packages\FluentAssertions\lib\net45\FluentAssertions.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
-      <ItemGroup>
-        <Reference Include="Grobid.Java">
-          <HintPath>..\..\packages\Grobid-IKVM.x64\lib\net45\Grobid.Java.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
-      <ItemGroup>
-        <Reference Include="IKVM.AWT.WinForms">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.AWT.WinForms.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Beans">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Beans.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Charsets">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Cldrdata">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Corba">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Corba.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Core">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Core.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Jdbc">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Localedata">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Management">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Management.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Media">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Media.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Misc">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Misc.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Naming">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Naming.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Nashorn">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Remoting">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Security">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Security.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.SwingAWT">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Text">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Text.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Tools">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Tools.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.Util">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.Util.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.API">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.Bind">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.Crypto">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.Parse">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.Transform">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.WebServices">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.OpenJDK.XML.XPath">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="IKVM.Runtime">
-          <HintPath>..\..\packages\IKVM\lib\IKVM.Runtime.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
-      <ItemGroup>
-        <Reference Include="IKVM.Runtime.JNI">
-          <HintPath>..\..\packages\IKVM.NativeBinaries\lib\IKVM.Runtime.JNI.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

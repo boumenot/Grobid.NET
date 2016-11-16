@@ -13,6 +13,6 @@ nuget xunit.runners
 
 source https://www.myget.org/F/boumenot/api/v3/index.json
 
-nuget Grobid-IKVM.x64
 nuget Grobid.Models copy_content_to_output_dir: preserve_newest
 nuget pdf2xml
+nuget Wapiti.NET copy_content_to_output_dir: preserve_newest

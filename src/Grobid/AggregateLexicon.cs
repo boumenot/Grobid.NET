@@ -6,7 +6,6 @@ namespace Grobid.NET
     public class AggregateLexicon : ILexicon
     {
         private readonly ILexicon[] lexicons;
-        private readonly org.grobid.core.lexicon.FastMatcher cityNameFastMatcher;
         private readonly CountryCodes countryCodes;
 
         public AggregateLexicon(ILexicon lexicon, params ILexicon[] lexicons)
@@ -22,12 +21,10 @@ namespace Grobid.NET
         public AggregateLexicon(
             ILexicon englishLexicon,
             ILexicon germanLexicon,
-            org.grobid.core.lexicon.FastMatcher cityNameFastMatcher,
             CountryCodes countryCodes)
         {
             this.lexicons = new ILexicon[] { englishLexicon, germanLexicon };
 
-            this.cityNameFastMatcher = cityNameFastMatcher;
             this.countryCodes = countryCodes;
         }
 
@@ -44,26 +41,6 @@ namespace Grobid.NET
         public bool HasWord(string word)
         {
             return this.lexicons.Any(x => x.HasWord(word));
-        }
-
-        public bool inDictionary(string word)
-        {
-            return this.HasWord(word);
-        }
-
-        public java.util.List inCityNames(java.util.List tokens)
-        {
-            return this.cityNameFastMatcher.matcher(tokens);
-        }
-
-        public java.util.List inCityNames(string text)
-        {
-            return this.cityNameFastMatcher.matcher(text);
-        }
-
-        public string getcountryCode(string country)
-        {
-            return this.countryCodes.GetCode(country);
         }
     }
 }

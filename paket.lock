@@ -25,11 +25,4 @@ NUGET
     xunit.runners (2.0)
   remote: https://www.myget.org/F/boumenot
     Grobid.Models (3.3.0) - copy_content_to_output_dir: preserve_newest
-    Grobid-IKVM.x64 (1.0.0)
-      Grobid.Models (>= 3.3)
-      IKVM (>= 8.1.5721)
-      IKVM.NativeBinaries (>= 8.1.5721)
-    IKVM (8.1.5721.0)
-    IKVM.NativeBinaries (8.1.5721.0)
-      IKVM (8.1.5721)
     pdf2xml (1.0)

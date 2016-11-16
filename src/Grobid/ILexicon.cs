@@ -1,6 +1,6 @@
 ﻿namespace Grobid.NET
 {
-    public interface ILexicon : org.grobid.core.lexicon.Lexicon
+    public interface ILexicon
     {
         bool IsFirstName(string name);
         bool IsLastName(string name);

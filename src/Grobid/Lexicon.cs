@@ -54,19 +54,6 @@ namespace Grobid.NET
             return this.HasWord(word);
         }
 
-        public java.util.List inCityNames(java.util.List tokens)
-        {
-            // XXX: this is wrong, Liskov is weeping.
-            // Maybe this class should really be called language?
-            throw new NotImplementedException();
-        }
-
-        public java.util.List inCityNames(string text)
-        {
-            // XXX: this is wrong, Liskov is weeping.
-            throw new NotImplementedException();
-        }
-
         public string getcountryCode(string str)
         {
             // FIXME:
