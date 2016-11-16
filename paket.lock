@@ -26,3 +26,4 @@ NUGET
   remote: https://www.myget.org/F/boumenot
     Grobid.Models (3.3.0) - copy_content_to_output_dir: preserve_newest
     pdf2xml (1.0)
+    Wapiti.x64 (1.0.0) - copy_content_to_output_dir: preserve_newest

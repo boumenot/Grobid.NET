@@ -3,3 +3,4 @@ xunit
 xunit.runner.visualstudio
 Newtonsoft.Json
 ApprovalTests
+Wapiti.x64
