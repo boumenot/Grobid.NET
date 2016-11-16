@@ -17,18 +17,10 @@ namespace Grobid.NET
 
         public BlockState Create(Block block, TextBlock textBlock, TokenBlock tokenBlock)
         {
-            var blockStatus = this.GetBlockStatus(block, tokenBlock);
-
             var blockState = new BlockState
             {
-                BlockStatus = blockStatus,
-                // XXX: I do not think that TextBlock serves any real purpose.  It is
-                // meant to differentiate between lines of text and blocks of text, but
-                // this difference is never exploited.  BLOCKSTART AND LINESTART events
-                // are synchornized as are BLOCKIN and LINEIN events and BLOCKEND AND 
-                // LINEEND events.
-                //LineStatus = this.GetLineStatus(textBlock, tokenBlock),
-                LineStatus = this.ToLineStatus(blockStatus),
+                BlockStatus = this.GetBlockStatus(block, tokenBlock),
+                LineStatus = this.GetLineStatus(textBlock, tokenBlock),
                 FontSizeStatus = this.GetFontSizeStatus(tokenBlock.FontSize),
                 FontStatus = this.GetFontStatus(tokenBlock.FontName.FullName),
                 FontName = tokenBlock.FontName,
@@ -39,16 +31,6 @@ namespace Grobid.NET
             this.previousFontSize = tokenBlock.FontSize;
 
             return blockState;
-        }
-
-        private LineStatus ToLineStatus(BlockStatus blockStatus)
-        {
-            switch (blockStatus)
-            {
-                case BlockStatus.BLOCKSTART: return LineStatus.LINESTART;
-                case BlockStatus.BLOCKIN: return LineStatus.LINEIN;
-                default: return LineStatus.LINEEND;
-            }
         }
 
         private FontStatus GetFontStatus(string fullFontName)
