@@ -44,6 +44,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FeatureExtractor.cs" />
     <Compile Include="FeatureRow.cs" />
+    <Compile Include="Feature\Date\AppleSauce.cs" />
     <Compile Include="FontSizeStatus.cs" />
     <Compile Include="FontStatus.cs" />
     <Compile Include="HeaderFeatureVector.cs" />
@@ -72,6 +73,7 @@
       <Name>Grobid.PdfToXml</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
