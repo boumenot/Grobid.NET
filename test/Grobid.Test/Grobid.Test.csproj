@@ -44,6 +44,7 @@
     <Compile Include="PdfBlockExtractorTest.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="TeiFeatureFactoryTest.cs" />
+    <Compile Include="WapitiTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Grobid.PdfToXml\Grobid.PdfToXml.csproj">
@@ -68,6 +69,10 @@
     </None>
     <None Include="..\..\content\lexicon\wordforms\german-normalized.wf">
       <Link>content\lexicon\wordforms\german-normalized.wf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\content\models\date\model.wapiti">
+      <Link>content\models\date\model.wapiti</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
@@ -114,6 +119,7 @@
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
     <Content Include="TeiFeatureFactoryTest.TeiFeatureFactoryWeb00.approved.txt" />
     <Content Include="TeiFeatureMergeTest.TeiFeatureMerge00.approved.txt" />
+    <Content Include="WapitiTest.WapitiEndToEnd.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>

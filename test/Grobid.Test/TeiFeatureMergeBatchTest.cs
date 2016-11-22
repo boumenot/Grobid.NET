@@ -14,7 +14,7 @@ namespace Grobid.Test
     {
         //[Fact]
         [Fact(Skip = "works on my machine only")]
-        [Trait("Test", "EndToEnd")]
+        [Trait("Category", "EndToEnd")]
         public void Test()
         {
             var teiFeatureMerge = new TeiFeatureMerge();
