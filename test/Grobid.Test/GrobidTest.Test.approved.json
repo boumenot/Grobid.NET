@@ -1,0 +1,1102 @@
+﻿[
+    {
+        "Value": "The",
+        "Classification": "title",
+        "IsStart": true
+    },
+    {
+        "Value": "essence",
+        "Classification": "title",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "title",
+        "IsStart": false
+    },
+    {
+        "Value": "language",
+        "Classification": "title",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "title",
+        "IsStart": false
+    },
+    {
+        "Value": "integrated",
+        "Classification": "title",
+        "IsStart": false
+    },
+    {
+        "Value": "query",
+        "Classification": "title",
+        "IsStart": false
+    },
+    {
+        "Value": "James",
+        "Classification": "author",
+        "IsStart": true
+    },
+    {
+        "Value": "Cheney",
+        "Classification": "author",
+        "IsStart": false
+    },
+    {
+        "Value": "The",
+        "Classification": "affiliation",
+        "IsStart": true
+    },
+    {
+        "Value": "University",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "Edinburgh",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "jcheney@inf",
+        "Classification": "email",
+        "IsStart": true
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "ed",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "ac",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "uk",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "Sam",
+        "Classification": "author",
+        "IsStart": true
+    },
+    {
+        "Value": "Lindley",
+        "Classification": "author",
+        "IsStart": false
+    },
+    {
+        "Value": "University",
+        "Classification": "affiliation",
+        "IsStart": true
+    },
+    {
+        "Value": "of",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "Strathclyde",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "sam",
+        "Classification": "email",
+        "IsStart": true
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "lindley@strath",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "ac",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "uk",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "Philip",
+        "Classification": "author",
+        "IsStart": true
+    },
+    {
+        "Value": "Wadler",
+        "Classification": "author",
+        "IsStart": false
+    },
+    {
+        "Value": "The",
+        "Classification": "affiliation",
+        "IsStart": true
+    },
+    {
+        "Value": "University",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "Edinburgh",
+        "Classification": "affiliation",
+        "IsStart": false
+    },
+    {
+        "Value": "wadler@inf",
+        "Classification": "email",
+        "IsStart": true
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "ed",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "ac",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "uk",
+        "Classification": "email",
+        "IsStart": false
+    },
+    {
+        "Value": "Abstract",
+        "Classification": "abstract",
+        "IsStart": true
+    },
+    {
+        "Value": "Language",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "integrated",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "query",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "is",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "receiving",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "renewed",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "attention",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "in",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "part",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "because",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "its",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "support",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "through",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Microsoft",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "'",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "s",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "LINQ",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "framework",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "We",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "present",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "a",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "theory",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "language",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "integrated",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "query",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "based",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "on",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "quotation",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "and",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "normalisation",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "quoted",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "terms",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Our",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "technique",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "supports",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "abstrac",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "tion",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "over",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "values",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "and",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "predicates",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "composition",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "queries",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "dynamic",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "generation",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "queries",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "and",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "queries",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "with",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "nested",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "intermediate",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "data",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Higher",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "order",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "features",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "prove",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "useful",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "even",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "for",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "constructing",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "first",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "order",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "queries",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "We",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "prove",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "that",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "normalisation",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "always",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "succeeds",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "in",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "translat",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "ing",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "any",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "query",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "flat",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "relation",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "type",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "to",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "SQL",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "We",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "present",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "experimental",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "results",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "confirming",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "our",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "technique",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "works",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "even",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "in",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "situations",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "where",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Microsoft",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "'",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "s",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "LINQ",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "framework",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "either",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "fails",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "to",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "produce",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "an",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "SQL",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "query",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "or",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "in",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "one",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "case",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "produces",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "an",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "avalanche",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "of",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "SQL",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "queries",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": ".",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Computing",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Classification",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Software",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "and",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "its",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "engineering",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "!",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Soft",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "ware",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "notations",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "and",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "tools",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "!",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "General",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "programming",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "languages",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "!",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Language",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "features",
+        "Classification": "abstract",
+        "IsStart": false
+    },
+    {
+        "Value": "Keywords",
+        "Classification": "keyword",
+        "IsStart": true
+    },
+    {
+        "Value": "lambda",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "calculus",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "LINQ",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "F#",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "quotation",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": ",",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "anti",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "-",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "quotation",
+        "Classification": "keyword",
+        "IsStart": false
+    },
+    {
+        "Value": "1",
+        "Classification": "intro",
+        "IsStart": true
+    },
+    {
+        "Value": ".",
+        "Classification": "intro",
+        "IsStart": false
+    },
+    {
+        "Value": "Introduction",
+        "Classification": "intro",
+        "IsStart": false
+    }
+]

@@ -26,6 +26,7 @@
     <Compile Include="BlockStateFactoryTest.Line.cs" />
     <Compile Include="CountryCodesTest.cs" />
     <Compile Include="EmptyLexicon.cs" />
+    <Compile Include="GrobidTest.cs" />
     <Compile Include="ModelScorerTest.cs" />
     <Compile Include="TeiFeatureMergeBatchTest.cs" />
     <Compile Include="TrainerRowTest.cs" />
@@ -75,6 +76,11 @@
       <Link>content\models\date\model.wapiti</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\..\content\models\header\model.wapiti">
+      <Link>content\models\header\model.wapiti</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GrobidTest.Test.approved.json" />
     <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
   </ItemGroup>
   <ItemGroup>

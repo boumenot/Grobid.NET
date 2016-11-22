@@ -28,6 +28,9 @@
     <NamedTestSelector>
       <TestName>Grobid.Test.WapitiTest.WapitiEndToEnd</TestName>
     </NamedTestSelector>
+    <NamedTestSelector>
+      <TestName>Grobid.Test.GrobidTest.Test</TestName>
+    </NamedTestSelector>
   </IgnoredTests>
   <AdditionalFilesToInclude>..\..\lib\**.*</AdditionalFilesToInclude>
 </ProjectConfiguration>
