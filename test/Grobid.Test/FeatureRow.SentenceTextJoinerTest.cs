@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 using FluentAssertions;
+using Xunit;
 
 using Grobid.NET;
-
-using Xunit;
 
 namespace Grobid.Test
 {
@@ -19,10 +15,10 @@ namespace Grobid.Test
             var testSubject = new SentenceTextJoiner();
             var featureRows = new[]
             {
-                new FeatureRow() { Classification = "title", Value = "The" },
-                new FeatureRow() { Classification = "title", Value = "Big" },
-                new FeatureRow() { Classification = "title", Value = "Bad" },
-                new FeatureRow() { Classification = "title", Value = "Title" },
+                new FeatureRow { Classification = "title", Value = "The" },
+                new FeatureRow { Classification = "title", Value = "Big" },
+                new FeatureRow { Classification = "title", Value = "Bad" },
+                new FeatureRow { Classification = "title", Value = "Title" },
             };
 
             var title = testSubject.Join(featureRows);
@@ -38,10 +34,10 @@ namespace Grobid.Test
             var testSubject = new SentenceTextJoiner();
             var featureRows = new[]
             {
-                new FeatureRow() { Classification = "title", Value = "The" },
-                new FeatureRow() { Classification = "title", Value = "dog" },
-                new FeatureRow() { Classification = "title", Value = "is" },
-                new FeatureRow() { Classification = "title", Value = "brown" },
+                new FeatureRow { Classification = "title", Value = "The" },
+                new FeatureRow { Classification = "title", Value = "dog" },
+                new FeatureRow { Classification = "title", Value = "is" },
+                new FeatureRow { Classification = "title", Value = "brown" },
             }.Concat(new[]
                 {
                     new FeatureRow() { Classification = "title", Value = punctuation },
