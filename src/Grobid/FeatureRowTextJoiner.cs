@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Grobid.NET
 {
-    public class FeatureRowTextJoiner
+    public class FeatureRowTextJoiner : IFeatureRowStringJoiner
     {
         public string Join(FeatureRow[] featureRows)
         {

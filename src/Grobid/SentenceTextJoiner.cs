@@ -2,7 +2,7 @@ using System.Text;
 
 namespace Grobid.NET
 {
-    public class SentenceTextJoiner
+    public class SentenceTextJoiner : IFeatureRowStringJoiner
     {
         public string Join(FeatureRow[] featureRows)
         {

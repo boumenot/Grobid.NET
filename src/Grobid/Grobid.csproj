@@ -52,6 +52,7 @@
     <Compile Include="FontStatus.cs" />
     <Compile Include="HeaderFeatureVector.cs" />
     <Compile Include="HeaderFeatureVectorFactory.cs" />
+    <Compile Include="IFeatureRowStringJoiner.cs" />
     <Compile Include="IGrobid.cs" />
     <Compile Include="ILexicon.cs" />
     <Compile Include="IntroductionFilter.cs" />
