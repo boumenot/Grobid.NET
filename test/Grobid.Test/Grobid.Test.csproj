@@ -28,6 +28,7 @@
     <Compile Include="EmptyLexicon.cs" />
     <Compile Include="FeatureRow.SentenceTextJoinerTest.cs" />
     <Compile Include="FeatureRow.TextJoinerTest.cs" />
+    <Compile Include="FeatureRowGrouperTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="HeaderModelFactoryTest.cs" />
     <Compile Include="ModelScorerTest.cs" />
@@ -83,6 +84,10 @@
       <Link>content\models\header\model.wapiti</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="FeatureRowGrouperTest.ConsecutiveClassifications.approved.json" />
+    <None Include="FeatureRowGrouperTest.DifferentClassifications.approved.json" />
+    <None Include="FeatureRowGrouperTest.DifferentClassificationsWithoutStart.approved.json" />
+    <None Include="FeatureRowGrouperTest.Simple.approved.json" />
     <None Include="GrobidTest.Test.approved.json" />
     <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
   </ItemGroup>

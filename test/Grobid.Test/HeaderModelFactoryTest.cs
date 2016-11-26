@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FluentAssertions;
-
 using Xunit;
+
+using Grobid.NET;
 
 namespace Grobid.Test
 {
@@ -44,6 +42,9 @@ namespace Grobid.Test
 
     public class HeaderModelFactory
     {
+        private readonly FeatureRowTextJoiner textJoiner = new FeatureRowTextJoiner();
+        private readonly SentenceTextJoiner sentenceJoiner = new SentenceTextJoiner();
+
         public HeaderModel Create()
         {
             throw new NotImplementedException();

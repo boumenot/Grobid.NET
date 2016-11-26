@@ -1,0 +1,20 @@
+﻿{
+    "title": [
+        [
+            {
+                "Value": "title",
+                "Classification": "title",
+                "IsStart": false
+            }
+        ]
+    ],
+    "email": [
+        [
+            {
+                "Value": "email",
+                "Classification": "email",
+                "IsStart": false
+            }
+        ]
+    ]
+}
