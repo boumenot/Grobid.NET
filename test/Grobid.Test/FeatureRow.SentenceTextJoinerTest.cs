@@ -30,8 +30,11 @@ namespace Grobid.Test
             title.Should().Be("The Big Bad Title");
         }
 
-        [Fact]
-        public void Punctuation()
+        [Theory]
+        [InlineData(".")]
+        [InlineData("?")]
+        [InlineData("!")]
+        public void Punctuation(string punctuation)
         {
             var testSubject = new SentenceTextJoiner();
             var featureRows = new[]
@@ -40,11 +43,15 @@ namespace Grobid.Test
                 new FeatureRow() { Classification = "title", Value = "dog" },
                 new FeatureRow() { Classification = "title", Value = "is" },
                 new FeatureRow() { Classification = "title", Value = "brown" },
-                new FeatureRow() { Classification = "title", Value = "." },
-            };
+            }.Concat(new[]
+                {
+                    new FeatureRow() { Classification = "title", Value = punctuation },
+                })
+            .ToArray();
+
 
             var title = testSubject.Join(featureRows);
-            title.Should().Be("The dog is brown.");
+            title.Should().Be($"The dog is brown{punctuation}");
         }
     }
 
@@ -55,9 +62,9 @@ namespace Grobid.Test
             var sb = new StringBuilder();
             foreach (var featureRow in featureRows)
             {
-                if (featureRow.Value == ".")
+                if (this.EndsSentence(featureRow.Value))
                 {
-                    sb.Replace(' ', '.', sb.Length - 1, 1);
+                    sb.Replace(' ', featureRow.Value[0], sb.Length - 1, 1);
                 }
                 else
                 {
@@ -69,6 +76,11 @@ namespace Grobid.Test
 
             sb.Remove(sb.Length - 1, 1); // trim extraneous whitespace
             return sb.ToString();
+        }
+
+        private bool EndsSentence(string value)
+        {
+            return value == "." || value == "?" || value == "!";
         }
     }
 }
