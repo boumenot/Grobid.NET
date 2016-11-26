@@ -1,45 +1,41 @@
-﻿{
-    "email": [
-        [
-            {
-                "Value": "email1",
-                "Classification": "email",
-                "IsStart": false
-            },
-            {
-                "Value": "email1",
-                "Classification": "email",
-                "IsStart": false
-            },
-            {
-                "Value": "email1",
-                "Classification": "email",
-                "IsStart": false
-            },
-            {
-                "Value": "email1",
-                "Classification": "email",
-                "IsStart": false
-            }
-        ]
+﻿[
+    [
+        {
+            "Value": "email1",
+            "Classification": "email",
+            "IsStart": false
+        },
+        {
+            "Value": "email1",
+            "Classification": "email",
+            "IsStart": false
+        },
+        {
+            "Value": "email1",
+            "Classification": "email",
+            "IsStart": false
+        },
+        {
+            "Value": "email1",
+            "Classification": "email",
+            "IsStart": false
+        }
     ],
-    "title": [
-        [
-            {
-                "Value": "title1",
-                "Classification": "title",
-                "IsStart": false
-            },
-            {
-                "Value": "title1",
-                "Classification": "title",
-                "IsStart": false
-            },
-            {
-                "Value": "title1",
-                "Classification": "title",
-                "IsStart": false
-            }
-        ]
+    [
+        {
+            "Value": "title1",
+            "Classification": "title",
+            "IsStart": false
+        },
+        {
+            "Value": "title1",
+            "Classification": "title",
+            "IsStart": false
+        },
+        {
+            "Value": "title1",
+            "Classification": "title",
+            "IsStart": false
+        }
     ]
-}
+]

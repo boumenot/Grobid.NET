@@ -6,18 +6,15 @@ namespace Grobid.NET
 {
     public class FeatureRowGrouper
     {
-        public Dictionary<string, List<ArraySegment<FeatureRow>>> Group(FeatureRow[] featureRows)
+        public ArraySegment<FeatureRow>[] Group(FeatureRow[] featureRows)
         {
             var groups = this.Break(featureRows)
-                .GroupBy(x => x.Item1)
-                .ToDictionary(
-                    x => x.Key,
-                    x => x.Select(y => y.Item2).ToList());
+                .ToArray();
 
             return groups;
         }
 
-        private IEnumerable<Tuple<string, ArraySegment<FeatureRow>>> Break(FeatureRow[] featureRows)
+        private IEnumerable<ArraySegment<FeatureRow>> Break(FeatureRow[] featureRows)
         {
             int offset = 0;
             while (offset < featureRows.Length)
@@ -30,10 +27,7 @@ namespace Grobid.NET
                     .TakeWhile(x => !x.IsStart && x.Classification == featureRow.Classification)
                     .Count();
 
-                yield return Tuple.Create(
-                    featureRow.Classification,
-                    new ArraySegment<FeatureRow>(featureRows, offset, length + startingOffset));
-
+                yield return new ArraySegment<FeatureRow>(featureRows, offset, length + startingOffset);
                 offset += length + startingOffset;
             }
         }

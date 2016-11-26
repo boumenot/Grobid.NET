@@ -1,18 +1,16 @@
-﻿{
-    "email": [
-        [
-            {
-                "Value": "email1",
-                "Classification": "email",
-                "IsStart": true
-            }
-        ],
-        [
-            {
-                "Value": "email2",
-                "Classification": "email",
-                "IsStart": true
-            }
-        ]
+﻿[
+    [
+        {
+            "Value": "email1",
+            "Classification": "email",
+            "IsStart": true
+        }
+    ],
+    [
+        {
+            "Value": "email2",
+            "Classification": "email",
+            "IsStart": true
+        }
     ]
-}
+]
