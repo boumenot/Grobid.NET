@@ -29,14 +29,46 @@ namespace Grobid.Test
             var title = testSubject.Join(featureRows);
             title.Should().Be("The Big Bad Title");
         }
+
+        [Fact]
+        public void Punctuation()
+        {
+            var testSubject = new SentenceTextJoiner();
+            var featureRows = new[]
+            {
+                new FeatureRow() { Classification = "title", Value = "The" },
+                new FeatureRow() { Classification = "title", Value = "dog" },
+                new FeatureRow() { Classification = "title", Value = "is" },
+                new FeatureRow() { Classification = "title", Value = "brown" },
+                new FeatureRow() { Classification = "title", Value = "." },
+            };
+
+            var title = testSubject.Join(featureRows);
+            title.Should().Be("The dog is brown.");
+        }
     }
 
     public class SentenceTextJoiner
     {
         public string Join(FeatureRow[] featureRows)
         {
-            var s = String.Join(" ", featureRows.Select(x => x.Value));
-            return s;
+            var sb = new StringBuilder();
+            foreach (var featureRow in featureRows)
+            {
+                if (featureRow.Value == ".")
+                {
+                    sb.Replace(' ', '.', sb.Length - 1, 1);
+                }
+                else
+                {
+                    sb.Append(featureRow.Value);
+                }
+
+                sb.Append(" ");
+            }
+
+            sb.Remove(sb.Length - 1, 1); // trim extraneous whitespace
+            return sb.ToString();
         }
     }
 }
