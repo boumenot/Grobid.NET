@@ -60,7 +60,7 @@ namespace Grobid.NET
 
     public class TeiFeatureFactory
     {
-        private static string[] XPathExpressions = new string[]
+        private static readonly string[] XPathExpressions = new string[]
         {
             "/tei/text/front/address",
             "/tei/text/front/byline/affiliation",
