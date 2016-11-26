@@ -72,6 +72,47 @@ namespace Grobid.Test
             var title = testSubject.Join(featureRows);
             title.Should().Be("The essence of language-integrated query");
         }
+
+        [Fact]
+        public void ManyHyphens()
+        {
+            var testSubject = new SentenceTextJoiner();
+            var featureRows = new[]
+            {
+                new FeatureRow { Classification = "title", Value = "The" },
+                new FeatureRow { Classification = "title", Value = "-" },
+                new FeatureRow { Classification = "title", Value = "essence" },
+                new FeatureRow { Classification = "title", Value = "-" },
+                new FeatureRow { Classification = "title", Value = "of" },
+                new FeatureRow { Classification = "title", Value = "-" },
+                new FeatureRow { Classification = "title", Value = "language" },
+                new FeatureRow { Classification = "title", Value = "-" },
+                new FeatureRow { Classification = "title", Value = "integrated" },
+                new FeatureRow { Classification = "title", Value = "-" },
+                new FeatureRow { Classification = "title", Value = "query" },
+            };
+
+            var title = testSubject.Join(featureRows);
+            title.Should().Be("The-essence-of-language-integrated-query");
+        }
+
+
+        [Theory]
+        [InlineData(".")]
+        [InlineData("?")]
+        [InlineData("!")]
+        [InlineData("-")]
+        public void LeadingPunctuation(string punctuation)
+        {
+            var testSubject = new SentenceTextJoiner();
+            var featureRows = new[]
+            {
+                new FeatureRow { Classification = "title", Value = punctuation },
+            };
+
+            var title = testSubject.Join(featureRows);
+            title.Should().Be(punctuation);
+        }
     }
 
     public enum SentenceTextState
@@ -89,11 +130,11 @@ namespace Grobid.Test
 
             foreach (var featureRow in featureRows)
             {
-                if (this.EndsSentence(featureRow.Value))
+                if (sb.Length > 0 && this.EndsSentence(featureRow.Value))
                 {
                     sb.Replace(' ', featureRow.Value[0], sb.Length - 1, 1);
                 }
-                else if (featureRow.Value == "-")
+                else if (sb.Length > 0 && featureRow.Value == "-")
                 {
                     sb.Replace(' ', featureRow.Value[0], sb.Length - 1, 1);
                     state = SentenceTextState.NoSpace;
