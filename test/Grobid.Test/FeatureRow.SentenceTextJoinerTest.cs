@@ -53,6 +53,31 @@ namespace Grobid.Test
             var title = testSubject.Join(featureRows);
             title.Should().Be($"The dog is brown{punctuation}");
         }
+
+        [Fact]
+        public void Hyphen()
+        {
+            var testSubject = new SentenceTextJoiner();
+            var featureRows = new[]
+            {
+                new FeatureRow { Classification = "title", Value = "The" },
+                new FeatureRow { Classification = "title", Value = "essence" },
+                new FeatureRow { Classification = "title", Value = "of" },
+                new FeatureRow { Classification = "title", Value = "language" },
+                new FeatureRow { Classification = "title", Value = "-" },
+                new FeatureRow { Classification = "title", Value = "integrated" },
+                new FeatureRow { Classification = "title", Value = "query" },
+            };
+
+            var title = testSubject.Join(featureRows);
+            title.Should().Be("The essence of language-integrated query");
+        }
+    }
+
+    public enum SentenceTextState
+    {
+        NoSpace,
+        Space,
     }
 
     public class SentenceTextJoiner
@@ -60,11 +85,24 @@ namespace Grobid.Test
         public string Join(FeatureRow[] featureRows)
         {
             var sb = new StringBuilder();
+            var state = SentenceTextState.Space;
+
             foreach (var featureRow in featureRows)
             {
                 if (this.EndsSentence(featureRow.Value))
                 {
                     sb.Replace(' ', featureRow.Value[0], sb.Length - 1, 1);
+                }
+                else if (featureRow.Value == "-")
+                {
+                    sb.Replace(' ', featureRow.Value[0], sb.Length - 1, 1);
+                    state = SentenceTextState.NoSpace;
+                }
+                else if (state == SentenceTextState.NoSpace)
+                {
+                    sb.Remove(sb.Length - 1, 1); // trim extraneous whitespace
+                    sb.Append(featureRow.Value);
+                    state = SentenceTextState.Space;
                 }
                 else
                 {
