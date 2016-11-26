@@ -65,6 +65,8 @@
     <Compile Include="ModelStat.cs" />
     <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Punctuation.cs" />
+    <Compile Include="SentenceTextJoiner.cs" />
+    <Compile Include="SentenceTextState.cs" />
     <Compile Include="TeiFeatureFactory.cs" />
     <Compile Include="TeiFeatureMerge.cs" />
     <Compile Include="TokenAligner.cs" />
