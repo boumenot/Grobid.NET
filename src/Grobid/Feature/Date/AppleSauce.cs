@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Grobid.NET.Contract;
+
+// XXX: this is a work in progress, not much to see here yet.
+
 namespace Grobid.NET.Feature.Date
 {
     // This is a rough sketch of my intention...  The names are purposefully
@@ -53,15 +57,6 @@ namespace Grobid.NET.Feature.Date
     // The feature rows are transformed to a model.  The model is a type
     // representing metadata extracted from the PDF.
 
-
-    public class AppleSauce
-    {
-        public AppleSauceModel Create(BlockState[] blockStates)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class WapitiFeatureVectorTransformer
     {
         public string Transform(KeyValuePair<string, string>[] features)
@@ -70,12 +65,7 @@ namespace Grobid.NET.Feature.Date
         }
     }
 
-    interface IModel<T>
-    {
-        T Create(BlockState[] blockState);
-    }
-
-    public class Model : IModel<AppleSauceModel>
+    public class AppleSauce : IModel<AppleSauceModel>
     {
         private AppleSauceFormatter formatter;
         private AppleSauceFeatureVectorFactory factory;
@@ -83,7 +73,7 @@ namespace Grobid.NET.Feature.Date
         private AppleSauceLabeler labeler;
         private AppleSauceModelFactory modelFactory;
 
-        public Model()
+        public AppleSauce()
         {
             this.factory = new AppleSauceFeatureVectorFactory();
             this.modelFactory = new AppleSauceModelFactory();
@@ -128,7 +118,7 @@ namespace Grobid.NET.Feature.Date
         }
     }
 
-    public class AppleSauceFeatureVectorFactory
+    public class AppleSauceFeatureVectorFactory : IFeatureVectorFactory<AppleSauceFeatureVector>
     {
         public AppleSauceFeatureVector Create(BlockState blockState)
         {
