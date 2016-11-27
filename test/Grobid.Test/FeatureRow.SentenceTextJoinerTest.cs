@@ -96,16 +96,20 @@ namespace Grobid.Test
         [InlineData("?")]
         [InlineData("!")]
         [InlineData("-")]
+        [InlineData(";")]
+        [InlineData(":")]
+        [InlineData(",")]
         public void LeadingPunctuation(string punctuation)
         {
             var testSubject = new SentenceTextJoiner();
             var featureRows = new[]
             {
+                new FeatureRow { Classification = "title", Value = "word"},
                 new FeatureRow { Classification = "title", Value = punctuation },
             };
 
             var title = testSubject.Join(featureRows);
-            title.Should().Be(punctuation);
+            title.Should().Be($"word{punctuation}");
         }
     }
 }
