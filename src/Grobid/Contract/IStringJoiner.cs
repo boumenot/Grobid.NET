@@ -1,6 +1,6 @@
 ﻿namespace Grobid.NET.Contract
 {
-    public interface IFeatureRowStringJoiner
+    public interface IStringJoiner
     {
         string Join(FeatureRow[] featureRows);
     }

@@ -5,21 +5,21 @@ using Grobid.NET;
 
 namespace Grobid.Test
 {
-    public class TextJoinerTest
+    public class NoSpaceJoinerTest
     {
         [Fact]
         public void Test()
         {
-            var testSubject = new FeatureRowTextJoiner();
+            var testSubject = new NoSpaceJoiner();
             var featureRows = new[]
             {
-                new FeatureRow() { Classification = "email", Value = "sam" },
-                new FeatureRow() { Classification = "email", Value = "." },
-                new FeatureRow() { Classification = "email", Value = "lindley@strath" },
-                new FeatureRow() { Classification = "email", Value = "." },
-                new FeatureRow() { Classification = "email", Value = "ac" },
-                new FeatureRow() { Classification = "email", Value = "." },
-                new FeatureRow() { Classification = "email", Value = "uk" },
+                new FeatureRow { Classification = "email", Value = "sam" },
+                new FeatureRow { Classification = "email", Value = "." },
+                new FeatureRow { Classification = "email", Value = "lindley@strath" },
+                new FeatureRow { Classification = "email", Value = "." },
+                new FeatureRow { Classification = "email", Value = "ac" },
+                new FeatureRow { Classification = "email", Value = "." },
+                new FeatureRow { Classification = "email", Value = "uk" },
             };
 
             var email = testSubject.Join(featureRows);

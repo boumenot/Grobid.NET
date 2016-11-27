@@ -45,7 +45,7 @@
     <Compile Include="Feature\Digit.cs" />
     <Compile Include="DocumentStructure.cs" />
     <Compile Include="FeatureRowGrouper.cs" />
-    <Compile Include="FeatureRowTextJoiner.cs" />
+    <Compile Include="NoSpaceJoiner.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Feature\FeatureExtractor.cs" />
     <Compile Include="FeatureRow.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="HeaderFeatureVector.cs" />
     <Compile Include="HeaderFeatureVectorFactory.cs" />
     <Compile Include="Model\HeaderFactory.cs" />
-    <Compile Include="Contract\IFeatureRowStringJoiner.cs" />
+    <Compile Include="Contract\IStringJoiner.cs" />
     <Compile Include="Contract\ILexicon.cs" />
     <Compile Include="IntroductionFilter.cs" />
     <Compile Include="Scoring\LabelScore.cs" />

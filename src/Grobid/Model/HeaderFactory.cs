@@ -11,7 +11,7 @@ namespace Grobid.NET.Model
         private static readonly Regex KeywordRx = new Regex(@"\s*keywords?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         private readonly FeatureRowGrouper grouper = new FeatureRowGrouper();
-        private readonly FeatureRowTextJoiner textJoiner = new FeatureRowTextJoiner();
+        private readonly NoSpaceJoiner noSpaceJoiner = new NoSpaceJoiner();
         private readonly SentenceTextJoiner sentenceJoiner = new SentenceTextJoiner();
 
         private static readonly FeatureRow[] Empty = new FeatureRow[0];
@@ -94,7 +94,7 @@ namespace Grobid.NET.Model
                         author.Affiliation = this.sentenceJoiner.Join(authorFeatureRows[classification]);
                         break;
                     case Constants.Classification.Email:
-                        author.Email = this.textJoiner.Join(authorFeatureRows[classification]);
+                        author.Email = this.noSpaceJoiner.Join(authorFeatureRows[classification]);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException($"The classification {classification} is not supported.");
