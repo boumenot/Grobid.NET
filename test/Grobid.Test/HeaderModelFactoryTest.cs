@@ -195,6 +195,7 @@ namespace Grobid.Test
             this.ProcessTitle(groups, model);
             this.ProcessAuthors(groups, model);
             this.ProcessKeywords(groups, model);
+            this.ProcessAbstract(groups, model);
 
             return model;
         }
@@ -286,6 +287,14 @@ namespace Grobid.Test
                 .Select(x => x.Trim());
 
             model.Keywords.AddRange(keywords);
+        }
+
+        private void ProcessAbstract(ArraySegment<FeatureRow>[] groups, HeaderModel model)
+        {
+            var rows = this.GetByClassification(groups, Constants.Classification.Abstract);
+            var text = this.sentenceJoiner.Join(rows);
+
+            model.Abstract = text;
         }
     }
 
