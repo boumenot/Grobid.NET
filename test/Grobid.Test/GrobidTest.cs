@@ -91,7 +91,7 @@ namespace Grobid.Test
                 .Select(x => String.Join(" ", x))
                 .ToArray();
 
-            using (var model = Wapiti.Wapiti.Load(@"content\models\header\model.wapiti"))
+            using (var model = global::Wapiti.Wapiti.Load(@"content\models\header\model.wapiti"))
             {
                 var labeled = new StringReader(model.Label(lines))
                     .ReadAllLines()
@@ -176,7 +176,7 @@ namespace Grobid.Test
                 .Select(x => String.Join(" ", x))
                 .ToArray();
 
-            using (var model = Wapiti.Wapiti.Load(@"content\models\header\model.wapiti"))
+            using (var model = global::Wapiti.Wapiti.Load(@"content\models\header\model.wapiti"))
             {
                 var labeled = new StringReader(model.Label(lines))
                     .ReadAllLines()

@@ -74,7 +74,7 @@
     <Compile Include="TeiFeatureFactory.cs" />
     <Compile Include="TeiFeatureMerge.cs" />
     <Compile Include="TokenAligner.cs" />
-    <Compile Include="TrainerRow.cs" />
+    <Compile Include="Wapiti\TrainerRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Grobid.PdfToXml\Grobid.PdfToXml.csproj">
@@ -82,9 +82,7 @@
       <Name>Grobid.PdfToXml</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Wapiti\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">

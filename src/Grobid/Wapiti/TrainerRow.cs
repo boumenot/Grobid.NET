@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grobid.NET
+namespace Grobid.NET.Wapiti
 {
     public sealed class TrainerRow {
         public string Expected { get; set; }

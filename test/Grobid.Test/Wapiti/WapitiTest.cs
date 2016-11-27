@@ -1,17 +1,16 @@
 ﻿using ApprovalTests;
 using ApprovalTests.Reporters;
-
 using Xunit;
 
-namespace Grobid.Test
+namespace Grobid.Test.Wapiti
 {
-    [UseReporter(typeof(DiffReporter))]
+    [UseReporter(typeof(BeyondCompare4Reporter))]
     public class WapitiTest
     {
         [Fact, Trait("Category", "EndToEnd")]
         public void WapitiEndToEnd()
         {
-            var testSubject = Wapiti.Wapiti.Load(@"content\models\date\model.wapiti");
+            var testSubject = global::Wapiti.Wapiti.Load(@"content\models\date\model.wapiti");
 
             // 10 January 2001
             var lines = new[]

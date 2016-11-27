@@ -1,11 +1,12 @@
 ﻿using System;
 
 using FluentAssertions;
+
+using Grobid.NET.Wapiti;
+
 using Xunit;
 
-using Grobid.NET;
-
-namespace Grobid.Test
+namespace Grobid.Test.Wapiti
 {
     public class TrainerRowTest
     {

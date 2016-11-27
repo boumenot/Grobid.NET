@@ -33,7 +33,6 @@
     <Compile Include="Model\HeaderFactoryTest.cs" />
     <Compile Include="Scoring\ModelScorerTest.cs" />
     <Compile Include="Tei\TeiFeatureMergeBatchTest.cs" />
-    <Compile Include="TrainerRowTest.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ExtensionsTest.cs" />
     <Compile Include="FeatureRowTest.cs" />
@@ -49,7 +48,8 @@
     <Compile Include="PdfBlockExtractorTest.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="Tei\TeiFeatureFactoryTest.cs" />
-    <Compile Include="WapitiTest.cs" />
+    <Compile Include="Wapiti\WapitiTest.cs" />
+    <Compile Include="Wapiti\TrainerRowTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Grobid.PdfToXml\Grobid.PdfToXml.csproj">
@@ -133,7 +133,7 @@
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactoryTitle01.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactoryWeb00.approved.txt" />
     <Content Include="Tei\TeiFeatureMergeTest.TeiFeatureMerge00.approved.txt" />
-    <Content Include="WapitiTest.WapitiEndToEnd.approved.txt" />
+    <Content Include="Wapiti\WapitiTest.WapitiEndToEnd.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>
