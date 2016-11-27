@@ -53,18 +53,18 @@ namespace Grobid.Test.Entity
             };
 
             var testSubject = new HeaderFactory();
-            var model = testSubject.Create(featureRows);
+            var entity = testSubject.Create(featureRows);
 
-            model.Title.Should().Be("The essence of language-integrated query");
-            model.Authors.Should().HaveCount(2);
+            entity.Title.Should().Be("The essence of language-integrated query");
+            entity.Authors.Should().HaveCount(2);
 
-            model.Authors[0].Name.Should().Be("James Cheney");
-            model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
+            entity.Authors[0].Name.Should().Be("James Cheney");
+            entity.Authors[0].Affiliation.Should().Be("University of Edinburgh");
+            entity.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
 
-            model.Authors[1].Name.Should().Be("Sam Lindley");
-            model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
+            entity.Authors[1].Name.Should().Be("Sam Lindley");
+            entity.Authors[1].Affiliation.Should().Be("University of Strathclyde");
+            entity.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
         }
 
         [Fact]
@@ -84,17 +84,17 @@ namespace Grobid.Test.Entity
             };
 
             var testSubject = new HeaderFactory();
-            var model = testSubject.Create(featureRows);
+            var entity = testSubject.Create(featureRows);
 
-            model.Authors.Should().HaveCount(2);
+            entity.Authors.Should().HaveCount(2);
 
-            model.Authors[0].Name.Should().Be("James Cheney");
-            model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
+            entity.Authors[0].Name.Should().Be("James Cheney");
+            entity.Authors[0].Affiliation.Should().Be("University of Edinburgh");
+            entity.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
 
-            model.Authors[1].Name.Should().Be("Sam Lindley");
-            model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
+            entity.Authors[1].Name.Should().Be("Sam Lindley");
+            entity.Authors[1].Affiliation.Should().Be("University of Strathclyde");
+            entity.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
         }
 
         /// <summary>
@@ -128,17 +128,17 @@ namespace Grobid.Test.Entity
             };
 
             var testSubject = new HeaderFactory();
-            var model = testSubject.Create(featureRows);
+            var entity = testSubject.Create(featureRows);
 
-            model.Authors.Should().HaveCount(2);
+            entity.Authors.Should().HaveCount(2);
 
-            model.Authors[0].Name.Should().Be("James Cheney");
-            model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
+            entity.Authors[0].Name.Should().Be("James Cheney");
+            entity.Authors[0].Affiliation.Should().Be("University of Edinburgh");
+            entity.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
 
-            model.Authors[1].Name.Should().Be("Sam Lindley");
-            model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
+            entity.Authors[1].Name.Should().Be("Sam Lindley");
+            entity.Authors[1].Affiliation.Should().Be("University of Strathclyde");
+            entity.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
         }
 
         [Fact]
@@ -162,14 +162,14 @@ namespace Grobid.Test.Entity
             };
 
             var testSubject = new HeaderFactory();
-            var model = testSubject.Create(featureRows);
+            var entity = testSubject.Create(featureRows);
 
-            model.Keywords.Should().HaveCount(5);
-            model.Keywords[0].Should().Be("lambda calculus");
-            model.Keywords[1].Should().Be("LINQ");
-            model.Keywords[2].Should().Be("F#");
-            model.Keywords[3].Should().Be("quotation");
-            model.Keywords[4].Should().Be("anti-quotation");
+            entity.Keywords.Should().HaveCount(5);
+            entity.Keywords[0].Should().Be("lambda calculus");
+            entity.Keywords[1].Should().Be("LINQ");
+            entity.Keywords[2].Should().Be("F#");
+            entity.Keywords[3].Should().Be("quotation");
+            entity.Keywords[4].Should().Be("anti-quotation");
         }
     }
 }

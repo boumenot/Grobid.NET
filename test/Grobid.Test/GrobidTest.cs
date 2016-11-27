@@ -9,8 +9,8 @@ using Wapiti;
 using Xunit;
 
 using Grobid.NET;
+using Grobid.NET.Entity;
 using Grobid.NET.Feature;
-using Grobid.NET.Model;
 using Grobid.PdfToXml;
 
 namespace Grobid.Test

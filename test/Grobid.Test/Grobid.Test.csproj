@@ -30,7 +30,7 @@
     <Compile Include="FeatureRow.TextJoinerTest.cs" />
     <Compile Include="FeatureRowGrouperTest.cs" />
     <Compile Include="GrobidTest.cs" />
-    <Compile Include="Model\HeaderFactoryTest.cs" />
+    <Compile Include="Entity\HeaderFactoryTest.cs" />
     <Compile Include="Scoring\ModelScorerTest.cs" />
     <Compile Include="Tei\TeiFeatureMergeBatchTest.cs" />
     <Compile Include="Extensions.cs" />

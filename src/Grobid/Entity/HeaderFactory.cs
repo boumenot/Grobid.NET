@@ -14,19 +14,17 @@ namespace Grobid.NET.Entity
         private readonly NoSpaceJoiner noSpaceJoiner = new NoSpaceJoiner();
         private readonly SentenceTextJoiner sentenceJoiner = new SentenceTextJoiner();
 
-        private static readonly FeatureRow[] Empty = new FeatureRow[0];
-
         public Header Create(FeatureRow[] featureRows)
         {
-            var model = new Header();
+            var entity = new Header();
 
             var groups = this.grouper.Group(featureRows);
-            this.ProcessTitle(groups, model);
-            this.ProcessAuthors(groups, model);
-            this.ProcessKeywords(groups, model);
-            this.ProcessAbstract(groups, model);
+            this.ProcessTitle(groups, entity);
+            this.ProcessAuthors(groups, entity);
+            this.ProcessKeywords(groups, entity);
+            this.ProcessAbstract(groups, entity);
 
-            return model;
+            return entity;
         }
 
         private FeatureRow[] GetByClassification(ArraySegment<FeatureRow>[] groups, string classification)
@@ -38,13 +36,13 @@ namespace Grobid.NET.Entity
             return rows;
         }
 
-        private void ProcessTitle(ArraySegment<FeatureRow>[] groups, Header model)
+        private void ProcessTitle(ArraySegment<FeatureRow>[] groups, Header entity)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Title);
-            model.Title = this.sentenceJoiner.Join(rows);
+            entity.Title = this.sentenceJoiner.Join(rows);
         }
 
-        private void ProcessAuthors(ArraySegment<FeatureRow>[] groups, Header model)
+        private void ProcessAuthors(ArraySegment<FeatureRow>[] groups, Header entity)
         {
             var d = new Dictionary<string, FeatureRow[]>();
 
@@ -59,7 +57,7 @@ namespace Grobid.NET.Entity
 
                 if (d.ContainsKey(classification))
                 {
-                    this.ProcessAuthor(d, model);
+                    this.ProcessAuthor(d, entity);
                     d.Clear();
                 }
 
@@ -68,7 +66,7 @@ namespace Grobid.NET.Entity
 
             if (d.Any())
             {
-                this.ProcessAuthor(d, model);
+                this.ProcessAuthor(d, entity);
             }
         }
 
@@ -79,7 +77,7 @@ namespace Grobid.NET.Entity
                    classification == Constants.Classification.Email;
         }
 
-        private void ProcessAuthor(Dictionary<string, FeatureRow[]> authorFeatureRows, Header model)
+        private void ProcessAuthor(Dictionary<string, FeatureRow[]> authorFeatureRows, Header entity)
         {
             var author = new Author();
 
@@ -101,10 +99,10 @@ namespace Grobid.NET.Entity
                 }
             }
 
-            model.Authors.Add(author);
+            entity.Authors.Add(author);
         }
 
-        private void ProcessKeywords(ArraySegment<FeatureRow>[] groups, Header model)
+        private void ProcessKeywords(ArraySegment<FeatureRow>[] groups, Header entity)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Keyword);
 
@@ -115,16 +113,16 @@ namespace Grobid.NET.Entity
                 .Split(',')
                 .Select(x => x.Trim());
 
-            model.Keywords.AddRange(keywords);
+            entity.Keywords.AddRange(keywords);
         }
 
-        private void ProcessAbstract(ArraySegment<FeatureRow>[] groups, Header model)
+        private void ProcessAbstract(ArraySegment<FeatureRow>[] groups, Header entity)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Abstract);
             var text = this.sentenceJoiner.Join(rows);
             text = HeaderFactory.AbstractRx.Replace(text, string.Empty);
 
-            model.Abstract = text;
+            entity.Abstract = text;
         }
     }
 }

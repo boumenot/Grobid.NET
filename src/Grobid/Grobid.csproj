@@ -31,7 +31,7 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Feature\AggregateLexicon.cs" />
-    <Compile Include="Model\Author.cs" />
+    <Compile Include="Entity\Author.cs" />
     <Compile Include="BlockReflower.cs" />
     <Compile Include="Feature\BlockState.cs" />
     <Compile Include="Feature\BlockStateFactory.cs" />
@@ -54,7 +54,7 @@
     <Compile Include="Feature\FontStatus.cs" />
     <Compile Include="HeaderFeatureVector.cs" />
     <Compile Include="HeaderFeatureVectorFactory.cs" />
-    <Compile Include="Model\HeaderFactory.cs" />
+    <Compile Include="Entity\HeaderFactory.cs" />
     <Compile Include="Contract\IStringJoiner.cs" />
     <Compile Include="Contract\ILexicon.cs" />
     <Compile Include="IntroductionFilter.cs" />
@@ -66,7 +66,7 @@
     <Compile Include="MergedFeatureRow.cs" />
     <Compile Include="Scoring\ModelScorer.cs" />
     <Compile Include="Scoring\ModelStat.cs" />
-    <Compile Include="Model\Header.cs" />
+    <Compile Include="Entity\Header.cs" />
     <Compile Include="PdfBlockExtractor.cs" />
     <Compile Include="Feature\Punctuation.cs" />
     <Compile Include="SentenceTextJoiner.cs" />
