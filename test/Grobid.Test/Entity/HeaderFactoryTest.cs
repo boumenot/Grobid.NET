@@ -2,9 +2,9 @@
 using Xunit;
 
 using Grobid.NET;
-using Grobid.NET.Model;
+using Grobid.NET.Entity;
 
-namespace Grobid.Test.Model
+namespace Grobid.Test.Entity
 {
     public class HeaderFactoryTest
     {

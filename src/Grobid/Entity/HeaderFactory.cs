@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Grobid.NET.Model
+namespace Grobid.NET.Entity
 {
     public sealed class HeaderFactory
     {

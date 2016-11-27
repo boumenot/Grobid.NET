@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Grobid.NET.Model
+namespace Grobid.NET.Entity
 {
     public sealed class Header
     {

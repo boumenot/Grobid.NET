@@ -1,4 +1,4 @@
-﻿namespace Grobid.NET.Model
+﻿namespace Grobid.NET.Entity
 {
     public sealed class Author
     {
