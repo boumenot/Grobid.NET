@@ -4,7 +4,8 @@ using System.Linq;
 
 using Grobid.NET.Contract;
 
-// XXX: this is a work in progress, not much to see here yet.
+// XXX: this is a work in progress, the only thing to see here are
+// (dis)organized thoughts.
 
 namespace Grobid.NET.Feature.Date
 {
@@ -16,12 +17,12 @@ namespace Grobid.NET.Feature.Date
     // persepective they supply X and get a type representing the metadata
     // for X.  This is the contract.
     //
-    // interface IModel<T> {
+    // interface IEntity<T> {
     //     T Create(BlockState[] blockState);
     // }
     //
     // In reality the user cannot supply an arbitrary X, they have to supply
-    // a PDF document.  PDF document get parsed to BlockState[].
+    // a PDF document.  A PDF document gets parsed to BlockState[].
     //
     // ## AppleSauceFeatureVectorFactory
     // Every block state is converted to a feature vector.  A feature vector
@@ -32,7 +33,9 @@ namespace Grobid.NET.Feature.Date
     //
     // ## AppleSauceFormatter
     // A feature vector is converted to a list of key/value pairs.  (This step
-    // may be unnecessary.)
+    // may be unnecessary.)  I think formatters are particular to a CRP engine,
+    // and can be re-used for all of the models implemented for a given engine.
+    // This is all an implementation detail, so ...
     //
     // ## WapitiFeatureVectorTransformer
     // key/value pairs are formatted for processing by the target CRP library.
@@ -40,8 +43,17 @@ namespace Grobid.NET.Feature.Date
     // vector's key/value pairs are aggregated, and separated by a newline.  The
     // feature names are not kept for Wapiti.
     //
+    // The intent of emitting a key/value pair is to easily identify what field
+    // (key) a value is associated with.  When a feature vector is of the form
+    // 1 0 1 BLOCKIN 1 0 1 0 1 1 it is *very* difficult to tell what values map to
+    // what field.
+    //
+    // I don't know if emitting a key/value pair can be used to combat the issue of
+    // determining column to name mapping; therefore, I do not know how valuable this
+    // is.  I do know it is a lot of extra baggage to carry.
+    //
     // ## AppleSauceLabeler
-    // The key/value pair "document" is then processed by the labeler (Wapiti).
+    // The key/value pair "document" is then processed by the labeler (e.g. Wapiti).
     //
     // Wapiti returns a nearly identical document as was supplied with the addition
     // of labels added to each line.  Labels are of the form I-<label> or <label>
@@ -53,9 +65,19 @@ namespace Grobid.NET.Feature.Date
     // vs. <label>.  Each line is extracted to a FeatureRow, which represents the
     // aforementioned state.
     //
-    // ## AppleSauceModelFactory
-    // The feature rows are transformed to a model.  The model is a type
+    // ## AppleSauceEntityFactory
+    // The feature rows are transformed to an entity.  The entity is a type
     // representing metadata extracted from the PDF.
+    //
+    // ## AppleEngine
+    // An Engine represents a CRP engine, and all of the entities it is capable
+    // of extracting from a PDF document, e.g.
+    //  * Date
+    //  * Header
+    //  * Name
+    //
+    // The interface IEngine establishes the contract that all CRP Engine instances
+    // must implement.
 
     public sealed class WapitiFeatureVectorTransformer
     {
@@ -65,24 +87,35 @@ namespace Grobid.NET.Feature.Date
         }
     }
 
-    public class AppleSauce : IModel<AppleSauceModel>
+    public interface IEngine
+    {
+        //Entity.Header ExtractHeader(BlockState[] blockStates);
+        //Entity.Date ExtractDate(BlockState[] blockStates);
+        //Entity.Name ExtractName(BlockState[] blockStates);
+    }
+
+    public class AppleEngine : IEngine
+    {
+    }
+
+    public class AppleSauce : IModel<AppleSauceEntity>
     {
         private AppleSauceFormatter formatter;
         private AppleSauceFeatureVectorFactory factory;
         private WapitiFeatureVectorTransformer transformer;
         private AppleSauceLabeler labeler;
-        private AppleSauceModelFactory modelFactory;
+        private AppleSauceEntityFactory entityFactory;
 
         public AppleSauce()
         {
             this.factory = new AppleSauceFeatureVectorFactory();
-            this.modelFactory = new AppleSauceModelFactory();
+            this.entityFactory = new AppleSauceEntityFactory();
             this.formatter = new AppleSauceFormatter();
             this.transformer = new WapitiFeatureVectorTransformer();
             this.labeler = new AppleSauceLabeler();
         }
 
-        public AppleSauceModel Create(BlockState[] blockStates)
+        public AppleSauceEntity Create(BlockState[] blockStates)
         {
             var featureVectorLines = blockStates
                 .Select(x => this.factory.Create(x))
@@ -91,7 +124,7 @@ namespace Grobid.NET.Feature.Date
 
             var featureVectorDocument = String.Join(Environment.NewLine, featureVectorLines);
             var featureRows = this.labeler.Label(featureVectorDocument);
-            var model = this.modelFactory.Create(featureRows);
+            var model = this.entityFactory.Create(featureRows);
             return model;
         }
     }
@@ -100,7 +133,7 @@ namespace Grobid.NET.Feature.Date
     // 2. AppleSauceFeatureVector -> string[]     # AppleSauceFormatter
     // 2.a. string[] -> IEnumerable<string[]>
     // 3. IEnumerable<string[]>   -> FeatureRow[] # AppleSauceLabeler
-    // 4. FeatureRow[]            -> AppleSauceModel
+    // 4. FeatureRow[]            -> AppleSauceEntity
 
     public class AppleSauceLabeler
     {
@@ -130,15 +163,15 @@ namespace Grobid.NET.Feature.Date
     {
     }
 
-    public class AppleSauceModelFactory
+    public class AppleSauceEntityFactory
     {
-        public AppleSauceModel Create(FeatureRow[] featureRows)
+        public AppleSauceEntity Create(FeatureRow[] featureRows)
         {
             throw new NotImplementedException();
         }
     }
 
-    public class AuthorModel
+    public class AuthorEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -146,10 +179,10 @@ namespace Grobid.NET.Feature.Date
         public string Affiliation { get; set; }
     }
 
-    public class AppleSauceModel
+    public class AppleSauceEntity
     {
         public string Title { get; set; }
-        public AuthorModel[] Authors { get; set; }
+        public AuthorEntity[] Authors { get; set; }
         public string[] Keywords { get; set; }
         public string Abstract { get; set; }
     }
