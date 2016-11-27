@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Grobid.NET.Feature;
 using Grobid.PdfToXml;
 
 namespace Grobid.NET

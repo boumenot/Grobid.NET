@@ -9,7 +9,9 @@ using Newtonsoft.Json;
 using Xunit;
 
 using Grobid.NET;
+using Grobid.NET.Feature;
 using Grobid.PdfToXml;
+using Grobid.Test.Feature;
 
 namespace Grobid.Test
 {

@@ -1,17 +1,18 @@
 ﻿using FluentAssertions;
-using Xunit;
 
-using Grobid.NET;
+using Grobid.NET.Feature;
 using Grobid.PdfToXml;
 
-namespace Grobid.Test
+using Xunit;
+
+namespace Grobid.Test.Feature
 {
     public partial class BlockStateFactoryTest
     {
         [Fact]
         public void LineStatusInitialTest()
         {
-            var tokenBlock = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock = new TokenBlock { FontName = Feature.BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new [] { tokenBlock });
             var block = new Block { TextBlocks = new [] { textBlock } };
 
@@ -24,9 +25,9 @@ namespace Grobid.Test
         [Fact]
         public void LineStatusInTest()
         {
-            var tokenBlock1 = new TokenBlock { Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock2 = new TokenBlock { Text = "LineIn", FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock3 = new TokenBlock { Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock1 = new TokenBlock { Text = "LineStart", FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { Text = "LineIn", FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock3 = new TokenBlock { Text = "LineEnd", FontName = Feature.BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2, tokenBlock3 });
             var block = new Block { TextBlocks = new[] { textBlock } };
 
@@ -43,11 +44,11 @@ namespace Grobid.Test
         [Fact]
         public void LineStatusAcrossTextBlocksTest()
         {
-            var tokenBlock1 = new TokenBlock { Text = "TextBlock[0]: LineStart", FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock2 = new TokenBlock { Text = "TextBlock[0]: LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock1 = new TokenBlock { Text = "TextBlock[0]: LineStart", FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { Text = "TextBlock[0]: LineEnd", FontName = Feature.BlockStateFactoryTest.FontA };
 
-            var tokenBlock3 = new TokenBlock { Text = "TextBlock[1]: LineStart", FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock4 = new TokenBlock { Text = "TextBlock[1]: LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock3 = new TokenBlock { Text = "TextBlock[1]: LineStart", FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock4 = new TokenBlock { Text = "TextBlock[1]: LineEnd", FontName = Feature.BlockStateFactoryTest.FontA };
 
             var textBlock1 = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
             var textBlock2 = new TextBlock(new[] { tokenBlock3, tokenBlock4 });
@@ -69,8 +70,8 @@ namespace Grobid.Test
         [Fact]
         public void LineStatusEndTest()
         {
-            var tokenBlock1 = new TokenBlock {  Text = "LineStart", FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock2 = new TokenBlock {  Text = "LineEnd", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock1 = new TokenBlock {  Text = "LineStart", FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock {  Text = "LineEnd", FontName = Feature.BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
             var block = new Block { TextBlocks = new[] { textBlock } };
 
@@ -87,7 +88,7 @@ namespace Grobid.Test
         [Fact]
         public void LineStatusSingleBlockTest()
         {
-            var tokenBlock1 = new TokenBlock { Text = "Line", FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock1 = new TokenBlock { Text = "Line", FontName = Feature.BlockStateFactoryTest.FontA };
             var textBlock1 = new TextBlock(new[] { tokenBlock1 });
             var block1 = new Block { TextBlocks = new[] { textBlock1 } };
 

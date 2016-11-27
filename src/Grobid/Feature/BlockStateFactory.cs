@@ -2,7 +2,7 @@
 
 using Grobid.PdfToXml;
 
-namespace Grobid.NET
+namespace Grobid.NET.Feature
 {
     public class BlockStateFactory
     {

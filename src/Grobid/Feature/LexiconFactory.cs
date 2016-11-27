@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Grobid.NET
+namespace Grobid.NET.Feature
 {
     public class LexiconFactory
     {

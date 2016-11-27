@@ -1,4 +1,6 @@
-﻿namespace Grobid.NET.Contract
+﻿using Grobid.NET.Feature;
+
+namespace Grobid.NET.Contract
 {
     interface IModel<T>
     {

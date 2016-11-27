@@ -1,4 +1,4 @@
-﻿namespace Grobid.NET
+﻿namespace Grobid.NET.Feature
 {
     public enum FontSizeStatus
     {

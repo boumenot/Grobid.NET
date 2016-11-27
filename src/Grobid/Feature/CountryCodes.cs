@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Grobid.NET
+namespace Grobid.NET.Feature
 {
     public class CountryCodes
     {

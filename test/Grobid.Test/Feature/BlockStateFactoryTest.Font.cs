@@ -1,10 +1,11 @@
 ﻿using FluentAssertions;
-using Xunit;
 
-using Grobid.NET;
+using Grobid.NET.Feature;
 using Grobid.PdfToXml;
 
-namespace Grobid.Test
+using Xunit;
+
+namespace Grobid.Test.Feature
 {
     public partial class BlockStateFactoryTest
     {
@@ -14,7 +15,7 @@ namespace Grobid.Test
         [Fact]
         public void FontStatusInitialTest()
         {
-            var tokenBlock = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock = new TokenBlock { FontName = Feature.BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new [] { tokenBlock });
             var block = new Block { TextBlocks = new [] { textBlock } };
 
@@ -27,8 +28,8 @@ namespace Grobid.Test
         [Fact]
         public void FontStatusNewTest()
         {
-            var tokenBlock1 = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock2 = new TokenBlock { FontName = BlockStateFactoryTest.FontB };
+            var tokenBlock1 = new TokenBlock { FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { FontName = Feature.BlockStateFactoryTest.FontB };
             var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
             var block = new Block { TextBlocks = new[] { textBlock } };
 
@@ -42,8 +43,8 @@ namespace Grobid.Test
         [Fact]
         public void FontStatusSameTest()
         {
-            var tokenBlock1 = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
-            var tokenBlock2 = new TokenBlock { FontName = BlockStateFactoryTest.FontA };
+            var tokenBlock1 = new TokenBlock { FontName = Feature.BlockStateFactoryTest.FontA };
+            var tokenBlock2 = new TokenBlock { FontName = Feature.BlockStateFactoryTest.FontA };
             var textBlock = new TextBlock(new[] { tokenBlock1, tokenBlock2 });
             var block = new Block { TextBlocks = new[] { textBlock } };
 

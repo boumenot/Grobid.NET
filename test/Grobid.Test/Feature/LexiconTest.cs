@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 
 using FluentAssertions;
+
+using Grobid.NET.Feature;
+
 using Xunit;
 
-using Grobid.NET;
-
-namespace Grobid.Test
+namespace Grobid.Test.Feature
 {
     public class LexiconTest
     {

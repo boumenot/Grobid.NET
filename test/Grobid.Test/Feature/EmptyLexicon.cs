@@ -1,8 +1,8 @@
 ﻿using System;
 
-using Grobid.NET;
+using Grobid.NET.Contract;
 
-namespace Grobid.Test
+namespace Grobid.Test.Feature
 {
     public class EmptyLexicon : ILexicon
     {

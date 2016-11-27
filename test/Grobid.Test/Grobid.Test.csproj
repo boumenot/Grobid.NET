@@ -20,17 +20,17 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="BlockStateFactoryTest.Block.cs" />
-    <Compile Include="BlockStateFactoryTest.FontSize.cs" />
-    <Compile Include="BlockStateFactoryTest.Font.cs" />
-    <Compile Include="BlockStateFactoryTest.Line.cs" />
-    <Compile Include="CountryCodesTest.cs" />
-    <Compile Include="EmptyLexicon.cs" />
+    <Compile Include="Feature\BlockStateFactoryTest.Block.cs" />
+    <Compile Include="Feature\BlockStateFactoryTest.FontSize.cs" />
+    <Compile Include="Feature\BlockStateFactoryTest.Font.cs" />
+    <Compile Include="Feature\BlockStateFactoryTest.Line.cs" />
+    <Compile Include="Feature\CountryCodesTest.cs" />
+    <Compile Include="Feature\EmptyLexicon.cs" />
     <Compile Include="FeatureRow.SentenceTextJoinerTest.cs" />
     <Compile Include="FeatureRow.TextJoinerTest.cs" />
     <Compile Include="FeatureRowGrouperTest.cs" />
     <Compile Include="GrobidTest.cs" />
-    <Compile Include="HeaderModelFactoryTest.cs" />
+    <Compile Include="Model\HeaderModelFactoryTest.cs" />
     <Compile Include="ModelScorerTest.cs" />
     <Compile Include="TeiFeatureMergeBatchTest.cs" />
     <Compile Include="TrainerRowTest.cs" />
@@ -41,11 +41,11 @@
     <Compile Include="TeiFeatureFormatterTest.cs" />
     <Compile Include="TeiFeatureMergeTest.cs" />
     <Compile Include="TokenAlignerTest.cs" />
-    <Compile Include="FeatureExtractorTest.cs" />
+    <Compile Include="Feature\FeatureExtractorTest.cs" />
     <Compile Include="HeaderFeatureVectorTest.cs" />
     <Compile Include="IntroductionFilterTest.cs" />
-    <Compile Include="LexiconFactoryTest.cs" />
-    <Compile Include="LexiconTest.cs" />
+    <Compile Include="Feature\LexiconFactoryTest.cs" />
+    <Compile Include="Feature\LexiconTest.cs" />
     <Compile Include="PdfBlockExtractorTest.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="TeiFeatureFactoryTest.cs" />

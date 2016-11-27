@@ -1,9 +1,10 @@
 ﻿using FluentAssertions;
-using Xunit;
 
 using Grobid.NET;
 
-namespace Grobid.Test
+using Xunit;
+
+namespace Grobid.Test.Model
 {
     public class HeaderModelFactoryTest
     {

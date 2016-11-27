@@ -1,8 +1,10 @@
 ﻿using FluentAssertions;
-using Grobid.NET;
+
+using Grobid.NET.Feature;
+
 using Xunit;
 
-namespace Grobid.Test
+namespace Grobid.Test.Feature
 {
     public class CountryCodesTest
     {

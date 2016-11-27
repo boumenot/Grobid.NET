@@ -1,10 +1,11 @@
 ﻿using FluentAssertions;
-using Xunit;
 
-using Grobid.NET;
+using Grobid.NET.Feature;
 using Grobid.PdfToXml;
 
-namespace Grobid.Test
+using Xunit;
+
+namespace Grobid.Test.Feature
 {
     public partial class BlockStateFactoryTest
     {

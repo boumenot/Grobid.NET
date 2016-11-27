@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Grobid.NET
+using Grobid.NET.Contract;
+
+namespace Grobid.NET.Feature
 {
     public class AggregateLexicon : ILexicon
     {

@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Grobid.NET
+using Grobid.NET.Contract;
+
+namespace Grobid.NET.Feature
 {
     public class Lexicon : ILexicon
     {
