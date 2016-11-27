@@ -56,7 +56,6 @@
     <Compile Include="HeaderFeatureVectorFactory.cs" />
     <Compile Include="HeaderModelFactory.cs" />
     <Compile Include="IFeatureRowStringJoiner.cs" />
-    <Compile Include="IGrobid.cs" />
     <Compile Include="ILexicon.cs" />
     <Compile Include="IntroductionFilter.cs" />
     <Compile Include="LabelScore.cs" />
