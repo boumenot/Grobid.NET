@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-using Grobid.NET;
-
-namespace Grobid
+namespace Grobid.NET
 {
     public class FeatureExtractor
     {
@@ -83,10 +81,10 @@ namespace Grobid
         {
             var digitCount = s.Count(Char.IsDigit);
             return digitCount == 0
-                       ? Grobid.Digit.NODIGIT
+                       ? Grobid.NET.Digit.NODIGIT
                        : digitCount == s.Length
-                           ? Grobid.Digit.ALLDIGIT
-                           : Grobid.Digit.CONTAINDIGIT;
+                           ? Grobid.NET.Digit.ALLDIGIT
+                           : Grobid.NET.Digit.CONTAINDIGIT;
         }
 
         public bool IsSingleChar(string s)
@@ -123,36 +121,36 @@ namespace Grobid
 
         public Punctuation Punctuation(string s)
         {
-            var punc = Grobid.Punctuation.NOPUNCT;
+            var punc = Grobid.NET.Punctuation.NOPUNCT;
 
             if (FeatureExtractor.PunctuationRegex.IsMatch(s))
             {
-                punc = Grobid.Punctuation.PUNCT;
+                punc = Grobid.NET.Punctuation.PUNCT;
             }
 
             switch (s)
             {
                 case "(":
                 case "[":
-                    punc = Grobid.Punctuation.OPENBRACKET;
+                    punc = Grobid.NET.Punctuation.OPENBRACKET;
                     break;
                 case ")":
                 case "]":
-                    punc = Grobid.Punctuation.ENDBRACKET;
+                    punc = Grobid.NET.Punctuation.ENDBRACKET;
                     break;
                 case ".":
-                    punc = Grobid.Punctuation.DOT;
+                    punc = Grobid.NET.Punctuation.DOT;
                     break;
                 case ",":
-                    punc = Grobid.Punctuation.COMMA;
+                    punc = Grobid.NET.Punctuation.COMMA;
                     break;
                 case "-":
-                    punc = Grobid.Punctuation.HYPHEN;
+                    punc = Grobid.NET.Punctuation.HYPHEN;
                     break;
                 case "\"":
                 case "'":
                 case "`":
-                    punc = Grobid.Punctuation.QUOTE;
+                    punc = Grobid.NET.Punctuation.QUOTE;
                     break;
             }
 

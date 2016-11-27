@@ -1,4 +1,4 @@
-﻿namespace Grobid
+﻿namespace Grobid.NET
 {
     public enum Punctuation
     {

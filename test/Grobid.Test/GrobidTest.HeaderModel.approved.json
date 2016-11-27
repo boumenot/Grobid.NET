@@ -5,17 +5,17 @@
         {
             "Name": "James Cheney",
             "Affiliation": "The University of Edinburgh",
-            "EMail": "jcheney@inf.ed.ac.uk"
+            "Email": "jcheney@inf.ed.ac.uk"
         },
         {
             "Name": "Sam Lindley",
             "Affiliation": "University of Strathclyde",
-            "EMail": "sam.lindley@strath.ac.uk"
+            "Email": "sam.lindley@strath.ac.uk"
         },
         {
             "Name": "Philip Wadler",
             "Affiliation": "The University of Edinburgh",
-            "EMail": "wadler@inf.ed.ac.uk"
+            "Email": "wadler@inf.ed.ac.uk"
         }
     ],
     "Keywords": [
