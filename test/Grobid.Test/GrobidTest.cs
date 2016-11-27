@@ -10,6 +10,7 @@ using Xunit;
 
 using Grobid.NET;
 using Grobid.NET.Feature;
+using Grobid.NET.Model;
 using Grobid.PdfToXml;
 
 namespace Grobid.Test
@@ -183,7 +184,7 @@ namespace Grobid.Test
                     .Select(FeatureRow.Parse)
                     .ToArray();
 
-                var modelFactory = new HeaderModelFactory();
+                var modelFactory = new HeaderFactory();
                 var headerModel = modelFactory.Create(labeled);
 
                 Approvals.VerifyJson(JsonConvert.SerializeObject(headerModel));

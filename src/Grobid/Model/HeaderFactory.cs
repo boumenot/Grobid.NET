@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-using Grobid.NET.Model;
-
-namespace Grobid.NET
+namespace Grobid.NET.Model
 {
-    public class HeaderModelFactory
+    public class HeaderFactory
     {
         private static readonly Regex AbstractRx = new Regex(@"\s*abstract?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         private static readonly Regex KeywordRx = new Regex(@"\s*keywords?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -111,7 +109,7 @@ namespace Grobid.NET
             var rows = this.GetByClassification(groups, Constants.Classification.Keyword);
 
             var text = this.sentenceJoiner.Join(rows);
-            text = HeaderModelFactory.KeywordRx.Replace(text, string.Empty);
+            text = HeaderFactory.KeywordRx.Replace(text, string.Empty);
 
             var keywords = text
                 .Split(',')
@@ -124,7 +122,7 @@ namespace Grobid.NET
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Abstract);
             var text = this.sentenceJoiner.Join(rows);
-            text = HeaderModelFactory.AbstractRx.Replace(text, string.Empty);
+            text = HeaderFactory.AbstractRx.Replace(text, string.Empty);
 
             model.Abstract = text;
         }

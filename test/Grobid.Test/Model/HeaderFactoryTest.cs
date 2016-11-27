@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
+using Xunit;
 
 using Grobid.NET;
-
-using Xunit;
+using Grobid.NET.Model;
 
 namespace Grobid.Test.Model
 {
-    public class HeaderModelFactoryTest
+    public class HeaderFactoryTest
     {
         [Fact]
         public void Simple()
@@ -52,7 +52,7 @@ namespace Grobid.Test.Model
                 new FeatureRow { Classification = "email", Value = "uk" },
             };
 
-            var testSubject = new HeaderModelFactory();
+            var testSubject = new HeaderFactory();
             var model = testSubject.Create(featureRows);
 
             model.Title.Should().Be("The essence of language-integrated query");
@@ -83,7 +83,7 @@ namespace Grobid.Test.Model
                 new FeatureRow { Classification = "email", Value = "sam.lindley@strath.ac.uk" },
             };
 
-            var testSubject = new HeaderModelFactory();
+            var testSubject = new HeaderFactory();
             var model = testSubject.Create(featureRows);
 
             model.Authors.Should().HaveCount(2);
@@ -127,7 +127,7 @@ namespace Grobid.Test.Model
                 new FeatureRow { Classification = "email", Value = "sam.lindley@strath.ac.uk" },
             };
 
-            var testSubject = new HeaderModelFactory();
+            var testSubject = new HeaderFactory();
             var model = testSubject.Create(featureRows);
 
             model.Authors.Should().HaveCount(2);
@@ -161,7 +161,7 @@ namespace Grobid.Test.Model
                 new FeatureRow { Classification = "keyword", Value = "quotation" },
             };
 
-            var testSubject = new HeaderModelFactory();
+            var testSubject = new HeaderFactory();
             var model = testSubject.Create(featureRows);
 
             model.Keywords.Should().HaveCount(5);
