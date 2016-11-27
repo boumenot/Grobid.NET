@@ -2,11 +2,12 @@
 
 using ApprovalTests;
 using ApprovalTests.Reporters;
-using Xunit;
 
 using Grobid.NET;
 
-namespace Grobid.Test
+using Xunit;
+
+namespace Grobid.Test.Tei
 {
     [UseReporter(typeof(DiffReporter))]
     public class TeiFeatureFactoryTest

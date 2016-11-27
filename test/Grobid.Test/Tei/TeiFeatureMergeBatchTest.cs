@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-using Xunit;
-
 using Grobid.NET;
 using Grobid.NET.Scoring;
 
-namespace Grobid.Test
+using Xunit;
+
+namespace Grobid.Test.Tei
 {
     public class TeiFeatureMergeBatchTest
     {
@@ -29,7 +29,7 @@ namespace Grobid.Test
                 .Select(x => new
                 {
                     TeiFeatures = teiFeatureFactory.Create(XDocument.Load(File.OpenRead(x.TeiFullName))),
-                    FeatureRows = GetFeatureRows(x.HeaderFullName),
+                    FeatureRows = TeiFeatureMergeBatchTest.GetFeatureRows(x.HeaderFullName),
                 })
                 .SelectMany(x => teiFeatureMerge.Merge(x.TeiFeatures, x.FeatureRows))
                 .ToArray();

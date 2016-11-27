@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
-using Xunit;
 
 using Grobid.NET;
 
+using Xunit;
 
-namespace Grobid.Test
+namespace Grobid.Test.Tei
 {
     public class TeiFeatureFormatterTest
     {
