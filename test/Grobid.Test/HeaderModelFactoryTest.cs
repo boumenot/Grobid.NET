@@ -11,43 +11,8 @@ namespace Grobid.Test
 {
     public class HeaderModelFactoryTest
     {
-        [Fact(Skip="Need to implement more")]
-        public void Test()
-        {
-            var featureRows = new[]
-            {
-                new FeatureRow { IsStart = true, Classification = "email", Value = "email1" },
-                new FeatureRow { IsStart = true, Classification = "email", Value = "email2" },
-            };
-
-            var testSubject = new HeaderModelFactory();
-            var model = testSubject.Create(new FeatureRow[0]);
-
-            model.Title.Should().Be("The essence of language-integrated query");
-            model.Keywords.Should().HaveCount(5);
-            model.Keywords[0].Should().Be("lambda calculus");
-            model.Keywords[1].Should().Be("LINQ");
-            model.Keywords[2].Should().Be("F#");
-            model.Keywords[3].Should().Be("quotation");
-            model.Keywords[4].Should().Be("anti-quotation");
-
-            model.Authors.Should().HaveCount(3);
-
-            model.Authors[0].Name.Should().Be("James Cheney");
-            model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].EMail.Should().Be("jcheney@inf.ed.ac.uk");
-
-            model.Authors[1].Name.Should().Be("Sam Lindley");
-            model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
-
-            model.Authors[2].Name.Should().Be("Philip Wadler");
-            model.Authors[2].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[2].EMail.Should().Be("wadler@inf.ed.ac.uk");
-        }
-
         [Fact]
-        public void Test1()
+        public void Simple()
         {
             var featureRows = new[]
             {
@@ -104,6 +69,80 @@ namespace Grobid.Test
             model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
             model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
         }
+
+        [Fact]
+        public void ValidateBreakInAuthors()
+        {
+            var featureRows = new[]
+            {
+                new FeatureRow { Classification = "author", Value = "James Cheney" },
+                new FeatureRow { Classification = "affiliation", Value = "University of Edinburgh" },
+                new FeatureRow { Classification = "email", Value = "jcheney@inf.ed.ac.uk" },
+
+                new FeatureRow { Classification = "other", Value = "break" },
+
+                new FeatureRow { Classification = "author", Value = "Sam Lindley" },
+                new FeatureRow { Classification = "affiliation", Value = "University of Strathclyde" },
+                new FeatureRow { Classification = "email", Value = "sam.lindley@strath.ac.uk" },
+            };
+
+            var testSubject = new HeaderModelFactory();
+            var model = testSubject.Create(featureRows);
+
+            model.Authors.Should().HaveCount(2);
+
+            model.Authors[0].Name.Should().Be("James Cheney");
+            model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
+            model.Authors[0].EMail.Should().Be("jcheney@inf.ed.ac.uk");
+
+            model.Authors[1].Name.Should().Be("Sam Lindley");
+            model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
+            model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
+        }
+
+        /// <summary>
+        /// When processing Author data the code continues to collect attributes for
+        /// the "current" author until a new author's attributes are found.
+        /// 
+        /// For this test there is the feature author then other.  The feature "other"
+        /// does not interrupt the processing of the current author.  The affiliation and
+        /// email feature are assumed to attached to previous author feature.
+        /// 
+        /// I do not know if this behavior is desirable, but I am codifying it in a test 
+        /// case.
+        /// </summary>
+        [Fact]
+        public void AuthorAttributesAreCollectedUntilDuplication()
+        {
+            var featureRows = new[]
+            {
+                new FeatureRow { Classification = "author", Value = "James Cheney" },
+
+                new FeatureRow { Classification = "other", Value = "break" },
+
+                new FeatureRow { Classification = "affiliation", Value = "University of Edinburgh" },
+                new FeatureRow { Classification = "email", Value = "jcheney@inf.ed.ac.uk" },
+
+                new FeatureRow { Classification = "other", Value = "break" },
+
+                new FeatureRow { Classification = "author", Value = "Sam Lindley" },
+                new FeatureRow { Classification = "affiliation", Value = "University of Strathclyde" },
+                new FeatureRow { Classification = "email", Value = "sam.lindley@strath.ac.uk" },
+            };
+
+            var testSubject = new HeaderModelFactory();
+            var model = testSubject.Create(featureRows);
+
+            model.Authors.Should().HaveCount(2);
+
+            model.Authors[0].Name.Should().Be("James Cheney");
+            model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
+            model.Authors[0].EMail.Should().Be("jcheney@inf.ed.ac.uk");
+
+            model.Authors[1].Name.Should().Be("Sam Lindley");
+            model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
+            model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
+        }
     }
 
     public class HeaderModelFactory
@@ -148,9 +187,7 @@ namespace Grobid.Test
             {
                 var classification = g.First().Classification;
 
-                if (classification != Constants.Classification.Author &&
-                    classification != Constants.Classification.Affiliation &&
-                    classification != Constants.Classification.Email)
+                if (!this.IsAuthor(classification))
                 {
                     continue;
                 }
@@ -168,6 +205,13 @@ namespace Grobid.Test
             {
                 this.ProcessAuthor(d, model);
             }
+        }
+
+        private bool IsAuthor(string classification)
+        {
+            return classification == Constants.Classification.Author ||
+                   classification == Constants.Classification.Affiliation ||
+                   classification == Constants.Classification.Email;
         }
 
         private void ProcessAuthor(Dictionary<string, FeatureRow[]> authorFeatureRows, HeaderModel model)

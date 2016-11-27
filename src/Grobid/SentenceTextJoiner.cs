@@ -34,7 +34,11 @@ namespace Grobid.NET
                 sb.Append(" ");
             }
 
-            sb.Remove(sb.Length - 1, 1); // trim extraneous whitespace
+            if (sb.Length > 0)
+            {
+                sb.Remove(sb.Length - 1, 1); // trim extraneous whitespace
+            }
+
             return sb.ToString();
         }
 
