@@ -1,6 +1,6 @@
 ﻿namespace Grobid.PdfToXml
 {
-    public class PageBlock
+    public sealed class PageBlock
     {
         public int Id { get; set; }
 

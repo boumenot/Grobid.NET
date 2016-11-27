@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Grobid.NET.Model
 {
-    public class HeaderFactory
+    public sealed class HeaderFactory
     {
         private static readonly Regex AbstractRx = new Regex(@"\s*abstract?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         private static readonly Regex KeywordRx = new Regex(@"\s*keywords?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);

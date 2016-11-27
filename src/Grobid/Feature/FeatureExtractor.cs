@@ -7,7 +7,7 @@ using Grobid.NET.Contract;
 
 namespace Grobid.NET.Feature
 {
-    public class FeatureExtractor
+    public sealed class FeatureExtractor
     {
         private static readonly Regex EmailAddress = new Regex("^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\]?)|(?:[a-zA-Z0-9-]+\\.)+(?:[a-zA-Z]){2,}\\.?)$", RegexOptions.Compiled);
         private static readonly Regex PunctuationRegex = new Regex("^[\\,\\:;\\?\\.]+$", RegexOptions.Compiled);

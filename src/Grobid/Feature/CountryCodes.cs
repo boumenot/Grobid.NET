@@ -8,7 +8,7 @@ using System.Xml.XPath;
 
 namespace Grobid.NET.Feature
 {
-    public class CountryCodes
+    public sealed class CountryCodes
     {
         private readonly Dictionary<string, string> countryCodes;
 

@@ -4,7 +4,7 @@ using iTextSharp.text;
 
 namespace Grobid.PdfToXml
 {
-    public class TokenBlockFactory
+    public sealed class TokenBlockFactory
     {
         private static readonly string Black = "#000000";
 

@@ -2,7 +2,7 @@
 
 namespace Grobid.NET
 {
-    public class TrainerRow {
+    public sealed class TrainerRow {
         public string Expected { get; set; }
         public string Obtained { get; set; }
         public string Value { get; set; }

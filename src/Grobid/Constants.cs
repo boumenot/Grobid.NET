@@ -7,7 +7,7 @@
             internal const string libwapiti_dll = "libwapiti.dll";
         }
 
-        public class Classification
+        public static class Classification
         {
             public const string Abstract = "abstract";
             public const string Acknowledgement = "acknowledgement";

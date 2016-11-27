@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Grobid.NET.Feature
 {
-    public class LexiconFactory
+    public sealed class LexiconFactory
     {
         public Lexicon Create(
             Stream firstNames,

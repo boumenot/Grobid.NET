@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
+using Xunit;
+
 using Grobid.NET;
 using Grobid.NET.Scoring;
-
-using Xunit;
 
 namespace Grobid.Test.Tei
 {

@@ -7,7 +7,7 @@ using Grobid.NET;
 
 namespace Grobid.Test
 {
-    public class ExtensionsTest
+    public sealed class ExtensionsTest
     {
         [Fact]
         public void TakeUntilIncludesMatchedValueTest()

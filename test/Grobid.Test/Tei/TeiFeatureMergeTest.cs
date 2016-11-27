@@ -3,10 +3,9 @@ using System.Linq;
 using System.Xml.Linq;
 
 using ApprovalTests;
+using Xunit;
 
 using Grobid.NET;
-
-using Xunit;
 
 namespace Grobid.Test.Tei
 {

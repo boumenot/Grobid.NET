@@ -7,7 +7,7 @@ using Grobid.PdfToXml;
 
 namespace Grobid.NET
 {
-    public class PdfBlockExtractor<T>
+    public sealed class PdfBlockExtractor<T>
     {
         private readonly BlockStateFactory factory;
 

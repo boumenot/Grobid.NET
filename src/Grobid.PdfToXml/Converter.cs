@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace Grobid.PdfToXml
 {
-    public class Converter
+    public sealed class Converter
     {
         public XDocument ToXml(PageBlock[] pageBlocks)
         {

@@ -4,7 +4,7 @@ using Grobid.NET.Contract;
 
 namespace Grobid.NET.Feature
 {
-    public class Lexicon : ILexicon
+    public sealed class Lexicon : ILexicon
     {
         private readonly HashSet<string> firstNames;
         private readonly HashSet<string> lastNames;

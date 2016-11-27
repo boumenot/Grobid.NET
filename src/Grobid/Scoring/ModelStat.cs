@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Grobid.NET.Scoring
 {
-    public class ModelStat
+    public sealed class ModelStat
     {
         private readonly Dictionary<string, LabelStat> labelStats;
 

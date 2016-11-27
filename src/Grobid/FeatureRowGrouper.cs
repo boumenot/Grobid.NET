@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Grobid.NET
 {
-    public class FeatureRowGrouper
+    public sealed class FeatureRowGrouper
     {
         public ArraySegment<FeatureRow>[] Group(FeatureRow[] featureRows)
         {

@@ -32,7 +32,6 @@
     <Compile Include="TextRenderInfoStub.cs" />
     <Compile Include="TokenBlockFactoryTest.cs" />
     <Compile Include="TokenBlockTest.cs" />
-    <Compile Include="TokenFactoryTest.cs" />
     <Compile Include="XmlTextExtractionStrategyTest.cs" />
   </ItemGroup>
   <ItemGroup>

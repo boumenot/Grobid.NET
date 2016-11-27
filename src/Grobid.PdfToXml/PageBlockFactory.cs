@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -8,7 +7,7 @@ using iTextSharp.text.pdf.parser;
 
 namespace Grobid.PdfToXml
 {
-    public class PageBlockFactory
+    public sealed class PageBlockFactory
     {
         private readonly TextBlockFactory textBlockFactory;
 

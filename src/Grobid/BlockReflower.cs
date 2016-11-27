@@ -13,7 +13,7 @@ namespace Grobid.NET
     /// The code could be smarter, and avoid recalculating blocks where it is not
     /// necessary.
     /// </summary>
-    public class BlockReflower
+    public sealed class BlockReflower
     {
         public IEnumerable<Block> Reflow(IEnumerable<Block> blocks)
         {

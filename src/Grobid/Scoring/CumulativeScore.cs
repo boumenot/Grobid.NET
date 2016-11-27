@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Grobid.NET.Scoring
 {
-    public class CumulativeScore
+    public sealed class CumulativeScore
     {
         private CumulativeScore(LabelScore microLabelScore, LabelScore macroLabelScore)
         {

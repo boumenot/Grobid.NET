@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Grobid.PdfToXml
 {
-    public class TextBlockFactory
+    public sealed class TextBlockFactory
     {
         public TextBlock[] Create(TokenBlock[] tokenBlocks, float pageHeight, int id = 0)
         {

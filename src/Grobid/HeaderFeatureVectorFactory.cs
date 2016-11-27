@@ -2,7 +2,7 @@
 
 namespace Grobid.NET
 {
-    public class HeaderFeatureVectorFactory
+    public sealed class HeaderFeatureVectorFactory
     {
         private readonly FeatureExtractor featureExtractor;
 

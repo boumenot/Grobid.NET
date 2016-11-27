@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Grobid.NET.Scoring
 {
-    public class ModelScorer
+    public sealed class ModelScorer
     {
         public ModelScorer()
         {

@@ -4,7 +4,7 @@ using Grobid.NET.Contract;
 
 namespace Grobid.NET
 {
-    public class SentenceTextJoiner : IFeatureRowStringJoiner
+    public sealed class SentenceTextJoiner : IFeatureRowStringJoiner
     {
         public string Join(FeatureRow[] featureRows)
         {

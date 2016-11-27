@@ -2,7 +2,7 @@ using System;
 
 namespace Grobid.PdfToXml
 {
-    public class FontName
+    public sealed class FontName
     {
         private FontName() {}
 

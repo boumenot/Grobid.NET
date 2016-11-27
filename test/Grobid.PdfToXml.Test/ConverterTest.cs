@@ -4,9 +4,7 @@ using System.Linq;
 
 using ApprovalTests;
 using ApprovalTests.Reporters;
-
 using Xunit;
-
 
 namespace Grobid.PdfToXml.Test
 {

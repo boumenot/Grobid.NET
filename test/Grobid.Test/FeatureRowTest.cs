@@ -5,7 +5,6 @@ using Xunit;
 
 using Grobid.NET;
 
-
 namespace Grobid.Test
 {
     public class FeatureRowTest

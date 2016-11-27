@@ -5,7 +5,7 @@ using Grobid.NET.Contract;
 
 namespace Grobid.NET.Feature
 {
-    public class AggregateLexicon : ILexicon
+    public sealed class AggregateLexicon : ILexicon
     {
         private readonly ILexicon[] lexicons;
         private readonly CountryCodes countryCodes;

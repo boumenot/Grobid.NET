@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Grobid.PdfToXml
 {
-    public class Block
+    public sealed class Block
     {
         public int Id { get; set; }
 

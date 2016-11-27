@@ -1,6 +1,6 @@
 ﻿namespace Grobid.NET.Scoring
 {
-    public class LabelStat
+    public sealed class LabelStat
     {
         public int Expected { get; set; }
         public int Observed { get; set; }

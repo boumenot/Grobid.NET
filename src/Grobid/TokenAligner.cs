@@ -26,7 +26,7 @@ namespace Grobid.NET
     /// in what the strings are hence the need for all of the genericity.
     /// </para>
     /// </remarks>
-    public class TokenAligner<TItem>
+    public sealed class TokenAligner<TItem>
         where TItem : IEquatable<TItem>
     {
         public const int DefaultWindowSize = 7;

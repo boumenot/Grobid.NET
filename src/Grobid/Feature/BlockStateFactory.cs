@@ -4,7 +4,7 @@ using Grobid.PdfToXml;
 
 namespace Grobid.NET.Feature
 {
-    public class BlockStateFactory
+    public sealed class BlockStateFactory
     {
         private string previousFullFontName;
         private float previousFontSize;

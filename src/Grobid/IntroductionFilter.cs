@@ -2,7 +2,7 @@
 
 namespace Grobid.NET
 {
-    public class IntroductionFilter
+    public sealed class IntroductionFilter
     {
         public bool IsIntroduction(Block arg)
         {

@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 
 using FluentAssertions;
+using Xunit;
 
 using Grobid.NET.Scoring;
-
-using Xunit;
 
 namespace Grobid.Test.Scoring
 {

@@ -2,7 +2,7 @@
 
 namespace Grobid.NET
 {
-    public class TeiFeatureMerge
+    public sealed class TeiFeatureMerge
     {
         private readonly TokenAligner<string> aligner;
 

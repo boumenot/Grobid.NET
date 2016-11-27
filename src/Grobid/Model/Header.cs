@@ -2,7 +2,7 @@
 
 namespace Grobid.NET.Model
 {
-    public class Header
+    public sealed class Header
     {
         public Header()
         {

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 
 using iTextSharp.text;
 
 namespace Grobid.PdfToXml
 {
-    public class TokenBlock : IEquatable<TokenBlock>
+    public sealed class TokenBlock : IEquatable<TokenBlock>
     {
         public static readonly TokenBlock Empty = new TokenBlock { IsEmpty = true };
 

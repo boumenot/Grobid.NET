@@ -2,7 +2,7 @@
 
 namespace Grobid.NET.Scoring
 {
-    public class LabelScore
+    public sealed class LabelScore
     {
         private const double Epsilon = 0.0000001;
 

@@ -2,7 +2,7 @@
 
 namespace Grobid.NET
 {
-    public class HeaderFeatureVector
+    public sealed class HeaderFeatureVector
     {
         public string Text { get; set; }
         public string AsLowerCase { get; set; }

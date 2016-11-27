@@ -2,7 +2,7 @@
 
 namespace Grobid.NET
 {
-    public class FeatureRow {
+    public sealed class FeatureRow {
         public string Value { get; set; }
         public string Classification { get; set; }
         public bool IsStart { get; set; }

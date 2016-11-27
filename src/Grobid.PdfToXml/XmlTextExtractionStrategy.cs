@@ -46,17 +46,14 @@
  * address: sales @itextpdf.com
  */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
 namespace Grobid.PdfToXml
 {
-    public class XmlTextExtractionStrategy : ITextExtractionStrategy
+    public sealed class XmlTextExtractionStrategy : ITextExtractionStrategy
     {
         private Vector lastStart;
         private Vector lastEnd;

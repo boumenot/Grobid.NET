@@ -2,10 +2,9 @@
 
 using ApprovalTests;
 using ApprovalTests.Reporters;
+using Xunit;
 
 using Grobid.NET;
-
-using Xunit;
 
 namespace Grobid.Test.Tei
 {

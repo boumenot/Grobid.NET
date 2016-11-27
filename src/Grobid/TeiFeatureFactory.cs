@@ -8,7 +8,7 @@ using Grobid.PdfToXml;
 
 namespace Grobid.NET
 {
-    public class TeiFeature
+    public sealed class TeiFeature
     {
         public string Value { get; set; }
         public string Classification { get; set; }
@@ -30,7 +30,7 @@ namespace Grobid.NET
         }
     }
 
-    public class TeiFeatureFormatter
+    public sealed class TeiFeatureFormatter
     {
         private static string OnePrefix = "I-";
 
@@ -58,7 +58,7 @@ namespace Grobid.NET
         }
     }
 
-    public class TeiFeatureFactory
+    public sealed class TeiFeatureFactory
     {
         private static readonly string[] XPathExpressions = new string[]
         {

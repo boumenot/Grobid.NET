@@ -57,7 +57,7 @@ namespace Grobid.NET.Feature.Date
     // The feature rows are transformed to a model.  The model is a type
     // representing metadata extracted from the PDF.
 
-    public class WapitiFeatureVectorTransformer
+    public sealed class WapitiFeatureVectorTransformer
     {
         public string Transform(KeyValuePair<string, string>[] features)
         {
