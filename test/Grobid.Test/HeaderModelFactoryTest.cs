@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 using FluentAssertions;
 using Xunit;
@@ -143,10 +144,43 @@ namespace Grobid.Test
             model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
             model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
         }
+
+        [Fact]
+        public void Keywords()
+        {
+            var featureRows = new[]
+            {
+                new FeatureRow { IsStart = true, Classification = "keyword", Value = "Keywords" },
+                new FeatureRow { Classification = "keyword", Value = "lambda" },
+                new FeatureRow { Classification = "keyword", Value = "calculus" },
+                new FeatureRow { Classification = "keyword", Value = "," },
+                new FeatureRow { Classification = "keyword", Value = "LINQ" },
+                new FeatureRow { Classification = "keyword", Value = "," },
+                new FeatureRow { Classification = "keyword", Value = "F#" },
+                new FeatureRow { Classification = "keyword", Value = "," },
+                new FeatureRow { Classification = "keyword", Value = "quotation" },
+                new FeatureRow { Classification = "keyword", Value = "," },
+                new FeatureRow { Classification = "keyword", Value = "anti" },
+                new FeatureRow { Classification = "keyword", Value = "-" },
+                new FeatureRow { Classification = "keyword", Value = "quotation" },
+            };
+
+            var testSubject = new HeaderModelFactory();
+            var model = testSubject.Create(featureRows);
+
+            model.Keywords.Should().HaveCount(5);
+            model.Keywords[0].Should().Be("lambda calculus");
+            model.Keywords[1].Should().Be("LINQ");
+            model.Keywords[2].Should().Be("F#");
+            model.Keywords[3].Should().Be("quotation");
+            model.Keywords[4].Should().Be("anti-quotation");
+        }
     }
 
     public class HeaderModelFactory
     {
+        private static readonly Regex KeywordRx = new Regex(@"keywords?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
         private readonly FeatureRowGrouper grouper = new FeatureRowGrouper();
         private readonly FeatureRowTextJoiner textJoiner = new FeatureRowTextJoiner();
         private readonly SentenceTextJoiner sentenceJoiner = new SentenceTextJoiner();
@@ -160,6 +194,7 @@ namespace Grobid.Test
             var groups = this.grouper.Group(featureRows);
             this.ProcessTitle(groups, model);
             this.ProcessAuthors(groups, model);
+            this.ProcessKeywords(groups, model);
 
             return model;
         }
@@ -237,6 +272,20 @@ namespace Grobid.Test
             }
 
             model.Authors.Add(author);
+        }
+
+        private void ProcessKeywords(ArraySegment<FeatureRow>[] groups, HeaderModel model)
+        {
+            var rows = this.GetByClassification(groups, Constants.Classification.Keyword);
+            var s = this.sentenceJoiner.Join(rows);
+
+            s = KeywordRx.Replace(s, string.Empty);
+
+            var keywords = s
+                .Split(',')
+                .Select(x => x.Trim());
+
+            model.Keywords.AddRange(keywords);
         }
     }
 

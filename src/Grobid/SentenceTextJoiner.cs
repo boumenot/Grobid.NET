@@ -11,7 +11,7 @@ namespace Grobid.NET
 
             foreach (var featureRow in featureRows)
             {
-                if (sb.Length > 0 && this.EndsSentence(featureRow.Value))
+                if (sb.Length > 0 && this.AbutsWord(featureRow.Value))
                 {
                     sb.Replace(' ', featureRow.Value[0], sb.Length - 1, 1);
                 }
@@ -42,9 +42,18 @@ namespace Grobid.NET
             return sb.ToString();
         }
 
-        private bool EndsSentence(string value)
+        private bool AbutsWord(string value)
         {
-            return value == "." || value == "?" || value == "!";
+            switch (value)
+            {
+                case ".":
+                case "?":
+                case "!":
+                case ",":
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 }
