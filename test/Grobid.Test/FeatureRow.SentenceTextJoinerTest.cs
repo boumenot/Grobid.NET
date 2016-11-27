@@ -91,6 +91,24 @@ namespace Grobid.Test
             title.Should().Be("The-essence-of-language-integrated-query");
         }
 
+        [Fact]
+        public void Possesion()
+        {
+            var testSubject = new SentenceTextJoiner();
+            var featureRows = new[]
+            {
+                new FeatureRow { Classification = "title", Value = "The" },
+                new FeatureRow { Classification = "title", Value = "cat" },
+                new FeatureRow { Classification = "title", Value = "'" },
+                new FeatureRow { Classification = "title", Value = "s" },
+                new FeatureRow { Classification = "title", Value = "meow" },
+                new FeatureRow { Classification = "title", Value = "." },
+            };
+
+            var title = testSubject.Join(featureRows);
+            title.Should().Be("The cat's meow.");
+        }
+
         [Theory]
         [InlineData(".")]
         [InlineData("?")]
