@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 
-namespace Grobid.NET
+namespace Grobid.NET.Model
 {
-    public class HeaderModel
+    public class Header
     {
-        public HeaderModel()
+        public Header()
         {
-            this.Authors = new List<AuthorModel>();
+            this.Authors = new List<Author>();
             this.Keywords = new List<string>();
         }
 
         public string Title { get; set; }
         public string Abstract { get; set; }
-        public List<AuthorModel> Authors { get; }
+        public List<Author> Authors { get; }
         public List<string> Keywords { get; }
     }
 }

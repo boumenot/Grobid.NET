@@ -59,11 +59,11 @@ namespace Grobid.Test
 
             model.Authors[0].Name.Should().Be("James Cheney");
             model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].EMail.Should().Be("jcheney@inf.ed.ac.uk");
+            model.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
 
             model.Authors[1].Name.Should().Be("Sam Lindley");
             model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
+            model.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
         }
 
         [Fact]
@@ -89,11 +89,11 @@ namespace Grobid.Test
 
             model.Authors[0].Name.Should().Be("James Cheney");
             model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].EMail.Should().Be("jcheney@inf.ed.ac.uk");
+            model.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
 
             model.Authors[1].Name.Should().Be("Sam Lindley");
             model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
+            model.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
         }
 
         /// <summary>
@@ -133,11 +133,11 @@ namespace Grobid.Test
 
             model.Authors[0].Name.Should().Be("James Cheney");
             model.Authors[0].Affiliation.Should().Be("University of Edinburgh");
-            model.Authors[0].EMail.Should().Be("jcheney@inf.ed.ac.uk");
+            model.Authors[0].Email.Should().Be("jcheney@inf.ed.ac.uk");
 
             model.Authors[1].Name.Should().Be("Sam Lindley");
             model.Authors[1].Affiliation.Should().Be("University of Strathclyde");
-            model.Authors[1].EMail.Should().Be("sam.lindley@strath.ac.uk");
+            model.Authors[1].Email.Should().Be("sam.lindley@strath.ac.uk");
         }
 
         [Fact]

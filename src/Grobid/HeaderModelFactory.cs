@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+using Grobid.NET.Model;
+
 namespace Grobid.NET
 {
     public class HeaderModelFactory
@@ -16,9 +18,9 @@ namespace Grobid.NET
 
         private static readonly FeatureRow[] Empty = new FeatureRow[0];
 
-        public HeaderModel Create(FeatureRow[] featureRows)
+        public Header Create(FeatureRow[] featureRows)
         {
-            var model = new HeaderModel();
+            var model = new Header();
 
             var groups = this.grouper.Group(featureRows);
             this.ProcessTitle(groups, model);
@@ -38,13 +40,13 @@ namespace Grobid.NET
             return rows;
         }
 
-        private void ProcessTitle(ArraySegment<FeatureRow>[] groups, HeaderModel model)
+        private void ProcessTitle(ArraySegment<FeatureRow>[] groups, Header model)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Title);
             model.Title = this.sentenceJoiner.Join(rows);
         }
 
-        private void ProcessAuthors(ArraySegment<FeatureRow>[] groups, HeaderModel model)
+        private void ProcessAuthors(ArraySegment<FeatureRow>[] groups, Header model)
         {
             var d = new Dictionary<string, FeatureRow[]>();
 
@@ -79,9 +81,9 @@ namespace Grobid.NET
                    classification == Constants.Classification.Email;
         }
 
-        private void ProcessAuthor(Dictionary<string, FeatureRow[]> authorFeatureRows, HeaderModel model)
+        private void ProcessAuthor(Dictionary<string, FeatureRow[]> authorFeatureRows, Header model)
         {
-            var author = new AuthorModel();
+            var author = new Author();
 
             foreach (var classification in authorFeatureRows.Keys)
             {
@@ -94,7 +96,7 @@ namespace Grobid.NET
                         author.Affiliation = this.sentenceJoiner.Join(authorFeatureRows[classification]);
                         break;
                     case Constants.Classification.Email:
-                        author.EMail = this.textJoiner.Join(authorFeatureRows[classification]);
+                        author.Email = this.textJoiner.Join(authorFeatureRows[classification]);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException($"The classification {classification} is not supported.");
@@ -104,7 +106,7 @@ namespace Grobid.NET
             model.Authors.Add(author);
         }
 
-        private void ProcessKeywords(ArraySegment<FeatureRow>[] groups, HeaderModel model)
+        private void ProcessKeywords(ArraySegment<FeatureRow>[] groups, Header model)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Keyword);
 
@@ -118,7 +120,7 @@ namespace Grobid.NET
             model.Keywords.AddRange(keywords);
         }
 
-        private void ProcessAbstract(ArraySegment<FeatureRow>[] groups, HeaderModel model)
+        private void ProcessAbstract(ArraySegment<FeatureRow>[] groups, Header model)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Abstract);
             var text = this.sentenceJoiner.Join(rows);
