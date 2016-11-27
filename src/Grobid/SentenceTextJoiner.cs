@@ -1,5 +1,7 @@
 using System.Text;
 
+using Grobid.NET.Contract;
+
 namespace Grobid.NET
 {
     public class SentenceTextJoiner : IFeatureRowStringJoiner

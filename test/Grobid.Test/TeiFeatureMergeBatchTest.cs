@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using Xunit;
 
 using Grobid.NET;
+using Grobid.NET.Scoring;
 
 namespace Grobid.Test
 {

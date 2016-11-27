@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Grobid.NET
+namespace Grobid.NET.Scoring
 {
     public class ModelScorer
     {

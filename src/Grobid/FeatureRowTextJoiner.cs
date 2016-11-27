@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 
+using Grobid.NET.Contract;
+
 namespace Grobid.NET
 {
     public class FeatureRowTextJoiner : IFeatureRowStringJoiner

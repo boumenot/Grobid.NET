@@ -31,13 +31,13 @@
     <Compile Include="FeatureRowGrouperTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="Model\HeaderFactoryTest.cs" />
-    <Compile Include="ModelScorerTest.cs" />
+    <Compile Include="Scoring\ModelScorerTest.cs" />
     <Compile Include="TeiFeatureMergeBatchTest.cs" />
     <Compile Include="TrainerRowTest.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ExtensionsTest.cs" />
     <Compile Include="FeatureRowTest.cs" />
-    <Compile Include="ModelStatTest.cs" />
+    <Compile Include="Scoring\ModelStatTest.cs" />
     <Compile Include="TeiFeatureFormatterTest.cs" />
     <Compile Include="TeiFeatureMergeTest.cs" />
     <Compile Include="TokenAlignerTest.cs" />

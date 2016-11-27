@@ -1,4 +1,4 @@
-﻿namespace Grobid.NET
+﻿namespace Grobid.NET.Scoring
 {
     public class LabelStat
     {

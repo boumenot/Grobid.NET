@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 
 using FluentAssertions;
+
+using Grobid.NET.Scoring;
+
 using Xunit;
 
-using Grobid.NET;
-
-
-namespace Grobid.Test
+namespace Grobid.Test.Scoring
 {
     public class ModelScorerTest
     {
