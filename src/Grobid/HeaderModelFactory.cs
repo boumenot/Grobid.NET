@@ -7,7 +7,8 @@ namespace Grobid.NET
 {
     public class HeaderModelFactory
     {
-        private static readonly Regex KeywordRx = new Regex(@"keywords?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex AbstractRx = new Regex(@"\s*abstract?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex KeywordRx = new Regex(@"\s*keywords?\s*", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         private readonly FeatureRowGrouper grouper = new FeatureRowGrouper();
         private readonly FeatureRowTextJoiner textJoiner = new FeatureRowTextJoiner();
@@ -106,11 +107,11 @@ namespace Grobid.NET
         private void ProcessKeywords(ArraySegment<FeatureRow>[] groups, HeaderModel model)
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Keyword);
-            var s = this.sentenceJoiner.Join(rows);
 
-            s = HeaderModelFactory.KeywordRx.Replace(s, string.Empty);
+            var text = this.sentenceJoiner.Join(rows);
+            text = HeaderModelFactory.KeywordRx.Replace(text, string.Empty);
 
-            var keywords = s
+            var keywords = text
                 .Split(',')
                 .Select(x => x.Trim());
 
@@ -121,6 +122,7 @@ namespace Grobid.NET
         {
             var rows = this.GetByClassification(groups, Constants.Classification.Abstract);
             var text = this.sentenceJoiner.Join(rows);
+            text = HeaderModelFactory.AbstractRx.Replace(text, string.Empty);
 
             model.Abstract = text;
         }

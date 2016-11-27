@@ -1,0 +1,28 @@
+﻿{
+    "Title": "The essence of language-integrated query",
+    "Abstract": "Language-integrated query is receiving renewed attention, in part because of its support through Microsoft ' s LINQ framework. We present a theory of language-integrated query based on quotation and normalisation of quoted terms. Our technique supports-tion over values and predicates, composition of queries, dynamic generation of queries, and queries with nested intermediate data. Higher-order features prove useful even for constructing first-order queries. We prove that normalisation always succeeds in translat-ing any query of flat relation type to SQL. We present experimental results confirming our technique works, even in situations where Microsoft ' s LINQ framework either fails to produce an SQL query or, in one case, produces an avalanche of SQL queries. Computing Classification Software and its engineering! Soft-ware notations and tools! General programming languages! Language features",
+    "Authors": [
+        {
+            "Name": "James Cheney",
+            "Affiliation": "The University of Edinburgh",
+            "EMail": "jcheney@inf.ed.ac.uk"
+        },
+        {
+            "Name": "Sam Lindley",
+            "Affiliation": "University of Strathclyde",
+            "EMail": "sam.lindley@strath.ac.uk"
+        },
+        {
+            "Name": "Philip Wadler",
+            "Affiliation": "The University of Edinburgh",
+            "EMail": "wadler@inf.ed.ac.uk"
+        }
+    ],
+    "Keywords": [
+        "lambda calculus",
+        "LINQ",
+        "F#",
+        "quotation",
+        "anti-quotation"
+    ]
+}
