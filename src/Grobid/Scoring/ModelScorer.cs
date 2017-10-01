@@ -14,6 +14,9 @@ namespace Grobid.NET.Scoring
 
         public void Eval(string expected, string obtained)
         {
+            expected.EnsureNotEmpty(nameof(expected));
+            obtained.EnsureNotEmpty(nameof(obtained));
+
             bool isNewLabel = this.IsNewLabel(expected);
 
             if (expected == obtained)

@@ -98,7 +98,7 @@ namespace Grobid.Test.Scoring
 
             var testSubject = CumulativeScore.Create(scorer.Scores().ToArray());
 
-            testSubject.MicroLabelScore.Accuracy.Should().Be(0.5);
+            testSubject.MicroLabelScore.Accuracy.Should().Be(0.75);
             testSubject.MicroLabelScore.Precision.Should().BeApproximately(0.66667, 0.00001);
             testSubject.MicroLabelScore.Recall.Should().BeApproximately(0.66667, 0.00001);
             testSubject.MicroLabelScore.F0.Should().BeApproximately(0.66667, 0.00001);

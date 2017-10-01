@@ -27,15 +27,28 @@ namespace Grobid.NET.Scoring
             double cumulated_recall = 0;
             double cumulated_f0 = 0;
 
-            int totalFields = labelScores.Sum(x => x.Expected + x.FalsePositives);
+            int totalFields = labelScores
+                .Sum(x => x.Expected + x.FalsePositives);
+
+            int totalValidFields = 0; 
 
             foreach (var labelStat in labelScores)
             {
+                if (string.Compare(labelStat.Label, "other", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    continue;
+                }
+
                 int tp = labelStat.TruePositives;
                 int fp = labelStat.FalsePositives;
                 int fn = labelStat.FalseNegatives;
                 int tn = totalFields - tp - (fp + fn);
                 int all = labelStat.Expected;
+
+                if (all != 0)
+                {
+                    totalValidFields++;
+                }
 
                 double accuracy = (double)(tp + tn) / (tp + fp + tn + fn);
                 double precision;
@@ -68,10 +81,10 @@ namespace Grobid.NET.Scoring
                     f0 = 2 * precision * recall / (precision + recall);
                 }
 
-                cumulated_tp += tp;
-                cumulated_fp += fp;
-                cumulated_tn += tn;
-                cumulated_fn += fn;
+                cumulated_tp += tp; // true positives
+                cumulated_fp += fp; // false positives
+                cumulated_tn += tn; // true negatives
+                cumulated_fn += fn; // false negatives
 
                 if (all != 0)
                 {
@@ -91,9 +104,25 @@ namespace Grobid.NET.Scoring
                 Observed = cumulated_tp,
             };
 
-            var microLabelScore = new LabelScore("micro average", totalFields, cumulativeLabelStat);
+            double micro_accuracy = (double)(cumulated_tp + cumulated_tn) / (cumulated_tp + cumulated_fp + cumulated_tn + cumulated_fn);
+            micro_accuracy = Math.Min(1.0, micro_accuracy);
 
-            var totalValidFields = labelScores.Count(x => x.Expected > 0);
+            double micro_precision = (double) cumulated_tp / (cumulated_tp + cumulated_fp);
+            micro_precision = Math.Min(1.0, micro_precision);
+
+            double micro_recall = (double) cumulated_tp / cumulated_all;
+            micro_recall = Math.Min(1.0, micro_recall);
+
+            double micro_f0 = (2 * micro_precision * micro_recall) / (micro_precision + micro_recall);
+
+            var microLabelScore = new LabelScore(
+                "micro average",
+                micro_accuracy,
+                micro_precision,
+                micro_recall,
+                micro_f0);
+
+            //var totalValidFields = labelScores.Count(x => x.Expected > 0);
             var macroLabelScore = new LabelScore(
                 "macro average",
                 Math.Min(1.0, cumulated_accuracy / totalValidFields),

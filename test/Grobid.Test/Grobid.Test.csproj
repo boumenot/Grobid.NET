@@ -32,6 +32,7 @@
     <Compile Include="FeatureRowGrouperTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="Entity\HeaderFactoryTest.cs" />
+    <Compile Include="Scoring\DateParityTest.cs" />
     <Compile Include="Scoring\ModelScorerTest.cs" />
     <Compile Include="Tei\TeiFeatureMergeBatchTest.cs" />
     <Compile Include="Extensions.cs" />
@@ -101,8 +102,11 @@
       <Link>content\lexicon\names\lastnames.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="content\official\date.txt" />
+    <EmbeddedResource Include="content\official\date.labeled.txt" />
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
+    <Content Include="Scoring\DateParityTest.DateModelComparisonAgainstGrobid.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactory00.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactory01.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactoryAbstract00.approved.txt" />

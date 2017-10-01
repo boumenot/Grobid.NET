@@ -18,5 +18,23 @@ namespace Grobid.Test
         {
             return String.Join(Environment.NewLine, xs.ToArray()).ToStream();
         }
+
+        public static string[] ToLines(this Stream s)
+        {
+            var lines = new List<string>();
+            using (var reader = new StreamReader(s))
+            {
+                while (true)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                    {
+                        return lines.ToArray();
+                    }
+
+                    lines.Add(line);
+                }
+            }
+        }
     }
 }

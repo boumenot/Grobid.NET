@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Grobid.NET.Scoring
@@ -14,6 +15,8 @@ namespace Grobid.NET.Scoring
 
         public string[] Labels => this.labelStats.Keys.ToArray();
         public IReadOnlyDictionary<string, LabelStat> LabelStats => this.labelStats;
+
+        public LabelStat this[string s] => this.LabelStats[s];
 
         public void IncrExpected(string label)
         {

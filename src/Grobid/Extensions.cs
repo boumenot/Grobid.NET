@@ -23,5 +23,21 @@ namespace Grobid.NET
                 }
             }
         }
+
+        public static void EnsureNotNull(this object o, string name)
+        {
+            if (o == null)
+            {
+                throw new ArgumentNullException($"The parameter {name} is null!");
+            }
+        }
+
+        public static void EnsureNotEmpty(this string s, string name)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                throw new ArgumentOutOfRangeException($"The parameter {name} is empty!");
+            }
+        }
     }
 }
