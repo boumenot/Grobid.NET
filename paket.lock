@@ -1,4 +1,4 @@
-FRAMEWORK: >= NET46
+RESTRICTION: >= net46
 NUGET
   remote: https://www.nuget.org/api/v2
     ApprovalTests (3.0.11)
@@ -23,7 +23,7 @@ NUGET
     xunit.runner.console (2.1)
     xunit.runner.visualstudio (2.1.0) - version_in_path: true
     xunit.runners (2.0)
-  remote: https://www.myget.org/F/boumenot
+  remote: https://www.myget.org/F/boumenot/api/v3/index.json
     Grobid.Models (3.3.0) - copy_content_to_output_dir: preserve_newest
     pdf2xml (1.0)
     Wapiti.x64 (1.0.0) - copy_content_to_output_dir: preserve_newest
