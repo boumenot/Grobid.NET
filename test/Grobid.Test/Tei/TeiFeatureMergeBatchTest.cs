@@ -14,8 +14,8 @@ namespace Grobid.Test.Tei
 {
     public class TeiFeatureMergeBatchTest
     {
-        [Fact]
-        //[Fact(Skip = "works on my machine only")]
+        //[Fact]
+        [Fact(Skip = "works on my machine only")]
         [Trait("Category", "EndToEnd")]
         public void Test()
         {
