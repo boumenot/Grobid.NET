@@ -32,6 +32,7 @@
     <Compile Include="FeatureRowGrouperTest.cs" />
     <Compile Include="GrobidTest.cs" />
     <Compile Include="Entity\HeaderFactoryTest.cs" />
+    <Compile Include="Scoring\AffiliationAddressParityTest.cs" />
     <Compile Include="Scoring\DateParityTest.cs" />
     <Compile Include="Scoring\ModelScorerTest.cs" />
     <Compile Include="Tei\TeiFeatureMergeBatchTest.cs" />
@@ -104,6 +105,8 @@
     </Content>
     <EmbeddedResource Include="content\official\date.txt" />
     <EmbeddedResource Include="content\official\date.labeled.txt" />
+    <EmbeddedResource Include="content\official\affiliation-address..txt" />
+    <EmbeddedResource Include="content\official\affiliation-address.labeled.txt" />
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
     <Content Include="Scoring\DateParityTest.DateModelComparisonAgainstGrobid.approved.txt" />
