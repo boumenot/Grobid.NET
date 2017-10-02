@@ -109,7 +109,9 @@
     <EmbeddedResource Include="content\official\affiliation-address.labeled.txt" />
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
+    <Content Include="Scoring\AffiliationAddressParityTest.AffiliationAddressModelComparisonAgainstGrobid.approved.txt" />
     <Content Include="Scoring\DateParityTest.DateModelComparisonAgainstGrobid.approved.txt" />
+    <Content Include="Scoring\DateParityTest.DateModelComparisonAgainstGrobidWithLabeling.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactory00.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactory01.approved.txt" />
     <Content Include="Tei\TeiFeatureFactoryTest.TeiFeatureFactoryAbstract00.approved.txt" />

@@ -53,6 +53,43 @@ namespace Grobid.Test.Scoring
             Approvals.Verify(sb);
         }
 
+        // This test should the *same* result as the test above (DateModelComparisonAgainstGrobid).
+        // The point is to validate that our model when applied to the same corpus produces the 
+        // *same* result.  It validates that the C# bindings for Wapiti are functional.
+        [Fact]
+        public void DateModelComparisonAgainstGrobidWithLabeling()
+        {
+            var model = global::Wapiti.Wapiti.Load(@"content\models\date\model.wapiti");
+            var labeled = model.Label(Assembly.GetExecutingAssembly().GetManifestResourceStream("Grobid.Test.content.official.date.txt"));
+
+            var features = labeled.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => new
+                {
+                    Match = DateParityTest.LabeledRx.Match(x)
+                })
+                .Select(x => new
+                {
+                    Expected = x.Match.Groups[1].Value,
+                    Actual = x.Match.Groups[2].Value,
+                })
+                .ToArray();
+
+            var sb = new StringBuilder();
+            var scorer = new ModelScorer();
+            foreach (var x in features)
+            {
+                scorer.Eval(x.Expected, x.Actual);
+            }
+
+            sb.AppendLine($"==== Token Level Result ====\n");
+            var modelScoreCard = new ModelScoreCard();
+            modelScoreCard.Render(scorer.Stat, sb);
+
+            var s = sb.ToString();
+            Approvals.Verify(sb);
+        }
+
         private static ModelStat ScoreFieldStats(IEnumerable<Tuple<string, string>> featuresX, StringBuilder sb)
         {
             // XXX(chrboum) - actually this is much more complicated than it looks.  I will leave
