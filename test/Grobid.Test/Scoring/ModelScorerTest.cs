@@ -69,7 +69,7 @@ namespace Grobid.Test.Scoring
 
             scorer.Eval("two", "two");
 
-            var testSubjects = scorer.Scores().ToArray();
+            var testSubjects = scorer.Stat.Scores().ToArray();
             var testSubject1 = testSubjects.Single(x => x.Label == "one");
             testSubject1.Accuracy.Should().Be(0.75);
             testSubject1.Precision.Should().Be(1.0);
@@ -96,7 +96,7 @@ namespace Grobid.Test.Scoring
 
             scorer.Eval("two", "two");
 
-            var testSubject = CumulativeScore.Create(scorer.Scores().ToArray());
+            var testSubject = CumulativeScore.Create(scorer.Stat.Scores().ToArray());
 
             testSubject.MicroLabelScore.Accuracy.Should().Be(0.75);
             testSubject.MicroLabelScore.Precision.Should().BeApproximately(0.66667, 0.00001);
@@ -115,7 +115,7 @@ namespace Grobid.Test.Scoring
             var scorer = new ModelScorer();
             scorer.Eval("one", "one");
 
-            var testSubject = CumulativeScore.Create(scorer.Scores().ToArray());
+            var testSubject = CumulativeScore.Create(scorer.Stat.Scores().ToArray());
 
             testSubject.MicroLabelScore.Accuracy.Should().Be(1.0);
             testSubject.MicroLabelScore.Precision.Should().Be(1.0);

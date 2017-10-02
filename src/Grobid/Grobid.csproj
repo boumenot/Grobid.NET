@@ -65,6 +65,7 @@
     <Compile Include="Feature\LexiconFactory.cs" />
     <Compile Include="Feature\LineStatus.cs" />
     <Compile Include="MergedFeatureRow.cs" />
+    <Compile Include="Scoring\ModelScoreCard.cs" />
     <Compile Include="Scoring\ModelScorer.cs" />
     <Compile Include="Scoring\ModelStat.cs" />
     <Compile Include="Entity\Header.cs" />

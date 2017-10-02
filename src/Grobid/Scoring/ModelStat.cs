@@ -1,5 +1,4 @@
-﻿using System.CodeDom;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Grobid.NET.Scoring
@@ -40,6 +39,16 @@ namespace Grobid.NET.Scoring
         {
             var labelStat = this.Get(label);
             labelStat.Observed+= 1;
+        }
+
+        public IEnumerable<LabelScore> Scores()
+        {
+            var total = this.LabelStats.Values.Sum(x => x.Expected + x.FalsePositive);
+            foreach (var label in this.Labels)
+            {
+                var labelStat = this.LabelStats[label];
+                yield return new LabelScore(label, total, labelStat);
+            }
         }
 
         private LabelStat Get(string label)
