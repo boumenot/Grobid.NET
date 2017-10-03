@@ -21,6 +21,7 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="DateFeatureVectorFactoryTest.cs" />
     <Compile Include="Feature\BlockStateFactoryTest.Block.cs" />
     <Compile Include="Feature\BlockStateFactoryTest.FontSize.cs" />
     <Compile Include="Feature\BlockStateFactoryTest.Font.cs" />
@@ -107,6 +108,8 @@
     <EmbeddedResource Include="content\official\date.labeled.txt" />
     <EmbeddedResource Include="content\official\affiliation-address..txt" />
     <EmbeddedResource Include="content\official\affiliation-address.labeled.txt" />
+    <Content Include="DateFeatureVectorFactoryTest.DateFeatureExtractionTest.approved.txt" />
+    <Content Include="DateFeatureVectorFactoryTest.DateFeatureExtractionWapitiModelTest.approved.txt" />
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
     <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
     <Content Include="Scoring\AffiliationAddressParityTest.AffiliationAddressModelComparisonAgainstGrobid.approved.txt" />

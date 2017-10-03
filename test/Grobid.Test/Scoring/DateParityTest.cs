@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+
 using ApprovalTests;
 using ApprovalTests.Reporters;
-using Grobid.NET.Scoring;
 using Xunit;
+
+using Grobid.NET.Scoring;
 
 namespace Grobid.Test.Scoring
 {

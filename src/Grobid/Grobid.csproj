@@ -31,6 +31,8 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="DateFeatureVector.cs" />
+    <Compile Include="DateFeatureVectorFactory.cs" />
     <Compile Include="Feature\AggregateLexicon.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="BlockReflower.cs" />
@@ -42,6 +44,7 @@
     <Compile Include="Contract\IFeatureVectorFactory.cs" />
     <Compile Include="Contract\IModel.cs" />
     <Compile Include="Feature\CountryCodes.cs" />
+    <Compile Include="RawBlockStateFactory.cs" />
     <Compile Include="Scoring\CumulativeScore.cs" />
     <Compile Include="Feature\Digit.cs" />
     <Compile Include="DocumentStructure.cs" />
@@ -86,7 +89,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="Wapiti">
           <HintPath>..\..\packages\Wapiti.x64\lib\net45\Wapiti.dll</HintPath>
