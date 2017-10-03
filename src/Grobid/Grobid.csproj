@@ -76,6 +76,7 @@
     <Compile Include="Feature\Punctuation.cs" />
     <Compile Include="SentenceTextJoiner.cs" />
     <Compile Include="SentenceTextState.cs" />
+    <Compile Include="DateFeatureFactory.cs" />
     <Compile Include="TeiFeatureFactory.cs" />
     <Compile Include="TeiFeatureMerge.cs" />
     <Compile Include="TokenAligner.cs" />
