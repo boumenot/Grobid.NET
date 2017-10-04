@@ -1,6 +1,4 @@
-﻿using Grobid.NET.Feature;
-
-namespace Grobid.NET
+﻿namespace Grobid.NET.Feature.Header
 {
     public sealed class HeaderFeatureVectorFactory
     {

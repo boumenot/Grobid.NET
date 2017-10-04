@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grobid.NET.Feature;
-
-namespace Grobid.NET
+﻿namespace Grobid.NET.Feature.Date
 {
     public class DateFeatureVectorFactory
     {

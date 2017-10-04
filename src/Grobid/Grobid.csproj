@@ -31,8 +31,8 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DateFeatureVector.cs" />
-    <Compile Include="DateFeatureVectorFactory.cs" />
+    <Compile Include="Feature\Date\DateFeatureVector.cs" />
+    <Compile Include="Feature\Date\DateFeatureVectorFactory.cs" />
     <Compile Include="Feature\AggregateLexicon.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="BlockReflower.cs" />
@@ -56,8 +56,8 @@
     <Compile Include="Feature\Date\AppleSauce.cs" />
     <Compile Include="Feature\FontSizeStatus.cs" />
     <Compile Include="Feature\FontStatus.cs" />
-    <Compile Include="HeaderFeatureVector.cs" />
-    <Compile Include="HeaderFeatureVectorFactory.cs" />
+    <Compile Include="Feature\Header\HeaderFeatureVector.cs" />
+    <Compile Include="Feature\Header\HeaderFeatureVectorFactory.cs" />
     <Compile Include="Entity\HeaderFactory.cs" />
     <Compile Include="Contract\IStringJoiner.cs" />
     <Compile Include="Contract\ILexicon.cs" />
@@ -76,7 +76,7 @@
     <Compile Include="Feature\Punctuation.cs" />
     <Compile Include="SentenceTextJoiner.cs" />
     <Compile Include="SentenceTextState.cs" />
-    <Compile Include="DateFeatureFactory.cs" />
+    <Compile Include="Feature\Date\DateFeatureFactory.cs" />
     <Compile Include="TeiFeatureFactory.cs" />
     <Compile Include="TeiFeatureMerge.cs" />
     <Compile Include="TokenAligner.cs" />

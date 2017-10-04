@@ -7,6 +7,7 @@ using ApprovalTests;
 using ApprovalTests.Reporters;
 using Grobid.NET;
 using Grobid.NET.Feature;
+using Grobid.NET.Feature.Date;
 using Grobid.Test.Feature;
 using Xunit;
 

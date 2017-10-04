@@ -6,6 +6,7 @@ using ApprovalTests.Reporters;
 using Xunit;
 
 using Grobid.NET;
+using Grobid.NET.Feature.Date;
 
 namespace Grobid.Test.Tei
 {

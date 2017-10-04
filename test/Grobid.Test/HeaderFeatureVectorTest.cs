@@ -10,6 +10,7 @@ using Xunit;
 
 using Grobid.NET;
 using Grobid.NET.Feature;
+using Grobid.NET.Feature.Header;
 using Grobid.PdfToXml;
 using Grobid.Test.Feature;
 

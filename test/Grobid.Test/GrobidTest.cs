@@ -11,6 +11,7 @@ using Xunit;
 using Grobid.NET;
 using Grobid.NET.Entity;
 using Grobid.NET.Feature;
+using Grobid.NET.Feature.Header;
 using Grobid.PdfToXml;
 
 namespace Grobid.Test

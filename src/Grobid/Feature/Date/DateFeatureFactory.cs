@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
-
 using Grobid.PdfToXml;
 
-namespace Grobid.NET
+namespace Grobid.NET.Feature.Date
 {
     // Extract dates from a XML document of the following form.
     //
