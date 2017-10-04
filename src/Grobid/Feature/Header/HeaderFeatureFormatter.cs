@@ -1,6 +1,8 @@
-﻿namespace Grobid.NET.Feature.Header
+﻿using Grobid.NET.Contract;
+
+namespace Grobid.NET.Feature.Header
 {
-    public class HeaderFeatureFormatter
+    public class HeaderFeatureFormatter : IFeatureVectorFormatter<HeaderFeatureVector>
     {
         public static readonly HeaderFeatureFormatter Instance = new HeaderFeatureFormatter();
 
