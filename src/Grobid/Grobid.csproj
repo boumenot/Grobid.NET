@@ -31,6 +31,7 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Contract\IFeatureVectorFormatter.cs" />
     <Compile Include="Feature\Date\DateFeatureFormatter.cs" />
     <Compile Include="Feature\Date\DateFeatureVector.cs" />
     <Compile Include="Feature\Date\DateFeatureVectorFactory.cs" />
@@ -46,6 +47,8 @@
     <Compile Include="Contract\IModel.cs" />
     <Compile Include="Feature\CountryCodes.cs" />
     <Compile Include="Feature\Header\HeaderFeatureFormatter.cs" />
+    <Compile Include="LabeledFeature.cs" />
+    <Compile Include="LabeledFeatureFormatter.cs" />
     <Compile Include="RawBlockStateFactory.cs" />
     <Compile Include="Scoring\CumulativeScore.cs" />
     <Compile Include="Feature\Digit.cs" />

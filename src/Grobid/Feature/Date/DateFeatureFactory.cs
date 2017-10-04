@@ -2,9 +2,12 @@
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+
+using Grobid.NET.Feature;
+using Grobid.NET.Feature.Date;
 using Grobid.PdfToXml;
 
-namespace Grobid.NET.Feature.Date
+namespace Grobid.NET
 {
     // Extract dates from a XML document of the following form.
     //
@@ -16,39 +19,74 @@ namespace Grobid.NET.Feature.Date
 
     public sealed class DateFeatureFactory
     {
-        public IEnumerable<TeiFeature[]> Create(XDocument doc)
+        private readonly DateFeatureVectorFactory factory;
+
+        public DateFeatureFactory(DateFeatureVectorFactory factory)
+        {
+            this.factory = factory;
+        }
+
+        public IEnumerable<LabeledFeature[]> Create(XDocument doc)
         {
             foreach (var nodes in doc.XPathSelectElements("/dates/date"))
             {
-                var features = new List<TeiFeature>();
+                var features = new List<LabeledFeature>();
 
                 foreach (var node in nodes.DescendantNodes())
                 {
                     var ele = node as XElement;
                     if (ele != null && ele.Name.LocalName != "lb")
                     {
-                        features.Add(this.Create(ele));
+                        features.AddRange(
+                            this.Create(ele.Value, ele.Name.LocalName));
                     }
                     else if (node is XText && node.Parent.Name == "date")
                     {
-                        features.AddRange(this.Create((XText)node));
+                        features.AddRange(
+                            this.Create(((XText)node).Value, "other"));
                     }
                 }
 
+                this.SetLineBoundaries(features);
                 yield return features.ToArray();
             }
         }
 
-        private TeiFeature Create(XElement element)
+        private void SetLineBoundaries(List<LabeledFeature> features)
         {
-            return TeiFeature.Create(element.Value, element.Name.LocalName, 0);
+            if (features.Count > 1)
+            {
+                features.First().FeatureVector.LineStatus = LineStatus.LINESTART;
+                features.Last().FeatureVector.LineStatus = LineStatus.LINEEND;
+            }
         }
 
-        private IEnumerable<TeiFeature> Create(XText text)
+        private IEnumerable<LabeledFeature> Create(string text, string classification)
         {
-            return text.Value.SplitWithDelims(PdfToXml.Constants.FullPunctuation)
+            return text
+                .SplitWithDelims(PdfToXml.Constants.FullPunctuation)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select((x, i) => TeiFeature.Create(x, "other", i));
+                .Select((x, i) => this.Create(x, classification, i));
+        }
+
+        private LabeledFeature Create(string text, string classification, int tokenIndex)
+        {
+            var featureVector = this.factory.Create(
+                this.CreateBlockState(text));
+
+            return LabeledFeature.Create(featureVector, classification, tokenIndex);
+        }
+
+        private BlockState CreateBlockState(string text)
+        {
+            return new BlockState
+            {
+                BlockStatus = BlockStatus.BLOCKIN,
+                FontStatus = FontStatus.SAMEFONT,
+                LineStatus = LineStatus.LINEIN,
+                FontSizeStatus = FontSizeStatus.SAMEFONTSIZE,
+                Text = text,
+            };
         }
     }
 }

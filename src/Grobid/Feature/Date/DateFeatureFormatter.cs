@@ -1,6 +1,8 @@
-﻿namespace Grobid.NET.Feature.Date
+﻿using Grobid.NET.Contract;
+
+namespace Grobid.NET.Feature.Date
 {
-    public class DateFeatureFormatter
+    public class DateFeatureFormatter : IFeatureVectorFormatter<DateFeatureVector>
     {
         public static readonly DateFeatureFormatter Instance = new DateFeatureFormatter();
 

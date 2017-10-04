@@ -1,12 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 
 using ApprovalTests;
 using ApprovalTests.Reporters;
+using ApprovalUtilities.Utilities;
 using Xunit;
 
 using Grobid.NET;
+using Grobid.NET.Feature;
 using Grobid.NET.Feature.Date;
+using Grobid.Test.Feature;
 
 namespace Grobid.Test.Tei
 {
@@ -18,10 +22,16 @@ namespace Grobid.Test.Tei
         {
             var tei = @"<dates><date><month>March</month> <day>28</day>, <year>2007</year></date></dates>";
 
-            var testSubject = new DateFeatureFactory();
-            var formatter = new TeiFeatureFormatter();
+            var factory = new DateFeatureVectorFactory(
+                new FeatureExtractor(EmptyLexicon.Instance));
 
-            Approvals.Verify(formatter.CreateString(testSubject.Create(XDocument.Parse(tei)).First()));
+            var formatter = new LabeledFeatureFormatter<DateFeatureVector>(
+                new DateFeatureFormatter());
+
+            var testSubject = new DateFeatureFactory(factory);
+            Approvals.VerifyAll(
+                testSubject.Create(XDocument.Parse(tei)),
+                x => String.Join("\n", x.Select(y => formatter.Format(y.FeatureVector, y).Join(" "))) + "\n");
         }
 
         [Fact]
@@ -32,12 +42,16 @@ namespace Grobid.Test.Tei
   <date>Published <day>25</day> <month>May</month> <year>2011</year></date>
 </dates>";
 
-            var testSubject = new DateFeatureFactory();
-            var formatter = new TeiFeatureFormatter();
+            var factory = new DateFeatureVectorFactory(
+                new FeatureExtractor(EmptyLexicon.Instance));
 
+            var formatter = new LabeledFeatureFormatter<DateFeatureVector>(
+                new DateFeatureFormatter());
+
+            var testSubject = new DateFeatureFactory(factory);
             Approvals.VerifyAll(
                 testSubject.Create(XDocument.Parse(tei)),
-                x => formatter.CreateString(x) + "\n");
+                x => String.Join("\n", x.Select(y => formatter.Format(y.FeatureVector, y).Join(" "))) + "\n");
         }
     }
 }

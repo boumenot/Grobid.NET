@@ -24,6 +24,16 @@ namespace Grobid.NET
             }
         }
 
+        public static IEnumerable<T> Concat<T>(this IEnumerable<T> collection, T item)
+        {
+            return System.Linq.Enumerable.Concat(collection, new [] { item });
+        }
+
+        public static string Join(this string[] xs, string seperator)
+        {
+            return String.Join(seperator, xs);
+        }
+
         public static void EnsureNotNull(this object o, string name)
         {
             if (o == null)
