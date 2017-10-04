@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ApprovalTests;
 using ApprovalTests.Reporters;
 using Grobid.NET;
 using Grobid.NET.Feature;
 using Grobid.NET.Feature.Date;
-using Grobid.Test.Feature;
 using Xunit;
 
-namespace Grobid.Test
+namespace Grobid.Test.Feature.Date
 {
     [UseReporter(typeof(DiffReporter))]
     public class DateFeatureVectorFactoryTest

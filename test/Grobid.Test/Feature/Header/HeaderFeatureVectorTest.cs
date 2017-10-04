@@ -1,20 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-
 using ApprovalTests;
 using ApprovalTests.Reporters;
-
-using Newtonsoft.Json;
-using Xunit;
-
 using Grobid.NET;
 using Grobid.NET.Feature;
 using Grobid.NET.Feature.Header;
 using Grobid.PdfToXml;
-using Grobid.Test.Feature;
+using Newtonsoft.Json;
+using Xunit;
 
-namespace Grobid.Test
+namespace Grobid.Test.Feature.Header
 {
     [UseReporter(typeof(DiffReporter))]
     public class HeaderFeatureVectorTest

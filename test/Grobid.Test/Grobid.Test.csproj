@@ -21,7 +21,7 @@
     <Compile Include="..\..\build\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DateFeatureVectorFactoryTest.cs" />
+    <Compile Include="Feature\Date\DateFeatureVectorFactoryTest.cs" />
     <Compile Include="Feature\BlockStateFactoryTest.Block.cs" />
     <Compile Include="Feature\BlockStateFactoryTest.FontSize.cs" />
     <Compile Include="Feature\BlockStateFactoryTest.Font.cs" />
@@ -46,7 +46,7 @@
     <Compile Include="Tei\TeiFeatureMergeTest.cs" />
     <Compile Include="TokenAlignerTest.cs" />
     <Compile Include="Feature\FeatureExtractorTest.cs" />
-    <Compile Include="HeaderFeatureVectorTest.cs" />
+    <Compile Include="Feature\Header\HeaderFeatureVectorTest.cs" />
     <Compile Include="IntroductionFilterTest.cs" />
     <Compile Include="Feature\LexiconFactoryTest.cs" />
     <Compile Include="Feature\LexiconTest.cs" />
@@ -94,7 +94,7 @@
     <None Include="FeatureRowGrouperTest.DifferentClassificationsWithoutStart.approved.json" />
     <None Include="FeatureRowGrouperTest.Simple.approved.json" />
     <None Include="GrobidTest.Test.approved.json" />
-    <None Include="HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
+    <None Include="Feature\Header\HeaderFeatureVectorTest.HeaderFeatureExtractionTest.approved.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\content\lexicon\names\firstnames.txt">
@@ -109,10 +109,10 @@
     <EmbeddedResource Include="content\official\date.labeled.txt" />
     <EmbeddedResource Include="content\official\affiliation-address..txt" />
     <EmbeddedResource Include="content\official\affiliation-address.labeled.txt" />
-    <Content Include="DateFeatureVectorFactoryTest.DateFeatureExtractionTest.approved.txt" />
-    <Content Include="DateFeatureVectorFactoryTest.DateFeatureExtractionWapitiModelTest.approved.txt" />
+    <Content Include="Feature\Date\DateFeatureVectorFactoryTest.DateFeatureExtractionTest.approved.txt" />
+    <Content Include="Feature\Date\DateFeatureVectorFactoryTest.DateFeatureExtractionWapitiModelTest.approved.txt" />
     <Content Include="GrobidTest.ExtractTest.approved.txt" />
-    <Content Include="HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
+    <Content Include="Feature\Header\HeaderFeatureVectorTest.HeaderFeatureExtractionWapitiTest.approved.txt" />
     <Content Include="Scoring\AffiliationAddressParityTest.AffiliationAddressModelComparisonAgainstGrobid.approved.txt" />
     <Content Include="Scoring\DateParityTest.DateModelComparisonAgainstGrobid.approved.txt" />
     <Content Include="Scoring\DateParityTest.DateModelComparisonAgainstGrobidWithLabeling.approved.txt" />
