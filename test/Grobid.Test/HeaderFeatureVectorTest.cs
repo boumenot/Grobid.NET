@@ -63,51 +63,14 @@ namespace Grobid.Test
             var featureExtractor = new FeatureExtractor(lexicon);
             var headerFeatureVectorFactory = new HeaderFeatureVectorFactory(featureExtractor);
 
-            Func<HeaderFeatureVector, string[]> formatter = x =>
-            {
-                return new string[]
-                {
-                    x.Text,
-                    x.AsLowerCase,
-                    x.Prefix1,
-                    x.Prefix2,
-                    x.Prefix3,
-                    x.Prefix4,
-                    x.Suffix1,
-                    x.Suffix2,
-                    x.Suffix3,
-                    x.Suffix4,
-                    x.BlockStatus.ToString(),
-                    x.LineStatus.ToString(),
-                    x.FontStatus.ToString(),
-                    x.FontSizeStatus.ToString(),
-                    x.IsBold ? "1" : "0",
-                    x.IsItalic ? "1" : "0",
-                    x.IsRotation ? "1" : "0",
-                    x.Capitalization.ToString(),
-                    x.Digit.ToString(),
-                    x.IsSingleChar ? "1" : "0",
-                    x.IsProperName ? "1" : "0",
-                    x.IsDictionaryWord ? "1" : "0",
-                    x.IsFirstName ? "1" : "0",
-                    x.IsLocationName ? "1" : "0",
-                    x.IsEmailAddress ? "1" : "0",
-                    x.IsYear ? "1" : "0",
-                    x.IsMonth ? "1" : "0",
-                    x.IsHttp ? "1" : "0",
-                    x.HasDash ? "1" : "0",
-                    x.Punctuation.ToString(),
-                    "0",
-                    "0",
-                };
-            };
-
             var testSubject = new PdfBlockExtractor<string[]>();
 
             var introductionFilter = new IntroductionFilter();
             var preIntroBlocks = blocks.TakeUntil(introductionFilter.IsIntroduction).ToArray();
 
-            var featureVectors = testSubject.Extract(preIntroBlocks, x => formatter(headerFeatureVectorFactory.Create(x)));
+            var featureVectors = testSubject.Extract(
+                preIntroBlocks, 
+                x => HeaderFeatureFormatter.Instance.Format(headerFeatureVectorFactory.Create(x)));
 
             Approvals.Verify(
                 String.Join(Environment.NewLine, featureVectors.Select(x => String.Join(" ", x))));

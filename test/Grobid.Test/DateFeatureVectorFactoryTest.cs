@@ -29,31 +29,7 @@ namespace Grobid.Test
                 .Select(featureVectorFactory.Create)
                 .ToArray();
 
-            Func<DateFeatureVector, string[]> formatter = x =>
-            {
-                return new[]
-                {
-                    x.Text,
-                    x.AsLowerCase,
-                    x.Prefix1,
-                    x.Prefix2,
-                    x.Prefix3,
-                    x.Prefix4,
-                    x.Suffix1,
-                    x.Suffix2,
-                    x.Suffix3,
-                    x.Suffix4,
-                    x.LineStatus.ToString(),
-                    x.Capitalization.ToString(),
-                    x.Digit.ToString(),
-                    x.IsSingleChar ? "1" : "0",
-                    x.IsYear ? "1" : "0",
-                    x.IsMonth ? "1" : "0",
-                    x.Punctuation.ToString(),
-                };
-            };
-
-            Approvals.VerifyAll(featureVectors, x => String.Join(" ", formatter(x)));
+            Approvals.VerifyAll(featureVectors, x => String.Join(" ", DateFeatureFormatter.Instance.Format(x)));
         }
 
         [Fact]
@@ -70,33 +46,9 @@ namespace Grobid.Test
                 .Select(featureVectorFactory.Create)
                 .ToArray();
 
-            Func<DateFeatureVector, string[]> formatter = x =>
-            {
-                return new[]
-                {
-                    x.Text,
-                    x.AsLowerCase,
-                    x.Prefix1,
-                    x.Prefix2,
-                    x.Prefix3,
-                    x.Prefix4,
-                    x.Suffix1,
-                    x.Suffix2,
-                    x.Suffix3,
-                    x.Suffix4,
-                    x.LineStatus.ToString(),
-                    x.Capitalization.ToString(),
-                    x.Digit.ToString(),
-                    x.IsSingleChar ? "1" : "0",
-                    x.IsYear ? "1" : "0",
-                    x.IsMonth ? "1" : "0",
-                    x.Punctuation.ToString(),
-                };
-            };
-
             using (var model = global::Wapiti.Wapiti.Load(@"content\models\date\model.wapiti"))
             {
-                var lines = featureVectors.Select(x => String.Join(" ", formatter(x))).ToArray();
+                var lines = featureVectors.Select(x => String.Join(" ", DateFeatureFormatter.Instance.Format(x))).ToArray();
                 Approvals.Verify(model.Label(lines));
             }
         }
